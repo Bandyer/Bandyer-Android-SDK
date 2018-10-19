@@ -1,0 +1,7 @@
+/*
+ * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
+include ':demo_app'
+project(':demo_app').projectDir = file('demo_app/app')

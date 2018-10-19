@@ -1,0 +1,87 @@
+/*
+ * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
+apply plugin: 'com.android.application'
+
+def gsonVersion = "2.8.2"
+def okHttpVersion = "3.11.0"
+def stethoVersion = "1.5.0"
+def retrofitVersion = "2.4.0"
+def leakCanaryVersion = "1.6.1"
+def butterKnifeVersion = "8.8.1"
+def fastAdapterVersion = "3.2.5@aar"
+def picassoLibVersion = "2.71828"
+
+android {
+    compileSdkVersion sdkVersion
+    buildToolsVersion buildToolsVersion
+    defaultConfig {
+        applicationId "com.bandyer.demo_android_sdk"
+        minSdkVersion 16
+        targetSdkVersion sdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    /*** Platform ***/
+    implementation("com.android.support:appcompat-v7:$supportLibVersion") {
+        exclude group: 'com.android.support', module: 'animated-vector-drawable'
+        exclude group: 'com.android.support', module: 'support-vector-drawable'
+        exclude group: 'com.android.support', module: 'exit-interface'
+    }
+    implementation ("com.android.support:design:$supportLibVersion") {
+        exclude group: 'com.android.support', module: 'animated-vector-drawable'
+        exclude group: 'com.android.support', module: 'support-vector-drawable'
+        exclude group: 'com.android.support', module: 'exit-interface'
+    }
+    implementation ("com.android.support:recyclerview-v7:$supportLibVersion") {
+        exclude group: 'com.android.support', module: 'animated-vector-drawable'
+        exclude group: 'com.android.support', module: 'support-vector-drawable'
+        exclude group: 'com.android.support', module: 'exit-interface'
+    }
+
+    //***  Testing ***/
+    testImplementation 'junit:junit:4.12'
+
+    //*** Networking ***/
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    /*** Utility ***/
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    implementation "com.squareup.picasso:picasso:$picassoLibVersion"
+
+    /*** UI ***/
+    implementation "com.mikepenz:fastadapter:$fastAdapterVersion"
+    implementation "com.mikepenz:fastadapter-extensions:$fastAdapterVersion"
+    implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
+
+    /*** Bandyer Communication Center ***/
+    implementation ('com.bandyer:bandyer-android-sdk:1.0.0')
+
+}

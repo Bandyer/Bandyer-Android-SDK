@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+
+<resources>
+    <color name="colorPrimaryDark">#004f7e</color>
+    <color name="colorPrimary">#FF0277BD</color>
+    <color name="colorPrimaryLight">#FF29B6F6</color>
+
+    <color name="colorAccent">#FFED6603</color>
+
+    <color name="colorBad">#FFff000d</color>
+    <color name="colorGood">#FF3fa625</color>
+    <color name="gray">#FFd9d9d9</color>
+    <color name="black_transparent">#c0000000</color>
+</resources>

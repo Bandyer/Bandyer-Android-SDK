@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+
+<resources>
+    <string name="app_name">Bandyer SDK Demo</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="button_allow">Allow</string>
+    <string name="button_ok">OK</string>
+    <string name="button_deny">Deny</string>
+
+    <string name="show_camera">Show camera preview</string>
+
+    <string name="permission_camera_rationale">Camera permission is needed to show the camera preview.</string>
+    <string name="permission_camera_denied">Camera permission was denied. Please consider granting it in order to access the camera!</string>
+    <string name="permission_camera_never_ask_again">Camera permission was denied with never ask again.</string>
+    <string name="oto_chat_error">You must provide only one valid user alias to start a chat.</string>
+    <string name="oto_chat_error_no_selected_user">You must provide at least one valid user alias to start a chat.</string>
+    <string name="login_title">Choose the user to login with</string>
+    <string name="hang_up">Hang up</string>
+    <string name="calling_user">Calling user…</string>
+    <string name="decline">Decline</string>
+    <string name="answer">Answer</string>
+    <string name="pick_users">Hello, %1$s!\nWho do you want to call or chat with?</string>
+
+    <plurals name="user_is_ringing">
+        <item quantity="one">is ringing…</item>
+        <item quantity="other">are ringing…</item>
+    </plurals>
+    <plurals name="user_is_calling_you">
+        <item quantity="one">is calling you…</item>
+        <item quantity="other">are calling you…</item>
+    </plurals>
+    <string name="logout">Logout</string>
+    <string name="caller_name">Caller name</string>
+    <string name="preparing_call">Call is loading…</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_error_title">Error</string>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/userGreeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space16"
+        android:text="@string/pick_users"
+        android:textSize="@dimen/text_h1" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contactsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space96" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space56"
+        android:layout_marginEnd="@dimen/space16"
+        android:layout_marginRight="@dimen/space16"
+        android:adjustViewBounds="true"
+        android:layout_toLeftOf="@+id/call"
+        android:layout_toStartOf="@+id/call"
+        android:padding="0dp"
+        android:src="@drawable/ic_bandyer_chat"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
+        app:tint="#ffffff" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space56"
+        android:layout_marginEnd="@dimen/space16"
+        android:layout_marginRight="@dimen/space16"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_bandyer_video_call"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
+        app:tint="#ffffff" />
+</RelativeLayout>
