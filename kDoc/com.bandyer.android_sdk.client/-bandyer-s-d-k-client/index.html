@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerSDKClient - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.client</a>&nbsp;/&nbsp;<a href="./index.html">BandyerSDKClient</a><br/>
+<br/>
+<h1>BandyerSDKClient</h1>
+<code><span class="keyword">class </span><span class="identifier">BandyerSDKClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-interface/index.html"><span class="identifier">BandyerSDKClientInterface</span></a><span class="symbol">, </span><a href="https://developer.android.com/reference/android/content/Intent.html"><span class="identifier">Intent</span></a></code>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="my-alias.html">myAlias</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">myAlias</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="state.html">state</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">state</span><span class="symbol">: </span><a href="../-bandyer-s-d-k-client-state/index.html"><span class="identifier">BandyerSDKClientState</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="user-information-fetcher.html">userInformationFetcher</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">userInformationFetcher</span><span class="symbol">: </span><span class="identifier">UserInformationFetcher</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="user-information-notification-display-formatter.html">userInformationNotificationDisplayFormatter</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">userInformationNotificationDisplayFormatter</span><span class="symbol">: </span><span class="identifier">UserDisplayInfoFormatter</span><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-observer.html">addObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$addObserver(com.bandyer.android_sdk.client.BandyerSDKClientObserver)/bandyerSDKClientObserver">bandyerSDKClientObserver</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-observer/index.html"><span class="identifier">BandyerSDKClientObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add observer to be notified when Bandyer SDK is up and running.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="dispose.html">dispose</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">dispose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Destroy Bandyer SDK operations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-notification.html">handleNotification</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">handleNotification</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/data">data</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/userAlias">userAlias</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-observer/index.html"><span class="identifier">BandyerSDKClientObserver</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-options/index.html"><span class="identifier">BandyerSDKClientOptions</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$handleNotification(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/withChatCapability">withChatCapability</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle notification payload and restart Bandyer SDK if needed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$init(android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$init(android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions)/userAlias">userAlias</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$init(android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-observer/index.html"><span class="identifier">BandyerSDKClientObserver</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$init(android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-options/index.html"><span class="identifier">BandyerSDKClientOptions</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize Bandyer SDK.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="join-url.html">joinUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">joinUrl</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/userAlias">userAlias</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-observer/index.html"><span class="identifier">BandyerSDKClientObserver</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-options/index.html"><span class="identifier">BandyerSDKClientOptions</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$joinUrl(kotlin.String, android.content.Context, kotlin.String, com.bandyer.android_sdk.client.BandyerSDKClientObserver, com.bandyer.android_sdk.client.BandyerSDKClientOptions, kotlin.Boolean)/witChatCapability">witChatCapability</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start call from with input call url and restart Bandyer SDK if needed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="logout.html">logout</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">logout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Logout previously logged user.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-observer.html">removeObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">removeObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$removeObserver(com.bandyer.android_sdk.client.BandyerSDKClientObserver)/bandyerSDKClientObserver">bandyerSDKClientObserver</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-observer/index.html"><span class="identifier">BandyerSDKClientObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove observer from Bandyer SDK.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-observers.html">removeObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">removeObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove all previously added observers</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="star-call-from-socket-notification-or-join-url.html">starCallFromSocketNotificationOrJoinUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">starCallFromSocketNotificationOrJoinUrl</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$starCallFromSocketNotificationOrJoinUrl(com.bandyer.communication_center.call.Call, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/call">call</span><span class="symbol">:</span>&nbsp;<span class="identifier">Call</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$starCallFromSocketNotificationOrJoinUrl(com.bandyer.communication_center.call.Call, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/autoAnswer">autoAnswer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$starCallFromSocketNotificationOrJoinUrl(com.bandyer.communication_center.call.Call, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/joinUrl">joinUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$starCallFromSocketNotificationOrJoinUrl(com.bandyer.communication_center.call.Call, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/withChatCapability">withChatCapability</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start-listening.html">startListening</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">startListening</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Starts listening for incoming calls.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop-listening.html">stopListening</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">stopListening</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stops incoming calls listening.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-instance.html">getInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getInstance</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-bandyer-s-d-k-client-interface/index.html"><span class="identifier">BandyerSDKClientInterface</span></a></code>
+<p>Method to get the BandyerSDKClient instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

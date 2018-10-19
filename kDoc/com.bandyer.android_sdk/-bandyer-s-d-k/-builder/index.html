@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerSDK.Builder - </title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="../index.html">BandyerSDK</a>&nbsp;/&nbsp;<a href="./index.html">Builder</a><br/>
+<br/>
+<h1>Builder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Builder</span></code>
+<p>Builder class for BandyerSDK</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="api-key.html">apiKey</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">apiKey</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>the developer api key provided by Bandyer</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="app-id.html">appId</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">appId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>the developer application id provided by Bandyer</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../index.html"><span class="identifier">BandyerSDK</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setEnvironment(com.bandyer.android_sdk.networking.Environment)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.networking/-environment/index.html"><span class="identifier">Environment</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Method to set the environment for all modules</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-gson-builder.html">setGsonBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setGsonBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setGsonBuilder(com.google.gson.GsonBuilder)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">GsonBuilder</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Method to personalize the gson builder</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-http-stack-builder.html">setHttpStackBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setHttpStackBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setHttpStackBuilder(okhttp3.OkHttpClient.Builder)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">Builder</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Method to personalize the http stack</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-logger.html">setLogger</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setLogger</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setLogger(com.bandyer.android_sdk.utils.BandyerSDKLogger)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils/-bandyer-s-d-k-logger/index.html"><span class="identifier">BandyerSDKLogger</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Method to personalize the base sdk logger</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-call-enabled.html">withCallEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withCallEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Enable initialization of call capabilities</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-chat-enabled.html">withChatEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withChatEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Enables initialization of chat module</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

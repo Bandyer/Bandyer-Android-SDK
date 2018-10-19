@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerIntent.Builder.ChatIntentBuilder - </title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../../index.html">com.bandyer.android_sdk.intent</a>&nbsp;/&nbsp;<a href="../../index.html">BandyerIntent</a>&nbsp;/&nbsp;<a href="../index.html">Builder</a>&nbsp;/&nbsp;<a href="./index.html">ChatIntentBuilder</a><br/>
+<br/>
+<h1>ChatIntentBuilder</h1>
+<code><span class="keyword">class </span><span class="identifier">ChatIntentBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../index.html"><span class="identifier">Builder</span></a></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ChatIntentBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.ChatIntentBuilder$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">?</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="new-task.html">newTask</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">newTask</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>Create intent with NEW_TASK flag active to be used if starting context is application context or coming from services or receivers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-audio-call-capability.html">withAudioCallCapability</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withAudioCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.ChatIntentBuilder$withAudioCallCapability(kotlin.Boolean)/upgradable">upgradable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>Audio call capability means that you can initialize an audio call from chat activity.
+If upgradable is true it means that the call will be initialized as audio call but will be
+upgraded if selected camera button from call action items.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-audio-video-call-capability.html">withAudioVideoCallCapability</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withAudioVideoCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>Audio video call capability means that you can initialize a video call from chat activity.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-alias.html">withUserAlias</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserAlias</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.ChatIntentBuilder$withUserAlias(kotlin.String)/userAlias">userAlias</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>A valid user alias is needed by Bandyer SDK to retrieve the user to chat with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-display-formatter.html">withUserDisplayFormatter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserDisplayFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.ChatIntentBuilder$withUserDisplayFormatter(com.bandyer.android_common.fetcher.UserDisplayInfoFormatter)/formatter">formatter</span><span class="symbol">:</span>&nbsp;<span class="identifier">UserDisplayInfoFormatter</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>The display info formatter is used to format user info from user fetcher.
+If no formatter is provided a base instance of formatter will be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../index.html"><span class="identifier">BandyerIntent</span></a></code>
+<p>Create the intent instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../start-with-call.html">startWithCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">startWithCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-call-intent-builder/index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>The intent will be initialized to start a call activity with provided options parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../start-with-chat.html">startWithChat</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">startWithChat</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>The intent will be initialized to start a chat activity with provided options parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

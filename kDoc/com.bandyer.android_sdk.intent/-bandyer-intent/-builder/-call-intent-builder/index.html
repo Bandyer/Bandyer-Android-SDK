@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerIntent.Builder.CallIntentBuilder - </title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../../index.html">com.bandyer.android_sdk.intent</a>&nbsp;/&nbsp;<a href="../../index.html">BandyerIntent</a>&nbsp;/&nbsp;<a href="../index.html">Builder</a>&nbsp;/&nbsp;<a href="./index.html">CallIntentBuilder</a><br/>
+<br/>
+<h1>CallIntentBuilder</h1>
+<code><span class="keyword">class </span><span class="identifier">CallIntentBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../index.html"><span class="identifier">Builder</span></a></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CallIntentBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.CallIntentBuilder$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">?</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="audio-call.html">audioCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">audioCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create Call Activity with audio call capability.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="audio-upgradable-call.html">audioUpgradableCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">audioUpgradableCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create Call Activity with audio upgradable to video call capability.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="audio-video-call.html">audioVideoCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">audioVideoCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create Call Activity with audio video call capability.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="auto-answer.html">autoAnswer</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">autoAnswer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create intent with NEW_TASK flag active to be used if starting context is application context or coming from services or receivers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-task.html">newTask</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">newTask</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create intent with NEW_TASK flag active to be used if starting context is application context or coming from services or receivers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="record-call.html">recordCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">recordCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Create Call Activity with recording call capability.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-call-direction.html">withCallDirection</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withCallDirection</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.CallIntentBuilder$withCallDirection(com.bandyer.android_sdk.intent.BandyerIntent.CallDirection)/direction">direction</span><span class="symbol">:</span>&nbsp;<a href="../../-call-direction/index.html"><span class="identifier">CallDirection</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Describe how to instantiate the call activity. Outgoing call direction must be set to instantiate a call, incoming call direction
+has to be set when a ringing call is requested.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-chat-capability.html">withChatCapability</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withChatCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>Chat capability means that will be allowed to initialize chat from audio/video call activity.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-aliases.html">withUserAliases</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserAliases</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.CallIntentBuilder$withUserAliases(java.util.ArrayList((kotlin.String)))/userAliases">userAliases</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>A valid user alias is needed by Bandyer SDK to retrieve the user to audio/video chat with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-display-formatter.html">withUserDisplayFormatter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserDisplayFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerIntent.Builder.CallIntentBuilder$withUserDisplayFormatter(com.bandyer.android_common.fetcher.UserDisplayInfoFormatter)/formatter">formatter</span><span class="symbol">:</span>&nbsp;<span class="identifier">UserDisplayInfoFormatter</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>The display info formatter is used to format user info from user fetcher.
+If no formatter is provided a base instance of formatter will be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../index.html"><span class="identifier">BandyerIntent</span></a></code>
+<p>Create the intent instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../start-with-call.html">startWithCall</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">startWithCall</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallIntentBuilder</span></a></code>
+<p>The intent will be initialized to start a call activity with provided options parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../start-with-chat.html">startWithChat</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">startWithChat</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-chat-intent-builder/index.html"><span class="identifier">ChatIntentBuilder</span></a></code>
+<p>The intent will be initialized to start a chat activity with provided options parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

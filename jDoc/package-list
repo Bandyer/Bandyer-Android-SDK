@@ -1,0 +1,10 @@
+com.bandyer.android_sdk
+com.bandyer.android_sdk.activities
+com.bandyer.android_sdk.activities.call
+com.bandyer.android_sdk.activities.chat
+com.bandyer.android_sdk.client
+com.bandyer.android_sdk.intent
+com.bandyer.android_sdk.networking
+com.bandyer.android_sdk.notification
+com.bandyer.android_sdk.ui.stream_recycler_view.item
+com.bandyer.android_sdk.utils
