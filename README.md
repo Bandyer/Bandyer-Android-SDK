@@ -30,6 +30,8 @@ Bandyer Android SDK allows you to integrate with low effort video and chat commu
 
 **Even though this sdk encloses strongly the UI/UX, it is fully stylable through default Android style system.**
 
+<img src="img/chat.png" height="360"/><img src="img/audio_call.png" height="360"/><img src="img/video_call.png" height="360"/> <img src="img/pip.png" height="360"/> 
+
 ## Features
 
 - Audio&Video calls
