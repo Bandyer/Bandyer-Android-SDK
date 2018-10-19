@@ -5,7 +5,7 @@
 </p>
 
 
-[ ![Download](https://api.bintray.com/packages/bandyer/Bandyer-Android-SDK/Bandyer-Android-SDK/images/download.svg) ](https://bintray.com/bandyer/Bandyer-Android-SDK/Bandyer-Android-SDK/_latestVersion)[![Docs](https://img.shields.io/badge/docs-current-brightgreen.svg)](https://bandyer.github.io/Bandyer-Android-SDK/)
+[ ![Download](https://api.bintray.com/packages/bandyer/Communication/Bandyer-Android-SDK/images/download.svg) ](https://bintray.com/bandyer/Communication/Bandyer-Android-SDK/_latestVersion)[![Docs](https://img.shields.io/badge/docs-current-brightgreen.svg)](https://bandyer.github.io/Bandyer-Android-SDK/)
 [![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=bandyersrl)
 
 
