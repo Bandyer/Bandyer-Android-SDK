@@ -19,10 +19,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class DummyUserFetcher extends UserInformationFetcher {
-
-    private static Executor background = Executors.newSingleThreadExecutor();
-    private static android.os.Handler handler = new Handler(Looper.getMainLooper());
-
+    
     private static String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru",
             "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol",
             "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", "Cro",

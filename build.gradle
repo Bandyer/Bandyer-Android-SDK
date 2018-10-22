@@ -36,6 +36,7 @@ allprojects {
         mavenCentral()
         mavenLocal()
         maven { url 'https://jitpack.io' }
+        maven { url  "https://dl.bintray.com/bandyer/Communication" }
     }
 
     configurations.all {
