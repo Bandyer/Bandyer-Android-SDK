@@ -44,7 +44,7 @@ Bandyer Android SDK allows you to integrate with low effort video and chat commu
 Download the [latest AAR](https://bintray.com/bandyer/Communication/Bandyer-Android-SDK) or grab via Gradle:
 
 ```groovy
-implementation 'com.bandyer:bandyer-android-sdk:1.0.0'
+implementation 'com.bandyer:bandyer-android-sdk:1.0.1'
 ```
 
 ## Quickstart
