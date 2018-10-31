@@ -8,10 +8,10 @@
 <a href="../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="./index.html">BandyerSDK</a><br/>
 <br/>
 <h1>BandyerSDK</h1>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BandyerSDK</span></code>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BandyerSDK</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BandyerSDKInterface</span></code>
 <p>Represents the entry point for the Bandyer SDK module</p>
 <p>The global singleton instance contains functions that handle the global configuration for the module.</p>
-<p>In order to use this module you must call the <code>initWithDefaults</code> or <code>init</code> methods on the singleton instance.</p>
+<p>In order to use this module you must call the <code>initWithDefaults</code> or <code>init</code> methods on the BandyerSDK singleton instance.</p>
 <h3>Types</h3>
 <table>
 <tbody>
@@ -26,39 +26,6 @@
 </tr>
 </tbody>
 </table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<p><a href="application-context.html">applicationContext</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">applicationContext</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="call-sdk.html">callSdk</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">callSdk</span><span class="symbol">: </span><span class="identifier">CommunicationCenter</span><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="chat-sdk.html">chatSdk</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">chatSdk</span><span class="symbol">: </span><span class="identifier">ChatModule</span><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="logger.html">logger</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">logger</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.utils/-bandyer-s-d-k-logger/index.html"><span class="identifier">BandyerSDKLogger</span></a><span class="symbol">?</span></code></td>
-</tr>
-</tbody>
-</table>
 <h3>Companion Object Properties</h3>
 <table>
 <tbody>
@@ -67,7 +34,7 @@
 <p><a href="instance.html">instance</a></p>
 </td>
 <td>
-<code><span class="keyword">var </span><span class="identifier">instance</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">BandyerSDK</span></a><span class="symbol">?</span></code>
+<code><span class="keyword">var </span><span class="identifier">instance</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span><span class="symbol">?</span></code>
 <p>BandyerSdkModule instance</p>
 </td>
 </tr>
@@ -81,7 +48,7 @@
 <p><a href="init.html">init</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$init(com.bandyer.android_sdk.BandyerSDK.Builder)/builder">builder</span><span class="symbol">:</span>&nbsp;<a href="-builder/index.html"><span class="identifier">Builder</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">BandyerSDK</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$init(com.bandyer.android_sdk.BandyerSDK.Builder)/builder">builder</span><span class="symbol">:</span>&nbsp;<a href="-builder/index.html"><span class="identifier">Builder</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span></code>
 <p>Utility method to initialize the sdk</p>
 </td>
 </tr>
@@ -90,7 +57,7 @@
 <p><a href="init-with-defaults.html">initWithDefaults</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">initWithDefaults</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">BandyerSDK</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">initWithDefaults</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$initWithDefaults(android.content.Context, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span></code>
 <p>Utility method to initialize the sdk with default implementation</p>
 </td>
 </tr>

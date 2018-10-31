@@ -9,6 +9,7 @@
 <br/>
 <h1>Builder</h1>
 <code><span class="keyword">class </span><span class="identifier">Builder</span></code>
+<p>Bandyer SDK Client Options Builder</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -17,40 +18,9 @@
 <p><a href="-init-.html">&lt;init&gt;</a></p>
 </td>
 <td>
-<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<p><a href="keep-listening-for-incoming-calls-in-background.html">keepListeningForIncomingCallsInBackground</a></p>
+<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Bandyer SDK Client Options Builder</p>
 </td>
-<td>
-<code><span class="keyword">var </span><span class="identifier">keepListeningForIncomingCallsInBackground</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="notification-config.html">notificationConfig</a></p>
-</td>
-<td>
-<code><span class="keyword">var </span><span class="identifier">notificationConfig</span><span class="symbol">: </span><a href="../../../com.bandyer.android_sdk.notification/-bandyer-s-d-k-notification-config/index.html"><span class="identifier">BandyerSDKNotificationConfig</span></a><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="notification-display-formatter.html">notificationDisplayFormatter</a></p>
-</td>
-<td>
-<code><span class="keyword">var </span><span class="identifier">notificationDisplayFormatter</span><span class="symbol">: </span><span class="identifier">UserDisplayInfoFormatter</span><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<p><a href="user-information-fetcher.html">userInformationFetcher</a></p>
-</td>
-<td>
-<code><span class="keyword">var </span><span class="identifier">userInformationFetcher</span><span class="symbol">: </span><span class="identifier">UserInformationFetcher</span><span class="symbol">?</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -91,7 +61,7 @@ unexpected behaviours and keep battery consumption under control.</p>
 <p><a href="with-notification-display-formatter.html">withNotificationDisplayFormatter</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withNotificationDisplayFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withNotificationDisplayFormatter(com.bandyer.android_common.fetcher.UserDisplayInfoFormatter)/notificationDisplayInfoFormatter">notificationDisplayInfoFormatter</span><span class="symbol">:</span>&nbsp;<span class="identifier">UserDisplayInfoFormatter</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">withNotificationDisplayFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withNotificationDisplayFormatter(com.bandyer.android_common.fetcher.UserDisplayInfoFormatter)/notificationDisplayInfoFormatter">notificationDisplayInfoFormatter</span><span class="symbol">:</span>&nbsp;<a href="https://bandyer.github.io/Bandyer-Android-Common/kDoc/com.bandyer.android_common.fetcher/-user-display-info-formatter/index.html"><span class="identifier">UserDisplayInfoFormatter</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
 <p>Adds to options an object used to format data retrieved from user information fetcher.</p>
 </td>
 </tr>
@@ -100,7 +70,7 @@ unexpected behaviours and keep battery consumption under control.</p>
 <p><a href="with-user-information-fetcher.html">withUserInformationFetcher</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withUserInformationFetcher</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withUserInformationFetcher(com.bandyer.android_common.fetcher.UserInformationFetcher)/userInformationFetcher">userInformationFetcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">UserInformationFetcher</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">withUserInformationFetcher</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withUserInformationFetcher(com.bandyer.android_common.fetcher.UserInformationFetcher)/userInformationFetcher">userInformationFetcher</span><span class="symbol">:</span>&nbsp;<a href="https://bandyer.github.io/Bandyer-Android-Common/kDoc/com.bandyer.android_common.fetcher/-user-information-fetcher/index.html"><span class="identifier">UserInformationFetcher</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
 <p>Adds to options an object used to fetch users information based on user aliases.</p>
 </td>
 </tr>

@@ -22,29 +22,6 @@
 </tr>
 </tbody>
 </table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<p><a href="api-key.html">apiKey</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">apiKey</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
-<p>the developer api key provided by Bandyer</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="app-id.html">appId</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">appId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
-<p>the developer application id provided by Bandyer</p>
-</td>
-</tr>
-</tbody>
-</table>
 <h3>Functions</h3>
 <table>
 <tbody>
@@ -53,14 +30,16 @@
 <p><a href="build.html">build</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../index.html"><span class="identifier">BandyerSDK</span></a></code></td>
+<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span></code>
+<p>Builds and returns the generated BandyerSdk instance</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="set-environment.html">setEnvironment</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setEnvironment(com.bandyer.android_sdk.networking.Environment)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.networking/-environment/index.html"><span class="identifier">Environment</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setEnvironment(com.bandyer.android_sdk.Environment)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../-environment/index.html"><span class="identifier">Environment</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
 <p>Method to set the environment for all modules</p>
 </td>
 </tr>
