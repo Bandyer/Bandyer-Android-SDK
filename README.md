@@ -59,7 +59,7 @@ BandyerSDK.Builder builder = new BandyerSDK.Builder(
 
  builder.withChatEnabled()   // enable chat feature
 	.withCallEnabled()  // enable audio/video call feature
-	.setEnvironment(Environment.SANDBOX); // or Environment.PRODUCTION
+	.setEnvironment(Environment.Configuration.sandbox()); // or Environment.Configuration.production()
 
 BandyerSDK.init(builder);
 
@@ -78,6 +78,11 @@ BandyerSDKClient.getInstance().stopListening(); // Stop listening for incoming c
 
 Click here for the [options](#custom-options)
 
+## Dispose Bandyer SDK Client
+
+```java
+BandyerSDKClient.getInstance().dispose();
+```
 
 ## Start an audio/video call with chat:
 
@@ -179,6 +184,12 @@ builder.keepListeningforIncomingCallsInBackground(false);
 
 BandyerSDKClientOptions options = builder.build();
 ```
+## Documentation
+You can find the complete documentation in two different styles
+
+Kotlin Doc: [https://bandyer.github.io/Bandyer-Android-SDK/kDoc/](https://bandyer.github.io/Bandyer-Android-SDK/kDoc/)
+
+Java Doc: [https://bandyer.github.io/Bandyer-Android-SDK/jDoc/](https://bandyer.github.io/Bandyer-Android-SDK/jDoc/)
 
 ## Customize style
 - Documentation coming soon
