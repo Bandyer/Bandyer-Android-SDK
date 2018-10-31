@@ -7,12 +7,12 @@ package com.bandyer.demo_android_sdk;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,7 +25,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,9 +33,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bandyer.android_common.extensions.ContextExtensionsKt;
 import com.bandyer.android_common.fetcher.UserDisplayInfo;
 import com.bandyer.android_common.fetcher.UserDisplayInfoFormatter;
 import com.bandyer.android_sdk.client.BandyerSDKClient;
@@ -54,8 +51,6 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
 import com.mikepenz.fastadapter.select.SelectExtension;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,10 +82,6 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
 
     @BindView(R.id.call)
     FloatingActionButton callButton;
-
-    private ProgressDialog dialog;
-
-    private boolean shouldOpenExternalUrl = false;
 
     // the external url to provide to the call client in case we want to setup a call coming from an url.
     // The url may be provided to join an existing call, or to create a new one.
@@ -133,23 +124,21 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         userGreeting.setText(String.format(getResources().getString(R.string.pick_users), userAlias));
 
         startBandyerSdk(userAlias);
+
+        // in case the MainActivity has been shown by opening an external link, handle it
+        handleExternalUrl(getIntent());
     }
 
     private void startBandyerSdk(String userAlias) {
-        if (userAlias == null || userAlias.trim().isEmpty()) return;
-
-        if (!LoginManager.isUserLogged(this))
-            LoginManager.login(this, userAlias);
-
         // If the user is already logged, initialize the SDK client and show the MainActivity.
         // Bandyer SDK optional components builder user to retrieve and display users' info
         BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
                 .withUserInformationFetcher(new DummyUserFetcher())
                 .withNotificationDisplayFormatter(
                         new UserDisplayInfoFormatter() {
-                            @NotNull
+                            @NonNull
                             @Override
-                            public String format(@NotNull UserDisplayInfo userDisplayInfo) {
+                            public String format(@NonNull UserDisplayInfo userDisplayInfo) {
                                 return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
                             }
                         }
@@ -171,15 +160,45 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         BandyerSDKClient.getInstance().startListening();
     }
 
+    /**
+     * Handle an external url by calling join method
+     * <p>
+     * WARNING!!!
+     * Be sure to have the call client connected before joining a call with the url provided.
+     * Otherwise you will receive an error.
+     */
+    private void handleExternalUrl(Intent intent) {
+        // do not handle the url if we do not have a valid user
+        if (!LoginManager.isUserLogged(this))
+            return;
+
+        String userAlias = LoginManager.getLoggedUser(this);
+
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Uri uri = intent.getData();
+            if (uri != null) {
+                joinUrl = uri.toString();
+                // if client is not running, then I need to initialize it
+                if (BandyerSDKClient.getInstance().getState() != BandyerSDKClientState.RUNNING) {
+                    startBandyerSdk(userAlias);
+                } else {
+                    BandyerSDKClient.getInstance().joinUrl(uri.toString(), MainActivity.this);
+                    joinUrl = null;
+                }
+            }
+        }
+    }
+
     @Override
     public void onDestroy() {
+        BandyerSDKClient.getInstance().dispose();
         super.onDestroy();
-        BandyerSDKClient.getInstance().removeObserver(this);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        handleExternalUrl(intent);
     }
 
     @Override
@@ -207,6 +226,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
 
     private void logout() {
         LoginManager.logout(this);
+        BandyerSDKClient.getInstance().clearUserCache();
         BandyerSDKClient.getInstance().dispose();
         LoginActivity.show(this);
     }
@@ -287,9 +307,9 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 .withAudioVideoCallCapability()
                 .withUserAlias(calleeSelected.get(0))
                 .withUserDisplayFormatter(new UserDisplayInfoFormatter() {
-                    @NotNull
+                    @NonNull
                     @Override
-                    public String format(@NotNull UserDisplayInfo userDisplayInfo) {
+                    public String format(@NonNull UserDisplayInfo userDisplayInfo) {
                         return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
                     }
                 })
@@ -308,14 +328,13 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
      */
     @OnClick(R.id.call)
     void call() {
-
         final CharSequence[] callModes = {"Audio only call", "Audio upgradable to video call", "Audio video call"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
         mBuilder.setTitle("Call " + TextUtils.join(" ", calleeSelected));
         final CheckBox recording = new CheckBox(this);
         LinearLayout ll = new LinearLayout(this);
         LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        int margin =  dp2px(16f);
+        int margin = dp2px(16f);
         llp.leftMargin = margin;
         llp.topMargin = margin / 2;
         llp.bottomMargin = margin;
@@ -329,9 +348,9 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                         .startWithCall()
                         .withUserAliases(new ArrayList<>(calleeSelected))
                         .withUserDisplayFormatter(new UserDisplayInfoFormatter() {
-                            @NotNull
+                            @NonNull
                             @Override
-                            public String format(@NotNull UserDisplayInfo userDisplayInfo) {
+                            public String format(@NonNull UserDisplayInfo userDisplayInfo) {
                                 return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
                             }
                         });
@@ -375,14 +394,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
             String error = data.getExtras() != null ? data.getExtras().getString("error", "error") : "error";
 
             switch (requestCode) {
-
                 case START_CALL_CODE:
-
-                    Toast.makeText(this, "Call ennded: " + error, Toast.LENGTH_LONG).show();
+                    showToast("Call ended: " + error);
                     break;
 
                 case START_CHAT_CODE:
-                    Toast.makeText(this, "Chat closed: " + error, Toast.LENGTH_LONG).show();
+                    showToast("Chat closed: " + error);
                     break;
 
             }
@@ -392,22 +409,26 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     ///////////////////////////////////////////////// BANDYER SDK CLIENT OBSERVER /////////////////////////////////////////////////
 
     @Override
-    public void onStatusChange(@NotNull BandyerSDKClientState state) {
+    public void onStatusChange(@NonNull BandyerSDKClientState state) {
     }
 
     @Override
     public void onChatModuleReady() {
-        if (chatButton.getVisibility() == View.INVISIBLE) {
-            Toast.makeText(MainActivity.this, "Bandyer SDK Chat Module initialized.", Toast.LENGTH_SHORT).show();
+        showToast("Bandyer SDK Chat Module initialized.");
+        if (chatButton.getVisibility() == View.INVISIBLE)
             chatButton.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
     public void onCallModuleReady() {
-        if (callButton.getVisibility() == View.INVISIBLE) {
-            Toast.makeText(MainActivity.this, "Bandyer SDK Call Module initialized.", Toast.LENGTH_SHORT).show();
+        showToast("Bandyer SDK Call Module initialized.");
+
+        if (callButton.getVisibility() == View.INVISIBLE)
             callButton.setVisibility(View.VISIBLE);
+
+        if (joinUrl != null) {
+            BandyerSDKClient.getInstance().joinUrl(joinUrl, MainActivity.this);
+            joinUrl = null; // reset boolean to avoid reopening external url twice on resume
         }
     }
 
@@ -435,13 +456,13 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
 
     @Override
     public void onCallModuleFailed(Throwable throwable) {
-        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+        showToast(throwable.getMessage());
         callButton.setVisibility(View.INVISIBLE);
     }
 
     @Override
-    public void onChatModuleFailed(@NotNull Throwable throwable) {
-        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+    public void onChatModuleFailed(@NonNull Throwable throwable) {
+        showToast(throwable.getMessage());
         chatButton.setVisibility(View.INVISIBLE);
     }
 

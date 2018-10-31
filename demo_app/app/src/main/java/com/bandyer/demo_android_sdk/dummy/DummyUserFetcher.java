@@ -5,21 +5,18 @@
 
 package com.bandyer.demo_android_sdk.dummy;
 
-import android.os.Handler;
-import android.os.Looper;
+import android.support.annotation.NonNull;
+
 import com.bandyer.android_common.fetcher.OnUserImageFetcherObserver;
 import com.bandyer.android_common.fetcher.OnUserInformationFetcherObserver;
 import com.bandyer.android_common.fetcher.UserDisplayInfo;
 import com.bandyer.android_common.fetcher.UserImageDisplayInfo;
 import com.bandyer.android_common.fetcher.UserInformationFetcher;
 
-import org.jetbrains.annotations.NotNull;
 import java.util.Random;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class DummyUserFetcher extends UserInformationFetcher {
-    
+
     private static String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru",
             "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol",
             "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", "Cro",
@@ -35,12 +32,12 @@ public class DummyUserFetcher extends UserInformationFetcher {
     private static Random rand = new Random();
 
     @Override
-    public void fetchUser(@NotNull final String userAlias, @NotNull final OnUserInformationFetcherObserver onUserInformationFetcherObserver) {
+    public void fetchUser(@NonNull final String userAlias, @NonNull final OnUserInformationFetcherObserver onUserInformationFetcherObserver) {
         onUserInformationFetcherObserver.onUserFetched(generateUserDisplayInfo(userAlias));
     }
 
     @Override
-    public void fetchUserImage(final @NotNull String userAlias, final @NotNull OnUserImageFetcherObserver onUserImageFetcherObserver) {
+    public void fetchUserImage(final @NonNull String userAlias, final @NonNull OnUserImageFetcherObserver onUserImageFetcherObserver) {
         onUserImageFetcherObserver.onUserImagesFetched(new UserImageDisplayInfo.Builder(userAlias).withImageUrl("https://cdn8.bigcommerce.com/s-29i296wym3/images/stencil/1024x1024/products/3118/6551/HEISENBERG__89676.1525428438.jpg?c=2"));
     }
 

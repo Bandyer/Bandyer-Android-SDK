@@ -17,7 +17,6 @@ import android.view.View;
 import com.bandyer.android_common.fetcher.UserDisplayInfo;
 import com.bandyer.android_common.fetcher.UserDisplayInfoFormatter;
 import com.bandyer.android_sdk.client.BandyerSDKClient;
-import com.bandyer.android_sdk.client.BandyerSDKClientObserver;
 import com.bandyer.android_sdk.client.BandyerSDKClientOptions;
 import com.bandyer.android_sdk.client.BandyerSDKClientState;
 import com.bandyer.android_sdk.notification.BandyerSDKNotificationConfig;
@@ -30,8 +29,6 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
-
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -48,7 +45,7 @@ import retrofit2.Response;
  * For more information about how it works FastAdapter:
  * https://github.com/mikepenz/FastAdapter
  */
-public class LoginActivity extends BaseActivity implements OnClickListener<UserItem>, BandyerSDKClientObserver {
+public class LoginActivity extends BaseActivity implements OnClickListener<UserItem> {
 
     @BindView(R.id.list_users)
     RecyclerView listUsers;
@@ -83,7 +80,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
         // the userAlias is the identifier of the created user via Bandyer-server restCall see https://docs.bandyer.com/Bandyer-RESTAPI/#create-user
         userAlias = LoginManager.getLoggedUser(this);
 
-        startBandyerSdk(userAlias);
+        // If the user is already logged init the call client and do not fetch the sample users again.
+        if (userAlias != null && !userAlias.trim().isEmpty()) {
+            MainActivity.show(LoginActivity.this);
+            return;
+        }
 
         itemAdapter.clear();
 
@@ -118,78 +119,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     public boolean onClick(@Nullable View v, @NonNull IAdapter<UserItem> adapter,
                            @NonNull final UserItem item, int position) {
         userAlias = item.userAlias;
-        startBandyerSdk(userAlias);
-        return false;
-    }
-
-    private void startBandyerSdk(String userAlias) {
-        if (userAlias == null || userAlias.trim().isEmpty()) return;
-
         if (!LoginManager.isUserLogged(this))
             LoginManager.login(this, userAlias);
-
-
-        // Bandyer SDK optional components builder user to retrieve and display users' info
-        BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
-                .withUserInformationFetcher(new DummyUserFetcher())
-                .withNotificationDisplayFormatter(
-                        new UserDisplayInfoFormatter() {
-                            @NotNull
-                            @Override
-                            public String format(@NotNull UserDisplayInfo userDisplayInfo) {
-                                return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
-                            }
-                        }
-                )
-                .withNotificationConfig(
-                        new BandyerSDKNotificationConfig.Builder()
-                                .setNotificationSmallIcon(R.drawable.ic_bandyer_notification)
-                                .setNotificationColor(R.drawable.bandyer_selected_item_color)
-                                .setIncomingCallSmallIcon(R.drawable.ic_bandyer_audio_call)
-                                .build()
-                )
-                .keepListeningforIncomingCallsInBackground(false)
-                .build();
-
-        // If the user is already logged, initialize the SDK client and show the MainActivity.
-        BandyerSDKClient.getInstance().init(this.getApplicationContext(), userAlias, LoginActivity.this, options);
-
-        // Start listening for events
-        BandyerSDKClient.getInstance().startListening();
-
         MainActivity.show(LoginActivity.this);
+        return false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BandyerSDKClient.getInstance().removeObserver(this);
-    }
-
-    ///////////////////////////////////////////////// BANDYER SDK CLIENT OBSERVER /////////////////////////////////////////////////
-
-    @Override
-    public void onStatusChange(@NotNull BandyerSDKClientState state) {
-        Log.d("Bandyer SDK", "Client status change: " + state);
-    }
-    @Override
-    public void onChatModuleReady() {
-        Log.d("Bandyer SDK", "All modules ready");
-    }
-    @Override
-    public void onChatModuleFailed(@NotNull Throwable throwable) {
-        Log.d("Bandyer SDK", "Chat module failed: " + throwable.getMessage());
-    }
-    @Override
-    public void onCallModuleReady() {
-        Log.d("Bandyer SDK", "Call module ready");
-    }
-    @Override
-    public void onCallModuleFailed(@NotNull Throwable throwable) {
-        Log.d("Bandyer SDK", "Call module failed: " + throwable.getMessage());
-    }
-    @Override
-    public void onAllModulesReady() {
-
     }
 }

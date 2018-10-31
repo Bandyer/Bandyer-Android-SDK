@@ -6,18 +6,17 @@
 package com.bandyer.demo_android_sdk;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.BuildConfig;
-import com.bandyer.android_sdk.networking.Environment;
+import com.bandyer.android_sdk.Environment;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.GsonBuilder;
 import com.squareup.leakcanary.LeakCanary;
-
-import org.jetbrains.annotations.NotNull;
 
 import okhttp3.OkHttpClient;
 
@@ -37,7 +36,7 @@ public class App extends Application {
         // Bandyer SDK Module initialization
         BandyerSDK.Builder builder = new BandyerSDK.Builder(getApplicationContext(), getString(R.string.app_id), getString(R.string.api_key))
                 .withCallEnabled()
-                .setEnvironment(Environment.SANDBOX);
+                .setEnvironment(Environment.Configuration.sandbox());
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
             builder.withChatEnabled();
@@ -46,27 +45,27 @@ public class App extends Application {
         if (BuildConfig.DEBUG) {
             builder.setLogger(new BandyerSDKLogger() {
                 @Override
-                public void verbose(@NotNull String tag, @NotNull String message) {
+                public void verbose(@NonNull String tag, @NonNull String message) {
                     Log.v(tag, message);
                 }
 
                 @Override
-                public void debug(@NotNull String tag, @NotNull String message) {
+                public void debug(@NonNull String tag, @NonNull String message) {
                     Log.d(tag, message);
                 }
 
                 @Override
-                public void info(@NotNull String tag, @NotNull String message) {
+                public void info(@NonNull String tag, @NonNull String message) {
                     Log.i(tag, message);
                 }
 
                 @Override
-                public void warn(@NotNull String tag, @NotNull String message) {
+                public void warn(@NonNull String tag, @NonNull String message) {
                     Log.w(tag, message);
                 }
 
                 @Override
-                public void error(@NotNull String tag, @NotNull String message) {
+                public void error(@NonNull String tag, @NonNull String message) {
                     Log.e(tag, message);
                 }
             });

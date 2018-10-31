@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.ButterKnife;
 
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
+    private Toast toast;
 
     @Override
     public void setContentView(View view) {
@@ -40,21 +42,37 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showErrorDialog(String text) {
+        if (dialog != null)
+            dialog.dismiss();
+
         if (isFinishing())
             return;
 
-        dialog = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle)
+        dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.dialog_error_title)
                 .setMessage(text)
                 .setPositiveButton(R.string.dialog_ok, null)
                 .create();
+
         dialog.show();
+    }
+
+    protected void showToast(String text) {
+        if (toast != null)
+            toast.cancel();
+        if (isFinishing())
+            return;
+        toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 
     @Override
     protected void onStop() {
         if (dialog != null)
             dialog.dismiss();
+        if (toast != null)
+            toast.cancel();
         super.onStop();
     }
 }

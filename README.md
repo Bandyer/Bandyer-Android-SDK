@@ -88,9 +88,9 @@ BandyerIntent.Builder.CallIntentBuilder builder = new BandyerIntent.Builder(Main
         .withUserAliases(new ArrayList<>(calleeSelected))
         // Optional user display formatter to be used during a call
         .withUserDisplayFormatter(new UserDisplayInfoFormatter() { 
-            @NotNull
+            @NonNull
             @Override
-            public String format(@NotNull UserDisplayInfo userDisplayInfo) {
+            public String format(@NonNull UserDisplayInfo userDisplayInfo) {
                 return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
             }
         })
@@ -113,9 +113,9 @@ BandyerIntent.Builder.ChatIntentBuilder builder = new BandyerIntent.Builder(Main
         //  .withAudioCallCapability(upgradable = false)
         .withUserAlias(userAlias)
         .withUserDisplayFormatter(new UserDisplayInfoFormatter() {
-            @NotNull
+            @NonNull
             @Override
-            public String format(@NotNull UserDisplayInfo userDisplayInfo) {
+            public String format(@NonNull UserDisplayInfo userDisplayInfo) {
                 return userDisplayInfo.getNickName() + " " + userDisplayInfo.getEmail();
             }
         });
@@ -133,8 +133,8 @@ BandyerSDKClientOptions.Builder builder = new BandyerSDKClientOptions.Builder();
 // Provide a *UserInformationFetcher* if you want to display differently the user details
 builder.withUserInformationFetcher(new UserInformationFetcher() {
     @Override
-    public void fetchUser(@NotNull final String userAlias,
-                          @NotNull final OnUserInformationFetcherObserver fetcherObserver) {
+    public void fetchUser(@NonNull final String userAlias,
+                          @NonNull final OnUserInformationFetcherObserver fetcherObserver) {
 
         UserDisplayInfo detailsInfo = new UserDisplayInfo.Builder(userAlias)
                 .withFirstName("firstname")
@@ -147,8 +147,8 @@ builder.withUserInformationFetcher(new UserInformationFetcher() {
     }
 
     @Override
-    public void fetchUserImage(final @NotNull String userAlias,
-                               final @NotNull OnUserImageFetcherObserver fetcherObserver) {
+    public void fetchUserImage(final @NonNull String userAlias,
+                               final @NonNull OnUserImageFetcherObserver fetcherObserver) {
 
         UserImageDisplayInfo imageInfo = new UserImageDisplayInfo.Builder(userAlias)
                 .withImageUrl("https://www.google.com/image.png");
@@ -166,9 +166,9 @@ builder.withNotificationConfig(new BandyerSDKNotificationConfig.Builder()
         .setNotificationColor(R.drawable.bandyer_selected_item_color)
         .setIncomingCallSmallIcon(R.drawable.ic_bandyer_audio_call)
         .withNotificationDisplayFormatter(new UserDisplayInfoFormatter() {
-        @NotNull
+        @NonNull
         @Override
-        public String format(@NotNull UserDisplayInfo displayInfo) {
+        public String format(@NonNull UserDisplayInfo displayInfo) {
             return displayInfo.getNickName() + " " + displayInfo.getEmail();
         }
 }).build());
