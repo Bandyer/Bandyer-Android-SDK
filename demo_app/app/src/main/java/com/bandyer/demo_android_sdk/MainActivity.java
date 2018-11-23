@@ -130,6 +130,8 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     }
 
     private void startBandyerSdk(String userAlias) {
+        if (BandyerSDKClient.getInstance().getState() != BandyerSDKClientState.UNINITIALIZED)
+            return;
         // If the user is already logged, initialize the SDK client and show the MainActivity.
         // Bandyer SDK optional components builder user to retrieve and display users' info
         BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
@@ -179,9 +181,9 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
             if (uri != null) {
                 joinUrl = uri.toString();
                 // if client is not running, then I need to initialize it
-                if (BandyerSDKClient.getInstance().getState() != BandyerSDKClientState.RUNNING) {
+                if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED)
                     startBandyerSdk(userAlias);
-                } else {
+                else if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.RUNNING) {
                     BandyerSDKClient.getInstance().joinUrl(uri.toString(), MainActivity.this);
                     joinUrl = null;
                 }
