@@ -28,7 +28,7 @@ public class LoginManager {
      * @param userAlias the user identifier to remember
      */
     public static void login(Context context, String userAlias) {
-        SharedPreferences.Editor editor = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("userAlias", userAlias);
         editor.apply();
     }
@@ -40,7 +40,7 @@ public class LoginManager {
      * @return userAlias
      */
     public static String getLoggedUser(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         return prefs.getString("userAlias", "");
     }
 
@@ -51,7 +51,7 @@ public class LoginManager {
      * @return true if the user is logged, false otherwise
      */
     public static boolean isUserLogged(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         return !prefs.getString("userAlias", "").equals("");
     }
 
@@ -61,7 +61,7 @@ public class LoginManager {
      * @param context BaseActivity
      */
     public static void logout(BaseActivity context) {
-        SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         prefs.edit().clear().apply();
     }
 }

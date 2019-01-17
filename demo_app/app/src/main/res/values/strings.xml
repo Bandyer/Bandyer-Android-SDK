@@ -17,8 +17,8 @@
     <string name="permission_camera_rationale">Camera permission is needed to show the camera preview.</string>
     <string name="permission_camera_denied">Camera permission was denied. Please consider granting it in order to access the camera!</string>
     <string name="permission_camera_never_ask_again">Camera permission was denied with never ask again.</string>
-    <string name="oto_chat_error">You must provide only one valid user alias to start a chat.</string>
     <string name="oto_chat_error_no_selected_user">You must provide at least one valid user alias to start a chat.</string>
+    <string name="oto_chat_error_group_selected">Group chats are not yet supported.</string>
     <string name="login_title">Choose the user to login with</string>
     <string name="hang_up">Hang up</string>
     <string name="calling_user">Calling user…</string>

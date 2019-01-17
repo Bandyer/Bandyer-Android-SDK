@@ -21,39 +21,37 @@
         android:id="@+id/contactsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/space96" />
+        android:layout_below="@+id/userGreeting" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/space56"
-        android:layout_marginEnd="@dimen/space16"
-        android:layout_marginRight="@dimen/space16"
-        android:adjustViewBounds="true"
-        android:layout_toLeftOf="@+id/call"
+        android:layout_alignTop="@+id/call"
         android:layout_toStartOf="@+id/call"
-        android:padding="0dp"
+        android:layout_toLeftOf="@+id/call"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_bandyer_chat"
-        android:visibility="invisible"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/colorModuleNotActive"
+        app:fabSize="normal"
+        app:maxImageSize="56dp"
         app:tint="#ffffff" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/space56"
-        android:layout_marginEnd="@dimen/space16"
-        android:layout_marginRight="@dimen/space16"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_bandyer_video_call"
-        android:visibility="invisible"
-        app:backgroundTint="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:layout_margin="@dimen/space16"
+        android:src="@drawable/ic_bandyer_audio_call"
+        app:backgroundTint="@color/colorModuleNotActive"
+        app:fabSize="normal"
+        app:maxImageSize="40dp"
         app:tint="#ffffff" />
+
+
+
 </RelativeLayout>

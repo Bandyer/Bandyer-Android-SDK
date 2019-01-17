@@ -10,8 +10,12 @@
 
     <color name="colorAccent">#FFED6603</color>
 
-    <color name="colorBad">#FFff000d</color>
-    <color name="colorGood">#FF3fa625</color>
+    <color name="colorModuleError">#e53935</color>
+    <color name="colorModuleChatOffline">#f57c00</color>
+    <color name="colorModuleConnected">#64dd17</color>
+    <color name="colorModuleDisconnected">#f57c00</color>
+    <color name="colorModuleNotActive">#cfd8dc</color>
+
     <color name="gray">#FFd9d9d9</color>
     <color name="black_transparent">#c0000000</color>
 </resources>

@@ -8,6 +8,7 @@ package com.bandyer.demo_android_sdk.utils.networking;
 import android.support.annotation.NonNull;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -23,16 +24,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * <p>
  * RetroFit ApiClient used to make the rest calls
  */
-public class APIClient {
+class APIClient {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(final String apikey) {
-        if (retrofit != null)
-            return retrofit;
+    static Retrofit getClient(final String apikey) {
+        if (retrofit != null) return retrofit;
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(authenticationHeaders(apikey))
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
                 .build();
 
         retrofit = new Retrofit.Builder()

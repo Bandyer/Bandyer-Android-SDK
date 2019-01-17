@@ -5,11 +5,13 @@
 
 package com.bandyer.demo_android_sdk;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
 
 import butterknife.ButterKnife;
 
@@ -21,7 +23,6 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
-    private Toast toast;
 
     @Override
     public void setContentView(View view) {
@@ -42,11 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showErrorDialog(String text) {
-        if (dialog != null)
-            dialog.dismiss();
-
-        if (isFinishing())
-            return;
+        if (dialog != null) dialog.dismiss();
+        if (isFinishing()) return;
 
         dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.dialog_error_title)
@@ -57,22 +55,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    protected void showToast(String text) {
-        if (toast != null)
-            toast.cancel();
-        if (isFinishing())
-            return;
-        toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
-        toast.show();
-
-    }
-
     @Override
-    protected void onStop() {
-        if (dialog != null)
-            dialog.dismiss();
-        if (toast != null)
-            toast.cancel();
-        super.onStop();
+    protected void onPause() {
+        MockedNetwork.cancel();
+        if (dialog != null) dialog.dismiss();
+        dialog = null;
+        super.onPause();
     }
 }

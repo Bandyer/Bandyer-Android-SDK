@@ -14,14 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.bandyer.android_common.fetcher.UserDisplayInfo;
-import com.bandyer.android_common.fetcher.UserDisplayInfoFormatter;
-import com.bandyer.android_sdk.client.BandyerSDKClient;
-import com.bandyer.android_sdk.client.BandyerSDKClientOptions;
-import com.bandyer.android_sdk.client.BandyerSDKClientState;
-import com.bandyer.android_sdk.notification.BandyerSDKNotificationConfig;
 import com.bandyer.demo_android_sdk.adapter_items.UserItem;
-import com.bandyer.demo_android_sdk.dummy.DummyUserFetcher;
+import com.bandyer.demo_android_sdk.adapter_items.UserSelectionItem;
 import com.bandyer.demo_android_sdk.utils.LoginManager;
 import com.bandyer.demo_android_sdk.utils.networking.BandyerUsers;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
@@ -29,6 +23,8 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
+
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -59,7 +55,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     public static void show(Activity context) {
         Intent intent = new Intent(context, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(intent);
+        context.getApplication().startActivity(intent);
     }
 
     @Override
@@ -76,7 +72,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     @Override
     protected void onResume() {
         super.onResume();
-
         // the userAlias is the identifier of the created user via Bandyer-server restCall see https://docs.bandyer.com/Bandyer-RESTAPI/#create-user
         userAlias = LoginManager.getLoggedUser(this);
 
@@ -86,28 +81,21 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
             return;
         }
 
+        if (itemAdapter.getAdapterItemCount() > 0) return;
         itemAdapter.clear();
 
         // Fetch the sample users you can use to login with.
-        MockedNetwork.getSampleUsers(this, new Callback<BandyerUsers>() {
+        MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
-            public void onResponse(@NonNull Call<BandyerUsers> call, @NonNull Response<BandyerUsers> response) {
-                if (response.body() == null || response.body().user_id_list == null) {
-                    showErrorDialog("Please check if you have provided the correct keys in the configuration.xml");
-                    return;
-                }
-                // Add each user to the recyclerView adapter to be displayed in the list.
-
-                for (String user : response.body().user_id_list)
+            public void onUsers(List<String> users) {
+                for (String user : users)
                     itemAdapter.add(new UserItem(user));
             }
 
             @Override
-            public void onFailure(@NonNull Call<BandyerUsers> call, @NonNull Throwable t) {
-                // If contacts could not be fetched show error dialog
-                showErrorDialog(t.getMessage());
+            public void onError(String error) {
+                showErrorDialog(error);
             }
-
         });
     }
 
@@ -123,10 +111,5 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
             LoginManager.login(this, userAlias);
         MainActivity.show(LoginActivity.this);
         return false;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

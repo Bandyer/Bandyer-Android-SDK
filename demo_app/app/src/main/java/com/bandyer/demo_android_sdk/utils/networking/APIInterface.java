@@ -7,6 +7,8 @@ package com.bandyer.demo_android_sdk.utils.networking;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * WARNING!!!
@@ -24,4 +26,14 @@ public interface APIInterface {
      */
     @GET("rest/user/list")
     Call<BandyerUsers> getUsers();
+
+
+    /**
+     * Method fakes a fetch to a remote server for users
+     *
+     * @param seed get the same result based on the value of this seed
+     * @return DemoAppUsers
+     */
+    @GET("/api/?inc=name,email,picture&noinfo")
+    Call<DemoAppUsers> getDemoAppUsers(@Query("seed") String seed);
 }

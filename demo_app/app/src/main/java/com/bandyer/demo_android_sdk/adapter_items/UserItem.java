@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * A simple RecyclerView item used to display the user alias as a cell in the list.
+ * A simple RecyclerView item used to display the user userAlias as a cell in the list.
  */
 public class UserItem extends AbstractItem<UserItem, UserItem.ViewHolder> {
 
