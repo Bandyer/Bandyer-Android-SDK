@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerComponent - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="./index.html">BandyerComponent</a><br/>
+<br/>
+<h1>BandyerComponent</h1>
+<code><span class="keyword">interface </span><span class="identifier">BandyerComponent</span></code>
+<p>Bandyer components currently supported are Chat and Call.</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-call-component/index.html">CallComponent</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">CallComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>Call component</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-chat-component/index.html">ChatComponent</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">ChatComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>Chat component</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-name.html">getName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the name of the component</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html">BandyerModule</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BandyerModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>A Module is a component of the SDK.
+A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-component/index.html">CallComponent</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">CallComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>Call component</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-chat-component/index.html">ChatComponent</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">ChatComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>Chat component</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -15,56 +15,38 @@
 <tbody>
 <tr>
 <td>
-<p><a href="on-all-modules-ready.html">onAllModulesReady</a></p>
+<p><a href="on-client-error.html">onClientError</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onAllModulesReady</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Called when all the modules have been initialized</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="on-call-module-failed.html">onCallModuleFailed</a></p>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallModuleFailed</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onCallModuleFailed(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Called when the call module has failed the initialization</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onClientError(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when an error has occurred</p>
 </td>
 </tr>
 <tr>
 <td>
-<p><a href="on-call-module-ready.html">onCallModuleReady</a></p>
+<p><a href="on-client-ready.html">onClientReady</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallModuleReady</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Called when the call module is ready</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="on-chat-module-failed.html">onChatModuleFailed</a></p>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onChatModuleFailed</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onChatModuleFailed(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Called when the chat module has failed the initialization</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientReady</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called as soon as the first module is ready</p>
 </td>
 </tr>
 <tr>
 <td>
-<p><a href="on-chat-module-ready.html">onChatModuleReady</a></p>
+<p><a href="on-client-status-change.html">onClientStatusChange</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onChatModuleReady</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Called when the chat module is ready</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="on-status-change.html">onStatusChange</a></p>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onStatusChange</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onStatusChange(com.bandyer.android_sdk.client.BandyerSDKClientState)/state">state</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-state/index.html"><span class="identifier">BandyerSDKClientState</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientStatusChange</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onClientStatusChange(com.bandyer.android_sdk.client.BandyerSDKClientState)/state">state</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-state/index.html"><span class="identifier">BandyerSDKClientState</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Called when the SDKClient has changed it's state</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-client-stopped.html">onClientStopped</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientStopped</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when all the modules have been stopped</p>
 </td>
 </tr>
 </tbody>

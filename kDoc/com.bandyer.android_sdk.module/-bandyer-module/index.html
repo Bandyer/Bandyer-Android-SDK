@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerModule - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.module</a>&nbsp;/&nbsp;<a href="./index.html">BandyerModule</a><br/>
+<br/>
+<h1>BandyerModule</h1>
+<code><span class="keyword">interface </span><span class="identifier">BandyerModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk/-bandyer-component/index.html"><span class="identifier">BandyerComponent</span></a></code>
+<p>A Module is a component of the SDK.
+A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="reconnection-attempts.html">reconnectionAttempts</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">reconnectionAttempts</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Reconnection attempts already performed</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="status.html">status</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">status</span><span class="symbol">: </span><a href="../-bandyer-module-status/index.html"><span class="identifier">BandyerModuleStatus</span></a></code>
+<p>Status of the module</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="reconnect.html">reconnect</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reconnect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Call this function to launch a reconnection with this module.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk/-bandyer-component/get-name.html">getName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the name of the component</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.call/-call-module/index.html">CallModule</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CallModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code>
+<p>Module used for audio&video communication.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.chat/-chat-module/index.html">ChatModule</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChatModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code>
+<p>Module used for text communication.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

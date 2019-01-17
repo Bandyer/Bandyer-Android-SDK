@@ -10,6 +10,27 @@
 <tbody>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.notification/-actionable-notification/index.html">com.bandyer.android_sdk.notification.ActionableNotification</a></td>
+<td>
+<p>ActionableNotification is a notification which can handle a user action</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html">com.bandyer.android_sdk.intent.BandyerBaseIntentOptions</a></td>
+<td>
+<p>BandyerBaseIntentOptions of Type T</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk/-bandyer-component/index.html">com.bandyer.android_sdk.BandyerComponent</a></td>
+<td>
+<p>Bandyer components currently supported are Chat and Call.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.intent/-bandyer-intent/index.html">com.bandyer.android_sdk.intent.BandyerIntent</a></td>
 <td>
 <p>This custom Intent class is used to start a chat or a call in the Bandyer Environment and needs to be created with
@@ -22,6 +43,28 @@ Builder class provided.</p>
 <td>
 <p>The results returned on activity finish
 If you launch the Chat or Call with startForResult you may receive the results enclosed in this class</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.module/-bandyer-module/index.html">com.bandyer.android_sdk.module.BandyerModule</a></td>
+<td>
+<p>A Module is a component of the SDK.
+A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.module/-bandyer-module-observer/index.html">com.bandyer.android_sdk.module.BandyerModuleObserver</a></td>
+<td>
+<p>BandyerModuleObserver</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.module/-bandyer-module-status/index.html">com.bandyer.android_sdk.module.BandyerModuleStatus</a></td>
+<td>
+<p>BandyerModuleStatus</p>
 </td>
 </tr>
 <tr>
@@ -68,9 +111,170 @@ If you launch the Chat or Call with startForResult you may receive the results e
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.notification/-bandyer-s-d-k-notification-config/index.html">com.bandyer.android_sdk.notification.BandyerSDKNotificationConfig</a></td>
+<a href="../com.bandyer.android_sdk.notification/-base-notification/index.html">com.bandyer.android_sdk.notification.BaseNotification</a></td>
 <td>
-<p>Bandyer SDK Notification Configuration on how the notifications should be displayed</p>
+<p>BaseNotification</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.notification/-base-notification-style/index.html">com.bandyer.android_sdk.notification.BaseNotificationStyle</a></td>
+<td>
+<p>BaseNotificationStyle</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-info/index.html">com.bandyer.android_sdk.call.CallInfo</a></td>
+<td>
+<p>CallInfo representing the call information such as the type ( Audio&Video, Audio Upgradable, Audio Only) or the participants details</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-initialization-exception/index.html">com.bandyer.android_sdk.call.CallInitializationException</a></td>
+<td>
+<p>Exception representing an initialization problem</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-intent-builder/index.html">com.bandyer.android_sdk.intent.call.CallIntentBuilder</a></td>
+<td>
+<p>Call Intent Builder used to define the call options</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.CallIntentOptions</a></td>
+<td>
+<p>CallIntentOptions</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-module/index.html">com.bandyer.android_sdk.call.CallModule</a></td>
+<td>
+<p>Module used for audio&video communication.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-module-end-of-support-exception/index.html">com.bandyer.android_sdk.call.CallModuleEndOfSupportException</a></td>
+<td>
+<p>Exception representing a problem with current version of the call module.
+This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-module-exception/index.html">com.bandyer.android_sdk.call.CallModuleException</a></td>
+<td>
+<p>Exception representing a problem with call module</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.notification/-call-notification.html">com.bandyer.android_sdk.call.notification.CallNotification</a></td>
+<td>
+<p>Call notification which can be shown</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.notification/-call-notification-listener/index.html">com.bandyer.android_sdk.call.notification.CallNotificationListener</a></td>
+<td>
+<p>Listener for call notifications</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-notification-payload-exception/index.html">com.bandyer.android_sdk.call.CallNotificationPayloadException</a></td>
+<td>
+<p>Exception representing a parse exception for the notifcation payload</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.notification/-call-notification-style.html">com.bandyer.android_sdk.call.notification.CallNotificationStyle</a></td>
+<td>
+<p>Style of the call notification</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.notification/-call-notification-type/index.html">com.bandyer.android_sdk.call.notification.CallNotificationType</a></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat/-chat-connection-exception/index.html">com.bandyer.android_sdk.chat.ChatConnectionException</a></td>
+<td>
+<p>Exception representing a connection problem</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat/-chat-info/index.html">com.bandyer.android_sdk.chat.ChatInfo</a></td>
+<td>
+<p>Information about the chat</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat/-chat-initialization-exception/index.html">com.bandyer.android_sdk.chat.ChatInitializationException</a></td>
+<td>
+<p>Exception representing an initialization problem</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.chat/-chat-intent-builder/index.html">com.bandyer.android_sdk.intent.chat.ChatIntentBuilder</a></td>
+<td>
+<p>ChatIntentBuilder</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.chat/-chat-intent-options/index.html">com.bandyer.android_sdk.intent.chat.ChatIntentOptions</a></td>
+<td>
+<p>Builder class for custom chat or chat intent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat/-chat-module/index.html">com.bandyer.android_sdk.chat.ChatModule</a></td>
+<td>
+<p>Module used for text communication.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat.notification/-chat-notification.html">com.bandyer.android_sdk.chat.notification.ChatNotification</a></td>
+<td>
+<p>Chat notification which can be shown</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat.notification/-chat-notification-listener/index.html">com.bandyer.android_sdk.chat.notification.ChatNotificationListener</a></td>
+<td>
+<p>Listener for chat notifications</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat.notification/-chat-notification-style.html">com.bandyer.android_sdk.chat.notification.ChatNotificationStyle</a></td>
+<td>
+<p>Chat notification style</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.client/-client-initialization-exception/index.html">com.bandyer.android_sdk.client.ClientInitializationException</a></td>
+<td>
+<p>Exception thrown when the client has failed it's initialization</p>
 </td>
 </tr>
 <tr>
@@ -78,6 +282,78 @@ If you launch the Chat or Call with startForResult you may receive the results e
 <a href="../com.bandyer.android_sdk/-environment/index.html">com.bandyer.android_sdk.Environment</a></td>
 <td>
 <p>Environment configuration for sdk communication</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk/-format-context/index.html">com.bandyer.android_sdk.FormatContext</a></td>
+<td>
+<p>Context of the formatter.
+This context may be used to customize an incoming event, based on the component and/or if is a notification</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-incoming-call/index.html">com.bandyer.android_sdk.intent.call.IncomingCall</a></td>
+<td>
+<p>IncomingCall received</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.chat/-incoming-chat/index.html">com.bandyer.android_sdk.intent.chat.IncomingChat</a></td>
+<td>
+<p>Incoming Chat received</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils/kotlin.collections.-iterable/index.html">kotlin.collections.Iterable</a> (extensions in package com.bandyer.android_sdk.utils)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.notification/-notification-action/index.html">com.bandyer.android_sdk.notification.NotificationAction</a></td>
+<td>
+<p>Notification action which can be executed</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-on-user-information-provider-listener/index.html">com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener</a></td>
+<td>
+<p>Interface that must be called on user mapped from user aliases.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-user-contact-provider/index.html">com.bandyer.android_sdk.utils.provider.UserContactProvider</a></td>
+<td>
+<p>Utility to be used to map user userAlias with a class representation of a user.
+Load your user synchronously or asynchronously and return result using the listeners provided by the interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-user-details/index.html">com.bandyer.android_sdk.utils.provider.UserDetails</a></td>
+<td>
+<p>This class represents some user display info.
+A user can be represented with the following info:</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">com.bandyer.android_sdk.utils.provider.UserDetailsFormatter</a></td>
+<td>
+<p>UserDetailsFormatter interface is used to customize how a user is displayed with a UserDetails object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-user-details-formatter-impl/index.html">com.bandyer.android_sdk.utils.provider.UserDetailsFormatterImpl</a></td>
+<td>
+<p>UserDetailsFormatter default Implementation</p>
 </td>
 </tr>
 </tbody>

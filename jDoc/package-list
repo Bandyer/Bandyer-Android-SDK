@@ -1,5 +1,13 @@
 com.bandyer.android_sdk
+com.bandyer.android_sdk.call
+com.bandyer.android_sdk.call.notification
+com.bandyer.android_sdk.chat
+com.bandyer.android_sdk.chat.notification
 com.bandyer.android_sdk.client
 com.bandyer.android_sdk.intent
+com.bandyer.android_sdk.intent.call
+com.bandyer.android_sdk.intent.chat
+com.bandyer.android_sdk.module
 com.bandyer.android_sdk.notification
 com.bandyer.android_sdk.utils
+com.bandyer.android_sdk.utils.provider

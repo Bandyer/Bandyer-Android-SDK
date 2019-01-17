@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseNotification - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.notification</a>&nbsp;/&nbsp;<a href="./index.html">BaseNotification</a><br/>
+<br/>
+<h1>BaseNotification</h1>
+<code><span class="keyword">interface </span><span class="identifier">BaseNotification</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>BaseNotification</p>
+<h3>Parameters</h3>
+<p><a name="type"></a>
+<code>type</code> - of notification</p>
+<p><strong>Since</strong><br/>
+v1.1.0</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="show.html">show</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Show the notification</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.call.notification/-call-notification.html">CallNotification</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CallNotification</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotification</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.call.notification/-call-notification.html"><span class="identifier">CallNotification</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.call.notification/-call-notification-style.html"><span class="identifier">CallNotificationStyle</span></a></code>
+<p>Call notification which can be shown</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification.html">ChatNotification</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChatNotification</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotification</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification.html"><span class="identifier">ChatNotification</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification-style.html"><span class="identifier">ChatNotificationStyle</span></a></code>
+<p>Chat notification which can be shown</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

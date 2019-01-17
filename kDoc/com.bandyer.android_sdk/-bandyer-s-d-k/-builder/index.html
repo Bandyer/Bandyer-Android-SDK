@@ -18,7 +18,8 @@
 <p><a href="-init-.html">&lt;init&gt;</a></p>
 </td>
 <td>
-<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.content.Context, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
+<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.app.Application, kotlin.String, kotlin.String)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.app.Application, kotlin.String, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.app.Application, kotlin.String, kotlin.String)/apiKey">apiKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">Builder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.app.Application, kotlin.String)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$<init>(android.app.Application, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -75,8 +76,9 @@
 <p><a href="with-call-enabled.html">withCallEnabled</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withCallEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>Enable initialization of call capabilities</p>
+<code><span class="keyword">fun </span><span class="identifier">withCallEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$withCallEnabled(com.bandyer.android_sdk.call.notification.CallNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.call.notification/-call-notification-listener/index.html"><span class="identifier">CallNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;CallDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Enable initialization of call capabilities
+Set also a call notification listener, use this listener to handle how to handle an incoming call</p>
 </td>
 </tr>
 <tr>
@@ -84,9 +86,26 @@
 <p><a href="with-chat-enabled.html">withChatEnabled</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withChatEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>Enables initialization of chat module</p>
+<code><span class="keyword">fun </span><span class="identifier">withChatEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$withChatEnabled(com.bandyer.android_sdk.chat.notification.ChatNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.chat.notification/-chat-notification-listener/index.html"><span class="identifier">ChatNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;ChatDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Enables initialization of chat module
+Set also a chat notification listener, use this observer to handle how to handle an incoming chat message</p>
 </td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-contact-provider.html">withUserContactProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserContactProvider</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$withUserContactProvider(com.bandyer.android_sdk.utils.provider.UserContactProvider)/provider">provider</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils.provider/-user-contact-provider/index.html"><span class="identifier">UserContactProvider</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>Used to fetch users contact information based on user aliases.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-user-details-formatter.html">withUserDetailsFormatter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withUserDetailsFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$withUserDetailsFormatter(com.bandyer.android_sdk.utils.provider.UserDetailsFormatter)/formatter">formatter</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html"><span class="identifier">UserDetailsFormatter</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code></td>
 </tr>
 </tbody>
 </table>

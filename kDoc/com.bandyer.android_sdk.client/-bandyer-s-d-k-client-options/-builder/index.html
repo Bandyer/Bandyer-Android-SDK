@@ -38,40 +38,13 @@
 </tr>
 <tr>
 <td>
-<p><a href="keep-listeningfor-incoming-calls-in-background.html">keepListeningforIncomingCallsInBackground</a></p>
+<p><a href="keep-listening-for-events-in-background.html">keepListeningForEventsInBackground</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">keepListeningforIncomingCallsInBackground</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$keepListeningforIncomingCallsInBackground(kotlin.Boolean)/enable">enable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>This feature allows Bandyer SDK to keep listening for incoming calls even in background mode.
-Please Keep in mind that incoming calls during background state should always be routed from push notification to prevent
-unexpected behaviours and keep battery consumption under control.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-notification-config.html">withNotificationConfig</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withNotificationConfig</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withNotificationConfig(com.bandyer.android_sdk.notification.BandyerSDKNotificationConfig)/notificationConfig">notificationConfig</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.notification/-bandyer-s-d-k-notification-config/index.html"><span class="identifier">BandyerSDKNotificationConfig</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>Adds to options an object used to customize incoming notifications.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-notification-display-formatter.html">withNotificationDisplayFormatter</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withNotificationDisplayFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withNotificationDisplayFormatter(com.bandyer.android_common.fetcher.UserDisplayInfoFormatter)/notificationDisplayInfoFormatter">notificationDisplayInfoFormatter</span><span class="symbol">:</span>&nbsp;<a href="https://bandyer.github.io/Bandyer-Android-Common/kDoc/com.bandyer.android_common.fetcher/-user-display-info-formatter/index.html"><span class="identifier">UserDisplayInfoFormatter</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>Adds to options an object used to format data retrieved from user information fetcher.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-user-information-fetcher.html">withUserInformationFetcher</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withUserInformationFetcher</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$withUserInformationFetcher(com.bandyer.android_common.fetcher.UserInformationFetcher)/userInformationFetcher">userInformationFetcher</span><span class="symbol">:</span>&nbsp;<a href="https://bandyer.github.io/Bandyer-Android-Common/kDoc/com.bandyer.android_common.fetcher/-user-information-fetcher/index.html"><span class="identifier">UserInformationFetcher</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
-<p>Adds to options an object used to fetch users information based on user aliases.</p>
+<code><span class="keyword">fun </span><span class="identifier">keepListeningForEventsInBackground</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientOptions.Builder$keepListeningForEventsInBackground(kotlin.Boolean)/enable">enable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>This feature allows Bandyer SDK to keep listening for events in background mode.
+Please Keep in mind that listening for events during background will lead to unexpected behaviours and drains of battery life.
+To handle events in background you should handle notifications correctly via push services.</p>
 </td>
 </tr>
 </tbody>
