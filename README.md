@@ -462,54 +462,9 @@ We highly recommend to add push notification to your app in oder to receive inco
 Discover how your backend can be notified with upcoming call events registering event hooks *on_call_incoming* here: [https://docs.bandyer.com/Bandyer-RESTAPI/#webhooks](https://docs.bandyer.com/Bandyer-RESTAPI/#webhooks).
 
 Incoming calls push payloads can be passed to the **BandyerSDKClient** singleton as showed below.
-Once the sdk has been restarted and the handleNotification method has been called, you will receive the upcoming processed notification in the **CallNotificationListener** if has been setted, so you can decide to show notification or show the ringing activity.
 
 ```java
-// After receiving push payload in your push service, check and eventually restart sdk client as showed here:
-
-private void startBandyerSdkIfNeeded(String userAlias, @NonNull String pushPayload) {
-
-  BandyerSDKClient.getInstance().removeModuleObserver(bandyerModuleObserver);
-
-  switch (BandyerSDKClient.getInstance().getState()) {
-
-    case RUNNING;
-      return;
-
-    case PAUSED:
-      BandyerSDKClient.getInstance().addModuleObserver(
-        new BandyerModuleObserver() {
-          @Override
-          public void onModuleStatusChanged(@NonNull BandyerModule module, @NonNull BandyerModuleStatus moduleStatus) {}	
-
-          @Override
-          public void onModuleFailed(@NonNull BandyerModule module, @NonNull Throwable throwable) {}
-
-          @Override
-          public void onModulePaused(@NonNull BandyerModule module) {}
-
-          @Override
-          public void onModuleReady(@NonNull BandyerModule module) {
-            if (module instanceof CallModule) {
-              BandyerSDKClient.getInstance().removeModuleObserver(this);
-              
-              // handle push notification
-              BandyerSDKClient.getInstance().handleNotification(getApplicationContext(), pushPayload);
-            }
-          }
-         });
-       BandyerSDKClient.getInstance().resume();
-       break;
-
-    case UNINITIALIZED:
-      BandyerSDKClientOptions sdkClientOptions = new BandyerSDKClientOptions.Builder().build();
-      BandyerSDKClient.getInstance().init(userAlias, sdkClientOptions);
-      BandyerSDKClient.getInstance().addModuleObserver(bandyerModuleObserver);
-      BandyerSDKClient.getInstance().startListening();
-      break;
-
-  }
-}
+BandyerSDKClient.getInstance().handleNotification(getApplicationContext(), pushPayload);
 ```
 
 ### Manage *join urls*
