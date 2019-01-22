@@ -133,7 +133,7 @@ In order to support this new version here are shown below few modification that 
 
 - **Bandyer SDK** client initialization does not require application context anymore because it is now requested to initialize the SDK in the Application class where the SDK itself stores a ref to the application context.
 
-- **UserInformationFetcher** object is now not supported anymore and the updated version, named **UserContactProvider**, must be provided to the module has showed here: [user contact provider](#user-contact-provider).
+- **UserInformationFetcher** object is now not supported anymore and the updated version, named **UserContactProvider**, must be provided to the module has shown here: [user contact provider](#user-contact-provider).
 
 - Display formatters previously passed to Bandyer intents are not requested anymore and must be provided as shown here: [user details display formatters](#user-details-display-formatters).
 
@@ -240,7 +240,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 ### Observe SDK client state 
 
 Observing client SDK status let you be notified through **BandyerSDKClientObserver** when the client is up and running, and when it is in the right state to initialize a call or a chat through **BandyerModuleObserver**, even after app has been resumed from pause. 
-Although the observers are not required in order to use Bandyer SDK, you will receive errors while creating calls and chat before the client is ready, so it is highly recommended to observe status changes as showed in the following code.
+Although the observers are not required in order to use Bandyer SDK, you will receive errors while creating calls and chat before the client is ready, so it is highly recommended to observe status changes as shown in the following code.
 
 ```java
 BandyerSDKClient.getInstance().addObserver(new BandyerSDKClientObserver() {
@@ -461,7 +461,7 @@ We highly recommend to add push notification to your app in oder to receive inco
 
 Discover how your backend can be notified with upcoming call events registering event hooks *on_call_incoming* here: [https://docs.bandyer.com/Bandyer-RESTAPI/#webhooks](https://docs.bandyer.com/Bandyer-RESTAPI/#webhooks).
 
-Incoming calls push payloads can be passed to the **BandyerSDKClient** singleton as showed below.
+Incoming calls push payloads can be passed to the **BandyerSDKClient** singleton as shown below.
 
 ```java
 BandyerSDKClient.getInstance().handleNotification(getApplicationContext(), pushPayload);
