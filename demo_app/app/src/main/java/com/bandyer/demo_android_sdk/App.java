@@ -13,7 +13,6 @@ import android.util.Log;
 import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.BuildConfig;
 import com.bandyer.android_sdk.Environment;
-import com.bandyer.android_sdk.EnvironmentImpl;
 import com.bandyer.android_sdk.FormatContext;
 import com.bandyer.android_sdk.call.CallInfo;
 import com.bandyer.android_sdk.call.notification.CallNotificationListener;
@@ -137,7 +136,7 @@ public class App extends MultiDexApplication {
             }
 
             @Override
-            public void onNotificationAction(@NonNull NotificationAction action) {
+            public void onNotificationAction(@NonNull final NotificationAction action) {
                 // Here you can execute your own code before executing the default action of the notification
                 action.execute();
             }
@@ -165,7 +164,7 @@ public class App extends MultiDexApplication {
             }
 
             @Override
-            public void onNotificationAction(@NonNull NotificationAction action) {
+            public void onNotificationAction(@NonNull final NotificationAction action) {
                 // Here you can execute your own code before executing the default action of the notification
                 action.execute();
             }

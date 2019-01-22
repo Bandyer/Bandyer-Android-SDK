@@ -119,6 +119,10 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @Override
     protected void onPause() {
         super.onPause();
+
+        BandyerSDKClient.getInstance().removeObserver(this);
+        BandyerSDKClient.getInstance().removeModuleObserver(this);
+
         if (chooseCallDialog != null) chooseCallDialog.dismiss();
         chooseCallDialog = null;
     }
@@ -132,19 +136,21 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         }
         // If the user is already logged, setup the activity.
         setUpRecyclerView();
+
+        BandyerSDKClient.getInstance().addObserver(this);
+        BandyerSDKClient.getInstance().addModuleObserver(this);
+
         startBandyerSdk(LoginManager.getLoggedUser(this));
     }
 
     private void startBandyerSdk(String userAlias) {
         Log.d("MainActivity", "startBandyerSDK");
+
         if (BandyerSDKClient.getInstance().getState() != BandyerSDKClientState.UNINITIALIZED)
             return;
 
         if (chatButton != null) chatButton.setEnabled(false);
         if (callButton != null) callButton.setEnabled(false);
-
-        BandyerSDKClient.getInstance().addObserver(this);
-        BandyerSDKClient.getInstance().addModuleObserver(this);
 
         BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
                 .keepListeningForEventsInBackground(false)
