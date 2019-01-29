@@ -37,7 +37,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="trial.bandyer.com"
+                    android:host="sandbox.bandyer.com"
                     android:pathPrefix="/connect/rest-call-handler/"
                     android:scheme="https" />
             </intent-filter>
