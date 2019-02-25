@@ -17,11 +17,18 @@
         android:text="@string/pick_users"
         android:textSize="@dimen/text_h1" />
 
+    <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
+        android:id="@+id/ongoing_call_label"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/userGreeting"
+        style="@style/BandyerSDKDesign.TextView.OngoingCallLabel" />
+
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/ongoing_call_label"
         android:id="@+id/contactsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/userGreeting" />
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/chat"

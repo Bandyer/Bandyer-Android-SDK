@@ -7,7 +7,6 @@ package com.bandyer.demo_android_sdk;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -30,12 +29,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bandyer.android_sdk.BandyerSDK;
-import com.bandyer.android_sdk.Environment;
-import com.bandyer.android_sdk.FormatContext;
 import com.bandyer.android_sdk.call.CallModule;
+import com.bandyer.android_sdk.call.receiver.CallStatusEventObserver;
+import com.bandyer.android_sdk.call.receiver.CallStatusListener;
 import com.bandyer.android_sdk.chat.ChatModule;
 import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.bandyer.android_sdk.client.BandyerSDKClientObserver;
@@ -47,10 +46,7 @@ import com.bandyer.android_sdk.intent.call.CallIntentOptions;
 import com.bandyer.android_sdk.module.BandyerModule;
 import com.bandyer.android_sdk.module.BandyerModuleObserver;
 import com.bandyer.android_sdk.module.BandyerModuleStatus;
-import com.bandyer.android_sdk.utils.provider.UserDetails;
-import com.bandyer.android_sdk.utils.provider.UserDetailsFormatter;
 import com.bandyer.demo_android_sdk.adapter_items.UserSelectionItem;
-import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.bandyer.demo_android_sdk.utils.LoginManager;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
 import com.mikepenz.fastadapter.IAdapter;
@@ -112,8 +108,31 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         TextView userGreeting = findViewById(R.id.userGreeting);
         userGreeting.setText(String.format(getResources().getString(R.string.pick_users), userAlias));
 
+        final TextView ongoingCallLabel = findViewById(R.id.ongoing_call_label);
+
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
+
+        ongoingCallLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BandyerSDKClient.getInstance().resumeCallActivity();
+            }
+        });
+
+        CallStatusEventObserver.getInstance().observeCallStatus(this, new CallStatusListener() {
+            @Override
+            public void onCallStarted() {
+                ongoingCallLabel.getLayoutParams().height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                ongoingCallLabel.requestLayout();
+            }
+
+            @Override
+            public void onCallEnded() {
+                ongoingCallLabel.getLayoutParams().height = 0;
+                ongoingCallLabel.requestLayout();
+            }
+        });
     }
 
     @Override
@@ -185,6 +204,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                     BandyerIntent bandyerIntent = new BandyerIntent.Builder()
                             .startFromJoinCallUrl(this, joinUrl)
                             .withChatCapability()
+                            .withWhiteboardCapability()
                             .build();
 
                     startActivityForResult(bandyerIntent, START_CALL_CODE);
@@ -309,6 +329,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 .with(calleeSelected.get(0))
                 .withAudioCallCapability(false, false)
                 .withAudioVideoCallCapability(false)
+                .withWhiteboardInCallCapability()
                 .build();
 
         startActivityForResult(chatIntent, START_CHAT_CODE);
@@ -359,6 +380,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 BandyerIntent bandyerIntent = callIntentBuilder
                         .with(new ArrayList<>(calleeSelected))
                         .withChatCapability()
+                        .withWhiteboardCapability()
                         .build();
 
                 dialogInterface.dismiss();
@@ -419,6 +441,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
             if (joinUrl != null) {
                 CallIntentOptions optionsBuilder = new BandyerIntent.Builder()
                         .startFromJoinCallUrl(this, joinUrl)
+                        .withWhiteboardCapability()
                         .withChatCapability();
 
                 startActivityForResult(optionsBuilder.build(), START_CALL_CODE);

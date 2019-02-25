@@ -13,8 +13,9 @@ import android.util.Log;
 import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.BuildConfig;
 import com.bandyer.android_sdk.Environment;
+import com.bandyer.android_sdk.EnvironmentImpl;
 import com.bandyer.android_sdk.FormatContext;
-import com.bandyer.android_sdk.call.CallInfo;
+import com.bandyer.android_sdk.call.model.CallInfo;
 import com.bandyer.android_sdk.call.notification.CallNotificationListener;
 import com.bandyer.android_sdk.call.notification.CallNotificationStyle;
 import com.bandyer.android_sdk.call.notification.CallNotificationType;
@@ -71,7 +72,8 @@ public class App extends MultiDexApplication {
                 .setEnvironment(Environment.Configuration.sandbox());
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-            builder.withChatEnabled(getChatNotificationListener());
+            builder.withChatEnabled(getChatNotificationListener())
+                    .withWhiteboardEnabled();
         }
 
         if (BuildConfig.DEBUG) {
@@ -124,7 +126,9 @@ public class App extends MultiDexApplication {
             @Override
             public void onCallActivityStartedFromNotificationAction(@NonNull CallInfo callInfo,
                                                                     @NonNull CallIntentOptions callIntentOptions) {
-                callIntentOptions.withChatCapability();
+                callIntentOptions
+                        .withChatCapability()
+                        .withWhiteboardCapability();
             }
 
             @Override
@@ -160,6 +164,7 @@ public class App extends MultiDexApplication {
             public void onChatActivityStartedFromNotificationAction(@NonNull ChatInfo chatInfo, @NonNull ChatIntentOptions chatIntentOptions) {
                 chatIntentOptions
                         .withAudioCallCapability(false, true)
+                        .withWhiteboardInCallCapability()
                         .withAudioVideoCallCapability(false);
             }
 
