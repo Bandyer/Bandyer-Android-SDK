@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WhiteboardNotificationListener - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.whiteboard.notification</a>&nbsp;/&nbsp;<a href="./index.html">WhiteboardNotificationListener</a><br/>
+<br/>
+<h1>WhiteboardNotificationListener</h1>
+<code><span class="keyword">interface </span><span class="identifier">WhiteboardNotificationListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.notification/-actionable-notification/index.html"><span class="identifier">ActionableNotification</span></a></code>
+<p>Listener for whiteboard generated notifications</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<p><strong>Since</strong><br/>
+v1.1.3</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="on-create-notification.html">onCreateNotification</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateNotification</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onCreateNotification(com.bandyer.android_sdk.whiteboard.WhiteboardInfo, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationType, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationStyle)/whiteboardInfo">whiteboardInfo</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.whiteboard/-whiteboard-info/index.html"><span class="identifier">WhiteboardInfo</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onCreateNotification(com.bandyer.android_sdk.whiteboard.WhiteboardInfo, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationType, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationStyle)/notificationType">notificationType</span><span class="symbol">:</span>&nbsp;<a href="../-whiteboard-notification-type/index.html"><span class="identifier">WhiteboardNotificationType</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onCreateNotification(com.bandyer.android_sdk.whiteboard.WhiteboardInfo, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationType, com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationStyle)/notificationStyle">notificationStyle</span><span class="symbol">:</span>&nbsp;<a href="../-whiteboard-notification-style.html"><span class="identifier">WhiteboardNotificationStyle</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method will be called when a notification is going to be displayed.
+The notification look&feel can be customized here.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-uploading-file.html">onUploadingFile</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onUploadingFile</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onUploadingFile(com.bandyer.android_sdk.whiteboard.collaboration_center.UploadingFile, kotlin.Boolean, kotlin.Boolean)/uploadingFile">uploadingFile</span><span class="symbol">:</span>&nbsp;<span class="identifier">UploadingFile</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onUploadingFile(com.bandyer.android_sdk.whiteboard.collaboration_center.UploadingFile, kotlin.Boolean, kotlin.Boolean)/isDnd">isDnd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener$onUploadingFile(com.bandyer.android_sdk.whiteboard.collaboration_center.UploadingFile, kotlin.Boolean, kotlin.Boolean)/isScreenLocked">isScreenLocked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method will be called when a file is being uploaded.
+Here it is possible to display a notification.
+It is highly recommended to do display it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.notification/-actionable-notification/on-notification-action.html">onNotificationAction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onNotificationAction</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.notification.ActionableNotification$onNotificationAction(com.bandyer.android_sdk.notification.NotificationAction)/action">action</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.notification/-notification-action/index.html"><span class="identifier">NotificationAction</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Method called when an action has been triggered from the notification</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
