@@ -5,7 +5,7 @@
 
 buildscript {
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/'}
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
         classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
@@ -36,7 +36,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                onesignal_app_id: '40440a25-ca9a-488f-9728-f2def9db028c',
+                onesignal_app_id               : '40440a25-ca9a-488f-9728-f2def9db028c',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
@@ -64,13 +64,13 @@ dependencies {
         exclude group: 'com.android.support', module: 'exit-interface'
     }
 
-    implementation ("com.android.support:design:$supportLibVersion") {
+    implementation("com.android.support:design:$supportLibVersion") {
         exclude group: 'com.android.support', module: 'animated-vector-drawable'
         exclude group: 'com.android.support', module: 'support-vector-drawable'
         exclude group: 'com.android.support', module: 'exit-interface'
     }
 
-    implementation ("com.android.support:recyclerview-v7:$supportLibVersion") {
+    implementation("com.android.support:recyclerview-v7:$supportLibVersion") {
         exclude group: 'com.android.support', module: 'animated-vector-drawable'
         exclude group: 'com.android.support', module: 'support-vector-drawable'
         exclude group: 'com.android.support', module: 'exit-interface'
@@ -105,6 +105,6 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
 
     /*** Bandyer Communication Center ***/
-    implementation 'com.bandyer:bandyer-android-sdk:1.1.4'
-    implementation ('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
+    implementation 'com.bandyer:bandyer-android-sdk:1.1.6'
+    implementation('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
 }
