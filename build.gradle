@@ -13,7 +13,6 @@ buildscript {
     ext.supportLibVersion = "28.0.0"
     ext.archLifecycleVersion = "1.1.1"
     ext.stethoVersion = "1.5.0"
-    ext.bandyer_common = "1.0.4"
 
     repositories {
         google()
@@ -47,7 +46,6 @@ allprojects {
         resolutionStrategy.force "com.android.support:design:$supportLibVersion"
         resolutionStrategy.force "com.android.support:cardview-v7:$supportLibVersion"
         resolutionStrategy.force "android.arch.lifecycle:runtime:$archLifecycleVersion"
-        resolutionStrategy.force "com.bandyer:bandyer-android-common:$bandyer_common"
     }
 }
 
@@ -60,7 +58,6 @@ subprojects {
         resolutionStrategy.force "com.android.support:design:$supportLibVersion"
         resolutionStrategy.force "com.android.support:cardview-v7:$supportLibVersion"
         resolutionStrategy.force "android.arch.lifecycle:runtime:$archLifecycleVersion"
-        resolutionStrategy.force "com.bandyer:bandyer-android-common:$bandyer_common"
     }
 }
 

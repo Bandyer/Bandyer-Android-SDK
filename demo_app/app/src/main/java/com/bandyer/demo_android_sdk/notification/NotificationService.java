@@ -5,6 +5,8 @@
 
 package com.bandyer.demo_android_sdk.notification;
 
+import android.util.Log;
+
 import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.onesignal.NotificationExtenderService;
 import com.onesignal.OSNotificationReceivedResult;
@@ -23,18 +25,18 @@ public class NotificationService extends NotificationExtenderService {
 
     /**
      * This function represent the push notification receive callback.
-     * The incoming call payload must be extracted from the push notification and the Bandyer SDK must
-     * be initialized or resumed if in UNINITIALIZED or PAUSED states.
+     * The incoming call payload must be extracted from the push notification and the Bandyer SDK.
+     * The SDK will handle automatically the initialization/start and stop of the client.
      */
     @Override
     protected boolean onNotificationProcessing(OSNotificationReceivedResult notification) {
         try {
             String payload = notification.payload.additionalData.getString("payload");
+            Log.d("NotificationService", "payload received: " + payload);
             if (payload != null)
                 BandyerSDKClient.getInstance().handleNotification(NotificationService.this.getApplicationContext(), payload);
         } catch (JSONException e) {
             e.printStackTrace();
-            return false;
         }
         return true;
     }
