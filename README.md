@@ -68,6 +68,7 @@ Once you obtained your credentials, you must set up and initialize the sdk objec
 BandyerSDK.Builder builder = new BandyerSDK.Builder(getApplicationContext(), getString(R.string.app_id))
 	.setEnvironment(Environment.Configuration.sandbox())
 	.withCallEnabled() 
+	.withWhiteboardEnabled()
 	.withChatEnabled();
 
 BandyerSDK.init(builder);
@@ -98,6 +99,7 @@ startActivity(
 		.startWithAudioVideoCall(this /* context */, false /* call recording */) 
 		.with(new ArrayList<>(Arrays.asList("user_A", "user_B", "user_C"))
 		.withChatCapability()
+		.withWhiteboardCapability()
 		.build()
 );
 ```
@@ -114,6 +116,7 @@ startActivity(
 		// or
 		.withAudioVideoCallCapability(false /* call recording */)
 		
+		.withWhiteboardInCallCapability()
 		.build()
 );
 ```
@@ -193,6 +196,7 @@ startActivityForResult(
 		.startWithAudioVideoCall(this /* context */, false /* call recording */) 
 		.with(new ArrayList<>(Arrays.asList("user_A", "user_B", "user_C"))
 		.withChatCapability()
+		.withWhiteboardCapability()
 		.build()
 	, START_CALL_CODE
 );
@@ -207,7 +211,7 @@ startActivityForResult(
 		.withAudioCallCapability(false /* call recording */, false /* upgradable to audio video call */)
 		// or
 		.withAudioVideoCallCapability(false /* call recording */)
-        
+                .withWhiteboardInCallCapability()
 		.build(),
 	START_CHAT_CODE
 );
@@ -322,7 +326,9 @@ builder.withCallEnabled(
 		@Override
 		public void onCallActivityStartedFromNotificationAction(@NonNull CallInfo callInfo,
                                                                     @NonNull CallIntentOptions callIntentOptions) {                                           
-			callIntentOptions.withChatCapability();
+			callIntentOptions
+				.withChatCapability()
+				.withWhiteboardCapability();
 		}
 
 		@Override
@@ -366,6 +372,7 @@ builder.withChatEnabled(
 		public void onChatActivityStartedFromNotificationAction(@NonNull ChatInfo chatInfo, @NonNull ChatIntentOptions chatIntentOptions) {
 			chatIntentOptions
 				.withAudioCallCapability(false, true)
+				.withWhiteboardInCallCapability()
 				.withAudioVideoCallCapability(false);
 		}
 
