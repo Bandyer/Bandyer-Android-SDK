@@ -34,6 +34,6 @@ public interface APIInterface {
      * @param seed get the same result based on the value of this seed
      * @return DemoAppUsers
      */
-    @GET("/api/?inc=name,email,picture&noinfo")
+    @GET("/api/?inc=name,email,picture")
     Call<DemoAppUsers> getDemoAppUsers(@Query("seed") String seed);
 }

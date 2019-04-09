@@ -14,7 +14,8 @@ import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.demo_android_sdk.utils.networking.APIInterface;
 import com.bandyer.demo_android_sdk.utils.networking.DemoAppUsers;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -44,9 +45,12 @@ public class MockedUserProvider implements UserContactProvider {
                 .client(new OkHttpClient())
                 .build();
 
-        final ArrayList<UserDetails> usersDetails = new ArrayList<>(userAliases.size());
 
-        for (final String userAlias : userAliases) {
+        final HashMap<String, UserDetails> userDetailsMap = new LinkedHashMap<>(userAliases.size());
+        for (String userAlias : userAliases) userDetailsMap.put(userAlias, null);
+
+        for (String userAlias : userAliases) {
+
             Call<DemoAppUsers> call = retrofit.create(APIInterface.class).getDemoAppUsers(userAlias);
             call.enqueue(new Callback<DemoAppUsers>() {
 
@@ -59,12 +63,13 @@ public class MockedUserProvider implements UserContactProvider {
                 public void onResponse(@NonNull Call<DemoAppUsers> call, @NonNull Response<DemoAppUsers> response) {
                     if (response.body() == null) return;
 
-                    List<DemoAppUsers.DemoAppUser> demoUsers = response.body().results;
-                    for (DemoAppUsers.DemoAppUser user : demoUsers)
-                        usersDetails.add(generateUserDisplayInfo(userAlias, user));
+                    DemoAppUsers.DemoAppUser user = response.body().results.get(0);
+                    String userAlias = response.body().info.userAlias;
 
-                    if (usersDetails.size() == userAliases.size())
-                        onProviderListener.onProvided(usersDetails);
+                    userDetailsMap.put(userAlias, generateUserDisplayInfo(userAlias, user));
+
+                    if (!userDetailsMap.values().contains(null))
+                        onProviderListener.onProvided(userDetailsMap.values());
                 }
             });
         }

@@ -19,16 +19,17 @@
 
     <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
         android:id="@+id/ongoing_call_label"
+        style="@style/BandyerSDKDesign.TextView.OngoingCallLabel"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/userGreeting"
-        style="@style/BandyerSDKDesign.TextView.OngoingCallLabel" />
+        android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/ongoing_call_label"
         android:id="@+id/contactsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ongoing_call_label" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/chat"
@@ -51,14 +52,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:scaleType="centerCrop"
         android:layout_margin="@dimen/space16"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_bandyer_audio_call"
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         app:maxImageSize="40dp"
         app:tint="#ffffff" />
-
 
 
 </RelativeLayout>

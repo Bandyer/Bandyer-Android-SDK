@@ -29,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bandyer.android_sdk.call.CallModule;
@@ -85,6 +84,9 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @BindView(R.id.call)
     FloatingActionButton callButton;
 
+    @BindView(R.id.ongoing_call_label)
+    TextView ongoingCallLabel;
+
     // the external url to provide to the call client in case we want to setup a call coming from an url.
     // The url may be provided to join an existing call, or to create a new one.
     private String joinUrl;
@@ -108,8 +110,6 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         TextView userGreeting = findViewById(R.id.userGreeting);
         userGreeting.setText(String.format(getResources().getString(R.string.pick_users), userAlias));
 
-        final TextView ongoingCallLabel = findViewById(R.id.ongoing_call_label);
-
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
 
@@ -123,14 +123,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         CallStatusEventObserver.getInstance().observeCallStatus(this, new CallStatusListener() {
             @Override
             public void onCallStarted() {
-                ongoingCallLabel.getLayoutParams().height = RelativeLayout.LayoutParams.WRAP_CONTENT;
-                ongoingCallLabel.requestLayout();
+                ongoingCallLabel.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onCallEnded() {
-                ongoingCallLabel.getLayoutParams().height = 0;
-                ongoingCallLabel.requestLayout();
+                ongoingCallLabel.setVisibility(View.GONE);
             }
         });
     }
@@ -160,6 +158,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         BandyerSDKClient.getInstance().addModuleObserver(this);
 
         startBandyerSdk(LoginManager.getLoggedUser(this));
+
+        // BE AWARE that you don't get notified if the modules are already initialized/running as it is already in the past.
+        // Update the button colors based on their current module status to avoid interaction before the modules are ready.
+        for (BandyerModule module : BandyerSDKClient.getInstance().getModules()) {
+            setModuleButtonsColors(module, module.getStatus());
+        }
     }
 
     private void startBandyerSdk(String userAlias) {
@@ -254,6 +258,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         LoginManager.logout(this);
         BandyerSDKClient.getInstance().clearUserCache();
         BandyerSDKClient.getInstance().dispose();
+        ongoingCallLabel.setVisibility(View.GONE);
         LoginActivity.show(this);
     }
 
@@ -453,49 +458,67 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @Override
     public void onModulePaused(@NonNull BandyerModule module) {
         Log.d("MainActivity", "onModulePaused " + module.getName());
-        if (module instanceof ChatModule && chatButton != null) {
-            chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
-            chatButton.setEnabled(false);
-        } else if (module instanceof CallModule && callButton != null) {
-            callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
-            callButton.setEnabled(false);
-        }
+        setModuleButtonsColors(module, module.getStatus());
     }
 
     @Override
     public void onModuleFailed(@NonNull final BandyerModule module, @NonNull Throwable throwable) {
         Log.e("MainActivity", "onModuleFailed " + module.getName() + " error " + throwable.getLocalizedMessage());
-        if (module instanceof ChatModule && chatButton != null) {
-            chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
-            chatButton.setEnabled(false);
-        } else if (module instanceof CallModule && callButton != null) {
-            callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
-            callButton.setEnabled(false);
-        }
+        setModuleButtonsColors(module, module.getStatus());
     }
 
     @Override
     public void onModuleStatusChanged(@NonNull BandyerModule module, @NonNull BandyerModuleStatus moduleStatus) {
         Log.d("MainActivity", "onModuleStatusChanged " + module.getName() + " status " + moduleStatus);
+        setModuleButtonsColors(module, moduleStatus);
+    }
 
+    private void setModuleButtonsColors(@NonNull BandyerModule module, @NonNull BandyerModuleStatus moduleStatus) {
+        if (module instanceof ChatModule && chatButton != null)
+            setChatButtonColor(moduleStatus);
+        else if (module instanceof CallModule && callButton != null)
+            setCallButtonColor(moduleStatus);
+    }
+
+    private void setChatButtonColor(@NonNull BandyerModuleStatus moduleStatus) {
         // the chat module is offline first, which means that you can interact with it even when you are not connected to internet
         // here we color the button in black until the module gets online
-        if (module instanceof ChatModule && chatButton != null) {
-            if (moduleStatus == BandyerModuleStatus.CONNECTED) {
+        switch (moduleStatus) {
+            case CONNECTED:
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
                 chatButton.setEnabled(true);
-            } else if (moduleStatus == BandyerModuleStatus.DISCONNECTED || moduleStatus == BandyerModuleStatus.RECONNECTING) {
+                break;
+            case PAUSED:
+                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+                chatButton.setEnabled(false);
+                break;
+            case FAILED:
+                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
+                chatButton.setEnabled(false);
+                break;
+            case DISCONNECTED:
+            case RECONNECTING:
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
                 chatButton.setEnabled(true);
-            }
-        } else if (module instanceof CallModule && callButton != null) {
-            if (moduleStatus == BandyerModuleStatus.CONNECTED) {
+                break;
+        }
+    }
+
+    private void setCallButtonColor(@NonNull BandyerModuleStatus moduleStatus) {
+        switch (moduleStatus) {
+            case CONNECTED:
+            case READY:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
                 callButton.setEnabled(true);
-            } else if (moduleStatus == BandyerModuleStatus.DISCONNECTED || moduleStatus == BandyerModuleStatus.RECONNECTING) {
+                break;
+            case FAILED:
+                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
+                callButton.setEnabled(false);
+                break;
+            default:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
                 callButton.setEnabled(false);
-            }
+                break;
         }
     }
 

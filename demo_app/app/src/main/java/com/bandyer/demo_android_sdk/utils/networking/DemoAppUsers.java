@@ -15,13 +15,13 @@ public class DemoAppUsers {
 
     public List<DemoAppUser> results;
 
+    public DemoUserInfo info;
+
     public class DemoAppUser {
+
         public Name name;
-
         public String email;
-
         public Picture picture;
-
 
         public class Name {
             public String first;

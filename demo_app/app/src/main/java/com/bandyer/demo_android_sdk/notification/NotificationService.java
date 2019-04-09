@@ -35,7 +35,7 @@ public class NotificationService extends NotificationExtenderService {
             Log.d("NotificationService", "payload received: " + payload);
             if (payload != null)
                 BandyerSDKClient.getInstance().handleNotification(NotificationService.this.getApplicationContext(), payload);
-        } catch (JSONException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return true;
