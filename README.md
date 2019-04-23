@@ -48,7 +48,7 @@ Bandyer Android SDK is supported from API level 16 (Android 4.1 Jelly Bean).
 Download the [latest AAR](https://bintray.com/bandyer/Communication/Bandyer-Android-SDK) or grab via Gradle:
 
 ```groovy
-implementation 'com.bandyer:bandyer-android-sdk:1.1.10'
+implementation 'com.bandyer:bandyer-android-sdk:1.1.11'
 ```
 
 ## Getting started
