@@ -209,6 +209,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                             .startFromJoinCallUrl(this, joinUrl)
                             .withChatCapability()
                             .withWhiteboardCapability()
+                            .withFileSharingCapability()
                             .build();
 
                     startActivityForResult(bandyerIntent, START_CALL_CODE);
@@ -335,6 +336,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 .withAudioCallCapability(false, false)
                 .withAudioVideoCallCapability(false)
                 .withWhiteboardInCallCapability()
+                .withFileSharingInCallCapability()
                 .build();
 
         startActivityForResult(chatIntent, START_CHAT_CODE);
@@ -386,6 +388,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                         .with(new ArrayList<>(calleeSelected))
                         .withChatCapability()
                         .withWhiteboardCapability()
+                        .withFileSharingCapability()
                         .build();
 
                 dialogInterface.dismiss();
@@ -447,6 +450,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 CallIntentOptions optionsBuilder = new BandyerIntent.Builder()
                         .startFromJoinCallUrl(this, joinUrl)
                         .withWhiteboardCapability()
+                        .withFileSharingCapability()
                         .withChatCapability();
 
                 startActivityForResult(optionsBuilder.build(), START_CALL_CODE);

@@ -13,7 +13,6 @@ import android.util.Log;
 import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.BuildConfig;
 import com.bandyer.android_sdk.Environment;
-import com.bandyer.android_sdk.EnvironmentImpl;
 import com.bandyer.android_sdk.FormatContext;
 import com.bandyer.android_sdk.call.model.CallInfo;
 import com.bandyer.android_sdk.call.notification.CallNotificationListener;
@@ -22,6 +21,10 @@ import com.bandyer.android_sdk.call.notification.CallNotificationType;
 import com.bandyer.android_sdk.chat.ChatInfo;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationListener;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationStyle;
+import com.bandyer.android_sdk.file_sharing.model.FileInfo;
+import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener;
+import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationStyle;
+import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationType;
 import com.bandyer.android_sdk.intent.call.CallIntentOptions;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
 import com.bandyer.android_sdk.intent.chat.ChatIntentOptions;
@@ -68,6 +71,7 @@ public class App extends MultiDexApplication {
                         return "Operator " + userDetails.getFirstName();
                     }
                 })
+                .withFileSharingEnabled(getFileSharingNotificationListener())
                 .withCallEnabled(getCallNotificationListener())
                 .setEnvironment(Environment.Configuration.sandbox());
 
@@ -128,6 +132,7 @@ public class App extends MultiDexApplication {
                                                                     @NonNull CallIntentOptions callIntentOptions) {
                 callIntentOptions
                         .withChatCapability()
+                        .withFileSharingCapability()
                         .withWhiteboardCapability();
             }
 
@@ -165,7 +170,25 @@ public class App extends MultiDexApplication {
                 chatIntentOptions
                         .withAudioCallCapability(false, true)
                         .withWhiteboardInCallCapability()
+                        .withFileSharingInCallCapability()
                         .withAudioVideoCallCapability(false);
+            }
+
+            @Override
+            public void onNotificationAction(@NonNull final NotificationAction action) {
+                // Here you can execute your own code before executing the default action of the notification
+                action.execute();
+            }
+        };
+    }
+
+
+    private FileSharingNotificationListener getFileSharingNotificationListener() {
+        return new FileSharingNotificationListener() {
+
+            @Override
+            public void onCreateNotification(@NonNull FileInfo fileInfo, @NonNull FileSharingNotificationType notificationType, @NonNull FileSharingNotificationStyle notificationStyle) {
+                notificationStyle.setNotificationColor(Color.GREEN);
             }
 
             @Override
