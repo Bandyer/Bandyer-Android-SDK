@@ -18,3 +18,19 @@
 # traces later on. Keep a fixed source file attribute and all line number
 # tables to get line numbers in the stack traces.
 # You can comment this out if you're not interested in stack traces.
+
+
+# Bandyer proprietary SDK
+-keep class com.bandyer.** { *; }
+-keep interface com.bandyer.** { *; }
+-keep enum com.bandyer.** { *; }
+
+# WebRTC library used for Audio&Video communication
+-keep class org.webrtc.** { *; }
+-keep interface org.webrtc.** { *; }
+-keep enum org.webrtc.** { *; }
+
+# Twilio library used for Chat communication
+-keep class com.twilio.** { *; }
+-keep interface com.twilio.** { *; }
+-keep enum com.twilio.** { *; }

@@ -12,8 +12,8 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+apply plugin: 'com.android.application'
 
 
 def gsonVersion = "2.8.2"
@@ -105,6 +105,6 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
 
     /*** Bandyer Android SDK ***/
-    implementation ('com.bandyer:bandyer-android-sdk:1.1.11')
+    implementation ('com.bandyer:bandyer-android-sdk:1.1.12')
     implementation('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
 }
