@@ -9,29 +9,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-
 import com.bandyer.demo_android_sdk.adapter_items.UserItem;
-import com.bandyer.demo_android_sdk.adapter_items.UserSelectionItem;
 import com.bandyer.demo_android_sdk.utils.LoginManager;
-import com.bandyer.demo_android_sdk.utils.networking.BandyerUsers;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
-import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
-import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
-
 import java.util.List;
-
 import javax.annotation.Nullable;
-
 import butterknife.BindView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * This activity will allow you to choose a user from your company to use to interact with other users.
@@ -46,8 +36,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     @BindView(R.id.list_users)
     RecyclerView listUsers;
 
-    private ItemAdapter<UserItem> itemAdapter = new ItemAdapter<>();
-    private FastAdapter<UserItem> fastAdapter = FastAdapter.with(itemAdapter);
+    private FastItemAdapter<UserItem> fastAdapter = new FastItemAdapter<UserItem>();
 
     // the userAlias is the identifier of the created user via Bandyer-server restCall see https://docs.bandyer.com/Bandyer-RESTAPI/#create-user
     private String userAlias = "";
@@ -61,12 +50,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
 
         // set the recyclerView
         listUsers.setAdapter(fastAdapter);
+        listUsers.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         listUsers.setLayoutManager(new LinearLayoutManager(this));
-        fastAdapter.withOnClickListener(this);
+        fastAdapter.withSelectable(true);
+        fastAdapter.withOnPreClickListener(this);
     }
 
     @Override
@@ -81,15 +73,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
             return;
         }
 
-        if (itemAdapter.getAdapterItemCount() > 0) return;
-        itemAdapter.clear();
+        if (fastAdapter.getAdapterItemCount() > 0) return;
+        fastAdapter.clear();
 
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
             public void onUsers(List<String> users) {
                 for (String user : users)
-                    itemAdapter.add(new UserItem(user));
+                    fastAdapter.add(new UserItem(user));
             }
 
             @Override
@@ -104,8 +96,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
      * save the userAlias to be used for login after the call client has been initialized
      */
     @Override
-    public boolean onClick(@Nullable View v, @NonNull IAdapter<UserItem> adapter,
-                           @NonNull final UserItem item, int position) {
+    public boolean onClick(@Nullable View v, @NonNull IAdapter<UserItem> adapter, @NonNull final UserItem item, int position) {
         userAlias = item.userAlias;
         if (!LoginManager.isUserLogged(this))
             LoginManager.login(this, userAlias);

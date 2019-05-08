@@ -8,7 +8,6 @@ package com.bandyer.demo_android_sdk.adapter_items;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
-
 import com.bandyer.demo_android_sdk.R;
 import com.mikepenz.fastadapter.items.AbstractItem;
 

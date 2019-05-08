@@ -7,7 +7,6 @@ package com.bandyer.demo_android_sdk.utils.networking;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**

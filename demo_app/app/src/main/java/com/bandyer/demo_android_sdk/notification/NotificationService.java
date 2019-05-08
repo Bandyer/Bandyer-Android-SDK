@@ -11,8 +11,6 @@ import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.onesignal.NotificationExtenderService;
 import com.onesignal.OSNotificationReceivedResult;
 
-import org.json.JSONException;
-
 /**
  * Sample implementation of a push notification receiver that handles incoming calls.
  * Push notification are not working in this sample and this class is intended to be used as a

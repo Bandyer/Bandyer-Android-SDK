@@ -8,13 +8,9 @@ package com.bandyer.demo_android_sdk.adapter_items;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.TextView;
-
 import com.bandyer.demo_android_sdk.R;
 import com.mikepenz.fastadapter.items.AbstractItem;
-
 import java.util.List;
-
 import butterknife.BindView;
 
 /**
@@ -49,23 +45,20 @@ public class UserSelectionItem extends AbstractItem<UserSelectionItem, UserSelec
         @BindView(R.id.checkbox)
         CheckBox checkBox;
 
-        @BindView(R.id.name)
-        TextView name;
-
         ViewHolder(View view) {
             super(view);
         }
 
         @Override
-        public void bindView(@NonNull UserSelectionItem item, @NonNull List<Object> payloads) {
+        public void bindView(final @NonNull UserSelectionItem item, @NonNull List<Object> payloads) {
             checkBox.setChecked(item.isSelected());
-            name.setText(item.name);
+            checkBox.setText(item.name);
         }
 
         @Override
         public void unbindView(@NonNull UserSelectionItem item) {
             checkBox.setChecked(false);
-            name.setText(null);
+            checkBox.setText(null);
         }
     }
 }

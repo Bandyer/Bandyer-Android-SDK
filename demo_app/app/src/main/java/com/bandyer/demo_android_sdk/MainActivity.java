@@ -18,8 +18,10 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -81,11 +83,16 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @BindView(R.id.chat)
     FloatingActionButton chatButton;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.call)
     FloatingActionButton callButton;
 
     @BindView(R.id.ongoing_call_label)
     TextView ongoingCallLabel;
+
+
 
     // the external url to provide to the call client in case we want to setup a call coming from an url.
     // The url may be provided to join an existing call, or to create a new one.
@@ -101,7 +108,15 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         super.onCreate(savedInstanceState);
         if (!LoginManager.isUserLogged(this)) return;
 
+        // inflate main layout and keep a reference to it in case of use with dpad navigation
         setContentView(R.layout.activity_main);
+
+        // customize toolbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         // get the user that is currently logged in the sample app
         String userAlias = LoginManager.getLoggedUser(this);
@@ -268,10 +283,6 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
 
         calleeSelected = new ArrayList<>();
 
-        fastAdapter = new FastItemAdapter<>();
-        fastAdapter.withSelectable(true);
-
-
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
@@ -288,7 +299,10 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
             }
         });
 
-        // on user selection put in a list to be called on click on call button.
+        fastAdapter = new FastItemAdapter<>();
+        fastAdapter.withSelectable(true);
+
+        // on user selection put it in a list to be called on click on call button.
         fastAdapter.withOnPreClickListener(new OnClickListener<UserSelectionItem>() {
             @Override
             public boolean onClick(@Nullable View v, @NonNull IAdapter<UserSelectionItem> adapter, @NonNull UserSelectionItem item, int position) {
@@ -296,7 +310,6 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 if (selectExtension != null) {
                     selectExtension.toggleSelection(position);
                 }
-
                 if (!item.isSelected())
                     calleeSelected.remove(item.name);
                 else
@@ -306,6 +319,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         });
 
         listContacts.setLayoutManager(new LinearLayoutManager(this));
+        listContacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         listContacts.setAdapter(fastAdapter);
     }
 
@@ -320,6 +334,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @OnClick(R.id.chat)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     void chat() {
+
         if (calleeSelected.size() == 0) {
             showErrorDialog(getResources().getString(R.string.oto_chat_error_no_selected_user));
             return;
@@ -352,6 +367,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
      */
     @OnClick(R.id.call)
     void call() {
+
+        if (calleeSelected.size() == 0) {
+            showErrorDialog(getResources().getString(R.string.oto_call_error_no_selected_user));
+            return;
+        }
+
         if (chooseCallDialog != null) chooseCallDialog.dismiss();
         final CharSequence[] callModes = {"Audio only call", "Audio upgradable to video call", "Audio video call"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -400,7 +421,6 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         chooseCallDialog.show();
     }
 
-
     /**
      * Result received after closing a chat or a call.
      *
@@ -429,6 +449,8 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                     break;
 
             }
+
+            showErrorDialog(error);
         }
     }
 

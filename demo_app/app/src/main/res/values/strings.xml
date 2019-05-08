@@ -4,27 +4,28 @@
   -->
 
 <resources>
-    <string name="app_name">Bandyer SDK Demo</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="app_name" translatable="false">Bandyer SDK Demo</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
 
-    <string name="button_allow">Allow</string>
-    <string name="button_ok">OK</string>
-    <string name="button_deny">Deny</string>
+    <string name="button_allow" translatable="false">Allow</string>
+    <string name="button_ok" translatable="false">OK</string>
+    <string name="button_deny" translatable="false">Deny</string>
 
-    <string name="show_camera">Show camera preview</string>
+    <string name="show_camera" translatable="false">Show camera preview</string>
 
-    <string name="permission_camera_rationale">Camera permission is needed to show the camera preview.</string>
-    <string name="permission_camera_denied">Camera permission was denied. Please consider granting it in order to access the camera!</string>
-    <string name="permission_camera_never_ask_again">Camera permission was denied with never ask again.</string>
-    <string name="oto_chat_error_no_selected_user">You must provide at least one valid user alias to start a chat.</string>
-    <string name="oto_chat_error_group_selected">Group chats are not yet supported.</string>
-    <string name="login_title">Choose the user to login with</string>
-    <string name="hang_up">Hang up</string>
-    <string name="calling_user">Calling user…</string>
-    <string name="decline">Decline</string>
-    <string name="answer">Answer</string>
-    <string name="pick_users">Hello, %1$s!\nWho do you want to call or chat with?</string>
+    <string name="permission_camera_rationale" translatable="false">Camera permission is needed to show the camera preview.</string>
+    <string name="permission_camera_denied" translatable="false">Camera permission was denied. Please consider granting it in order to access the camera!</string>
+    <string name="permission_camera_never_ask_again" translatable="false">Camera permission was denied with never ask again.</string>
+    <string name="oto_call_error_no_selected_user" translatable="false">You must provide at least one valid user alias to start a call.</string>
+    <string name="oto_chat_error_no_selected_user" translatable="false">You must provide at least one valid user alias to start a chat.</string>
+    <string name="oto_chat_error_group_selected" translatable="false">Group chats are not yet supported.</string>
+    <string name="login_title" translatable="false">Choose the user to login with:</string>
+    <string name="hang_up" translatable="false">Hang up</string>
+    <string name="calling_user" translatable="false">Calling user…</string>
+    <string name="decline" translatable="false">Decline</string>
+    <string name="answer" translatable="false">Answer</string>
+    <string name="pick_users" translatable="false">Hello, %1$s!\nWho do you want to call or chat with?</string>
 
     <plurals name="user_is_ringing">
         <item quantity="one">is ringing…</item>
@@ -34,10 +35,10 @@
         <item quantity="one">is calling you…</item>
         <item quantity="other">are calling you…</item>
     </plurals>
-    <string name="logout">Logout</string>
-    <string name="caller_name">Caller name</string>
-    <string name="preparing_call">Call is loading…</string>
-    <string name="dialog_ok">OK</string>
-    <string name="dialog_error_title">Error</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="caller_name" translatable="false">Caller name</string>
+    <string name="preparing_call" translatable="false">Call is loading…</string>
+    <string name="dialog_ok" translatable="false">OK</string>
+    <string name="dialog_error_title" translatable="false">Error</string>
 
 </resources>

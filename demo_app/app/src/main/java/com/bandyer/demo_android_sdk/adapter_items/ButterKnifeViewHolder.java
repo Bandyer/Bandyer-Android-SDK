@@ -6,10 +6,8 @@
 package com.bandyer.demo_android_sdk.adapter_items;
 
 import android.view.View;
-
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IItem;
-
 import butterknife.ButterKnife;
 
 /**

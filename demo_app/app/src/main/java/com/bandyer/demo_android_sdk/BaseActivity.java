@@ -5,12 +5,14 @@
 
 package com.bandyer.demo_android_sdk;
 
-import android.support.design.widget.Snackbar;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bandyer.demo_android_sdk.utils.DPadNavigationHelper;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
 
 import butterknife.ButterKnife;
@@ -23,6 +25,8 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
+
+    private DPadNavigationHelper dPadNavigationHelper = new DPadNavigationHelper();
 
     @Override
     public void setContentView(View view) {
@@ -56,10 +60,28 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dPadNavigationHelper.bind(this);
+    }
+
+    @Override
     protected void onPause() {
         MockedNetwork.cancel();
         if (dialog != null) dialog.dismiss();
         dialog = null;
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        dPadNavigationHelper.unbind();
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (dPadNavigationHelper.hasConsumedKeyDown(keyCode, event)) return true;
+        else return super.onKeyDown(keyCode, event);
     }
 }

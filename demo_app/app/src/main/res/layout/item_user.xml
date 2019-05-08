@@ -3,15 +3,13 @@
   ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/userAlias"
+    android:focusable="true"
+    android:clickable="true"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/userAlias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/space8" />
-
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space16"
+    android:textSize="@dimen/text_h4"
+    android:textColor="@color/black" />

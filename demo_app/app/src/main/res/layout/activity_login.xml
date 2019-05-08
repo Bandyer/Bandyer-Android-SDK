@@ -14,16 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/space16"
+        android:textColor="@color/black"
         android:text="@string/login_title"
-        android:textSize="@dimen/text_h2" />
+        android:textSize="@dimen/text_h1" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_users"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingEnd="@dimen/space16"
-        android:paddingLeft="@dimen/space16"
-        android:paddingRight="@dimen/space16"
-        android:paddingStart="@dimen/space16" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
