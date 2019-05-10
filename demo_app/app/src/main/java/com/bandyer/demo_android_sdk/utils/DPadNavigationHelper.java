@@ -67,8 +67,8 @@ public class DPadNavigationHelper {
             public void run() {
                 pulseFocusedView();
 
-                // performs a fake click on screen based on in-screen lastFocusedView coordinates
-                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER)
+                // perfofms a fake click on screen based on in-screen lastFocusedView coordinates
+                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER)
                     clickScreen(getLocationInContainer(lastFocusedView, rootView));
             }
         });
@@ -94,6 +94,7 @@ public class DPadNavigationHelper {
                 code == KeyEvent.KEYCODE_DPAD_LEFT ||
                 code == KeyEvent.KEYCODE_DPAD_UP ||
                 code == KeyEvent.KEYCODE_DPAD_RIGHT ||
+                code == KeyEvent.KEYCODE_ENTER ||
                 code == KeyEvent.KEYCODE_DPAD_DOWN;
     }
 
