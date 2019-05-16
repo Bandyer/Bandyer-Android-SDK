@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
-  ~ See LICENSE.txt for licensing information
-  -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
@@ -11,9 +7,4 @@
         android:title="@string/search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
-    <item
-        android:id="@+id/logout"
-        android:title="@string/logout"
-        android:visible="true"
-        app:showAsAction="always" />
 </menu>

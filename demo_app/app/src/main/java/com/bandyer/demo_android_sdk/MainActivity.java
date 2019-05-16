@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,9 +19,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -51,7 +54,9 @@ import com.bandyer.demo_android_sdk.adapter_items.UserSelectionItem;
 import com.bandyer.demo_android_sdk.utils.LoginManager;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
 import com.mikepenz.fastadapter.IAdapter;
+import com.mikepenz.fastadapter.IItemAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.listeners.ItemFilterListener;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
 import com.mikepenz.fastadapter.select.SelectExtension;
 
@@ -67,7 +72,7 @@ import butterknife.OnClick;
  *
  * @author kristiyan
  */
-public class MainActivity extends BaseActivity implements BandyerSDKClientObserver, BandyerModuleObserver {
+public class MainActivity extends BaseActivity implements BandyerSDKClientObserver, BandyerModuleObserver, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
 
     private final int START_CHAT_CODE = 123;
     private final int START_CALL_CODE = 124;
@@ -92,11 +97,19 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     @BindView(R.id.ongoing_call_label)
     TextView ongoingCallLabel;
 
+    @BindView(R.id.no_results)
+    View noFilterResults;
 
+    @BindView(R.id.refreshUsers)
+    SwipeRefreshLayout refreshUsers;
+
+    private SearchView searchView;
 
     // the external url to provide to the call client in case we want to setup a call coming from an url.
     // The url may be provided to join an existing call, or to create a new one.
     private String joinUrl;
+
+    private ArrayList<UserSelectionItem> usersList = new ArrayList<UserSelectionItem>();
 
     public static void show(Activity context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -146,6 +159,9 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 ongoingCallLabel.setVisibility(View.GONE);
             }
         });
+
+        refreshUsers.setOnRefreshListener(this);
+        refreshUsers.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
     }
 
     @Override
@@ -256,18 +272,27 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        // return true so that the menu pop up is opened
+        searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setQueryHint(getString(R.string.search));
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        fastAdapter.filter(newText);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                logout();
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        if (item.getItemId() == R.id.logout) logout();
+        return super.onOptionsItemSelected(item);
     }
 
     private void logout() {
@@ -278,11 +303,10 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         LoginActivity.show(this);
     }
 
-    private void setUpRecyclerView() {
-        if (fastAdapter != null && fastAdapter.getItemCount() > 0) return;
-
+    @Override
+    public void onRefresh() {
         calleeSelected = new ArrayList<>();
-
+        usersList.clear();
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
@@ -290,7 +314,10 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
                 for (String user : users)
                     if (!user.equals(LoginManager.getLoggedUser(MainActivity.this)))
-                        fastAdapter.add(new UserSelectionItem(user));
+                        usersList.add(new UserSelectionItem(user));
+                refreshUsers.setRefreshing(false);
+                fastAdapter.set(usersList);
+                if (searchView != null) fastAdapter.filter(searchView.getQuery());
             }
 
             @Override
@@ -298,6 +325,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                 showErrorDialog(error);
             }
         });
+    }
+
+    private void setUpRecyclerView() {
+        if (fastAdapter != null && usersList.size() > 0) return;
+
+        onRefresh();
 
         fastAdapter = new FastItemAdapter<>();
         fastAdapter.withSelectable(true);
@@ -318,9 +351,30 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
             }
         });
 
+        listContacts.setItemAnimator(null);
         listContacts.setLayoutManager(new LinearLayoutManager(this));
         listContacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         listContacts.setAdapter(fastAdapter);
+
+        fastAdapter.getItemFilter().withFilterPredicate(new IItemAdapter.Predicate<UserSelectionItem>() {
+            @Override
+            public boolean filter(UserSelectionItem userSelectionItem, CharSequence constraint) {
+                return userSelectionItem.name.contains(constraint);
+            }
+        });
+
+        fastAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserSelectionItem>() {
+            @Override
+            public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserSelectionItem> results) {
+                if (results.size() > 0) noFilterResults.setVisibility(View.GONE);
+                else noFilterResults.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onReset() {
+                noFilterResults.setVisibility(View.GONE);
+            }
+        });
     }
 
     /**

@@ -8,9 +8,12 @@ package com.bandyer.demo_android_sdk.adapter_items;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.CheckBox;
+
 import com.bandyer.demo_android_sdk.R;
 import com.mikepenz.fastadapter.items.AbstractItem;
+
 import java.util.List;
+
 import butterknife.BindView;
 
 /**
@@ -22,6 +25,11 @@ public class UserSelectionItem extends AbstractItem<UserSelectionItem, UserSelec
 
     public UserSelectionItem(String name) {
         this.name = name;
+    }
+
+    @Override
+    public long getIdentifier() {
+        return name.hashCode();
     }
 
     @Override

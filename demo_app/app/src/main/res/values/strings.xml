@@ -40,5 +40,7 @@
     <string name="preparing_call" translatable="false">Call is loading…</string>
     <string name="dialog_ok" translatable="false">OK</string>
     <string name="dialog_error_title" translatable="false">Error</string>
+    <string name="no_user_found" translatable="false">No user found.</string>
+    <string name="search" translatable="false">Search&#8230;</string>
 
 </resources>

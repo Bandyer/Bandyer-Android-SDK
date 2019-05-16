@@ -15,14 +15,13 @@ buildscript {
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 
-
 def gsonVersion = "2.8.2"
 def okHttpVersion = "3.11.0"
 def stethoVersion = "1.5.0"
 def retrofitVersion = "2.4.0"
 def leakCanaryVersion = "1.6.2"
 def butterKnifeVersion = "8.8.1"
-def fastAdapterVersion = "3.2.5@aar"
+def fastAdapterVersion = "3.2.9"
 def picassoLibVersion = "2.71828"
 
 android {
@@ -50,6 +49,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -105,6 +108,8 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
 
     /*** Bandyer Android SDK ***/
-    implementation ('com.bandyer:bandyer-android-sdk:1.1.14')
+    implementation ('com.bandyer:bandyer-android-sdk:1.1.15')
+
+    /*** OneSignal ***/
     implementation('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
 }

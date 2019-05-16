@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
+import com.bandyer.android_common.logging.BaseLogger;
 import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.BuildConfig;
 import com.bandyer.android_sdk.Environment;
@@ -81,7 +82,7 @@ public class App extends MultiDexApplication {
         }
 
         if (BuildConfig.DEBUG) {
-            builder.setLogger(new BandyerSDKLogger() {
+            builder.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
                 @Override
                 public void verbose(@NonNull String tag, @NonNull String message) {
                     Log.v(tag, message);

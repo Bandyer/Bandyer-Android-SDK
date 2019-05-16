@@ -15,7 +15,7 @@
     <dimen name="item_height">190dp</dimen>
 
 
-    <dimen name="text_h1">23sp</dimen>
+    <dimen name="text_h1">22sp</dimen>
     <dimen name="text_h2">19sp</dimen>
     <dimen name="text_h3">16sp</dimen>
     <dimen name="text_h4">14sp</dimen>
