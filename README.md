@@ -43,6 +43,17 @@ Bandyer Android SDK is supported from API level 16 (Android 4.1 Jelly Bean).
 - Audio calls upgradable to Video Calls
 - Chat
 
+
+## Android Studio Setup
+Add these lines to your build.gradle to inform the IDE of the language level.
+
+```java
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+```
+
 ## Installation
 
 Download the [latest AAR](https://bintray.com/bandyer/Communication/Bandyer-Android-SDK) or grab via Gradle:
