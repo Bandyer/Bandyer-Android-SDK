@@ -48,9 +48,12 @@ Bandyer Android SDK is supported from API level 16 (Android 4.1 Jelly Bean).
 Add these lines to your build.gradle to inform the IDE of the language level.
 
 ```java
-compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+android {
+...
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 ```
 
