@@ -117,6 +117,16 @@ android {
 
 ## Credits
 - [WebRTC](https://webrtc.org/) by Google, Mozilla, Opera, W3C and ITF
+- [Kotlin](https://github.com/JetBrains/kotlin) by JetBrains
 - [Gson](https://github.com/google/gson) by Google
-- [Android-weak-handler](https://github.com/badoo/android-weak-handler) by Badoo
+- [OkHttp](https://github.com/square/okhttp) by square
 - [Socket.io](https://github.com/socketio/socket.io-client-java) by socket.io
+- [Android-weak-handler](https://github.com/badoo/android-weak-handler) by Badoo
+- [SiliCompressor](https://github.com/Tourenathan-G5organisation/SiliCompressor) by Tourenathan-G5organisation
+- [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) by permissions-dispatcher
+- [Matisse](https://github.com/zhihu/Matisse) by zhihu
+- [TwilioChat](https://www.twilio.com/chat) by twilio
+- [Retrofit](https://github.com/square/retrofit) by square
+- [Piasso](https://github.com/square/picasso) by square
+- [Paris](https://github.com/airbnb/paris/) by airbnb
+- [FastAdapter](https://github.com/mikepenz/FastAdapter) by mikepenz
