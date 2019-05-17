@@ -16,6 +16,7 @@
 
 . **[Overview](#overview)** .
 **[Features](#features)** .
+**[News](#news)** .
 **[Documentation](#documentation)** .
 **[Support](#support)** .
 **[Credits](#credits)** .
@@ -40,6 +41,9 @@ Bandyer Android SDK is supported from API level 16 (Android 4.1 Jelly Bean).
 - Audio calls
 - Audio calls upgradable to Video Calls
 - Chat
+
+## News
+2019-05-16: Bandyer-Android-SDK 1.1.15 has been released. This release increases performance on some devices and to do so requires JAVA_8. Other change read in [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.1.15).
 
 ## Documentation
 
