@@ -10,7 +10,7 @@
     android:layout_marginTop="@dimen/space8"
     android:layout_marginBottom="@dimen/space8"
     android:id="@+id/checkbox"
-    android:textColor="@color/black"
+    android:textColor="?android:attr/textColorPrimary"
     android:textSize="@dimen/text_h4"
     android:layout_width="match_parent"
     android:nextFocusRight="@+id/chat"

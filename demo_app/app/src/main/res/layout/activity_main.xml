@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space16"
                 android:text="@string/pick_users"
-                android:textColor="@color/black"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="@dimen/text_h1" />
 
             <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
+                android:textColor="?android:attr/textColorPrimary"
                 android:focusableInTouchMode="false"
                 android:visibility="gone" />
 
@@ -69,6 +70,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/appbar_toolbar"
         android:gravity="center"
+        android:textColor="?android:attr/textColorPrimary"
         android:text="@string/no_user_found"
         android:visibility="gone" />
 

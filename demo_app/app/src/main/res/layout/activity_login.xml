@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space16"
                 android:text="@string/login_title"
-                android:textColor="@color/black"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="@dimen/text_h1" />
 
             <android.support.v7.widget.RecyclerView
@@ -61,6 +61,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/appbar_toolbar"
         android:gravity="center"
+        android:textColor="?android:attr/textColorPrimary"
         android:text="@string/no_user_found"
         android:visibility="gone" />
 

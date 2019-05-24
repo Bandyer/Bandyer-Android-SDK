@@ -12,4 +12,4 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/space16"
     android:textSize="@dimen/text_h4"
-    android:textColor="@color/black" />
+    android:textColor="?android:attr/textColorPrimary" />
