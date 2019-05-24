@@ -56,7 +56,8 @@ android {
 - Calls Recording
 
 ## News
-2019-05-16: Bandyer-Android-SDK 1.1.15 has been released. This release increases performance on some devices and to do so requires JAVA_8. Other change read in [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.1.15).
+- 2019-05-24: Bandyer-Android-SDK 1.1.16 has been released. Improved navigation experience with directional pad. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.1.16).
+- 2019-05-16: Bandyer-Android-SDK 1.1.15 has been released. This release increases performance on some devices and to do so requires JAVA_8. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.1.15).
 
 ## Documentation
 
