@@ -18,7 +18,7 @@
 **[Features](#features)** .
 **[News](#news)** .
 **[Documentation](#documentation)** .
-**[Support](#support)** .
+**[Pricing](#other)** .
 **[Credits](#credits)** .
 
 ---
