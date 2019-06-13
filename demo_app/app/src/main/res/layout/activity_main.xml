@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="@color/white"
                 android:focusableInTouchMode="false"
                 android:visibility="gone" />
 
