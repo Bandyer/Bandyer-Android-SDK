@@ -98,6 +98,8 @@ android {
 
 [Keep BandyerSDKClient Alive](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Keep-client-active-in-background)
 
+[Reduce APK size](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Reduce-the-APK-size)
+
 [Proguard](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Proguard)
 
 ### Customize UI
@@ -115,6 +117,7 @@ android {
 [Pricing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Pricing)
 
 [Troubleshooting](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Troubleshooting)
+
 
 ## Credits
 - [WebRTC](https://webrtc.org/) by Google, Mozilla, Opera, W3C and ITF
