@@ -131,6 +131,6 @@ android {
 - [Matisse](https://github.com/zhihu/Matisse) by zhihu
 - [TwilioChat](https://www.twilio.com/chat) by twilio
 - [Retrofit](https://github.com/square/retrofit) by square
-- [Piasso](https://github.com/square/picasso) by square
+- [Picasso](https://github.com/square/picasso) by square
 - [Paris](https://github.com/airbnb/paris/) by airbnb
 - [FastAdapter](https://github.com/mikepenz/FastAdapter) by mikepenz
