@@ -125,7 +125,7 @@ dependencies {
     implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
 
     /*** Bandyer Android SDK ***/
-    implementation 'com.bandyer:bandyer-android-sdk:1.1.19'
+    implementation 'com.bandyer:bandyer-android-sdk:1.1.20'
 
     /*** OneSignal ***/
     implementation('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
