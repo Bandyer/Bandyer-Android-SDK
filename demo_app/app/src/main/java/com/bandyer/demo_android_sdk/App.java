@@ -12,7 +12,6 @@ import android.util.Log;
 
 import com.bandyer.android_common.logging.BaseLogger;
 import com.bandyer.android_sdk.BandyerSDK;
-import com.bandyer.android_sdk.BuildConfig;
 import com.bandyer.android_sdk.Environment;
 import com.bandyer.android_sdk.FormatContext;
 import com.bandyer.android_sdk.call.model.CallInfo;
