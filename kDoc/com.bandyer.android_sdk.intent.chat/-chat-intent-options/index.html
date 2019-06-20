@@ -32,10 +32,19 @@
 <p><a href="with-audio-call-capability.html">withAudioCallCapability</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withAudioCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(kotlin.Boolean, kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(kotlin.Boolean, kotlin.Boolean)/upgradable">upgradable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
-<p>Audio call capability means that you can initialize an audio call from chat activity.
-If upgradable is true it means that the call will be initialized as audio call but will be
-upgraded if selected camera button from call action items.</p>
+<code><span class="keyword">fun </span><span class="identifier">withAudioCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<p>Audio call capability means that you can initialize an audio call from chat activity.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-audio-upgradable-call-capability.html">withAudioUpgradableCallCapability</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withAudioUpgradableCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioUpgradableCallCapability(kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<p>Audio call capability means that you can initialize an audio/video call from chat activity.
+Upgradable means that the call will be initialized as audio call but can be
+upgraded to video if selected camera button from call action items.</p>
 </td>
 </tr>
 <tr>
@@ -54,6 +63,15 @@ upgraded if selected camera button from call action items.</p>
 <td>
 <code><span class="keyword">fun </span><span class="identifier">withFileSharingInCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
 <p>File sharing capability means that will be allowed to initialize upload/download file from audio/video call activity.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-screen-sharing-in-call-capability.html">withScreenSharingInCallCapability</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withScreenSharingInCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<p>Screen sharing capability means that will be allowed to share your screen in a audio/video call activity.</p>
 </td>
 </tr>
 <tr>

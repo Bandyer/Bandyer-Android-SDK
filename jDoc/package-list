@@ -12,8 +12,15 @@ com.bandyer.android_sdk.file_sharing.notification
 com.bandyer.android_sdk.intent
 com.bandyer.android_sdk.intent.call
 com.bandyer.android_sdk.intent.chat
+com.bandyer.android_sdk.intent.file
+com.bandyer.android_sdk.intent.screenshare
 com.bandyer.android_sdk.module
 com.bandyer.android_sdk.notification
+com.bandyer.android_sdk.screen_sharing
+com.bandyer.android_sdk.screen_sharing.model
+com.bandyer.android_sdk.screen_sharing.notification
+com.bandyer.android_sdk.screen_sharing.screen_sharing_center
+com.bandyer.android_sdk.screen_sharing.screen_sharing_center.utils
 com.bandyer.android_sdk.utils
 com.bandyer.android_sdk.utils.provider
 com.bandyer.android_sdk.whiteboard
