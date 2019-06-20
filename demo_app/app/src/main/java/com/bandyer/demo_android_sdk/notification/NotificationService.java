@@ -29,10 +29,9 @@ public class NotificationService extends NotificationExtenderService {
     @Override
     protected boolean onNotificationProcessing(OSNotificationReceivedResult notification) {
         try {
-            String payload = notification.payload.additionalData.getString("payload");
+            String payload = notification.payload.additionalData.toString();
             Log.d("NotificationService", "payload received: " + payload);
-            if (payload != null)
-                BandyerSDKClient.getInstance().handleNotification(NotificationService.this.getApplicationContext(), payload);
+            BandyerSDKClient.getInstance().handleNotification(NotificationService.this.getApplicationContext(), payload);
         } catch (Throwable e) {
             e.printStackTrace();
         }

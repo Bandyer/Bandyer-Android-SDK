@@ -6,6 +6,7 @@
 package com.bandyer.demo_android_sdk;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
@@ -29,6 +30,7 @@ import com.bandyer.android_sdk.intent.call.CallIntentOptions;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
 import com.bandyer.android_sdk.intent.chat.ChatIntentOptions;
 import com.bandyer.android_sdk.intent.chat.IncomingChat;
+import com.bandyer.android_sdk.intent.file.IncomingFile;
 import com.bandyer.android_sdk.notification.NotificationAction;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
@@ -78,6 +80,10 @@ public class App extends MultiDexApplication {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
             builder.withChatEnabled(getChatNotificationListener())
                     .withWhiteboardEnabled();
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder.withScreenSharingEnabled();
         }
 
         if (BuildConfig.DEBUG) {
@@ -130,10 +136,16 @@ public class App extends MultiDexApplication {
             @Override
             public void onCallActivityStartedFromNotificationAction(@NonNull CallInfo callInfo,
                                                                     @NonNull CallIntentOptions callIntentOptions) {
-                callIntentOptions
-                        .withChatCapability()
-                        .withFileSharingCapability()
-                        .withWhiteboardCapability();
+                callIntentOptions.withFileSharingCapability();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    callIntentOptions
+                            .withChatCapability()
+                            .withWhiteboardCapability();
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    callIntentOptions.withScreenSharingCapability();
+                }
             }
 
             @Override
@@ -168,10 +180,14 @@ public class App extends MultiDexApplication {
             @Override
             public void onChatActivityStartedFromNotificationAction(@NonNull ChatInfo chatInfo, @NonNull ChatIntentOptions chatIntentOptions) {
                 chatIntentOptions
-                        .withAudioCallCapability(false, true)
+                        .withAudioCallCapability(false)
+                        .withAudioUpgradableCallCapability(false)
+                        .withAudioVideoCallCapability(false)
                         .withWhiteboardInCallCapability()
-                        .withFileSharingInCallCapability()
-                        .withAudioVideoCallCapability(false);
+                        .withFileSharingInCallCapability();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    chatIntentOptions.withScreenSharingInCallCapability();
+                }
             }
 
             @Override
@@ -187,7 +203,14 @@ public class App extends MultiDexApplication {
         return new FileSharingNotificationListener() {
 
             @Override
-            public void onCreateNotification(@NonNull FileInfo fileInfo, @NonNull FileSharingNotificationType notificationType, @NonNull FileSharingNotificationStyle notificationStyle) {
+            public void onIncomingFile(@NonNull IncomingFile file, boolean isDnd, boolean isScreenLocked) {
+                file.asNotification(App.this).show();
+            }
+
+            @Override
+            public void onCreateNotification(@NonNull FileInfo fileInfo,
+                                             @NonNull FileSharingNotificationType notificationType,
+                                             @NonNull FileSharingNotificationStyle notificationStyle) {
                 notificationStyle.setNotificationColor(Color.GREEN);
             }
 

@@ -241,6 +241,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                             .withChatCapability()
                             .withWhiteboardCapability()
                             .withFileSharingCapability()
+                            .withScreenSharingCapability()
                             .build();
 
                     startActivityForResult(bandyerIntent, START_CALL_CODE);
@@ -402,10 +403,12 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
         Intent chatIntent = new BandyerIntent.Builder()
                 .startWithChat(this)
                 .with(calleeSelected.get(0))
-                .withAudioCallCapability(false, false)
+                .withAudioCallCapability(false)
+                .withAudioUpgradableCallCapability(false)
                 .withAudioVideoCallCapability(false)
                 .withWhiteboardInCallCapability()
                 .withFileSharingInCallCapability()
+                .withScreenSharingInCallCapability()
                 .build();
 
         startActivityForResult(chatIntent, START_CHAT_CODE);
@@ -449,10 +452,10 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
 
                 switch (i) {
                     case 0:
-                        callIntentBuilder = new BandyerIntent.Builder().startWithAudioCall(MainActivity.this, recording.isChecked(), false);
+                        callIntentBuilder = new BandyerIntent.Builder().startWithAudioCall(MainActivity.this, recording.isChecked());
                         break;
                     case 1:
-                        callIntentBuilder = new BandyerIntent.Builder().startWithAudioCall(MainActivity.this, recording.isChecked(), true);
+                        callIntentBuilder = new BandyerIntent.Builder().startWithAudioUpgradableCall(MainActivity.this, recording.isChecked());
                         break;
                     case 2:
                         callIntentBuilder = new BandyerIntent.Builder().startWithAudioVideoCall(MainActivity.this, recording.isChecked());
@@ -464,6 +467,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                         .withChatCapability()
                         .withWhiteboardCapability()
                         .withFileSharingCapability()
+                        .withScreenSharingCapability()
                         .build();
 
                 dialogInterface.dismiss();
@@ -527,6 +531,7 @@ public class MainActivity extends BaseActivity implements BandyerSDKClientObserv
                         .startFromJoinCallUrl(this, joinUrl)
                         .withWhiteboardCapability()
                         .withFileSharingCapability()
+                        .withScreenSharingCapability()
                         .withChatCapability();
 
                 startActivityForResult(optionsBuilder.build(), START_CALL_CODE);
