@@ -14,6 +14,15 @@ buildscript {
     ext.archLifecycleVersion = "1.1.1"
     ext.stethoVersion = "1.5.0"
 
+    ext.keyStoreAlias = ""
+    ext.keyStorePassword = ""
+    ext.keyStoreFilePath = " "
+    ext.keyStorePassword = ""
+
+    ext.fabricReleaseNotes = { -> return "" }
+    ext.fabricTestGroup = { -> return "" }
+    ext.fabricApiSecret = { -> return "" }
+
     repositories {
         google()
         jcenter()
@@ -35,7 +44,7 @@ allprojects {
         mavenCentral()
         mavenLocal()
         maven { url 'https://jitpack.io' }
-        maven { url  "https://dl.bintray.com/bandyer/Communication" }
+        maven { url "https://dl.bintray.com/bandyer/Communication" }
     }
 
     configurations.all {

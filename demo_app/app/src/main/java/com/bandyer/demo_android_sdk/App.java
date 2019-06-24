@@ -36,12 +36,14 @@ import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.android_sdk.utils.provider.UserDetailsFormatter;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
+import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.GsonBuilder;
 import com.onesignal.OneSignal;
 import com.squareup.leakcanary.LeakCanary;
 
+import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
 
 /**
@@ -54,6 +56,9 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // fabric for crash reports
+        initFabric();
 
         // Debug tools
         if (LeakCanary.isInAnalyzerProcess(this)) return;
@@ -222,6 +227,15 @@ public class App extends MultiDexApplication {
         };
     }
 
+    /***************************************Fabric**************************************************
+     * Using Fabric library to debug potential crashes and handle beta releases.
+     * For more information visit:
+     * https://fabric.io
+     **********************************************************************************************/
+    private void initFabric() {
+        Fabric.with(this, new Crashlytics());
+    }
+
     /***************************************LeackCanary*********************************************
      * Using LeakCanary library to debug potential leaks.
      * Leaks may lead to your application consuming & retaining memory inefficiently, making the device and the application slower and crash prone
@@ -245,7 +259,7 @@ public class App extends MultiDexApplication {
     }
 
 
-    /***************************************One Signal**************************************************
+    /***************************************One Signal**********************************************
      * Using One Signal as push notification sample implementation.
      * Push notification are not working in this sample and the implementation of NotificationService
      * class is intended to be used as a sample snippet of code to be used when incoming call notification

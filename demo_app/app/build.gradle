@@ -6,14 +6,22 @@
 buildscript {
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.2, 0.99.99]'
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 def gsonVersion = "2.8.2"
 def okHttpVersion = "3.11.0"
@@ -23,6 +31,12 @@ def leakCanaryVersion = "1.6.2"
 def butterKnifeVersion = "8.8.1"
 def fastAdapterVersion = "3.2.9"
 def picassoLibVersion = "2.71828"
+def jUnitLibVersion = "4.12"
+def multiDexLibVersion = "1.0.3"
+def crashlyticsLibVersion = "2.10.1"
+def oneSignalLibVersion = "[3.10.5, 3.99.99]"
+
+def bandyerLibVersion = "1.2.1"
 
 android {
     compileSdkVersion sdkVersion
@@ -32,22 +46,40 @@ android {
         minSdkVersion 16
         targetSdkVersion sdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName bandyerLibVersion
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
+                // One Signal
                 onesignal_app_id               : '40440a25-ca9a-488f-9728-f2def9db028c',
                 // Project number pulled from dashboard, local value is ignored.
-                onesignal_google_project_number: 'REMOTE'
+                onesignal_google_project_number: 'REMOTE',
+
+                // Fabric api key
+                fabric_api_key                 : 'c7e3f91402fbe3f7c592ced16a51c945c9a1bdc5'
         ]
         multiDexEnabled true
     }
+
     dexOptions {
         preDexLibraries = false
     }
+
+    signingConfigs {
+        release {
+            keyAlias keyStoreAlias
+            keyPassword keyStorePassword
+            storeFile file(keyStoreFilePath)
+            storePassword keyStorePassword
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keyStoreFilePath?.trim()) signingConfig signingConfigs.release
+            ext.betaDistributionReleaseNotes = fabricReleaseNotes()
+            ext.betaDistributionGroupAliases = fabricTestGroup()
         }
     }
     compileOptions {
@@ -62,7 +94,7 @@ android {
         abi {
             enable true
             include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
-            universalApk false
+            universalApk true
         }
 
         // Optionally configures multiple APKs based on screen density.
@@ -77,7 +109,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     /*** Platform ***/
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation "com.android.support:multidex:$multiDexLibVersion"
     implementation("com.android.support:appcompat-v7:$supportLibVersion") {
         exclude group: 'com.android.support', module: 'animated-vector-drawable'
         exclude group: 'com.android.support', module: 'support-vector-drawable'
@@ -97,7 +129,7 @@ dependencies {
     }
 
     //***  Testing ***/
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:$jUnitLibVersion"
 
     //*** Networking ***/
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
@@ -109,24 +141,82 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     /*** Utility ***/
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation "com.squareup.picasso:picasso:$picassoLibVersion"
-
     /*** UI ***/
     implementation "com.mikepenz:fastadapter:$fastAdapterVersion"
     implementation "com.mikepenz:fastadapter-extensions:$fastAdapterVersion"
     implementation "com.mikepenz:fastadapter-commons:$fastAdapterVersion"
-
-    /*** Bandyer Android SDK ***/
-    implementation 'com.bandyer:bandyer-android-sdk:1.2.0'
+    implementation "com.squareup.picasso:picasso:$picassoLibVersion"
 
     /*** OneSignal ***/
-    implementation('com.onesignal:OneSignal:[3.10.5, 3.99.99]')
+    implementation "com.onesignal:OneSignal:$oneSignalLibVersion"
+
+    /*** Fabric Crashlytics ***/
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlyticsLibVersion"
+
+    /*** Bandyer Android SDK ***/
+    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+}
+
+
+/**
+ * The following code is used to release the demo App on fabric
+ * This code is also prepared to be tweaked to support different flavors
+ */
+File crashlyticsProperties = new File("${project.projectDir.absolutePath}/fabric.properties")
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        // Filter is null for universal APKs.
+        def filter = output.getFilter(com.android.build.OutputFile.ABI)
+
+        if (filter == null) {
+
+            def variantSuffix = variant.name.capitalize()
+
+            def generatePropertiesTask = task("crashlyticsGenerateProperties${variantSuffix}") {
+                doLast {
+                    Properties properties = new Properties()
+                    properties.put("apiSecret", fabricApiSecret())
+                    println "Setting apiSecret: ${fabricApiSecret()} to fabric.properties"
+                    properties.store(new FileWriter(crashlyticsProperties), "")
+                }
+            }
+
+            def removePropertiesTask = task("crashlyticsRemoveProperties${variantSuffix}") {
+                doLast {
+                    println "Removing fabric.properties"
+                    crashlyticsProperties.delete()
+                }
+            }
+
+            tasks.findAll {
+                it.name.startsWith(
+                        "crashlyticsUploadDistribution${variantSuffix}")
+            }.each {
+                it.dependsOn generatePropertiesTask
+                it.finalizedBy removePropertiesTask
+                it.doFirst {
+                    ext.betaDistributionApkFilePath = output.outputFile.absolutePath
+                }
+            }
+
+            tasks.findAll {
+                it.name.startsWith(
+                        "crashlyticsUploadSymbols${variantSuffix}")
+            }.each {
+                it.doFirst {
+                    ext.betaDistributionApkFilePath = output.outputFile.absolutePath
+                }
+            }
+        }
+    }
 }
