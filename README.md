@@ -57,7 +57,7 @@ android {
 
 ## News
 - 2019-06-24: Bandyer-Android-SDK 1.2.1 has been released. Improved call and chat UI navigation. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.2.1).
-- 2019-06-20: Bandyer-Android-SDK 1.2.0 has been released. Added in-call screenshare capability. Improved call capabilities when calling from chat UI. Updated FileSharingNotificationListener for improved file sharing experience. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.1.20)
+- 2019-06-20: Bandyer-Android-SDK 1.2.0 has been released. Added in-call screenshare capability. Improved call capabilities when calling from chat UI. Updated FileSharingNotificationListener for improved file sharing experience. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.2.0)
 
 ## Documentation
 
