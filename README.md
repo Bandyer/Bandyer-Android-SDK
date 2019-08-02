@@ -29,7 +29,7 @@
 
 **Even though this sdk encloses strongly the UI/UX, it is fully stylable through default Android style system.**
 
-<img src="img/chat.png" height="360"/><img src="img/audio_call.png" height="360"/><img src="img/video_call.png" height="360"/> <img src="img/pip.png" height="360"/> 
+<img src="img/img0.png" height="360"/><img src="img/img1.png" height="360"/><img src="img/img2.png" height="360"/><img src="img/img3.png" height="360"/><img src="img/img4.png" height="360"/><img src="img/img5.png" height="360"/><img src="img/img6.png" height="360"/><img src="img/img7.png" height="360"/> 
 
 ## Requirements
 
@@ -107,6 +107,8 @@ android {
 
 ### Migrations
 [ Upgrade to v1.1.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.1.x)
+
+[ Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
 
 ### Code documentation
 [Kotlin](https://bandyer.github.io/Bandyer-Android-SDK/kDoc/)
