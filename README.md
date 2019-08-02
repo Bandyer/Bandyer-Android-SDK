@@ -44,6 +44,12 @@ android {
     }
 }
 ```
+## Latest releases
+
+AndroidX >= **v1.3.0**
+
+AppCompat <= **v1.2.1**
+
 
 ## Features
 
