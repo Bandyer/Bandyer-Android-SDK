@@ -1,115 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_toolbar"
+    <LinearLayout
+        android:id="@+id/content"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
+            android:id="@+id/ongoing_call_label"
+            style="@style/BandyerSDKDesign.TextView.OngoingCallLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:theme="@style/ToolBarStyle" />
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/white"
+            android:focusableInTouchMode="false"
+            android:visibility="gone" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refreshUsers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbar_toolbar">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/selected_users_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="@dimen/space16"
+            android:layout_marginEnd="@dimen/space16"
+            android:layout_marginLeft="@dimen/space16"
+            android:layout_marginRight="@dimen/space16"
+            android:layout_marginTop="@dimen/space16"
+            android:text="@string/selected_users"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/text_h3" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selected_users_chipgroup"
+            android:clipToPadding="false"
+            android:paddingLeft="@dimen/space16"
+            android:paddingRight="@dimen/space16"
+            android:paddingStart="@dimen/space16"
+            android:paddingEnd="@dimen/space16"
+            android:layout_marginTop="@dimen/space16"
+            android:layout_marginBottom="@dimen/space16"
+            android:layout_width="match_parent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="@dimen/space32" />
 
-            <TextView
-                android:id="@+id/userGreeting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/space16"
-                android:text="@string/pick_users"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="@dimen/text_h1" />
+        <TextView
+            android:id="@+id/no_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_user_found"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space56"
+            android:textColor="?android:attr/textColorPrimary"
+            android:visibility="gone" />
 
-            <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
-                android:id="@+id/ongoing_call_label"
-                style="@style/BandyerSDKDesign.TextView.OngoingCallLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:textColor="@color/white"
-                android:focusableInTouchMode="false"
-                android:visibility="gone" />
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space56"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/contactsList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:nextFocusRight="@+id/chat" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contactsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nextFocusRight="@+id/chat"
+            android:requiresFadingEdge="vertical"
+            android:cacheColorHint="@color/white" />
 
-        </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/no_results"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appbar_toolbar"
-        android:gravity="center"
-        android:textColor="?android:attr/textColorPrimary"
-        android:text="@string/no_user_found"
-        android:visibility="gone" />
-
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/call"
-        android:layout_toStartOf="@+id/call"
-        android:layout_toLeftOf="@+id/call"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="false"
         android:nextFocusLeft="@+id/checkbox"
+        android:layout_margin="@dimen/space16"
         android:nextFocusRight="@+id/call"
         android:scaleType="centerCrop"
+        app:layout_anchor="@+id/spacer"
+        android:layout_gravity="start"
+        app:layout_anchorGravity="start|left|bottom"
         android:src="@drawable/ic_bandyer_chat"
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         app:maxImageSize="56dp"
         app:tint="#ffffff" />
 
-    <android.support.design.widget.FloatingActionButton
+    <View
+        android:id="@+id/chat_info_api_19"
+        android:layout_width="@dimen/space72"
+        android:layout_height="@dimen/space72"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:nextFocusLeft="@+id/checkbox"
+        android:layout_margin="@dimen/space16"
+        android:nextFocusRight="@+id/call"
+        android:scaleType="centerCrop"
+        app:layout_anchor="@+id/spacer"
+        android:layout_gravity="start"
+        app:layout_anchorGravity="start|left|bottom" />
+
+    <Space
+        android:id="@+id/spacer"
+        app:layout_anchor="@+id/call"
+        android:layout_gravity="start"
+        app:layout_anchorGravity="start|left|bottom"
+        android:layout_height="@dimen/space16"
+        android:layout_width="@dimen/space16"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/space16"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="false"
+        android:layout_margin="@dimen/space16"
         android:nextFocusLeft="@+id/chat"
         android:scaleType="centerCrop"
+        app:layout_anchor="@+id/content"
+        app:layout_anchorGravity="bottom|right"
         android:src="@drawable/ic_bandyer_audio_call"
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         app:maxImageSize="40dp"
         app:tint="#ffffff" />
 
-</RelativeLayout>
+</merge>

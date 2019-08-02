@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 /**
  * WARNING!!!
- * The networking package is used only to fetch the users, to make the demo app run out of the box.
- * With the least efforts.
+ * The networking package is used only to fetch the users, to make the demo app run out of the box,
+ * with the least efforts.
  * <p>
  * Model used to map the users coming from the mocked network call
  *

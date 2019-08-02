@@ -10,18 +10,17 @@ buildscript {
 
     ext.sdkVersion = 28
     ext.buildToolsVersion = "28.0.3"
-    ext.supportLibVersion = "28.0.0"
-    ext.archLifecycleVersion = "1.1.1"
     ext.stethoVersion = "1.5.0"
 
-    ext.keyStoreAlias = ""
-    ext.keyStorePassword = ""
-    ext.keyStoreFilePath = " "
-    ext.keyStorePassword = ""
+    ext.keyStoreAlias = { buildType -> return " " }
+    ext.keyStorePassword = { buildType -> return " " }
+    ext.keyStoreFilePath = { buildType -> return " " }
+    ext.keyStorePassword = { buildType -> return " " }
 
     ext.fabricReleaseNotes = { -> return "" }
     ext.fabricTestGroup = { -> return "" }
     ext.fabricApiSecret = { -> return "" }
+    ext.crashlyticsAppId = { -> return "" }
 
     repositories {
         google()
@@ -30,10 +29,11 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.google.gms:google-services:4.3.0'  // Google Services plugin
     }
 }
 
@@ -45,28 +45,6 @@ allprojects {
         mavenLocal()
         maven { url 'https://jitpack.io' }
         maven { url "https://dl.bintray.com/bandyer/Communication" }
-    }
-
-    configurations.all {
-        resolutionStrategy.force "com.android.support:support-annotations:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:support-v4:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:appcompat-v7:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:recyclerview-v7:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:design:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:cardview-v7:$supportLibVersion"
-        resolutionStrategy.force "android.arch.lifecycle:runtime:$archLifecycleVersion"
-    }
-}
-
-subprojects {
-    project.configurations.all {
-        resolutionStrategy.force "com.android.support:support-annotations:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:support-v4:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:appcompat-v7:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:recyclerview-v7:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:design:$supportLibVersion"
-        resolutionStrategy.force "com.android.support:cardview-v7:$supportLibVersion"
-        resolutionStrategy.force "android.arch.lifecycle:runtime:$archLifecycleVersion"
     }
 }
 

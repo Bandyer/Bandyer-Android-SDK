@@ -1,11 +1,11 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
 package com.bandyer.demo_android_sdk.mock;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener;

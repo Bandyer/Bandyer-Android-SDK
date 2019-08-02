@@ -1,14 +1,15 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
-package com.bandyer.demo_android_sdk.utils;
+package com.bandyer.demo_android_sdk.utils.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.bandyer.demo_android_sdk.BaseActivity;
+import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
+import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -21,6 +22,7 @@ public class LoginManager {
 
     private final static String MY_PREFS_NAME = "myPrefs";
 
+
     /**
      * Utility to log a user in the application
      *
@@ -31,6 +33,10 @@ public class LoginManager {
         SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("userAlias", userAlias);
         editor.apply();
+
+        // Register device for receive push notifications
+        // It will not work for you, you should implement your own server for notification send/receive logics
+        FirebaseCompat.registerDevice(context);
     }
 
     /**
@@ -61,6 +67,11 @@ public class LoginManager {
      * @param context BaseActivity
      */
     public static void logout(BaseActivity context) {
+
+        // unregister device for push notifications
+        // It will not work for you, you should implement your own server for notification send/receive logics
+        FirebaseCompat.unregisterDevice(context, getLoggedUser(context));
+
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         prefs.edit().clear().apply();
     }

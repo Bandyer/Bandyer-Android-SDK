@@ -1,68 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:theme="@style/ToolBarStyle" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refreshUsers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbar_toolbar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/space16"
-                android:text="@string/login_title"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="@dimen/text_h1" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_users"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipChildren="false"
-                android:clipToPadding="false" />
-
-        </LinearLayout>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/no_results"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appbar_toolbar"
-        android:gravity="center"
-        android:textColor="?android:attr/textColorPrimary"
+        android:layout_height="wrap_content"
         android:text="@string/no_user_found"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space56"
+        android:textColor="?android:attr/textColorPrimary"
         android:visibility="gone" />
 
-</RelativeLayout>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space56"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_users"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nextFocusRight="@+id/chat" />
+
+</LinearLayout>

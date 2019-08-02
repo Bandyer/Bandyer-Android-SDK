@@ -1,17 +1,20 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
-package com.bandyer.demo_android_sdk;
+package com.bandyer.demo_android_sdk.utils.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.DPadNavigationHelper;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
 
@@ -47,13 +50,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showErrorDialog(String text) {
+        showErrorDialog(text, null);
+    }
+
+    protected void showErrorDialog(String text, DialogInterface.OnClickListener clickListener) {
         if (dialog != null) dialog.dismiss();
         if (isFinishing()) return;
 
         dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.dialog_error_title)
                 .setMessage(text)
-                .setPositiveButton(R.string.dialog_ok, null)
+                .setPositiveButton(R.string.dialog_ok, clickListener)
                 .create();
 
         dialog.show();

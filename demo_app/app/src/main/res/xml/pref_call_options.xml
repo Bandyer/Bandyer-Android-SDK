@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        android:title="In-call default capabilities">
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_whiteboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false"
+            android:key="@string/whiteboard_requires_api_19"
+            android:title="@string/whiteboard_requires_api_19" />
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_file_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false"
+            android:key="@string/file_sharing"
+            android:title="@string/file_sharing" />
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false"
+            android:key="@string/chat_requires_api_19"
+            android:title="@string/chat_requires_api_19" />
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_screen_sharing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false"
+            android:key="@string/screen_sharing_requires_api_21"
+            android:title="@string/screen_sharing_requires_api_21" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        android:title="In-call default options">
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_recording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            app:iconSpaceReserved="false"
+            android:key="@string/call_recording"
+            android:title="@string/call_recording" />
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_back_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            app:iconSpaceReserved="false"
+            android:key="@string/back_camera_as_default_if_available"
+            android:title="@string/back_camera_as_default_if_available" />
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_disable_proximity_sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space16"
+            android:defaultValue="false"
+            app:iconSpaceReserved="false"
+            android:key="@string/disable_proximity_sensor"
+            android:title="@string/disable_proximity_sensor" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

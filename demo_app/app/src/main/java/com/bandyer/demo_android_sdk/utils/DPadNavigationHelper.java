@@ -1,10 +1,15 @@
+/*
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.utils;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.graphics.PointF;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;

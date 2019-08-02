@@ -1,9 +1,9 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
-package com.bandyer.demo_app;
+package com.bandyer.demo_android_sdk;
 
 import org.junit.Test;
 

@@ -1,18 +1,21 @@
 <!--
-  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
 
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="SplashScreenAppTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 
     <!-- ToolBar -->
@@ -27,6 +30,24 @@
         <item name="searchHintIcon">@null</item>
         <item name="searchIcon">@null</item>
         <item name="queryBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AccentButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:height">@dimen/space48</item>
+        <item name="colorButtonNormal">@color/accent</item>
+    </style>
+
+    <style name="CancelButton" parent="Widget.AppCompat.Button">
+        <item name="android:height">@dimen/space48</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ExpandedToolbarStyle" parent="@android:style/TextAppearance">
+        <item name="android:text">@string/pick_users</item>
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_h1</item>
     </style>
 
 </resources>

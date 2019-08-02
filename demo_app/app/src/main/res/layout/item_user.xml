@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
 <TextView
@@ -8,6 +8,7 @@
     android:id="@+id/userAlias"
     android:focusable="true"
     android:clickable="true"
+    android:background="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/space16"

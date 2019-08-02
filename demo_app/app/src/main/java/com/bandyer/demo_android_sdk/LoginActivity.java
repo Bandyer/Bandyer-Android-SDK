@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
@@ -7,25 +7,27 @@ package com.bandyer.demo_android_sdk;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
 import com.bandyer.demo_android_sdk.adapter_items.UserItem;
-import com.bandyer.demo_android_sdk.utils.LoginManager;
+import com.bandyer.demo_android_sdk.settings.ConfigurationActivity;
+import com.bandyer.demo_android_sdk.utils.activities.CollapsingToolbarActivity;
+import com.bandyer.demo_android_sdk.utils.storage.LoginManager;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
+import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
-import com.mikepenz.fastadapter.IItemAdapter;
-import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.ItemFilterListener;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
 
@@ -44,7 +46,7 @@ import butterknife.BindView;
  * For more information about how it works FastAdapter:
  * https://github.com/mikepenz/FastAdapter
  */
-public class LoginActivity extends BaseActivity implements OnClickListener<UserItem>, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
+public class LoginActivity extends CollapsingToolbarActivity implements OnClickListener<UserItem>, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.list_users)
     RecyclerView listUsers;
@@ -55,12 +57,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     @BindView(R.id.no_results)
     View noFilterResults;
 
-    @BindView(R.id.refreshUsers)
-    SwipeRefreshLayout refreshUsers;
-
     private SearchView searchView;
 
-    private FastItemAdapter<UserItem> fastAdapter = new FastItemAdapter<UserItem>();
+    private ItemAdapter<UserItem> itemAdapter = ItemAdapter.items();
+    private FastAdapter<UserItem> fastAdapter = FastAdapter.with(itemAdapter);
 
     // the userAlias is the identifier of the created user via Bandyer-server restCall see https://docs.bandyer.com/Bandyer-RESTAPI/#create-user
     private String userAlias = "";
@@ -80,11 +80,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
         setContentView(R.layout.activity_login);
 
         // customize toolbar
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        setCollapsingToolbarTitle(getResources().getString(R.string.login_title));
 
         // set the recyclerView
         listUsers.setAdapter(fastAdapter);
@@ -94,16 +90,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
         fastAdapter.withSelectable(true);
         fastAdapter.withOnPreClickListener(this);
 
-        fastAdapter.getItemFilter().withFilterPredicate(new IItemAdapter.Predicate<UserItem>() {
-            @Override
-            public boolean filter(UserItem userSelectionItem, CharSequence constraint) {
-                return userSelectionItem.userAlias.contains(constraint);
-            }
-        });
+        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.userAlias.contains(constraint));
 
-        fastAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserItem>() {
+        itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserItem>() {
             @Override
-            public void itemsFiltered(@javax.annotation.Nullable CharSequence constraint, @javax.annotation.Nullable List<UserItem> results) {
+            public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserItem> results) {
                 if (results.size() > 0)
                     noFilterResults.setVisibility(View.GONE);
                 else
@@ -117,7 +108,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
         });
 
         refreshUsers.setOnRefreshListener(this);
-        refreshUsers.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
     }
 
     @Override
@@ -132,7 +122,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
             return;
         }
 
-        if (usersList.size() > 0) return;
         onRefresh();
     }
 
@@ -141,9 +130,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.login, menu);
-        searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView = (SearchView) menu.findItem(R.id.searchLogin).getActionView();
+        searchView.setOnSearchClickListener(v -> appBarLayout.setExpanded(false, true));
         searchView.setQueryHint(getString(R.string.search));
         searchView.setOnQueryTextListener(this);
+        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(item -> {
+            ConfigurationActivity.show(this);
+            return true;
+        });
         return true;
     }
 
@@ -154,27 +148,33 @@ public class LoginActivity extends BaseActivity implements OnClickListener<UserI
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        fastAdapter.filter(newText);
+        itemAdapter.filter(newText);
         return true;
     }
 
     @Override
     public void onRefresh() {
+        itemAdapter.clear();
+        loading.setVisibility(View.VISIBLE);
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
             public void onUsers(List<String> users) {
+                loading.setVisibility(View.GONE);
                 usersList.clear();
                 // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
                 for (String user : users) usersList.add(new UserItem(user));
                 refreshUsers.setRefreshing(false);
-                fastAdapter.set(usersList);
-                if (searchView != null) fastAdapter.filter(searchView.getQuery());
+                itemAdapter.set(usersList);
+                if (searchView != null) itemAdapter.filter(searchView.getQuery());
             }
 
             @Override
             public void onError(String error) {
+                loading.setVisibility(View.GONE);
                 showErrorDialog(error);
+                refreshUsers.setRefreshing(false);
+                itemAdapter.clear();
             }
         });
     }

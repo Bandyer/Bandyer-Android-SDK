@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RadioButton
+        android:id="@+id/call_options_title"
+        android:checked="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/audio_only" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/call_options_headerIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+</merge>
