@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseCallOptions - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.intent.call</a>&nbsp;/&nbsp;<a href="./index.html">BaseCallOptions</a><br/>
+<br/>
+<h1>BaseCallOptions</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseCallOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>BaseCallOptions is an object to personalize how a call should behave</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BaseCallOptions</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.BaseCallOptions$<init>(android.os.Bundle, kotlin.Boolean, kotlin.Boolean)/mBundle">mBundle</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/os/Bundle.html"><span class="identifier">Bundle</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.BaseCallOptions$<init>(android.os.Bundle, kotlin.Boolean, kotlin.Boolean)/backCameraAsDefault">backCameraAsDefault</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.BaseCallOptions$<init>(android.os.Bundle, kotlin.Boolean, kotlin.Boolean)/disableProximitySensor">disableProximitySensor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>BaseCallOptions is an object to personalize how a call should behave</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="with-back-camera-as-default.html">withBackCameraAsDefault</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withBackCameraAsDefault</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html#T"><span class="identifier">T</span></a></code>
+<p>This functions adds the option to use back camera as default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-proximity-sensor-disabled.html">withProximitySensorDisabled</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">withProximitySensorDisabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html#T"><span class="identifier">T</span></a></code>
+<p>This functions disables the usage of proximity sensor during calls.
+It can be useful for custom devices such as smartglasses.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-call-options/index.html">CallOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="../-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">&gt;</span></code>
+<p>CallOptions all properties that can be enabled for a Outgoing call</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-incoming-call-options/index.html">IncomingCallOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="../-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">&gt;</span></code>
+<p>IncomingCallOptions all properties that can be enabled for a Incoming call</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

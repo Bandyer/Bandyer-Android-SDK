@@ -10,20 +10,6 @@
 <h1>ChatIntentOptions</h1>
 <code><span class="keyword">class </span><span class="identifier">ChatIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a><span class="symbol">&gt;</span></code>
 <p>Builder class for custom chat or chat intent.</p>
-<h3>Inherited Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<p><a href="../../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/bundle.html">bundle</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">bundle</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/os/Bundle.html"><span class="identifier">Bundle</span></a></code>
-<p>Bundle</p>
-</td>
-</tr>
-</tbody>
-</table>
 <h3>Functions</h3>
 <table>
 <tbody>
@@ -32,7 +18,7 @@
 <p><a href="with-audio-call-capability.html">withAudioCallCapability</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withAudioCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">withAudioCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
 <p>Audio call capability means that you can initialize an audio call from chat activity.</p>
 </td>
 </tr>
@@ -41,7 +27,7 @@
 <p><a href="with-audio-upgradable-call-capability.html">withAudioUpgradableCallCapability</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withAudioUpgradableCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioUpgradableCallCapability(kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">withAudioUpgradableCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioUpgradableCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioUpgradableCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
 <p>Audio call capability means that you can initialize an audio/video call from chat activity.
 Upgradable means that the call will be initialized as audio call but can be
 upgraded to video if selected camera button from call action items.</p>
@@ -52,35 +38,8 @@ upgraded to video if selected camera button from call action items.</p>
 <p><a href="with-audio-video-call-capability.html">withAudioVideoCallCapability</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">withAudioVideoCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioVideoCallCapability(kotlin.Boolean)/record">record</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
+<code><span class="keyword">fun </span><span class="identifier">withAudioVideoCallCapability</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioVideoCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.ChatIntentOptions$withAudioVideoCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
 <p>Audio video call capability means that you can initialize a video call from chat activity.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-file-sharing-in-call-capability.html">withFileSharingInCallCapability</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withFileSharingInCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
-<p>File sharing capability means that will be allowed to initialize upload/download file from audio/video call activity.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-screen-sharing-in-call-capability.html">withScreenSharingInCallCapability</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withScreenSharingInCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
-<p>Screen sharing capability means that will be allowed to share your screen in a audio/video call activity.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="with-whiteboard-in-call-capability.html">withWhiteboardInCallCapability</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withWhiteboardInCallCapability</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">ChatIntentOptions</span></a></code>
-<p>Whiteboard in call capability means that you can use the whiteboard during a call started from a chat.</p>
 </td>
 </tr>
 </tbody>
@@ -95,15 +54,6 @@ upgraded to video if selected camera button from call action items.</p>
 <td>
 <code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.intent/-bandyer-intent/index.html"><span class="identifier">BandyerIntent</span></a></code>
 <p>Create the intent instance.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="../../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/with-user-details.html">withUserDetails</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withUserDetails</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerBaseIntentOptions$withUserDetails(kotlin.collections.Iterable((com.bandyer.android_sdk.utils.provider.UserDetails)))/userDetails">userDetails</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html"><span class="identifier">Iterable</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details/index.html"><span class="identifier">UserDetails</span></a><span class="symbol">&gt;</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html#T"><span class="identifier">T</span></a></code>
-<p>Adds user details that have been already loaded for the next chat or call flow.</p>
 </td>
 </tr>
 </tbody>

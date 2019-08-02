@@ -20,6 +20,15 @@
 <p>Module used for audio&video communication.</p>
 </td>
 </tr>
+<tr>
+<td>
+<p><a href="-call-observer/index.html">CallObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CallObserver</span></code>
+<p>This class represent a call status observer which will be notified when a call is started or ended.</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3>Exceptions</h3>
@@ -27,39 +36,11 @@
 <tbody>
 <tr>
 <td>
-<p><a href="-call-initialization-exception/index.html">CallInitializationException</a></p>
+<p><a href="-call-exception/index.html">CallException</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">CallInitializationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call-module-exception/index.html"><span class="identifier">CallModuleException</span></a></code>
-<p>Exception representing an initialization problem</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="-call-module-end-of-support-exception/index.html">CallModuleEndOfSupportException</a></p>
-</td>
-<td>
-<code><span class="keyword">class </span><span class="identifier">CallModuleEndOfSupportException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call-module-exception/index.html"><span class="identifier">CallModuleException</span></a></code>
-<p>Exception representing a problem with current version of the call module.
-This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="-call-module-exception/index.html">CallModuleException</a></p>
-</td>
-<td>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallModuleException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a></code>
-<p>Exception representing a problem with call module</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="-call-notification-payload-exception/index.html">CallNotificationPayloadException</a></p>
-</td>
-<td>
-<code><span class="keyword">class </span><span class="identifier">CallNotificationPayloadException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call-module-exception/index.html"><span class="identifier">CallModuleException</span></a></code>
-<p>Exception representing a parse exception for the notifcation payload</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a></code>
+<p>Exception that represents an error received from the call UI.</p>
 </td>
 </tr>
 </tbody>

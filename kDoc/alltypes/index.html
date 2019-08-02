@@ -23,6 +23,13 @@
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.module/-authentication-exception/index.html">com.bandyer.android_sdk.module.AuthenticationException</a></td>
+<td>
+<p>Exception representing an authentication problem</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html">com.bandyer.android_sdk.intent.BandyerBaseIntentOptions</a></td>
 <td>
 <p>BandyerBaseIntentOptions of Type T</p>
@@ -37,18 +44,18 @@
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.intent/-bandyer-intent/index.html">com.bandyer.android_sdk.intent.BandyerIntent</a></td>
+<a href="../com.bandyer.android_sdk.intent/-bandyer-error-results/index.html">com.bandyer.android_sdk.intent.BandyerErrorResults</a></td>
 <td>
-<p>This custom Intent class is used to start a chat or a call in the Bandyer Environment and needs to be created with
-Builder class provided.</p>
+<p>The results returned on activity finish
+If you launch the Chat or Call with startForResult you may receive the results enclosed in this class</p>
 </td>
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.intent/-bandyer-intent-results/index.html">com.bandyer.android_sdk.intent.BandyerIntentResults</a></td>
+<a href="../com.bandyer.android_sdk.intent/-bandyer-intent/index.html">com.bandyer.android_sdk.intent.BandyerIntent</a></td>
 <td>
-<p>The results returned on activity finish
-If you launch the Chat or Call with startForResult you may receive the results enclosed in this class</p>
+<p>This custom Intent class is used to start a chat or a call in the Bandyer Environment and needs to be created with
+Builder class provided.</p>
 </td>
 </tr>
 <tr>
@@ -117,6 +124,20 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.intent.call/-base-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallIntentOptions</a></td>
+<td>
+<p>BaseCallIntentOptions defines the base properties that can be set on a call</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-base-call-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallOptions</a></td>
+<td>
+<p>BaseCallOptions is an object to personalize how a call should behave</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.notification/-base-notification/index.html">com.bandyer.android_sdk.notification.BaseNotification</a></td>
 <td>
 <p>BaseNotification</p>
@@ -131,6 +152,20 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html">com.bandyer.android_sdk.intent.call.CallCapabilities</a></td>
+<td>
+<p>This class represents call capabilities that can be used for a call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-exception/index.html">com.bandyer.android_sdk.call.CallException</a></td>
+<td>
+<p>Exception that represents an error received from the call UI.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.call.model/-call-info/index.html">com.bandyer.android_sdk.call.model.CallInfo</a></td>
 <td>
 <p>CallInfo representing the call information such as the type ( Audio&Video, Audio Upgradable, Audio Only) or the participants details</p>
@@ -138,23 +173,16 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.call/-call-initialization-exception/index.html">com.bandyer.android_sdk.call.CallInitializationException</a></td>
-<td>
-<p>Exception representing an initialization problem</p>
-</td>
-</tr>
-<tr>
-<td>
 <a href="../com.bandyer.android_sdk.intent.call/-call-intent-builder/index.html">com.bandyer.android_sdk.intent.call.CallIntentBuilder</a></td>
 <td>
-<p>Call Intent Builder used to define the call options</p>
+<p>Call Intent Builder used to define the call properties</p>
 </td>
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.intent.call/-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.CallIntentOptions</a></td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-intent-options.html">com.bandyer.android_sdk.intent.call.CallIntentOptions</a></td>
 <td>
-<p>CallIntentOptions</p>
+<p>CallIntentOptions class allows to specify properties for outgoing calls</p>
 </td>
 </tr>
 <tr>
@@ -162,21 +190,6 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 <a href="../com.bandyer.android_sdk.call/-call-module/index.html">com.bandyer.android_sdk.call.CallModule</a></td>
 <td>
 <p>Module used for audio&video communication.</p>
-</td>
-</tr>
-<tr>
-<td>
-<a href="../com.bandyer.android_sdk.call/-call-module-end-of-support-exception/index.html">com.bandyer.android_sdk.call.CallModuleEndOfSupportException</a></td>
-<td>
-<p>Exception representing a problem with current version of the call module.
-This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
-</td>
-</tr>
-<tr>
-<td>
-<a href="../com.bandyer.android_sdk.call/-call-module-exception/index.html">com.bandyer.android_sdk.call.CallModuleException</a></td>
-<td>
-<p>Exception representing a problem with call module</p>
 </td>
 </tr>
 <tr>
@@ -195,13 +208,6 @@ This exception will be thrown when the version used is outdated and no longer su
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.call/-call-notification-payload-exception/index.html">com.bandyer.android_sdk.call.CallNotificationPayloadException</a></td>
-<td>
-<p>Exception representing a parse exception for the notifcation payload</p>
-</td>
-</tr>
-<tr>
-<td>
 <a href="../com.bandyer.android_sdk.call.notification/-call-notification-style.html">com.bandyer.android_sdk.call.notification.CallNotificationStyle</a></td>
 <td>
 <p>Style of the call notification</p>
@@ -212,6 +218,20 @@ This exception will be thrown when the version used is outdated and no longer su
 <a href="../com.bandyer.android_sdk.call.notification/-call-notification-type/index.html">com.bandyer.android_sdk.call.notification.CallNotificationType</a></td>
 <td>
 <p>Types of call notifications that are currently handled</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-observer/index.html">com.bandyer.android_sdk.call.CallObserver</a></td>
+<td>
+<p>This class represent a call status observer which will be notified when a call is started or ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-options/index.html">com.bandyer.android_sdk.intent.call.CallOptions</a></td>
+<td>
+<p>CallOptions all properties that can be enabled for a Outgoing call</p>
 </td>
 </tr>
 <tr>
@@ -231,9 +251,9 @@ in other activities than call activity when the call is running in background.</
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.chat/-chat-connection-exception/index.html">com.bandyer.android_sdk.chat.ChatConnectionException</a></td>
+<a href="../com.bandyer.android_sdk.chat/-chat-exception/index.html">com.bandyer.android_sdk.chat.ChatException</a></td>
 <td>
-<p>Exception representing a connection problem</p>
+<p>This exception represents an error that has been received from chat UI.</p>
 </td>
 </tr>
 <tr>
@@ -241,13 +261,6 @@ in other activities than call activity when the call is running in background.</
 <a href="../com.bandyer.android_sdk.chat/-chat-info/index.html">com.bandyer.android_sdk.chat.ChatInfo</a></td>
 <td>
 <p>Information about the chat</p>
-</td>
-</tr>
-<tr>
-<td>
-<a href="../com.bandyer.android_sdk.chat/-chat-initialization-exception/index.html">com.bandyer.android_sdk.chat.ChatInitializationException</a></td>
-<td>
-<p>Exception representing an initialization problem</p>
 </td>
 </tr>
 <tr>
@@ -294,6 +307,13 @@ in other activities than call activity when the call is running in background.</
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.chat/-chat-observer/index.html">com.bandyer.android_sdk.chat.ChatObserver</a></td>
+<td>
+<p>This class represent a chat status observer which will be notified when a chat is started or ended.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.client/-client-initialization-exception/index.html">com.bandyer.android_sdk.client.ClientInitializationException</a></td>
 <td>
 <p>Exception thrown when the client has failed it's initialization</p>
@@ -305,6 +325,14 @@ in other activities than call activity when the call is running in background.</
 <td>
 <p>Helper class for accessing hardware specifications, including the number of CPU cores, CPU clock speed
 and total available RAM.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.module/-end-of-support-exception/index.html">com.bandyer.android_sdk.module.EndOfSupportException</a></td>
+<td>
+<p>Exception representing a problem with current version of the module.
+This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
 </td>
 </tr>
 <tr>
@@ -380,6 +408,20 @@ This context may be used to customize an incoming event, based on the component 
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.intent.call/-incoming-call-intent-options.html">com.bandyer.android_sdk.intent.call.IncomingCallIntentOptions</a></td>
+<td>
+<p>IncomingCallIntentOptions class allows to specify properties for incoming calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-incoming-call-options/index.html">com.bandyer.android_sdk.intent.call.IncomingCallOptions</a></td>
+<td>
+<p>IncomingCallOptions all properties that can be enabled for a Incoming call</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.intent.chat/-incoming-chat/index.html">com.bandyer.android_sdk.intent.chat.IncomingChat</a></td>
 <td>
 <p>Incoming Chat received</p>
@@ -394,6 +436,13 @@ This context may be used to customize an incoming event, based on the component 
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.module/-initialization-exception/index.html">com.bandyer.android_sdk.module.InitializationException</a></td>
+<td>
+<p>Exception representing an initialization problem</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.utils/kotlin.collections.-iterable/index.html">kotlin.collections.Iterable</a> (extensions in package com.bandyer.android_sdk.utils)</td>
 <td>
 </td>
@@ -403,6 +452,13 @@ This context may be used to customize an incoming event, based on the component 
 <a href="../com.bandyer.android_sdk.utils/-key-code/index.html">com.bandyer.android_sdk.utils.KeyCode</a></td>
 <td>
 <p>Wrapper class for key code events.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.module/-module-exception/index.html">com.bandyer.android_sdk.module.ModuleException</a></td>
+<td>
+<p>Exception representing a problem with a bandyer module</p>
 </td>
 </tr>
 <tr>

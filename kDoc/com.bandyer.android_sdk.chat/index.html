@@ -29,6 +29,15 @@
 <p>Module used for text communication.</p>
 </td>
 </tr>
+<tr>
+<td>
+<p><a href="-chat-observer/index.html">ChatObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChatObserver</span></code>
+<p>This class represent a chat status observer which will be notified when a chat is started or ended.</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3>Exceptions</h3>
@@ -36,20 +45,11 @@
 <tbody>
 <tr>
 <td>
-<p><a href="-chat-connection-exception/index.html">ChatConnectionException</a></p>
+<p><a href="-chat-exception/index.html">ChatException</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">ChatConnectionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a></code>
-<p>Exception representing a connection problem</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="-chat-initialization-exception/index.html">ChatInitializationException</a></p>
-</td>
-<td>
-<code><span class="keyword">class </span><span class="identifier">ChatInitializationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a></code>
-<p>Exception representing an initialization problem</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ChatException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a></code>
+<p>This exception represents an error that has been received from chat UI.</p>
 </td>
 </tr>
 </tbody>

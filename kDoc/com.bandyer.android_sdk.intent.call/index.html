@@ -13,20 +13,56 @@
 <tbody>
 <tr>
 <td>
-<p><a href="-call-intent-builder/index.html">CallIntentBuilder</a></p>
+<p><a href="-base-call-intent-options/index.html">BaseCallIntentOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentBuilder</span></code>
-<p>Call Intent Builder used to define the call options</p>
+<code><span class="keyword">interface </span><span class="identifier">BaseCallIntentOptions</span><span class="symbol">&lt;</span><span class="identifier">C</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier">O</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>BaseCallIntentOptions defines the base properties that can be set on a call</p>
 </td>
 </tr>
 <tr>
 <td>
-<p><a href="-call-intent-options/index.html">CallIntentOptions</a></p>
+<p><a href="-base-call-options/index.html">BaseCallOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">CallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-intent-options/index.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span></code>
-<p>CallIntentOptions</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseCallOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>BaseCallOptions is an object to personalize how a call should behave</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-capabilities/index.html">CallCapabilities</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">CallCapabilities</span></code>
+<p>This class represents call capabilities that can be used for a call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-intent-builder/index.html">CallIntentBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentBuilder</span></code>
+<p>Call Intent Builder used to define the call properties</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-intent-options.html">CallIntentOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span></code>
+<p>CallIntentOptions class allows to specify properties for outgoing calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-options/index.html">CallOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">&gt;</span></code>
+<p>CallOptions all properties that can be enabled for a Outgoing call</p>
 </td>
 </tr>
 <tr>
@@ -36,6 +72,24 @@
 <td>
 <code><span class="keyword">class </span><span class="identifier">IncomingCall</span></code>
 <p>IncomingCall received</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-incoming-call-intent-options.html">IncomingCallIntentOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span></code>
+<p>IncomingCallIntentOptions class allows to specify properties for incoming calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-incoming-call-options/index.html">IncomingCallOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">&gt;</span></code>
+<p>IncomingCallOptions all properties that can be enabled for a Incoming call</p>
 </td>
 </tr>
 </tbody>

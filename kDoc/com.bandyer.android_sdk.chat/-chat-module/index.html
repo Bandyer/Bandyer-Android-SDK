@@ -10,6 +10,20 @@
 <h1>ChatModule</h1>
 <code><span class="keyword">interface </span><span class="identifier">ChatModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html"><span class="identifier">BandyerModule</span></a></code>
 <p>Module used for text communication.</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="chat-observers.html">chatObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">chatObservers</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-chat-observer/index.html"><span class="identifier">ChatObserver</span></a><span class="symbol">&gt;</span></code>
+<p>Ongoing chat observers.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <h3>Inherited Properties</h3>
 <table>
 <tbody>
@@ -38,11 +52,39 @@
 <tbody>
 <tr>
 <td>
+<p><a href="add-chat-observer.html">addChatObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addChatObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.chat.ChatObserver)/appCompatActivity">appCompatActivity</span><span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.chat.ChatObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-observer/index.html"><span class="identifier">ChatObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the starting or ending event of a chat from an activity.
+The observer is automatically disposed when activity is destroyed.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="get-name.html">getName</a></p>
 </td>
 <td>
 <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
 <p>Returns the name of the component</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-all-chat-observers.html">removeAllChatObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeAllChatObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Removes all chat observers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-chat-observer.html">removeChatObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeChatObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$removeChatObserver(com.bandyer.android_sdk.chat.ChatObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-observer/index.html"><span class="identifier">ChatObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove specified chat observer, if already added.</p>
 </td>
 </tr>
 </tbody>

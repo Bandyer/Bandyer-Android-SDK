@@ -10,25 +10,8 @@
 <h1>BandyerBaseIntentOptions</h1>
 <code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BandyerBaseIntentOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
 <p>BandyerBaseIntentOptions of Type T</p>
-<h3>Parameters</h3>
-<p><a name="bundle"></a>
-<code>bundle</code> - Bundle</p>
 <p><strong>Author</strong><br/>
 kristiyan</p>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<p><a href="bundle.html">bundle</a></p>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">bundle</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/os/Bundle.html"><span class="identifier">Bundle</span></a></code>
-<p>Bundle</p>
-</td>
-</tr>
-</tbody>
-</table>
 <h3>Functions</h3>
 <table>
 <tbody>
@@ -41,15 +24,6 @@ kristiyan</p>
 <p>Create the intent instance.</p>
 </td>
 </tr>
-<tr>
-<td>
-<p><a href="with-user-details.html">withUserDetails</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withUserDetails</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.BandyerBaseIntentOptions$withUserDetails(kotlin.collections.Iterable((com.bandyer.android_sdk.utils.provider.UserDetails)))/userDetails">userDetails</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html"><span class="identifier">Iterable</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details/index.html"><span class="identifier">UserDetails</span></a><span class="symbol">&gt;</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html#T"><span class="identifier">T</span></a></code>
-<p>Adds user details that have been already loaded for the next chat or call flow.</p>
-</td>
-</tr>
 </tbody>
 </table>
 <h3>Inheritors</h3>
@@ -57,11 +31,11 @@ kristiyan</p>
 <tbody>
 <tr>
 <td>
-<p><a href="../../com.bandyer.android_sdk.intent.call/-call-intent-options/index.html">CallIntentOptions</a></p>
+<p><a href="../../com.bandyer.android_sdk.intent.call/-call-intent-options.html">CallIntentOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">CallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.call/-call-intent-options/index.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span></code>
-<p>CallIntentOptions</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.call/-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.intent.call/-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span></code>
+<p>CallIntentOptions class allows to specify properties for outgoing calls</p>
 </td>
 </tr>
 <tr>
@@ -71,6 +45,15 @@ kristiyan</p>
 <td>
 <code><span class="keyword">class </span><span class="identifier">ChatIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.chat/-chat-intent-options/index.html"><span class="identifier">ChatIntentOptions</span></a><span class="symbol">&gt;</span></code>
 <p>Builder class for custom chat or chat intent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.intent.call/-incoming-call-intent-options.html">IncomingCallIntentOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.call/-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.intent.call/-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span></code>
+<p>IncomingCallIntentOptions class allows to specify properties for incoming calls</p>
 </td>
 </tr>
 </tbody>

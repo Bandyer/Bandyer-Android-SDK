@@ -10,6 +10,20 @@
 <h1>CallModule</h1>
 <code><span class="keyword">interface </span><span class="identifier">CallModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html"><span class="identifier">BandyerModule</span></a></code>
 <p>Module used for audio&video communication.</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="call-observers.html">callObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">callObservers</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">&gt;</span></code>
+<p>Ongoing call observers.</p>
+</td>
+</tr>
+</tbody>
+</table>
 <h3>Inherited Properties</h3>
 <table>
 <tbody>
@@ -38,11 +52,39 @@
 <tbody>
 <tr>
 <td>
+<p><a href="add-call-observer.html">addCallObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/appCompatActivity">appCompatActivity</span><span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the starting or ending event of a call from an activity.
+The observer is automatically disposed when activity is destroyed.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="get-name.html">getName</a></p>
 </td>
 <td>
 <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
 <p>Returns the name of the component</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-all-call-observers.html">removeAllCallObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeAllCallObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Removes all call observers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-call-observer.html">removeCallObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$removeCallObserver(com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove specified call observer, if already added.</p>
 </td>
 </tr>
 </tbody>
