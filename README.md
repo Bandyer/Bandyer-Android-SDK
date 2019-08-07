@@ -53,13 +53,14 @@ Support AppCompat <= **v1.2.1**
 
 ## Features
 
-- Audio&Video calls
-- Audio calls
-- Audio calls upgradable to Video Calls
+- Audio call
+- Audio call upgradable to video call
+- Video call
 - Chat
 - Collaborative whiteboard 
-- FileSharing in Call
-- Calls Recording
+- File sharing in call
+- Screen sharing in call
+- Call Recording
 
 ## News
 - 2019-08-02: Bandyer-Android-SDK 1.3.0 has been released. Added more call options, call/chat events observers and fixed UX/UI bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.3.0)
@@ -137,7 +138,7 @@ Support AppCompat <= **v1.2.1**
 - [SiliCompressor](https://github.com/Tourenathan-G5organisation/SiliCompressor) by Tourenathan-G5organisation
 - [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) by permissions-dispatcher
 - [Matisse](https://github.com/zhihu/Matisse) by zhihu
-- [TwilioChat](https://www.twilio.com/chat) by twilio
+- [Twilio Programmable Chat](https://www.twilio.com/chat) by twilio
 - [Retrofit](https://github.com/square/retrofit) by square
 - [Picasso](https://github.com/square/picasso) by square
 - [Paris](https://github.com/airbnb/paris/) by airbnb
