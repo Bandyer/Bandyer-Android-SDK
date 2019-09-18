@@ -115,6 +115,8 @@ Support AppCompat <= **v1.2.1**
 ### Migrations
 [ Upgrade to v1.1.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.1.x)
 
+[ Upgrade to v1.2.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.2.x)
+
 [ Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
 
 ### Code documentation
