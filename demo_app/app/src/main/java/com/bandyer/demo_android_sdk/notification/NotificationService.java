@@ -6,11 +6,15 @@
 package com.bandyer.demo_android_sdk.notification;
 
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
 
 /**
  * Sample implementation of a push notification receiver that handles incoming calls.
@@ -31,7 +35,7 @@ public class NotificationService extends FirebaseMessagingService {
      * ensure execution even if the app is killed by the system.
      */
     @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
+    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         try {
             String payload = remoteMessage.getData().get("message");
@@ -53,8 +57,8 @@ public class NotificationService extends FirebaseMessagingService {
     }
 
     @Override
-    public void onNewToken(String s) {
-        super.onNewToken(s);
+    public void onNewToken(@NonNull String newToken) {
+        super.onNewToken(newToken);
         FirebaseCompat.registerDevice(this);
     }
 }

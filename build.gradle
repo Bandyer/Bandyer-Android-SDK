@@ -9,7 +9,7 @@ apply plugin: 'com.github.ben-manes.versions'
 buildscript {
 
     ext.sdkVersion = 28
-    ext.buildToolsVersion = "28.0.3"
+    ext.buildToolsVersion = "28.0.4"
     ext.stethoVersion = "1.5.0"
 
     ext.keyStoreAlias = { buildType -> return " " }
@@ -22,6 +22,8 @@ buildscript {
     ext.fabricApiSecret = { -> return "" }
     ext.crashlyticsAppId = { -> return "" }
 
+    ext.playStoreCredentialsFilePath = { return " " }
+
     repositories {
         google()
         jcenter()
@@ -33,7 +35,7 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.google.gms:google-services:4.3.0'  // Google Services plugin
+        classpath 'com.google.gms:google-services:4.3.2'  // Google Services plugin
     }
 }
 

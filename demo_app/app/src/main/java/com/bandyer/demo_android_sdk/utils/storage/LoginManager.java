@@ -8,8 +8,9 @@ package com.bandyer.demo_android_sdk.utils.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
 import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
+import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
+import com.crashlytics.android.Crashlytics;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -33,6 +34,12 @@ public class LoginManager {
         SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("userAlias", userAlias);
         editor.apply();
+
+        // Set userAlias on Crashlytics to identify the user in crash logs.
+        try {
+            Crashlytics.getInstance().core.setUserIdentifier(userAlias);
+        } catch (Exception ignored) {
+        }
 
         // Register device for receive push notifications
         // It will not work for you, you should implement your own server for notification send/receive logics
@@ -71,6 +78,12 @@ public class LoginManager {
         // unregister device for push notifications
         // It will not work for you, you should implement your own server for notification send/receive logics
         FirebaseCompat.unregisterDevice(context, getLoggedUser(context));
+
+        // Remove userAlias on Crashlytics to identify the user in crash logs.
+        try {
+            Crashlytics.getInstance().core.setUserIdentifier(null);
+        } catch (Exception ignored) {
+        }
 
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         prefs.edit().clear().apply();

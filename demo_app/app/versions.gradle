@@ -1,0 +1,34 @@
+def versionPropsFile = file('version.properties')
+
+Properties versionProps = new Properties()
+versionProps.load(new FileInputStream(versionPropsFile))
+
+project.ext.VERSION_CODE = versionProps.getProperty("VERSION_CODE").toString()
+
+project.ext.versions = new HashMap<String, Object>()
+
+project.ext.versions.apply = { variant ->
+    versions.applyVersionCode(variant)
+}
+
+def autoIncrementVersionCode = task("autoIncrementVersionCode") {
+    doFirst {
+        def versionCode = VERSION_CODE.toInteger()
+        versionCode += 1
+        ant.propertyfile(file: "version.properties") {
+            entry(key: "VERSION_CODE", value: versionCode)
+        }
+    }
+}
+
+// increments version code
+project.ext.versions.applyVersionCode = { variant ->
+    variant.outputs.all { output ->
+        output.setVersionCodeOverride(versionCode)
+    }
+    tasks.findAll {
+        it.name.contains("publishRelease")
+    }.each {
+        it.dependsOn autoIncrementVersionCode
+    }
+}

@@ -13,7 +13,7 @@
     <string name="pref_api_key" translatable="false">apiKey</string>
     <string name="pref_title_api_key" translatable="false">API_KEY</string>
     <string name="pref_hint_api_key" translatable="false">ak_xxx</string>
-    
+
     <string name="pref_app_id" translatable="false">appId</string>
     <string name="pref_title_app_id" translatable="false">APP_ID</string>
     <string name="pref_hint_app_id" translatable="false">mAppId_xxx</string>
@@ -106,5 +106,7 @@
     <string name="deselect_all_call_options" translatable="false">Deselect all call options</string>
     <string name="no_users_selected" translatable="false">No users selected.</string>
     <string name="settings_have_been_changed_alert" translatable="false">Settings have been changed, restarting app&#8230;</string>
+
+    <string name="ongoing_call_description" translatable="false">Tap to go back in call</string>
 
 </resources>

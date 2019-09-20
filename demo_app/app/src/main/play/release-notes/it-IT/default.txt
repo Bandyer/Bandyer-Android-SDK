@@ -1,0 +1,3 @@
+Una nuova versione dell' app è stata rilasciata!
+Maggiori dettagli sui cambiamenti al seguente link
+https://github.com/Bandyer/Bandyer-Android-SDK/releases

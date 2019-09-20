@@ -17,25 +17,28 @@ public class ConfigurationReceiver extends BroadcastReceiver {
         final String referrer = extras.getString("referrer");
         if (null == referrer) return;
 
-        String[] pairs = referrer.split("&");
-
-        for (String pair : pairs) {
-            String[] keyValue = pair.split("=");
-            switch (keyValue[0]) {
-                case "env":
-                    ConfigurationPrefsManager.setEnvironmentName(context, keyValue[1]);
-                    break;
-                case "appId":
-                    ConfigurationPrefsManager.setAppId(context, keyValue[1]);
-                    break;
-                case "apiKey":
-                    ConfigurationPrefsManager.setApiKey(context, keyValue[1]);
-                    break;
-                case "fPN":
-                    ConfigurationPrefsManager.setFirebaseProjectNumber(context, keyValue[1]);
-                    break;
+        try {
+            String[] pairs = referrer.split("%26|%2526|&");
+            for (String pair : pairs) {
+                String[] keyValue = pair.split("%3D|%253D|=");
+                switch (keyValue[0]) {
+                    case "utm_content":
+                        ConfigurationPrefsManager.setEnvironmentName(context, keyValue[2]);
+                        break;
+                    case "appId":
+                        ConfigurationPrefsManager.setAppId(context, keyValue[1]);
+                        break;
+                    case "apiKey":
+                        ConfigurationPrefsManager.setApiKey(context, keyValue[1]);
+                        break;
+                    case "fPN":
+                        ConfigurationPrefsManager.setFirebaseProjectNumber(context, keyValue[1]);
+                        break;
+                }
             }
+            ProcessPhoenix.triggerRebirth(context);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        ProcessPhoenix.triggerRebirth(context);
     }
 }

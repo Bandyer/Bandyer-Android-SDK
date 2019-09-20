@@ -125,6 +125,45 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     private ArrayList<UserSelectionItem> usersList = new ArrayList<>();
 
+    private CallObserver callObserver = new CallObserver() {
+        @Override
+        public void onCallStarted() {
+            Log.d(TAG, "onCallStarted");
+            showOngoingCallLabel();
+        }
+
+        @Override
+        public void onCallEnded() {
+            Log.d(TAG, "onCallEnded");
+            hideOngoingCallLabel();
+        }
+
+        @Override
+        public void onCallEndedWithError(@NonNull CallException callException) {
+            Log.d(TAG, "onCallEnded with error: " + callException.getMessage());
+            hideOngoingCallLabel();
+            showErrorDialog(callException.getMessage());
+        }
+    };
+
+    private ChatObserver chatObserver = new ChatObserver() {
+        @Override
+        public void onChatStarted() {
+            Log.d(TAG, "onChatStarted");
+        }
+
+        @Override
+        public void onChatEnded() {
+            Log.d(TAG, "onChatEnded");
+        }
+
+        @Override
+        public void onChatEndedWithError(@NonNull ChatException chatException) {
+            Log.d(TAG, "onChatEndedWithError: " + chatException.getMessage());
+            showErrorDialog(chatException.getMessage());
+        }
+    };
+
     public static void show(Activity context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -173,6 +212,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         BandyerSDKClient.getInstance().removeObserver(this);
         BandyerSDKClient.getInstance().removeModuleObserver(this);
+
+        hideKeyboard(true);
     }
 
     @Override
@@ -207,9 +248,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     private void startBandyerSdk(String userAlias) {
         Log.d(TAG, "startBandyerSDK");
 
-        if (BandyerSDKClient.getInstance().getState() != BandyerSDKClientState.UNINITIALIZED)
-            return;
-
         if (chatButton != null) chatButton.setEnabled(false);
         if (callButton != null) callButton.setEnabled(false);
 
@@ -221,67 +259,34 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             });
         }
 
-        BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
-                .keepListeningForEventsInBackground(false)
-                .build();
-        BandyerSDKClient.getInstance().init(userAlias, options);
+        if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
+            BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
+                    .keepListeningForEventsInBackground(false)
+                    .build();
+            BandyerSDKClient.getInstance().init(userAlias, options);
+        }
 
         // Start listening for events
         BandyerSDKClient.getInstance().startListening();
 
+        addModulesObservers();
+    }
+
+    /**
+     * Adds chat and call modules observers.
+     * The observers will be notified when a chat or a call UI will be started, closed or closed with errors.
+     */
+    private void addModulesObservers() {
         // set an observer for the call to show ongoing call label
         CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
-        setCallObserver(callModule);
+        if (callModule != null) {
+            callModule.addCallObserver(this, callObserver);
+        }
 
         // set an observer for the chat
         ChatModule chatModule = BandyerSDKClient.getInstance().getChatModule();
-        setChatObserver(chatModule);
-    }
-
-    private void setCallObserver(CallModule callModule) {
-        if (callModule == null) return;
-        callModule.addCallObserver(this, new CallObserver() {
-            @Override
-            public void onCallStarted() {
-                Log.d(TAG, "onCallStarted");
-                showOngoingCallLabel();
-            }
-
-            @Override
-            public void onCallEnded() {
-                Log.d(TAG, "onCallEnded");
-                hideOngoingCallLabel();
-            }
-
-            @Override
-            public void onCallEndedWithError(@NonNull CallException callException) {
-                Log.d(TAG, "onCallEnded with error: " + callException.getMessage());
-                hideOngoingCallLabel();
-                showErrorDialog(callException.getMessage());
-            }
-        });
-    }
-
-
-    private void setChatObserver(ChatModule chatModule) {
-        if (chatModule == null) return;
-        chatModule.addChatObserver(this, new ChatObserver() {
-            @Override
-            public void onChatStarted() {
-                Log.d(TAG, "onChatStarted");
-            }
-
-            @Override
-            public void onChatEnded() {
-                Log.d(TAG, "onChatEnded");
-            }
-
-            @Override
-            public void onChatEndedWithError(@NonNull ChatException chatException) {
-                Log.d(TAG, "onChatEndedWithError: " + chatException.getMessage());
-                showErrorDialog(chatException.getMessage());
-            }
-        });
+        if (chatModule != null)
+            chatModule.addChatObserver(this, chatObserver);
     }
 
     /**

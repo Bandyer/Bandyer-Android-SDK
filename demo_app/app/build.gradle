@@ -5,26 +5,25 @@
 
 buildscript {
     repositories {
+        google()
         maven { url 'https://plugins.gradle.org/m2/' }
         maven { url 'https://maven.fabric.io/public' }
-        google()
     }
     dependencies {
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath "com.github.triplet.gradle:play-publisher:2.2.1"
     }
 }
 
 apply plugin: 'com.android.application'
+apply from: 'versions.gradle'
 apply plugin: 'io.fabric'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
+apply plugin: "com.github.triplet.play"
 
 def gsonVersion = '2.8.5'
 def okHttpVersion = '3.12.0'
 def stethoVersion = "1.5.1"
-def retrofitVersion = '2.6.0'
+def retrofitVersion = '2.6.1'
 def leakCanaryVersion = "2.0-alpha-3"
 def butterKnifeVersion = "10.1.0"
 def fastAdapterVersion = "3.3.1"
@@ -32,14 +31,15 @@ def picassoLibVersion = "2.71828"
 def jUnitLibVersion = "4.12"
 def multiDexLibVersion = "2.0.1"
 def crashlyticsLibVersion = "2.10.1"
-def firebaseMessagingLibVersion = '19.0.1'
+def firebaseMessagingLibVersion = '20.0.0'
 def phoenixProcessLibVersion = "2.0.0"
-def work_version = "2.1.0"
-def bandyerLibVersion = "1.3.0"
-def androidX = "1.0.0"
-def androidXPreference = "1.1.0-rc01"
+def work_version = '2.2.0'
+def bandyerLibVersion = "1.3.1"
+def androidX = '1.0.2'
+def androidDesign = '1.0.0'
+def androidXPreference = "1.1.0"
 def constraintLayoutVersion = "1.1.3"
-def lifecycleVersion = "2.0.0"
+def lifecycleVersion = "2.1.0"
 def expansionLayoutVersion = "1.2.2"
 
 android {
@@ -49,7 +49,7 @@ android {
         applicationId "com.bandyer.demo_android_sdk"
         minSdkVersion 16
         targetSdkVersion sdkVersion
-        versionCode 1
+        versionCode VERSION_CODE.toInteger()
         versionName bandyerLibVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
@@ -99,8 +99,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Optionally configures multiple APKs based on screen density and cpu architecture.
-    // For further information see: https://developer.android.com/studio/build/configure-apk-splits
+    // If you are not building an AAB, which we recommend you to do.
+    // You can optionally configures multiple APKs based on screen density and cpu architecture.
+    // Be aware that you will need to handle the versionCode differently for each split.
+
+    // For further information see:
+    // https://developer.android.com/studio/build/configure-apk-splits
+    // and to see a more in depth guide:
+    // https://androidbycode.wordpress.com/2015/06/30/android-ndk-version-code-scheme-for-publishing-apks-per-architecture/
     splits {
 
         abi {
@@ -124,8 +130,8 @@ dependencies {
     implementation "androidx.multidex:multidex:$multiDexLibVersion"
 
     implementation "androidx.appcompat:appcompat:$androidX"
-    implementation "com.google.android.material:material:$androidX"
-    implementation "androidx.recyclerview:recyclerview:$androidX"
+    implementation "com.google.android.material:material:$androidDesign"
+    implementation "androidx.recyclerview:recyclerview:$androidDesign"
     implementation "androidx.preference:preference:$androidXPreference"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
@@ -148,7 +154,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
-    implementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
 
     /*** UI ***/
     implementation "com.mikepenz:fastadapter:$fastAdapterVersion"
@@ -165,6 +171,12 @@ dependencies {
     implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
 }
 
+play {
+    if (playStoreCredentialsFilePath()?.trim()) serviceAccountCredentials = file(playStoreCredentialsFilePath())
+    track = "beta"
+    defaultToAppBundles = true
+}
+
 /**
  * The following code is used to release the demo App on fabric
  * This code is also prepared to be tweaked to support different flavors
@@ -172,6 +184,7 @@ dependencies {
 File crashlyticsProperties = new File("${project.projectDir.absolutePath}/fabric.properties")
 
 android.applicationVariants.all { variant ->
+    versions.apply(variant)
     variant.outputs.each { output ->
         // Filter is null for universal APKs.
         def filter = output.getFilter(com.android.build.OutputFile.ABI)

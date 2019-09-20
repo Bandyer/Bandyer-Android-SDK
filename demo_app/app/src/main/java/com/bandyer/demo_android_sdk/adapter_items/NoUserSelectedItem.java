@@ -1,14 +1,11 @@
 package com.bandyer.demo_android_sdk.adapter_items;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 import com.bandyer.demo_android_sdk.R;
-import com.bandyer.demo_android_sdk.utils.Utils;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import java.util.List;
 
