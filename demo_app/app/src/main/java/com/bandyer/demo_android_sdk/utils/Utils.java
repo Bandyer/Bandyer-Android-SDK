@@ -6,7 +6,6 @@ import android.util.DisplayMetrics;
 import com.bandyer.android_sdk.Environment;
 
 
-
 public class Utils {
 
     public static int dpToPx(Context context, float dp) {
@@ -19,6 +18,5 @@ public class Utils {
             case "production": return Environment.Configuration.production();
             default: return Environment.Configuration.sandbox();
         }
-
     }
 }

@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
+import com.bandyer.demo_android_sdk.notification.NotificationProxy;
 import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
 import com.crashlytics.android.Crashlytics;
 
@@ -43,7 +44,7 @@ public class LoginManager {
 
         // Register device for receive push notifications
         // It will not work for you, you should implement your own server for notification send/receive logics
-        FirebaseCompat.registerDevice(context);
+        NotificationProxy.registerDevice(context);
     }
 
     /**
@@ -77,7 +78,7 @@ public class LoginManager {
 
         // unregister device for push notifications
         // It will not work for you, you should implement your own server for notification send/receive logics
-        FirebaseCompat.unregisterDevice(context, getLoggedUser(context));
+        NotificationProxy.unregisterDevice(context, getLoggedUser(context));
 
         // Remove userAlias on Crashlytics to identify the user in crash logs.
         try {

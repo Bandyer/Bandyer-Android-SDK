@@ -57,6 +57,7 @@ import com.bandyer.demo_android_sdk.adapter_items.NoUserSelectedItem;
 import com.bandyer.demo_android_sdk.adapter_items.SelectedUserItem;
 import com.bandyer.demo_android_sdk.adapter_items.UserSelectionItem;
 import com.bandyer.demo_android_sdk.custom_views.CallOptionsDialog;
+import com.bandyer.demo_android_sdk.notification.NotificationProxy;
 import com.bandyer.demo_android_sdk.settings.ConfigurationActivity;
 import com.bandyer.demo_android_sdk.settings.DefaultCallSettingsActivity;
 import com.bandyer.demo_android_sdk.utils.activities.CollapsingToolbarActivity;
@@ -176,6 +177,10 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         if (!LoginManager.isUserLogged(this)) return;
 
+        // If FCM is not being used as the default notification service.
+        // We need to launch the other notification services in the main launcher activity.
+        NotificationProxy.listen(this);
+
         // inflate main layout and keep a reference to it in case of use with dpad navigation
         setContentView(R.layout.activity_main);
 
@@ -281,6 +286,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
         if (callModule != null) {
             callModule.addCallObserver(this, callObserver);
+            if (callModule.isInCall()) showOngoingCallLabel();
+            else hideOngoingCallLabel();
         }
 
         // set an observer for the chat

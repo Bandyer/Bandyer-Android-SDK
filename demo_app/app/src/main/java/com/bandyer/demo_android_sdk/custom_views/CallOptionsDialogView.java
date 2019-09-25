@@ -106,8 +106,21 @@ public class CallOptionsDialogView extends LinearLayout {
                 chat.setText(context.getString(R.string.call));
                 info.setText(context.getString(R.string.select_call_type));
                 deSelectAllCallTypes();
-                audioVideoCallOptions.selectingProgrammatically = true;
-                audioVideoCallOptions.expansionHeader.titleView.setChecked(true);
+                CallOptionsDialog.CallOptionsType defaultCallOptionType = DefaultCallSettingsManager.getDefaultCallType(getContext());
+                switch (defaultCallOptionType) {
+                    case AUDIO_ONLY:
+                        audioOnlyCallOptions.selectingProgrammatically = true;
+                        audioOnlyCallOptions.expansionHeader.titleView.setChecked(true);
+                        break;
+                    case AUDIO_UPGRADABLE:
+                        audioUpgradableCallOptions.selectingProgrammatically = true;
+                        audioUpgradableCallOptions.expansionHeader.titleView.setChecked(true);
+                        break;
+                    case AUDIO_VIDEO:
+                        audioVideoCallOptions.selectingProgrammatically = true;
+                        audioVideoCallOptions.expansionHeader.titleView.setChecked(true);
+                        break;
+                }
                 break;
             case CHAT:
                 chat.setText(context.getString(R.string.chat));

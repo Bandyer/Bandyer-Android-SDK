@@ -21,6 +21,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.google.android.material.appbar.AppBarLayout;
@@ -86,7 +87,7 @@ public abstract class CollapsingToolbarActivity extends BaseActivity {
         CoordinatorLayout coordinatorLayout = container.findViewById(R.id.main_view);
         inflater.inflate(layoutResID, coordinatorLayout);
         super.setContentView(container);
-        Picasso.get().load(R.drawable.landing_collaboration).into(header);
+        if (!BuildConfig.DEBUG) Picasso.get().load(R.drawable.landing_collaboration).into(header);
         CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT, CoordinatorLayout.LayoutParams.MATCH_PARENT);
         layoutParams.setBehavior(new AppBarLayout.ScrollingViewBehavior(this, null));
         findViewById(R.id.content).setLayoutParams(layoutParams);

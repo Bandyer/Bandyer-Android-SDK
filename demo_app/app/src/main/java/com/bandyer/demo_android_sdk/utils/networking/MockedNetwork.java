@@ -75,8 +75,9 @@ public class MockedNetwork {
         String appId = ConfigurationPrefsManager.getAppId(context);
         String apiKey = ConfigurationPrefsManager.getApiKey(context);
         String envName = ConfigurationPrefsManager.getEnvironmentName(context);
+        String pushProvider = ConfigurationPrefsManager.getPushProvider(context);
 
-        DeviceRegistrationInfo info = new DeviceRegistrationInfo(userAlias, appId, devicePushToken);
+        DeviceRegistrationInfo info = new DeviceRegistrationInfo(userAlias, appId, devicePushToken, pushProvider);
         registerDevice = APIClient.getClient(apiKey, envName).create(APIInterface.class).registerDeviceForPushNotifications(info);
 
         registerDevice.enqueue(new Callback<Void>() {

@@ -34,6 +34,9 @@ public class ConfigurationReceiver extends BroadcastReceiver {
                     case "fPN":
                         ConfigurationPrefsManager.setFirebaseProjectNumber(context, keyValue[1]);
                         break;
+                    case "pushProvider":
+                        ConfigurationPrefsManager.setPushProvider(context, keyValue[2]);
+                        break;
                 }
             }
             ProcessPhoenix.triggerRebirth(context);

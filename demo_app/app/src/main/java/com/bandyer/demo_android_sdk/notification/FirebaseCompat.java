@@ -15,8 +15,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.io.IOException;
-
 /**
  * This class is for Bandyer usage only
  * You should implement your own logic for notification handling
@@ -25,30 +23,40 @@ import java.io.IOException;
  */
 public class FirebaseCompat {
 
-    public static void unregisterDevice(Context context, String loggedUser) {
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
-            Thread post = new Thread(() -> {
-                String devicePushToken = instanceIdResult.getToken();
-                MockedNetwork.unregisterDeviceForPushNotification(context, loggedUser, devicePushToken);
-                try {
-                    FirebaseInstanceId.getInstance().deleteInstanceId();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    static void unregisterDevice(Context context, String loggedUser) {
+        try {
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+                Thread post = new Thread(() -> {
+                    String devicePushToken = instanceIdResult.getToken();
+                    MockedNetwork.unregisterDeviceForPushNotification(context, loggedUser, devicePushToken);
+                    try {
+                        FirebaseInstanceId.getInstance().deleteInstanceId();
+                        FirebaseApp.getInstance().delete();
+                    } catch (Throwable e) {
+                        e.printStackTrace();
+                    }
+                });
+                post.start();
             });
-            post.start();
-        });
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public static void registerDevice(Context context) {
-        if (!LoginManager.isUserLogged(context)) return;
+    static void registerDevice(Context context) {
         refreshConfiguration(context, () -> {
-            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
-                String devicePushToken = instanceIdResult.getToken();
-                MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken);
-            }).addOnFailureListener(error -> {
-                Toast.makeText(context, "Wrong configuration for FCM.\nYou will not receive any notifications!", Toast.LENGTH_LONG).show();
-            });
+            try {
+                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(instanceIdResult -> {
+                    String devicePushToken = instanceIdResult.getToken();
+                    MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken);
+                }).addOnFailureListener(error -> {
+                    Toast.makeText(context, "Wrong configuration for FCM.\nYou will not receive any notifications!", Toast.LENGTH_LONG).show();
+                });
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -60,6 +68,9 @@ public class FirebaseCompat {
         Thread post = new Thread(() -> {
             try {
                 FirebaseApp.getInstance().delete();
+            } catch (Throwable e) {
+                e.printStackTrace();
+            } finally {
                 String projectId = ConfigurationPrefsManager.getFirebaseProjectNumber(context);
                 FirebaseApp app = FirebaseApp.initializeApp(context, new FirebaseOptions.Builder()
                         .setGcmSenderId(projectId)
@@ -67,10 +78,8 @@ public class FirebaseCompat {
                         .setApplicationId(context.getPackageName())
                         .build());
                 FirebaseInstanceId.getInstance(app).getInstanceId();
-            } catch (Throwable e) {
-                e.printStackTrace();
+                onComplete.run();
             }
-            onComplete.run();
         });
         post.start();
     }

@@ -9,9 +9,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.bandyer.demo_android_sdk.notification.NotificationProxy.FCM_PROVIDER;
 
 /**
  * @author kristiyan
@@ -56,6 +58,19 @@ public class ConfigurationPrefsManager {
     public static void setEnvironmentName(Context context, String envName) {
         SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("environment", envName);
+        editor.commit();
+    }
+
+    /**
+     * Utility to set push notification provider
+     *
+     * @param context      App or Activity
+     * @param pushProvider the provider name
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setPushProvider(Context context, String pushProvider) {
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString("pushProvider", pushProvider);
         editor.commit();
     }
 
@@ -106,6 +121,18 @@ public class ConfigurationPrefsManager {
     }
 
     /**
+     * Utility to return the pushProvider
+     *
+     * @param context Activity or App
+     * @return firebase project number
+     */
+    public static String getPushProvider(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getString("pushProvider", FCM_PROVIDER);
+    }
+
+
+    /**
      * Utility to check if credentials are mocked
      *
      * @param context Activity or App
@@ -113,6 +140,28 @@ public class ConfigurationPrefsManager {
      */
     public static Boolean hasMockCredentials(Context context) {
         return ConfigurationPrefsManager.getApiKey(context).equals("ak_xxx") || ConfigurationPrefsManager.getAppId(context).equals("mAppId_xxx");
+    }
+
+    /**
+     * Utility to retrieve leak canary default setting.
+     * @param context Activity or App
+     * @return true if leak canary should be enabled by default, false otherwise
+     */
+    public static Boolean isLeakCanaryEnabled(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getBoolean("isLeakCanaryEnabled", BuildConfig.USE_LEAK_CANARY);
+    }
+
+    /**
+     * Utility to set leak canary default setting.
+     * @param context Activity or App
+     * @param enabled true if leak canary should be enabled by default, false otherwise
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setLeakCanaryEnabled(Context context, boolean enabled) {
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean("isLeakCanaryEnabled", enabled);
+        editor.commit();
     }
 
     /**

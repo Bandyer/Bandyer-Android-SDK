@@ -16,6 +16,19 @@
           "current_key": "AIza-key"
         }
       ]
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035469437089:android:1035469437089",
+        "android_client_info": {
+          "package_name": "com.bandyer.demo_android_sdk.debug"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIza-key"
+        }
+      ]
     }
   ],
   "configuration_version": "1"

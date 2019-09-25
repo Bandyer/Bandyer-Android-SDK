@@ -29,4 +29,9 @@
         <item>production</item>
     </string-array>
 
+    <string-array name="pushProviders">
+        <item>FCM</item>
+        <item>Pushy</item>
+    </string-array>
+
 </resources>

@@ -17,11 +17,13 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +31,13 @@ import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.custom_views.SummaryEditTextPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryListPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryPreference;
+import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.jakewharton.processphoenix.ProcessPhoenix;
 
+import com.bandyer.demo_android_sdk.BuildConfig;
+
+import static com.bandyer.demo_android_sdk.notification.NotificationProxy.FCM_PROVIDER;
 import static com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager.MY_CREDENTIAL_PREFS_NAME;
 
 public class ConfigurationFragment extends PreferenceFragmentCompat {
@@ -42,10 +48,12 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
     }
 
+    private CheckBoxPreference leakCanary;
     private SummaryEditTextPreference apiKey;
     private SummaryEditTextPreference appId;
     private SummaryEditTextPreference projectNumber;
     private SummaryListPreference environment;
+    private SummaryListPreference pushProvider;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -58,11 +66,27 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
 
         addPreferencesFromResource(R.xml.pref_configuration);
 
+        leakCanary = findPreference(getString(R.string.leak_canary));
+        if (!BuildConfig.DEBUG) {
+            PreferenceScreen preferenceScreen = findPreference("preferenceScreen");
+            PreferenceCategory debugCategory = findPreference(getString(R.string.pref_debug_options));
+            preferenceScreen.removePreference(debugCategory);
+        }
+        leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
+        leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean value = ((boolean) newValue);
+            ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
+            LeakCanaryManager.enableLeakCanary(value);
+            return true;
+        });
+
         environment = findPreference(getString(R.string.pref_environment));
         appId = findPreference(getString(R.string.pref_app_id));
         apiKey = findPreference(getString(R.string.pref_api_key));
         projectNumber = findPreference(getString(R.string.pref_project_number));
+        pushProvider = findPreference(getString(R.string.pref_pushProvider));
 
+        environment.setValue(ConfigurationPrefsManager.getEnvironmentName(getActivity()));
         setupPreferenceView(environment,
                 0,
                 R.string.summary_environment,
@@ -82,6 +106,14 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                 R.string.pref_hint_project_number,
                 R.string.summary_project_number,
                 ConfigurationPrefsManager.getFirebaseProjectNumber(getActivity()));
+
+        String currentPushProvider = ConfigurationPrefsManager.getPushProvider(getActivity());
+        pushProvider.setValue(currentPushProvider);
+        projectNumber.setVisible(currentPushProvider.equals(FCM_PROVIDER));
+        setupPreferenceView(pushProvider,
+                0,
+                R.string.summary_pushProvider,
+                ConfigurationPrefsManager.getPushProvider(getActivity()));
     }
 
     private void setupPreferenceView(Preference preferenceView,
@@ -94,8 +126,6 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         }
         if (preferenceView instanceof SummaryPreference)
             ((SummaryPreference) preferenceView).setSecondarySummmary(getResources().getString(description));
-        if (preferenceView instanceof ListPreference)
-            ((ListPreference) preferenceView).setValue(ConfigurationPrefsManager.getEnvironmentName(getActivity()));
 
         preferenceView.setDefaultValue(defaultValue);
 
@@ -106,6 +136,10 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             if (newValue.toString().isEmpty()) return false;
             setCredentialsChanged(!preference.getSummary().equals(newValue.toString()));
             setSummary(preference, newValue.toString());
+            if (preference.equals(pushProvider)) {
+                projectNumber.setVisible(newValue.equals(FCM_PROVIDER));
+                getListView().smoothScrollToPosition(getListView().getChildCount());
+            }
             return true;
         });
     }
@@ -117,6 +151,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         boolean hasAppIdChanged = false;
         boolean hasFirebaseProjectNumberChanged = false;
         boolean hasEnvironmentChanged = false;
+        boolean hasPushProviderChanged = false;
 
         if (apiKey != null) {
             String defaultValue = ConfigurationPrefsManager.getApiKey(getActivity());
@@ -146,7 +181,14 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             environment.setValue(defaultValue);
         }
 
-        setCredentialsChanged(hasApiKeyChanged || hasAppIdChanged || hasFirebaseProjectNumberChanged || hasEnvironmentChanged);
+        if (pushProvider != null) {
+            String defaultValue = ConfigurationPrefsManager.getPushProvider(getActivity());
+            hasPushProviderChanged = !defaultValue.equals(pushProvider.getSummary().toString());
+            setSummary(pushProvider, defaultValue);
+            pushProvider.setValue(defaultValue);
+        }
+
+        setCredentialsChanged(hasApiKeyChanged || hasAppIdChanged || hasFirebaseProjectNumberChanged || hasEnvironmentChanged || hasPushProviderChanged);
     }
 
     @Override

@@ -12,11 +12,13 @@ public class DeviceRegistrationInfo {
     String user_alias;
     String app_id;
     String push_token;
+    String push_provider;
     String platform = "android";
 
-    public DeviceRegistrationInfo(String user_alias, String app_id, String push_token) {
+    public DeviceRegistrationInfo(String user_alias, String app_id, String push_token, String push_provider) {
         this.user_alias = user_alias;
         this.app_id = app_id;
         this.push_token = push_token;
+        this.push_provider = push_provider;
     }
 }

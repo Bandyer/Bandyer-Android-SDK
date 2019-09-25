@@ -29,6 +29,9 @@
     <string name="pref_title_environment" translatable="false">ENVIRONMENT</string>
     <string name="pref_hint_environment" translatable="false">sandbox</string>
     <string name="summary_environment" translatable="false">The environment to use for the BandyerSDK.</string>
+    <string name="summary_leak_canary" translatable="false">LeakCanary is useful to debug, if any object is retained outside of context.\nWhich will lead to excessive usage of RAM.</string>
+
+
 
     <!-- ACTIVITIES -->
 
@@ -78,10 +81,23 @@
     <string name="summary_app_id" translatable="false">The app id is mandatory for the sdk to work!.</string>
     <string name="pref_credentials_category" translatable="false">Credentials</string>
 
+
+    <string name="pref_pushProvider" translatable="false">pushProvider</string>
+    <string name="pref_title_pushProvider" translatable="false">PUSH PROVIDER</string>
+    <string name="pref_hint_pushProvider" translatable="false">FCM</string>
+    <string name="summary_pushProvider" translatable="false">The provider to use for push notifications.</string>
+
     <string name="clear_all" translatable="false">Clear all</string>
 
     <!-- CALL OPTIONS -->
 
+    <string name="call_type" translatable="false">Call type</string>
+    <string name="call_type_audio_only" translatable="false">AUDIO_ONLY</string>
+    <string name="call_type_audio_upgradable" translatable="false">AUDIO_UPGRADABLE</string>
+    <string name="call_type_audio_video" translatable="false">AUDIO_VIDEO</string>
+    <string name="call_type_audio_only_name" translatable="false">Audio only</string>
+    <string name="call_type_audio_upgradable_name" translatable="false">Audio upgradable</string>
+    <string name="call_type_audio_video_name" translatable="false">Audio video</string>
     <string name="default_call_options" translatable="false">Default call settings</string>
     <string name="select_call_type" translatable="false">Select call type:</string>
     <string name="audio_only" translatable="false">Audio only</string>
@@ -107,6 +123,13 @@
     <string name="no_users_selected" translatable="false">No users selected.</string>
     <string name="settings_have_been_changed_alert" translatable="false">Settings have been changed, restarting app&#8230;</string>
 
+    <string name="leak_canary" translatable="false">LeakCanary</string>
+
     <string name="ongoing_call_description" translatable="false">Tap to go back in call</string>
+    <string name="pref_debug_options">Debug options</string>
+    <string name="pref_sdk_configuration">SDK configuration</string>
+    <string name="pref_call_type_title">Default call type</string>
+    <string name="pref_call_capabilities_title">In-call default capabilities</string>
+    <string name="pref_call_options_title">In-call default options</string>
 
 </resources>

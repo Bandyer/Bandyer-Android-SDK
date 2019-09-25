@@ -8,7 +8,23 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        android:title="In-call default capabilities">
+        android:title="@string/pref_call_type_title">
+
+        <ListPreference
+            android:id="@+id/default_call_type"
+            android:defaultValue="@string/call_type_audio_video"
+            android:entries="@array/call_types_names"
+            app:iconSpaceReserved="false"
+            android:entryValues="@array/call_types"
+            android:key="@string/call_type"
+            android:title="@string/call_type"
+            android:summary="%s" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        android:title="@string/pref_call_capabilities_title">
 
         <CheckBoxPreference
             android:id="@+id/call_options_whiteboard"
@@ -50,7 +66,7 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        android:title="In-call default options">
+        android:title="@string/pref_call_options_title">
 
         <CheckBoxPreference
             android:id="@+id/call_options_recording"

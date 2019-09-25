@@ -39,6 +39,8 @@ import com.bandyer.android_sdk.notification.NotificationAction;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
+import com.bandyer.demo_android_sdk.notification.NotificationProxy;
+import com.bandyer.demo_android_sdk.notification.PushyCompat;
 import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.bandyer.demo_android_sdk.utils.storage.DefaultCallSettingsManager;
@@ -283,6 +285,6 @@ public class App extends MultiDexApplication {
      * https://firebase.google.com/docs/cloud-messaging
      **********************************************************************************************/
     private void initPushNotification() {
-        FirebaseCompat.registerDevice(this);
+        NotificationProxy.registerDevice(this);
     }
 }

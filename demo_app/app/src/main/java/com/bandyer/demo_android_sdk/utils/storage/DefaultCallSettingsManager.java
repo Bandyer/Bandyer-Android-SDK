@@ -4,12 +4,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.bandyer.demo_android_sdk.R;
+import com.bandyer.demo_android_sdk.custom_views.CallOptionsDialog;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class DefaultCallSettingsManager {
 
     public final static String CALL_OPTIONS_PREFS_NAME = "callOptionsPrefs";
+
+    /**
+     * Utility to get default call type from preferences.
+     * @param context Activity or App
+     * @return CallOptionsDialog.CallOptionsType default call type.
+     */
+    public static CallOptionsDialog.CallOptionsType getDefaultCallType(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(CALL_OPTIONS_PREFS_NAME, MODE_PRIVATE);
+        return CallOptionsDialog.CallOptionsType.valueOf(prefs.getString(context.getString(R.string.call_type), context.getString(R.string.call_type_audio_video)));
+    }
 
     /**
      * Utility to return if the whiteboard capability is enabled by default.

@@ -105,7 +105,6 @@ public class CallOptionsDialog extends DialogFragment {
     }
 
     private View setup() {
-
         CallOptionsDialogView callOptionsDialogView = new CallOptionsDialogView(getContext(), configuration);
 
         TextView textViewTitle = callOptionsDialogView.findViewById(R.id.title);
