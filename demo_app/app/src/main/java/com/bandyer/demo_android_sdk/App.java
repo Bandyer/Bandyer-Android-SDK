@@ -38,9 +38,8 @@ import com.bandyer.android_sdk.intent.file.IncomingFile;
 import com.bandyer.android_sdk.notification.NotificationAction;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
-import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
 import com.bandyer.demo_android_sdk.notification.NotificationProxy;
-import com.bandyer.demo_android_sdk.notification.PushyCompat;
+import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.bandyer.demo_android_sdk.utils.storage.DefaultCallSettingsManager;
@@ -68,6 +67,9 @@ public class App extends MultiDexApplication {
         // If triggering restart of application skip
         if (ProcessPhoenix.isPhoenixProcess(this)) return;
 
+        // Set LeakCanary
+        LeakCanaryManager.enableLeakCanary(ConfigurationPrefsManager.isLeakCanaryEnabled(this));
+
         // Debug tools
         initStetho();
 
@@ -89,17 +91,15 @@ public class App extends MultiDexApplication {
         BandyerSDK.Builder builder = new BandyerSDK.Builder(this, ConfigurationPrefsManager.getAppId(this))
                 .setEnvironment(env)
                 .withUserContactProvider(new MockedUserProvider())
-                .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName())
+                .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName() + " " + userDetails.getLastName())
                 .withCallEnabled(getCallNotificationListener())
                 .withFileSharingEnabled(getFileSharingNotificationListener());
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-            builder.withChatEnabled(getChatNotificationListener())
-                    .withWhiteboardEnabled();
-        }
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            builder.withWhiteboardEnabled();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            builder.withScreenSharingEnabled();
+            builder.withChatEnabled(getChatNotificationListener()).withScreenSharingEnabled();
 
         if (BuildConfig.DEBUG) {
             builder.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
@@ -165,9 +165,10 @@ public class App extends MultiDexApplication {
             @Override
             public void onIncomingCall(@NonNull IncomingCall incomingCall, boolean isDnd, boolean isScreenLocked) {
                 if (!isDnd || isScreenLocked)
-                    startActivity(incomingCall.asActivityIntent(App.this));
-                else
-                    incomingCall.asNotification(App.this).show();
+                    incomingCall.show(App.this);
+                else {
+                    incomingCall.asNotification().show(App.this);
+                }
             }
 
             @Override
@@ -196,7 +197,7 @@ public class App extends MultiDexApplication {
 
             @Override
             public void onIncomingChat(@NonNull IncomingChat chat, boolean isDnd, boolean isScreenLocked) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return;
                 chat.asNotification(App.this).show();
             }
 

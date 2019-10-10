@@ -35,7 +35,7 @@ public class ConfigurationReceiver extends BroadcastReceiver {
                         ConfigurationPrefsManager.setFirebaseProjectNumber(context, keyValue[1]);
                         break;
                     case "pushProvider":
-                        ConfigurationPrefsManager.setPushProvider(context, keyValue[2]);
+                        ConfigurationPrefsManager.setPushProvider(context, keyValue[1]);
                         break;
                 }
             }

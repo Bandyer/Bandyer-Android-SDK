@@ -114,6 +114,20 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                 0,
                 R.string.summary_pushProvider,
                 ConfigurationPrefsManager.getPushProvider(getActivity()));
+
+        leakCanary = findPreference(getString(R.string.leak_canary));
+        if (!BuildConfig.DEBUG) {
+            PreferenceScreen preferenceScreen = findPreference("preferenceScreen");
+            PreferenceCategory debugCategory = findPreference(getString(R.string.pref_debug_options));
+            preferenceScreen.removePreference(debugCategory);
+        }
+        leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
+        leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean value = ((boolean) newValue);
+            ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
+            LeakCanaryManager.enableLeakCanary(value);
+            return true;
+        });
     }
 
     private void setupPreferenceView(Preference preferenceView,

@@ -102,7 +102,7 @@
         app:tint="#ffffff" />
 
     <View
-        android:id="@+id/chat_info_api_19"
+        android:id="@+id/chat_info_api_21"
         android:layout_width="@dimen/space72"
         android:layout_height="@dimen/space72"
         android:layout_gravity="start"

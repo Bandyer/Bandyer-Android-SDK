@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.bandyer.android_sdk.intent.call.CallCapabilities;
 import com.bandyer.android_sdk.intent.call.CallOptions;
 import com.bandyer.demo_android_sdk.R;
+import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 
 import java.util.ArrayList;
 
@@ -102,6 +103,8 @@ public class CallOptionsDialog extends DialogFragment {
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
         params.height = WindowManager.LayoutParams.MATCH_PARENT;
         getDialog().getWindow().setAttributes(params);
+        if (ConfigurationPrefsManager.isSimplifiedVersionEnabled(getContext()))
+            dismiss();
     }
 
     private View setup() {
@@ -148,6 +151,9 @@ public class CallOptionsDialog extends DialogFragment {
             dismiss();
             onCallOptionsUpdatedListener = null;
         });
+
+        if (ConfigurationPrefsManager.isSimplifiedVersionEnabled(getContext()))
+            action.performClick();
 
         return callOptionsDialogView;
     }

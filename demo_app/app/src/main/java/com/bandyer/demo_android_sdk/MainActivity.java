@@ -105,7 +105,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     @BindView(R.id.chat)
     FloatingActionButton chatButton;
 
-    @BindView(R.id.chat_info_api_19)
+    @BindView(R.id.chat_info_api_21)
     View chatInfo;
 
     @BindView(R.id.ongoing_call_label)
@@ -256,9 +256,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         if (chatButton != null) chatButton.setEnabled(false);
         if (callButton != null) callButton.setEnabled(false);
 
-        if (Build.VERSION.SDK_INT < 19) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             chatInfo.setOnClickListener(v -> {
-                Toast chatInfo = Toast.makeText(MainActivity.this, "Chat requires at least API level 19, current API level is " + Build.VERSION.SDK_INT + ".", Toast.LENGTH_LONG);
+                Toast chatInfo = Toast.makeText(MainActivity.this, "Chat requires at least API level 21, current API level is " + Build.VERSION.SDK_INT + ".", Toast.LENGTH_LONG);
                 chatInfo.setGravity(Gravity.CENTER, 0, 0);
                 chatInfo.show();
             });
@@ -518,7 +518,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
      * Be aware that all the observers in this SDK, MUST NOT be defined as anonymous class because the call client will have a weak reference to them to avoid leaks and other scenarios.
      * If you do implement the observer anonymously the methods may not be called.
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @OnClick(R.id.chat)
     void chat() {
         if (calleeSelected.size() == 0) {

@@ -11,6 +11,7 @@ import android.util.Log;
 import com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener;
 import com.bandyer.android_sdk.utils.provider.UserContactProvider;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
+import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.networking.APIInterface;
 import com.bandyer.demo_android_sdk.utils.networking.DemoAppUsers;
 
@@ -77,8 +78,8 @@ public class MockedUserProvider implements UserContactProvider {
 
     private UserDetails generateUserDisplayInfo(String userAlias, DemoAppUsers.DemoAppUser user) {
         return new UserDetails.Builder(userAlias)
-                .withFirstName(user.name.first)
-                .withLastName(user.name.last)
+                .withFirstName(Utils.capitalize(user.name.first))
+                .withLastName(Utils.capitalize(user.name.last))
                 .withImageUrl(user.picture.large)
                 .withEmail(user.email)
                 .build();

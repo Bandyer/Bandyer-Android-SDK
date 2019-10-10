@@ -232,6 +232,7 @@ public class CallOptionsDialogView extends LinearLayout {
             } else {
                 callOptionsView.deselectAllCallOptions();
                 callOptionsView.deselectAllCallCapabilities();
+                callOptionsView.expansionHeader.titleView.setChecked(false);
                 callOptionsView.callOptionsViewContainer.collapse(true);
             }
         });
@@ -333,7 +334,9 @@ public class CallOptionsDialogView extends LinearLayout {
 
         private void enableOptionClickListeners() {
             CompoundButton.OnCheckedChangeListener checkedChangeListener = (buttonView, isChecked) -> {
-                if (isChecked) expansionHeader.titleView.setChecked(true);
+                if (isChecked && !expansionHeader.titleView.isChecked()) {
+                    expansionHeader.titleView.setChecked(true);
+                }
             };
             addCheckedChangeListener(R.id.call_options_recording, checkedChangeListener);
             addCheckedChangeListener(R.id.call_options_whiteboard, checkedChangeListener);

@@ -5,8 +5,8 @@
 
 <resources>
 
-    <string name="app_name" translatable="false">Bandyer SDK Demo</string>
-    <string name="app_name_with_version" translatable="false">Bandyer SDK %1$s</string>
+    <string name="app_name" translatable="false">Bandyer SDK Showcase</string>
+    <string name="app_name_with_version" translatable="false">Showcase %1$s</string>
 
     <!-- API KEYS -->
 
@@ -31,7 +31,11 @@
     <string name="summary_environment" translatable="false">The environment to use for the BandyerSDK.</string>
     <string name="summary_leak_canary" translatable="false">LeakCanary is useful to debug, if any object is retained outside of context.\nWhich will lead to excessive usage of RAM.</string>
 
-
+    <!-- DEMO APP CONFIGS -->
+    <string name="leak_canary" translatable="false">LeakCanary</string>
+    <string name="use_simplified_version_title" translatable="false">Simplified version</string>
+    <string name="use_simplified_version_summary" translatable="false">Automatically executes call and chat opening requests based on default settings.</string>
+    <string name="use_simplified_version" translatable="false">Use simplified version</string>
 
     <!-- ACTIVITIES -->
 
@@ -122,9 +126,6 @@
     <string name="deselect_all_call_options" translatable="false">Deselect all call options</string>
     <string name="no_users_selected" translatable="false">No users selected.</string>
     <string name="settings_have_been_changed_alert" translatable="false">Settings have been changed, restarting app&#8230;</string>
-
-    <string name="leak_canary" translatable="false">LeakCanary</string>
-
     <string name="ongoing_call_description" translatable="false">Tap to go back in call</string>
     <string name="pref_debug_options">Debug options</string>
     <string name="pref_sdk_configuration">SDK configuration</string>

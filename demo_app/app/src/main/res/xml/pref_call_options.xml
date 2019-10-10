@@ -2,89 +2,104 @@
   ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        app:iconSpaceReserved="false"
-        android:title="@string/pref_call_type_title">
+        android:title="@string/use_simplified_version_title"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            android:id="@+id/use_simplified_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            android:key="@string/use_simplified_version"
+            android:title="@string/use_simplified_version"
+            android:summary="@string/use_simplified_version_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_call_type_title"
+        app:iconSpaceReserved="false">
 
         <ListPreference
             android:id="@+id/default_call_type"
             android:defaultValue="@string/call_type_audio_video"
             android:entries="@array/call_types_names"
-            app:iconSpaceReserved="false"
             android:entryValues="@array/call_types"
             android:key="@string/call_type"
+            android:summary="%s"
             android:title="@string/call_type"
-            android:summary="%s" />
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:iconSpaceReserved="false"
-        android:title="@string/pref_call_capabilities_title">
+        android:title="@string/pref_call_capabilities_title"
+        app:iconSpaceReserved="false">
 
         <CheckBoxPreference
             android:id="@+id/call_options_whiteboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="true"
-            app:iconSpaceReserved="false"
             android:key="@string/whiteboard_requires_api_19"
-            android:title="@string/whiteboard_requires_api_19" />
+            android:title="@string/whiteboard_requires_api_19"
+            app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
             android:id="@+id/call_options_file_share"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="true"
-            app:iconSpaceReserved="false"
             android:key="@string/file_sharing"
-            android:title="@string/file_sharing" />
+            android:title="@string/file_sharing"
+            app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
             android:id="@+id/call_options_chat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="true"
-            app:iconSpaceReserved="false"
             android:key="@string/chat_requires_api_19"
-            android:title="@string/chat_requires_api_19" />
+            android:title="@string/chat_requires_api_19"
+            app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
             android:id="@+id/call_options_screen_sharing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="true"
-            app:iconSpaceReserved="false"
             android:key="@string/screen_sharing_requires_api_21"
-            android:title="@string/screen_sharing_requires_api_21" />
+            android:title="@string/screen_sharing_requires_api_21"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:iconSpaceReserved="false"
-        android:title="@string/pref_call_options_title">
+        android:title="@string/pref_call_options_title"
+        app:iconSpaceReserved="false">
 
         <CheckBoxPreference
             android:id="@+id/call_options_recording"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="false"
-            app:iconSpaceReserved="false"
             android:key="@string/call_recording"
-            android:title="@string/call_recording" />
+            android:title="@string/call_recording"
+            app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
             android:id="@+id/call_options_back_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:defaultValue="false"
-            app:iconSpaceReserved="false"
             android:key="@string/back_camera_as_default_if_available"
-            android:title="@string/back_camera_as_default_if_available" />
+            android:title="@string/back_camera_as_default_if_available"
+            app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
             android:id="@+id/call_options_disable_proximity_sensor"
@@ -92,9 +107,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space16"
             android:defaultValue="false"
-            app:iconSpaceReserved="false"
             android:key="@string/disable_proximity_sensor"
-            android:title="@string/disable_proximity_sensor" />
+            android:title="@string/disable_proximity_sensor"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 

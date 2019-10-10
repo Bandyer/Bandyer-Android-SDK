@@ -1,6 +1,7 @@
 package com.bandyer.demo_android_sdk.utils;
 
 import android.content.Context;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 
 import com.bandyer.android_sdk.Environment;
@@ -18,5 +19,10 @@ public class Utils {
             case "production": return Environment.Configuration.production();
             default: return Environment.Configuration.sandbox();
         }
+    }
+
+    public static String capitalize(String s) {
+        if (s.length() == 0) return s;
+        return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
     }
 }

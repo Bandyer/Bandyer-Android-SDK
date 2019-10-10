@@ -15,7 +15,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/bandyer_logo" />
+            android:src="@drawable/logo" />
     </item>
 
 </layer-list>

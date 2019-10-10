@@ -9,6 +9,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 
@@ -201,5 +203,27 @@ public class ConfigurationPrefsManager {
     public static void clear(Context context) {
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
         prefs.edit().clear().commit();
+    }
+
+    /**
+     * Set simplified version for demo app
+     * Enables direct call and chat based on default settings
+     * @param context context
+     * @param enabled true if enabled false otherwise
+     */
+    public static void setSimplifiedVersionEnabled(Context context, boolean enabled) {
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean("use_simplified_version", enabled);
+        editor.commit();
+    }
+
+    /**
+     * Check if demo app is in currently simplified version
+     * @param context context
+     * @return true if simplified version is enabled, false otherwise
+     */
+    public static Boolean isSimplifiedVersionEnabled(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getBoolean("use_simplified_version", BuildConfig.USE_SIMPLIFIED_VERSION);
     }
 }
