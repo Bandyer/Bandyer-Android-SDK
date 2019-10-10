@@ -63,8 +63,8 @@ Support AppCompat <= **v1.2.1**
 - Call Recording
 
 ## News
-- 2019-08-02: Bandyer-Android-SDK 1.3.0 has been released. Added more call options, call/chat events observers and fixed UX/UI bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.3.0)
-- 2019-06-24: Bandyer-Android-SDK 1.2.1 has been released. Improved call and chat UI navigation. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.2.1).
+- 2019-10-10: Bandyer-Android-SDK 1.4.0 has been released. Support for Android 10 and fixed UX/UI bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.0)
+- 2019-09-25: Bandyer-Android-SDK 1.3.2 has been released. Improved call and chat UI navigation and fixed UX/UI bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.3.2).
 
 ## Documentation
 
@@ -118,6 +118,9 @@ Support AppCompat <= **v1.2.1**
 [ Upgrade to v1.2.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.2.x)
 
 [ Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
+
+[ Upgrade to v1.4.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.4.x)
+
 
 ### Code documentation
 [Kotlin](https://bandyer.github.io/Bandyer-Android-SDK/kDoc/)
