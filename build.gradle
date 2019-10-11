@@ -8,8 +8,8 @@ apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
 
-    ext.sdkVersion = 28
-    ext.buildToolsVersion = "28.0.4"
+    ext.sdkVersion = 29
+    ext.buildToolsVersion = "29.0.2"
     ext.stethoVersion = "1.5.0"
 
     ext.keyStoreAlias = { buildType -> return " " }
@@ -47,8 +47,8 @@ allprojects {
         jcenter()
         mavenCentral()
         mavenLocal()
-        maven { url 'https://jitpack.io' }
         maven { url "https://dl.bintray.com/bandyer/Communication" }
+        maven { url "https://dl.bintray.com/bandyer/General" }
     }
 }
 

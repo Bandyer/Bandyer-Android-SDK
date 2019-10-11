@@ -27,6 +27,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.custom_views.SummaryEditTextPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryListPreference;
@@ -34,8 +35,6 @@ import com.bandyer.demo_android_sdk.custom_views.SummaryPreference;
 import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.jakewharton.processphoenix.ProcessPhoenix;
-
-import com.bandyer.demo_android_sdk.BuildConfig;
 
 import static com.bandyer.demo_android_sdk.notification.NotificationProxy.FCM_PROVIDER;
 import static com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager.MY_CREDENTIAL_PREFS_NAME;
@@ -65,20 +64,6 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         preferenceManager.setSharedPreferencesName(MY_CREDENTIAL_PREFS_NAME);
 
         addPreferencesFromResource(R.xml.pref_configuration);
-
-        leakCanary = findPreference(getString(R.string.leak_canary));
-        if (!BuildConfig.DEBUG) {
-            PreferenceScreen preferenceScreen = findPreference("preferenceScreen");
-            PreferenceCategory debugCategory = findPreference(getString(R.string.pref_debug_options));
-            preferenceScreen.removePreference(debugCategory);
-        }
-        leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
-        leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
-            boolean value = ((boolean) newValue);
-            ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
-            LeakCanaryManager.enableLeakCanary(value);
-            return true;
-        });
 
         environment = findPreference(getString(R.string.pref_environment));
         appId = findPreference(getString(R.string.pref_app_id));
@@ -119,15 +104,19 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         if (!BuildConfig.DEBUG) {
             PreferenceScreen preferenceScreen = findPreference("preferenceScreen");
             PreferenceCategory debugCategory = findPreference(getString(R.string.pref_debug_options));
-            preferenceScreen.removePreference(debugCategory);
+            if (preferenceScreen != null && debugCategory != null) {
+                preferenceScreen.removePreference(debugCategory);
+            }
         }
-        leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
-        leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
-            boolean value = ((boolean) newValue);
-            ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
-            LeakCanaryManager.enableLeakCanary(value);
-            return true;
-        });
+        if (leakCanary != null) {
+            leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
+            leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean value = ((boolean) newValue);
+                ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
+                LeakCanaryManager.enableLeakCanary(value);
+                return true;
+            });
+        }
     }
 
     private void setupPreferenceView(Preference preferenceView,
