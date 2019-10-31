@@ -256,14 +256,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         if (chatButton != null) chatButton.setEnabled(false);
         if (callButton != null) callButton.setEnabled(false);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            chatInfo.setOnClickListener(v -> {
-                Toast chatInfo = Toast.makeText(MainActivity.this, "Chat requires at least API level 21, current API level is " + Build.VERSION.SDK_INT + ".", Toast.LENGTH_LONG);
-                chatInfo.setGravity(Gravity.CENTER, 0, 0);
-                chatInfo.show();
-            });
-        }
-
         if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
             BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
                     .keepListeningForEventsInBackground(false)
@@ -318,7 +310,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             // if client is not running, then I need to initialize it
             if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
                 startBandyerSdk(userAlias);
-            } else if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.RUNNING) {
+            } else if (BandyerSDKClient.getInstance().getCallModule().getStatus() == BandyerModuleStatus.CONNECTED) {
 
                 BandyerIntent bandyerIntent = new BandyerIntent.Builder()
                         .startFromJoinCallUrl(this, joinUrl)
@@ -518,7 +510,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
      * Be aware that all the observers in this SDK, MUST NOT be defined as anonymous class because the call client will have a weak reference to them to avoid leaks and other scenarios.
      * If you do implement the observer anonymously the methods may not be called.
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @OnClick(R.id.chat)
     void chat() {
         if (calleeSelected.size() == 0) {

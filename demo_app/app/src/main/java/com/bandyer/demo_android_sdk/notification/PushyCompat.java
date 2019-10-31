@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.work.Data;
@@ -20,6 +21,9 @@ import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.bandyer.demo_android_sdk.utils.storage.LoginManager;
 
 import me.pushy.sdk.Pushy;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * This class show cases a China compatible notification service.
@@ -33,18 +37,32 @@ public class PushyCompat extends BroadcastReceiver {
         Pushy.toggleNotifications(true, context);
         if (Pushy.isRegistered(context)) {
             String devicePushToken = Pushy.getDeviceCredentials(context).token;
-            MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken);
+            MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken, callback);
             return;
         }
         AsyncTask.execute(() -> {
             try {
                 String devicePushToken = Pushy.register(context);
-                MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken);
+                MockedNetwork.registerDeviceForPushNotification(context, LoginManager.getLoggedUser(context), devicePushToken, callback);
             } catch (Throwable e) {
                 e.printStackTrace();
             }
         });
     }
+
+    private static Callback<Void> callback = new Callback<Void>() {
+        @Override
+        public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+            if (!response.isSuccessful()) {
+                Log.e("PushNotification", "Failed to register device for push notifications!");
+            }
+        }
+
+        @Override
+        public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+            Log.e("PushNotification", "Failed to register device for push notifications!");
+        }
+    };
 
     public static void unregisterDevice(BaseActivity context, String loggedUser) {
         if (!Pushy.isRegistered(context)) return;

@@ -93,13 +93,14 @@ public class App extends MultiDexApplication {
                 .withUserContactProvider(new MockedUserProvider())
                 .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName() + " " + userDetails.getLastName())
                 .withCallEnabled(getCallNotificationListener())
+                .withChatEnabled(getChatNotificationListener())
                 .withFileSharingEnabled(getFileSharingNotificationListener());
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             builder.withWhiteboardEnabled();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            builder.withChatEnabled(getChatNotificationListener()).withScreenSharingEnabled();
+            builder.withScreenSharingEnabled();
 
         if (BuildConfig.DEBUG) {
             builder.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
@@ -197,7 +198,6 @@ public class App extends MultiDexApplication {
 
             @Override
             public void onIncomingChat(@NonNull IncomingChat chat, boolean isDnd, boolean isScreenLocked) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return;
                 chat.asNotification(App.this).show();
             }
 

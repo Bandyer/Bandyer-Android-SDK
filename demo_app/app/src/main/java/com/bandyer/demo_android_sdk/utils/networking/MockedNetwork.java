@@ -70,7 +70,7 @@ public class MockedNetwork {
         });
     }
 
-    public static void registerDeviceForPushNotification(Context context, String userAlias, String devicePushToken) {
+    public static void registerDeviceForPushNotification(Context context, String userAlias, String devicePushToken,Callback<Void> callback) {
         cancelRegisterUser();
         String appId = ConfigurationPrefsManager.getAppId(context);
         String apiKey = ConfigurationPrefsManager.getApiKey(context);
@@ -79,20 +79,7 @@ public class MockedNetwork {
 
         DeviceRegistrationInfo info = new DeviceRegistrationInfo(userAlias, appId, devicePushToken, pushProvider);
         registerDevice = APIClient.getClient(apiKey, envName).create(APIInterface.class).registerDeviceForPushNotifications(info);
-
-        registerDevice.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    Log.e("PushNotification", "Failed to register device for push notifications!");
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
-                Log.e("PushNotification", "Failed to register device for push notifications!");
-            }
-        });
+        registerDevice.enqueue(callback);
     }
 
     public static void unregisterDeviceForPushNotification(Context context, String userAlias, String devicePushToken) {

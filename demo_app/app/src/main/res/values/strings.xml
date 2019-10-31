@@ -133,4 +133,6 @@
     <string name="pref_call_capabilities_title">In-call default capabilities</string>
     <string name="pref_call_options_title">In-call default options</string>
 
+    <string name="join_call_url">Join call in Bandyer</string>
+
 </resources>
