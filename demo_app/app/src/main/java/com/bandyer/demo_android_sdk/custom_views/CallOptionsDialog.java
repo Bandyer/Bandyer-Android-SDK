@@ -6,13 +6,6 @@
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.annotation.SuppressLint;
-
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,6 +15,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import com.bandyer.android_sdk.intent.call.CallCapabilities;
 import com.bandyer.android_sdk.intent.call.CallOptions;
@@ -55,7 +54,7 @@ public class CallOptionsDialog extends DialogFragment {
         AUDIO_VIDEO
     }
 
-    public CallOptionsDialog() {}
+    public CallOptionsDialog() { }
 
     public static CallOptionsDialog newInstance(ArrayList<String> calleeSelected, Configuration configuration) {
         CallOptionsDialog f = new CallOptionsDialog();
@@ -119,7 +118,7 @@ public class CallOptionsDialog extends DialogFragment {
 
         Button action = callOptionsDialogView.findViewById(R.id.action);
         action.setOnClickListener(v -> {
-
+            if (onCallOptionsUpdatedListener == null) return;
             if (callOptionsDialogView.isAudioOnlyCallChecked()) {
                 onCallOptionsUpdatedListener.onCallOptionsUpdated(
                         CallOptionsType.AUDIO_ONLY,
@@ -188,6 +187,7 @@ public class CallOptionsDialog extends DialogFragment {
 
     public interface OnCallOptionsUpdatedListener {
         void onCallOptionsUpdated(CallOptionsType callOptionsType, CallCapabilities callCapabilities, CallOptions callOptions);
+
         void onOptionsConfirmed();
     }
 }

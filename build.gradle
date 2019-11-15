@@ -17,14 +17,16 @@ buildscript {
     ext.keyStoreFilePath = { buildType -> return " " }
     ext.keyStorePassword = { buildType -> return " " }
 
-    ext.fabricReleaseNotes = { -> return "" }
-    ext.fabricTestGroup = { -> return "" }
-    ext.fabricApiSecret = { -> return "" }
+    ext.playStoreCredentialsFilePath = { return " " }
     ext.crashlyticsAppId = { -> return "" }
 
-    ext.useLeakCanary = { -> return false }
+    ext.getDistributionAppId = { -> return "" }
+    ext.getDistributionCredentialsFilePath = { buildType -> return " " }
+    ext.getDistributionReleaseNotes = { -> return "" }
+    ext.getDistributionTestGroup = { -> return "" }
 
-    ext.playStoreCredentialsFilePath = { return " " }
+    ext.useLeakCanary = { -> return false }
+    ext.useMockUserDetailsProvider = { -> return false }
 
     repositories {
         google()
@@ -33,7 +35,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'

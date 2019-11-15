@@ -33,6 +33,11 @@
 
     <!-- DEMO APP CONFIGS -->
     <string name="leak_canary" translatable="false">LeakCanary</string>
+    <string name="use_mock_user_details_provider" translatable="false">Mock user details</string>
+
+    <string name="summary_use_mock_user_details_provider" translatable="false">This setting allows you to show user details such as name or surname
+        instead of the userAliases when a chat or call UI is presented.</string>
+
     <string name="use_simplified_version_title" translatable="false">Simplified version</string>
     <string name="use_simplified_version_summary" translatable="false">Automatically executes call and chat opening requests based on default settings.</string>
     <string name="use_simplified_version" translatable="false">Use simplified version</string>
@@ -92,6 +97,7 @@
     <string name="summary_pushProvider" translatable="false">The provider to use for push notifications.</string>
 
     <string name="clear_all" translatable="false">Clear all</string>
+    <string name="save" translatable="false">Save</string>
 
     <!-- CALL OPTIONS -->
 
@@ -99,7 +105,7 @@
     <string name="call_type_audio_only" translatable="false">AUDIO_ONLY</string>
     <string name="call_type_audio_upgradable" translatable="false">AUDIO_UPGRADABLE</string>
     <string name="call_type_audio_video" translatable="false">AUDIO_VIDEO</string>
-    <string name="call_type_audio_only_name" translatable="false">Audio only</string>
+    <string name="call_type_audio_only_name" translatable="false">Audio only</string>small
     <string name="call_type_audio_upgradable_name" translatable="false">Audio upgradable</string>
     <string name="call_type_audio_video_name" translatable="false">Audio video</string>
     <string name="default_call_options" translatable="false">Default call settings</string>

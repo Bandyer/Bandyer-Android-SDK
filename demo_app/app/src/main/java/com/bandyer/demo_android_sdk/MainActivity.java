@@ -13,14 +13,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -452,7 +450,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         listContacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         listContacts.setAdapter(fastAdapter);
 
-        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.name.contains(constraint));
+        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.name.toLowerCase().contains(constraint.toString().toLowerCase()));
 
         itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserSelectionItem>() {
             @Override

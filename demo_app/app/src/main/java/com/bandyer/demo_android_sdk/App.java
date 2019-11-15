@@ -43,6 +43,7 @@ import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.bandyer.demo_android_sdk.utils.storage.DefaultCallSettingsManager;
+import com.bandyer.demo_android_sdk.utils.storage.LoginManager;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.stetho.Stetho;
@@ -76,8 +77,8 @@ public class App extends MultiDexApplication {
         // Push notification sample
         initPushNotification();
 
-        // fabric for crash reports
-        initFabric();
+        // Log crash reports
+        initCrashlytics();
 
         if (ConfigurationPrefsManager.areCredentialsMockedOrEmpty(this)) return;
 
@@ -90,11 +91,16 @@ public class App extends MultiDexApplication {
         // Bandyer SDK Module initialization
         BandyerSDK.Builder builder = new BandyerSDK.Builder(this, ConfigurationPrefsManager.getAppId(this))
                 .setEnvironment(env)
-                .withUserContactProvider(new MockedUserProvider())
-                .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName() + " " + userDetails.getLastName())
                 .withCallEnabled(getCallNotificationListener())
                 .withChatEnabled(getChatNotificationListener())
                 .withFileSharingEnabled(getFileSharingNotificationListener());
+
+        // If you desire to personalize the user details shown you should set a provider and formatter
+        // otherwise the userAlias will be shown in chat or call.
+        if (ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(this)) {
+            builder.withUserContactProvider(new MockedUserProvider())
+                   .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName() + " " + userDetails.getLastName());
+        }
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             builder.withWhiteboardEnabled();
@@ -269,12 +275,15 @@ public class App extends MultiDexApplication {
     }
 
     /***************************************Fabric**************************************************
-     * Using Fabric library to debug potential crashes and handle beta releases.
+     * Using Crashlytics library to debug potential crashes and handle beta releases.
      * For more information visit:
-     * https://fabric.io
+     * https://fabric.io or https://firebase.google.com/
      **********************************************************************************************/
-    private void initFabric() {
-        Fabric.with(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build()).build());
+    private void initCrashlytics() {
+        if (!BuildConfig.ENABLE_CRASHLYTICS) return;
+        Fabric.with(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder().build()).build());
+        String userAlias = LoginManager.getLoggedUser(this);
+        if (!userAlias.isEmpty()) Crashlytics.setUserIdentifier(userAlias);
     }
 
     /*********************************Firebase Cloud Messaging**************************************

@@ -90,7 +90,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
         fastAdapter.withSelectable(true);
         fastAdapter.withOnPreClickListener(this);
 
-        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.userAlias.contains(constraint));
+        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.userAlias.toLowerCase().contains(constraint.toString().toLowerCase()));
 
         itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserItem>() {
             @Override

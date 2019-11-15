@@ -14,11 +14,13 @@
 
         <com.bandyer.demo_android_sdk.custom_views.SummaryListPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:entries="@array/pushProviders" ns0:entryValues="@array/pushProviders" ns0:icon="@null" ns0:id="@+id/pref_pushProvider" ns0:key="@string/pref_pushProvider" ns0:title="@string/pref_title_pushProvider" />
 
+        <com.bandyer.demo_android_sdk.custom_views.SummaryCheckBoxPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:defaultValue="false" ns0:icon="@null" ns0:id="@+id/mock_user_details_provider_option" ns0:key="@string/use_mock_user_details_provider" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:title="@string/use_mock_user_details_provider" />
+
     </PreferenceCategory>
 
     <PreferenceCategory ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:key="@string/pref_debug_options" ns0:title="@string/pref_debug_options">
 
-        <CheckBoxPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:defaultValue="false" ns0:id="@+id/leak_canary_option" ns0:key="@string/leak_canary" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:title="@string/leak_canary" />
+        <com.bandyer.demo_android_sdk.custom_views.SummaryCheckBoxPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:defaultValue="false" ns0:id="@+id/leak_canary_option" ns0:key="@string/leak_canary" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:title="@string/leak_canary" />
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>

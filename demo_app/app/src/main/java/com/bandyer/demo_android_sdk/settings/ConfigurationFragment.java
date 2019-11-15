@@ -17,18 +17,19 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.TwoStatePreference;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
+import com.bandyer.demo_android_sdk.custom_views.SummaryCheckBoxPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryEditTextPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryListPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryPreference;
@@ -47,7 +48,8 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
     }
 
-    private CheckBoxPreference leakCanary;
+    private SummaryCheckBoxPreference leakCanary;
+    private SummaryCheckBoxPreference useMockUserDetailsProvider;
     private SummaryEditTextPreference apiKey;
     private SummaryEditTextPreference appId;
     private SummaryEditTextPreference projectNumber;
@@ -108,15 +110,29 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                 preferenceScreen.removePreference(debugCategory);
             }
         }
+        
         if (leakCanary != null) {
             leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
             leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
                 boolean value = ((boolean) newValue);
-                ConfigurationPrefsManager.setLeakCanaryEnabled(getContext(), value);
+                setCredentialsChanged(((TwoStatePreference) preference).isChecked() != value);
+                ConfigurationPrefsManager.setLeakCanaryEnabled(getActivity(), value);
                 LeakCanaryManager.enableLeakCanary(value);
                 return true;
             });
+            leakCanary.setSecondarySummmary(getResources().getString(R.string.summary_leak_canary));
         }
+
+        useMockUserDetailsProvider = findPreference(getString(R.string.use_mock_user_details_provider));
+        useMockUserDetailsProvider.setChecked(ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(getActivity()));
+        useMockUserDetailsProvider.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean value = ((boolean) newValue);
+            setCredentialsChanged(((TwoStatePreference) preference).isChecked() != value);
+            ConfigurationPrefsManager.setMockUserDetailsProviderEnabled(getActivity(), value);
+            return true;
+        });
+        useMockUserDetailsProvider.setSecondarySummmary(getResources().getString(R.string.summary_use_mock_user_details_provider));
+
     }
 
     private void setupPreferenceView(Preference preferenceView,
@@ -124,9 +140,9 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                                      @StringRes int description,
                                      String defaultValue) {
 
-        if (preferenceView instanceof EditTextPreference) {
+        if (preferenceView instanceof EditTextPreference)
             ((EditTextPreference) preferenceView).setOnBindEditTextListener(editText -> editText.setHint(hint));
-        }
+
         if (preferenceView instanceof SummaryPreference)
             ((SummaryPreference) preferenceView).setSecondarySummmary(getResources().getString(description));
 
@@ -155,6 +171,8 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         boolean hasFirebaseProjectNumberChanged = false;
         boolean hasEnvironmentChanged = false;
         boolean hasPushProviderChanged = false;
+        boolean hasMockUserDetailsProviderChanged = false;
+        boolean hasLeakCanaryChanged = false;
 
         if (apiKey != null) {
             String defaultValue = ConfigurationPrefsManager.getApiKey(getActivity());
@@ -191,7 +209,26 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             pushProvider.setValue(defaultValue);
         }
 
-        setCredentialsChanged(hasApiKeyChanged || hasAppIdChanged || hasFirebaseProjectNumberChanged || hasEnvironmentChanged || hasPushProviderChanged);
+        if (leakCanary != null) {
+            boolean defaultValue = ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity());
+            hasLeakCanaryChanged = defaultValue != leakCanary.isChecked();
+            leakCanary.setChecked(defaultValue);
+        }
+
+        if (useMockUserDetailsProvider != null) {
+            boolean defaultValue = ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(getActivity());
+            hasMockUserDetailsProviderChanged = defaultValue != useMockUserDetailsProvider.isChecked();
+            useMockUserDetailsProvider.setChecked(defaultValue);
+        }
+
+        setCredentialsChanged(
+                hasApiKeyChanged ||
+                        hasAppIdChanged ||
+                        hasFirebaseProjectNumberChanged ||
+                        hasEnvironmentChanged ||
+                        hasPushProviderChanged ||
+                        hasMockUserDetailsProviderChanged ||
+                        hasLeakCanaryChanged);
     }
 
     @Override
@@ -217,9 +254,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         preference.setSummary(summary);
     }
 
-    boolean onActivityBackPressed() {
-        if (ConfigurationPrefsManager.areCredentialsMockedOrEmpty(getActivity())) return false;
-        if (credentialsChanged) ProcessPhoenix.triggerRebirth(getActivity());
-        return true;
+    boolean didChangeSettings() {
+        return credentialsChanged;
     }
 }

@@ -167,6 +167,28 @@ public class ConfigurationPrefsManager {
     }
 
     /**
+     * Utility to retrieve mock user details provider default setting.
+     * @param context Activity or App
+     * @return true if mock user details provider should be enabled by default, false otherwise
+     */
+    public static Boolean isMockUserDetailsProviderEnabled(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getBoolean("isMockUserDetailsProviderEnabled", BuildConfig.USE_MOCK_USER_DETAILS_PROVIDER);
+    }
+
+    /**
+     * Utility to set mock user details provider  default setting.
+     * @param context Activity or App
+     * @param enabled true if mock user details provider should be enabled by default, false otherwise
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setMockUserDetailsProviderEnabled(Context context, boolean enabled) {
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean("isMockUserDetailsProviderEnabled", enabled);
+        editor.commit();
+    }
+
+    /**
      * Utility to check if credentials are mocked or empty
      *
      * @param context Activity or App

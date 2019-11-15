@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
+import com.jakewharton.processphoenix.ProcessPhoenix;
 
 public class ConfigurationActivity extends BaseActivity {
 
@@ -48,8 +49,9 @@ public class ConfigurationActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (configurationFragment.onActivityBackPressed()) super.onBackPressed();
-        else showErrorDialog("Settings are not correctly set!");
+        if (ConfigurationPrefsManager.areCredentialsMockedOrEmpty(this)) showErrorDialog("Settings are not correctly set!");
+        else if (configurationFragment.didChangeSettings()) ProcessPhoenix.triggerRebirth(this);
+        else super.onBackPressed();
     }
 
     @Override
@@ -66,6 +68,7 @@ public class ConfigurationActivity extends BaseActivity {
                 ConfigurationPrefsManager.clear(this);
                 configurationFragment.updateAllCredentials();
                 break;
+            case R.id.save:
             case android.R.id.home:
                 onBackPressed();
                 break;

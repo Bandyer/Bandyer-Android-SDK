@@ -8,7 +8,6 @@ package com.bandyer.demo_android_sdk.utils.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.bandyer.demo_android_sdk.notification.FirebaseCompat;
 import com.bandyer.demo_android_sdk.notification.NotificationProxy;
 import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
 import com.crashlytics.android.Crashlytics;
@@ -38,7 +37,7 @@ public class LoginManager {
 
         // Set userAlias on Crashlytics to identify the user in crash logs.
         try {
-            Crashlytics.getInstance().core.setUserIdentifier(userAlias);
+            Crashlytics.setUserIdentifier(userAlias);
         } catch (Exception ignored) {
         }
 
@@ -82,7 +81,7 @@ public class LoginManager {
 
         // Remove userAlias on Crashlytics to identify the user in crash logs.
         try {
-            Crashlytics.getInstance().core.setUserIdentifier(null);
+            Crashlytics.setUserIdentifier(null);
         } catch (Exception ignored) {
         }
 
