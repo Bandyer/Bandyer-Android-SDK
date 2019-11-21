@@ -3,7 +3,8 @@
 
     <com.google.android.material.appbar.AppBarLayout ns0:id="@+id/toolbar_layout" ns0:layout_height="wrap_content" ns0:layout_width="match_parent">
 
-        <androidx.appcompat.widget.Toolbar ns1:navigationIcon="?attr/homeAsUpIndicator" ns1:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" ns1:title="@string/action_settings" ns0:background="?attr/colorPrimary" ns0:id="@+id/toolbar" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:minHeight="?attr/actionBarSize" />
+        <androidx.appcompat.widget.Toolbar ns1:navigationIcon="?attr/homeAsUpIndicator" ns1:title="@string/action_settings" ns0:background="?attr/colorPrimary" ns0:id="@+id/toolbar" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:minHeight="?attr/actionBarSize" ns0:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout ns0:id="@+id/pref_content" ns0:layout_below="@id/toolbar_layout" ns0:layout_height="match_parent" ns0:layout_width="match_parent" />

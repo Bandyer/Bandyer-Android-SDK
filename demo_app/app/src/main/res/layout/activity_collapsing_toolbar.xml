@@ -74,7 +74,7 @@
                     android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     app:layout_collapseMode="pin"
-                    app:theme="@style/ToolBarStyle"
+                    android:theme="@style/ToolBarStyle"
                     android:layout_height="?attr/actionBarSize" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
