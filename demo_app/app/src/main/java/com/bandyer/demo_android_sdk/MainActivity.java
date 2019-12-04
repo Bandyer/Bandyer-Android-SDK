@@ -23,7 +23,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -337,15 +336,10 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.logout)
-                .setMessage(R.string.logout_confirmation)
-                .setNegativeButton(R.string.cancel_action, (dialogInterface, i) -> dialogInterface.dismiss())
-                .setPositiveButton(R.string.button_ok, (dialogInterface, i) -> {
-                    logout();
-                    finish();
-                })
-                .show();
+        showConfirmDialog(R.string.logout, R.string.logout_confirmation, (dialogInterface, i) -> {
+            logout();
+            finish();
+        });
     }
 
     @Override

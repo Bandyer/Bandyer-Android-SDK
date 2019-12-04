@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,6 +66,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.dialog_ok, clickListener)
                 .create();
 
+        dialog.show();
+    }
+
+    protected void showConfirmDialog(@StringRes int title, @StringRes int message, DialogInterface.OnClickListener onConfirm) {
+        if (dialog != null) dialog.dismiss();
+        if (isFinishing()) return;
+        dialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setNegativeButton(R.string.cancel_action, (dialogInterface, i) -> dialogInterface.dismiss())
+                .setPositiveButton(R.string.button_ok, onConfirm)
+                .create();
         dialog.show();
     }
 
