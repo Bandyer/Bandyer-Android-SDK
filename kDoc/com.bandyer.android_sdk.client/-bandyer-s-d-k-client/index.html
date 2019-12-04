@@ -8,7 +8,7 @@
 <a href="../index.html">com.bandyer.android_sdk.client</a>&nbsp;/&nbsp;<a href="./index.html">BandyerSDKClient</a><br/>
 <br/>
 <h1>BandyerSDKClient</h1>
-<code><span class="keyword">class </span><span class="identifier">BandyerSDKClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BandyerSDKClientInterface</span></code>
+<code><span class="keyword">class </span><span class="identifier">BandyerSDKClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BandyerSDKClientInterface</span><span class="symbol">, </span><span class="identifier">PotentialFailingComponent</span></code>
 <p>It's the main item required to connect to the Bandyer platform.</p>
 <h3>Properties</h3>
 <table>
@@ -110,6 +110,15 @@
 </tr>
 <tr>
 <td>
+<p><a href="has-failed-with-throwable.html">hasFailedWithThrowable</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">hasFailedWithThrowable</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$hasFailedWithThrowable(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check if the throwable belongs to the component.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="init.html">init</a></p>
 </td>
 <td>
@@ -124,6 +133,15 @@
 <td>
 <code><span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Pause all Bandyer SDK.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="perform-on-failure-operations.html">performOnFailureOperations</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">performOnFailureOperations</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$performOnFailureOperations(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FailureRecoverStrategy</span></code>
+<p>Perform needed operation after an exception has been produced from the component.</p>
 </td>
 </tr>
 <tr>
