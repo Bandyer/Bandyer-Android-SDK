@@ -22,7 +22,7 @@ buildscript {
 
     ext.getDistributionAppId = { -> return "" }
     ext.getDistributionCredentialsFilePath = { buildType -> return " " }
-    ext.getDistributionReleaseNotes = { -> return "" }
+    ext.getDistributionReleaseNotes = { version -> return "" }
     ext.getDistributionTestGroup = { -> return "" }
 
     ext.useLeakCanary = { -> return false }

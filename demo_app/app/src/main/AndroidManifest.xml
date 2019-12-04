@@ -81,6 +81,16 @@
             android:name="io.fabric.ApiKey"
             android:value="${fabric_api_key}" />
 
+        <!-- Bandyer unhandled broadcast receiver -->
+
+        <receiver
+            android:name="com.bandyer.demo_android_sdk.exceptions.BandyerUnhandledExceptionBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.bandyer_android_sdk.BANDYER_UNHANDLED_EXCEPTION" />
+            </intent-filter>
+        </receiver>
+
         <!-- Pushy Notifications -->
 
         <!-- Pushy Notification Receiver -->

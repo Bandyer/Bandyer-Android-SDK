@@ -652,7 +652,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 logout();
                 ConfigurationActivity.show(this);
             });
-        }
+        } else
+            setModuleButtonsColors(module, BandyerModuleStatus.FAILED);
     }
 
     @Override
@@ -680,6 +681,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
                 chatButton.setEnabled(false);
                 break;
+            case DESTROYED:
             case FAILED:
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
                 chatButton.setEnabled(false);
@@ -699,6 +701,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
                 callButton.setEnabled(true);
                 break;
+            case DESTROYED:
             case FAILED:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
                 callButton.setEnabled(false);
@@ -720,6 +723,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     @Override
     public void onClientError(@NonNull Throwable throwable) {
         Log.e(TAG, "onClientError " + throwable.getLocalizedMessage());
+        setCallButtonColor(BandyerModuleStatus.FAILED);
+        setChatButtonColor(BandyerModuleStatus.FAILED);
     }
 
     @Override
