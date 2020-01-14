@@ -1,6 +1,6 @@
 $dokka.format:html
 $dokka.linkExtension:html
-$dokka.location:com.bandyer.android_sdk.utils$joinToStrings(kotlin.collections.Iterable((com.bandyer.android_sdk.utils.provider.UserDetails)), com.bandyer.android_sdk.utils.provider.UserDetailsFormatter, com.bandyer.android_sdk.FormatContext)com.bandyer.android_sdk.utils/kotlin.collections.-iterable/join-to-strings.html
+
 com.bandyer.android_sdk
 com.bandyer.android_sdk.call
 com.bandyer.android_sdk.call.model
