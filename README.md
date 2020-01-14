@@ -63,8 +63,8 @@ Support AppCompat <= **v1.2.1**
 - Call Recording
 
 ## News
-- 2019-11-15: Bandyer-Android-SDK 1.4.3 has been released. Improved support for Android 10. Improved UI/UX experience for DPAD navigation. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.3)
-- 2019-10-31: Bandyer-Android-SDK 1.4.2 has been released. Added expandable local preview and DPAD navigation quick actions. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.0)
+- 2020-01-14: Bandyer-Android-SDK 1.4.7 has been released. Improved UI/UX. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.7)
+- 2019-12-04: Bandyer-Android-SDK 1.4.6 has been released. Added fullscreen mode. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.6)
 
 ## Documentation
 
