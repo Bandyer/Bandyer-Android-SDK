@@ -103,6 +103,8 @@ Support AppCompat <= **v1.2.1**
 ### More
 [Logging](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Logging)
 
+[Unexpected exception handling](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Unexpected-exception-handling)
+
 [Keep BandyerSDKClient Alive](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Keep-client-active-in-background)
 
 [Reduce APK size](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Reduce-the-APK-size)
