@@ -153,7 +153,7 @@ public class App extends MultiDexApplication {
         return new CallCapabilities(DefaultCallSettingsManager.isChatEnabled(this),
                 DefaultCallSettingsManager.isFileSharingEnabled(this),
                 DefaultCallSettingsManager.isScreenSharingEnabled(this),
-                DefaultCallSettingsManager.isWiteboardEnabled(this));
+                DefaultCallSettingsManager.isWhiteboardEnabled(this));
     }
 
     private IncomingCallOptions getDefaultIncomingCallOptions() {

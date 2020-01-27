@@ -11,6 +11,7 @@
     android:layout_marginLeft="@dimen/space16"
     android:layout_marginRight="@dimen/space16"
     android:layout_marginBottom="@dimen/space16"
+    android:id="@+id/root_pref"
     android:elevation="@dimen/space8"
     android:layout_height="wrap_content">
 

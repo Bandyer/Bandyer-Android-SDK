@@ -323,7 +323,7 @@ public class CallOptionsDialogView extends LinearLayout {
         }
 
         private void applyCallOptionsPreferences() {
-            if (DefaultCallSettingsManager.isWiteboardEnabled(getContext())) setChecked(R.id.call_options_whiteboard, true);
+            if (DefaultCallSettingsManager.isWhiteboardEnabled(getContext())) setChecked(R.id.call_options_whiteboard, true);
             if (DefaultCallSettingsManager.isFileSharingEnabled(getContext())) setChecked(R.id.call_options_file_share, true);
             if (DefaultCallSettingsManager.isChatEnabled(getContext())) setChecked(R.id.call_options_chat, true);
             if (DefaultCallSettingsManager.isScreenSharingEnabled(getContext())) setChecked(R.id.call_options_screen_sharing, true);

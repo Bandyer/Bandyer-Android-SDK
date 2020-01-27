@@ -50,4 +50,18 @@
         <item name="android:textSize">@dimen/text_h1</item>
     </style>
 
+    <style name="BandyerSDKDesign.Call.Layout.Watermark.ImageViewStyle" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:src">@drawable/logo</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="BandyerSDKDesign.Call.Layout.Watermark.TextViewStyle" parent="">
+        <item name="android:paddingStart">@dimen/bandyer_dimen_space8</item>
+        <item name="android:paddingLeft">@dimen/bandyer_dimen_space8</item>
+        <item name="android:text">Bandyer</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>
