@@ -14,8 +14,8 @@ public class Configuration {
     String apiKey;
     String projectNumber;
     String pushProvider;
-    String logoUrl = "";
-    String logoName = "";
+    String logoUrl;
+    String logoName;
     boolean useLeakCanary;
     boolean useMockUserDetailsProvider;
     boolean useSimplifiedVersion;
