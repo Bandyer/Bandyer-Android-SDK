@@ -20,8 +20,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity android:name=".LoginActivity"
+
+        <activity
+            android:name=".LoginActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
@@ -34,11 +37,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter
-                android:priority="999"
-                android:icon="@drawable/ic_bandyer_audio_call"
-                android:order="999"
                 android:autoVerify="true"
+                android:icon="@drawable/ic_bandyer_audio_call"
                 android:label="@string/join_call_url"
+                android:order="999"
+                android:priority="999"
                 tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -54,12 +57,37 @@
 
         <activity
             android:name=".settings.ConfigurationActivity"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTask">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="configuration.demo_android_sdk.bandyer.com"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="configuration.demo_android_sdk.bandyer.com"
+                    android:scheme="bandyer" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".settings.DefaultCallSettingsActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
             android:label="@string/default_call_options" />
+
+        <activity android:name=".utils.activities.ImageTextEditActivity" />
 
         <service android:name=".notification.NotificationService">
             <intent-filter>

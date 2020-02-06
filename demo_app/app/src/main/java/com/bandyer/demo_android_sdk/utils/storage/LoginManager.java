@@ -5,6 +5,7 @@
 
 package com.bandyer.demo_android_sdk.utils.storage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -30,10 +31,11 @@ public class LoginManager {
      * @param context   App or Activity
      * @param userAlias the user identifier to remember
      */
+    @SuppressLint("ApplySharedPref")
     public static void login(Context context, String userAlias) {
         SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("userAlias", userAlias);
-        editor.apply();
+        editor.commit();
 
         // Set userAlias on Crashlytics to identify the user in crash logs.
         try {
@@ -73,6 +75,7 @@ public class LoginManager {
      *
      * @param context BaseActivity
      */
+    @SuppressLint("ApplySharedPref")
     public static void logout(BaseActivity context) {
 
         // unregister device for push notifications
@@ -86,6 +89,6 @@ public class LoginManager {
         }
 
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().clear().apply();
+        prefs.edit().clear().commit();
     }
 }

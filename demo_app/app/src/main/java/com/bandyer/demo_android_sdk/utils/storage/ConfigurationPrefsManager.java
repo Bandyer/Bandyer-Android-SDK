@@ -8,9 +8,9 @@ package com.bandyer.demo_android_sdk.utils.storage;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 
-import androidx.fragment.app.FragmentActivity;
-
+import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 
@@ -146,6 +146,7 @@ public class ConfigurationPrefsManager {
 
     /**
      * Utility to retrieve leak canary default setting.
+     *
      * @param context Activity or App
      * @return true if leak canary should be enabled by default, false otherwise
      */
@@ -156,6 +157,7 @@ public class ConfigurationPrefsManager {
 
     /**
      * Utility to set leak canary default setting.
+     *
      * @param context Activity or App
      * @param enabled true if leak canary should be enabled by default, false otherwise
      */
@@ -168,6 +170,7 @@ public class ConfigurationPrefsManager {
 
     /**
      * Utility to retrieve mock user details provider default setting.
+     *
      * @param context Activity or App
      * @return true if mock user details provider should be enabled by default, false otherwise
      */
@@ -178,6 +181,7 @@ public class ConfigurationPrefsManager {
 
     /**
      * Utility to set mock user details provider  default setting.
+     *
      * @param context Activity or App
      * @param enabled true if mock user details provider should be enabled by default, false otherwise
      */
@@ -223,16 +227,18 @@ public class ConfigurationPrefsManager {
      */
     @SuppressLint("ApplySharedPref")
     public static void clear(Context context) {
-        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().clear().commit();
+        context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit().clear().commit();
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().clear().commit();
     }
 
     /**
      * Set simplified version for demo app
      * Enables direct call and chat based on default settings
+     *
      * @param context context
      * @param enabled true if enabled false otherwise
      */
+    @SuppressLint("ApplySharedPref")
     public static void setSimplifiedVersionEnabled(Context context, boolean enabled) {
         SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putBoolean("use_simplified_version", enabled);
@@ -241,11 +247,56 @@ public class ConfigurationPrefsManager {
 
     /**
      * Check if demo app is in currently simplified version
+     *
      * @param context context
      * @return true if simplified version is enabled, false otherwise
      */
     public static Boolean isSimplifiedVersionEnabled(Context context) {
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
         return prefs.getBoolean("use_simplified_version", BuildConfig.USE_SIMPLIFIED_VERSION);
+    }
+
+    /**
+     * Utility to get watermarkUri if set, otherwise will return the default logo asset
+     *
+     * @param context context
+     * @return uri
+     */
+    public static Uri getWatermarkUri(Context context) {
+        String defaultUrl = "android.resource://" + context.getPackageName() + "/drawable/logo";
+        String url = context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).getString("call_watermark_image_uri", defaultUrl);
+        return MediaStorageUtils.getUriFromString(url);
+    }
+
+    /**
+     * Utility to get watermark text if set, otherwise will return Bandyer
+     *
+     * @param context context
+     * @return text representing the watermark
+     */
+    public static String getWatermarkText(Context context) {
+        return context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).getString("call_watermark_text", "Bandyer");
+    }
+
+    /**
+     * Utility to set the watermark uri for the logo
+     *
+     * @param context context
+     * @param url new url to be used as watermark logo
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setWatermarkUri(Context context, String url) {
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("call_watermark_image_uri", url).commit();
+    }
+
+    /**
+     * Utility to set the watermark text to represent the branding
+     *
+     * @param context context
+     * @param text new text to be used as watermark title
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setWatermarkText(Context context, String text) {
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("call_watermark_text", text).commit();
     }
 }

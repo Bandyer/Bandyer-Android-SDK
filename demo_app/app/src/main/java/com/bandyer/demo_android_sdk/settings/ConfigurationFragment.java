@@ -6,6 +6,8 @@
 
 package com.bandyer.demo_android_sdk.settings;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -31,13 +33,18 @@ import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.custom_views.SummaryCheckBoxPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryEditTextPreference;
+import com.bandyer.demo_android_sdk.custom_views.SummaryImageEditTextPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryListPreference;
 import com.bandyer.demo_android_sdk.custom_views.SummaryPreference;
 import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
+import com.bandyer.demo_android_sdk.utils.activities.ImageTextEditActivity;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
-import com.jakewharton.processphoenix.ProcessPhoenix;
+import com.bandyer.demo_android_sdk.utils.storage.MediaStorageUtils;
 
 import static com.bandyer.demo_android_sdk.notification.NotificationProxy.FCM_PROVIDER;
+import static com.bandyer.demo_android_sdk.utils.activities.ImageTextEditActivity.IMAGE_TEXT_REQUEST;
+import static com.bandyer.demo_android_sdk.utils.activities.ImageTextEditActivity.PRESET_TEXT_PARAM;
+import static com.bandyer.demo_android_sdk.utils.activities.ImageTextEditActivity.PRESET_URI_PARAM;
 import static com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager.MY_CREDENTIAL_PREFS_NAME;
 
 public class ConfigurationFragment extends PreferenceFragmentCompat {
@@ -55,6 +62,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
     private SummaryEditTextPreference projectNumber;
     private SummaryListPreference environment;
     private SummaryListPreference pushProvider;
+    private SummaryImageEditTextPreference watermarkPreference;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -110,7 +118,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                 preferenceScreen.removePreference(debugCategory);
             }
         }
-        
+
         if (leakCanary != null) {
             leakCanary.setChecked(ConfigurationPrefsManager.isLeakCanaryEnabled(getActivity()));
             leakCanary.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -120,7 +128,8 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                 LeakCanaryManager.enableLeakCanary(value);
                 return true;
             });
-            leakCanary.setSecondarySummmary(getResources().getString(R.string.summary_leak_canary));
+
+            leakCanary.setSecondarySummaryText(getResources().getString(R.string.summary_leak_canary));
         }
 
         useMockUserDetailsProvider = findPreference(getString(R.string.use_mock_user_details_provider));
@@ -131,8 +140,41 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             ConfigurationPrefsManager.setMockUserDetailsProviderEnabled(getActivity(), value);
             return true;
         });
-        useMockUserDetailsProvider.setSecondarySummmary(getResources().getString(R.string.summary_use_mock_user_details_provider));
 
+        useMockUserDetailsProvider.setSecondarySummaryText(getResources().getString(R.string.summary_use_mock_user_details_provider));
+
+        watermarkPreference = findPreference(getString(R.string.pref_watermark_id));
+
+        watermarkPreference.setImageUri(ConfigurationPrefsManager.getWatermarkUri(getContext()));
+        watermarkPreference.setText(ConfigurationPrefsManager.getWatermarkText(getContext()));
+
+        watermarkPreference.setSecondarySummaryText(getResources().getString(R.string.summary_watermark));
+
+        watermarkPreference.setOnPreferenceClickListener(preference -> {
+            ImageTextEditActivity.showForResult(this, ConfigurationPrefsManager.getWatermarkUri(getContext()), ConfigurationPrefsManager.getWatermarkText(getContext()));
+            return true;
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_TEXT_REQUEST && resultCode == 2 && data.getExtras() != null) {
+            String watermarkUrl = data.getStringExtra(PRESET_URI_PARAM);
+            String watermarkTitle = data.getStringExtra(PRESET_TEXT_PARAM);
+            Uri uri = MediaStorageUtils.getUriFromString(watermarkUrl);
+            setCredentialsChanged(!equals(uri, watermarkPreference.getImageUri()) || !equals(watermarkTitle, watermarkPreference.getText()));
+            watermarkPreference.setText(watermarkTitle);
+            watermarkPreference.setImageUri(uri);
+            ConfigurationPrefsManager.setWatermarkUri(getActivity(), watermarkUrl);
+            ConfigurationPrefsManager.setWatermarkText(getActivity(), watermarkTitle);
+            credentialsChanged = true;
+        }
+    }
+
+    @SuppressWarnings("EqualsReplaceableByObjectsCall")
+    private static boolean equals(Object a, Object b) {
+        return (a == b) || (a != null && a.equals(b));
     }
 
     private void setupPreferenceView(Preference preferenceView,
@@ -144,7 +186,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             ((EditTextPreference) preferenceView).setOnBindEditTextListener(editText -> editText.setHint(hint));
 
         if (preferenceView instanceof SummaryPreference)
-            ((SummaryPreference) preferenceView).setSecondarySummmary(getResources().getString(description));
+            ((SummaryPreference) preferenceView).setSecondarySummaryText(getResources().getString(description));
 
         preferenceView.setDefaultValue(defaultValue);
 
@@ -173,6 +215,7 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
         boolean hasPushProviderChanged = false;
         boolean hasMockUserDetailsProviderChanged = false;
         boolean hasLeakCanaryChanged = false;
+        boolean hasWatermarkChanged = false;
 
         if (apiKey != null) {
             String defaultValue = ConfigurationPrefsManager.getApiKey(getActivity());
@@ -221,6 +264,16 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
             useMockUserDetailsProvider.setChecked(defaultValue);
         }
 
+        if (watermarkPreference != null) {
+            Uri oldUriValue = ConfigurationPrefsManager.getWatermarkUri(getActivity());
+            String oldTextValue = ConfigurationPrefsManager.getWatermarkText(getActivity());
+
+            hasWatermarkChanged = !oldUriValue.equals(watermarkPreference.getImageUri()) || !oldTextValue.equals(watermarkPreference.getText());
+
+            watermarkPreference.setImageUri(oldUriValue);
+            watermarkPreference.setText(oldTextValue);
+        }
+
         setCredentialsChanged(
                 hasApiKeyChanged ||
                         hasAppIdChanged ||
@@ -228,7 +281,8 @@ public class ConfigurationFragment extends PreferenceFragmentCompat {
                         hasEnvironmentChanged ||
                         hasPushProviderChanged ||
                         hasMockUserDetailsProviderChanged ||
-                        hasLeakCanaryChanged);
+                        hasLeakCanaryChanged ||
+                        hasWatermarkChanged);
     }
 
     @Override
