@@ -101,6 +101,13 @@
 </tr>
 <tr>
 <td>
+<p><a href="get-failure-recovery-strategy.html">getFailureRecoveryStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getFailureRecoveryStrategy</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$getFailureRecoveryStrategy(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FailureRecoverStrategy</span></code></td>
+</tr>
+<tr>
+<td>
 <p><a href="handle-notification.html">handleNotification</a></p>
 </td>
 <td>
@@ -128,20 +135,20 @@
 </tr>
 <tr>
 <td>
+<p><a href="on-pre-recovery.html">onPreRecovery</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onPreRecovery</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$onPreRecovery(com.bandyer.android_sdk.exceptions.FailureRecoverStrategy, kotlin.Throwable)/recoverStrategy">recoverStrategy</span><span class="symbol">:</span>&nbsp;<span class="identifier">FailureRecoverStrategy</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$onPreRecovery(com.bandyer.android_sdk.exceptions.FailureRecoverStrategy, kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform needed operation after an exception has been produced from the component.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="pause.html">pause</a></p>
 </td>
 <td>
 <code><span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Pause all Bandyer SDK.</p>
-</td>
-</tr>
-<tr>
-<td>
-<p><a href="perform-on-failure-operations.html">performOnFailureOperations</a></p>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">performOnFailureOperations</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClient$performOnFailureOperations(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FailureRecoverStrategy</span></code>
-<p>Perform needed operation after an exception has been produced from the component.</p>
 </td>
 </tr>
 <tr>

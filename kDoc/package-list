@@ -8,6 +8,7 @@ com.bandyer.android_sdk.call.notification
 com.bandyer.android_sdk.chat
 com.bandyer.android_sdk.chat.notification
 com.bandyer.android_sdk.client
+com.bandyer.android_sdk.exceptions
 com.bandyer.android_sdk.file_sharing
 com.bandyer.android_sdk.file_sharing.model
 com.bandyer.android_sdk.file_sharing.notification

@@ -118,6 +118,13 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.exceptions/-bandyer-unhandled-exception-broadcast-receiver/index.html">com.bandyer.android_sdk.exceptions.BandyerUnhandledExceptionBroadcastReceiver</a></td>
+<td>
+<p>Broadcast Receiver to be used to receive unexpected exceptions' stacktrace from Bandyer SDK.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.intent.call/-base-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallIntentOptions</a></td>
 <td>
 <p>BaseCallIntentOptions defines the base properties that can be set on a call</p>
@@ -128,6 +135,13 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 <a href="../com.bandyer.android_sdk.intent.call/-base-call-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallOptions</a></td>
 <td>
 <p>BaseCallOptions is an object to personalize how a call should behave</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.notification/-base-event-broadcast-receiver/index.html">com.bandyer.android_sdk.notification.BaseEventBroadcastReceiver</a></td>
+<td>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
 </td>
 </tr>
 <tr>
@@ -146,9 +160,37 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.intent.call/-call/index.html">com.bandyer.android_sdk.intent.call.Call</a></td>
+<td>
+<p>Call interface that represents an incoming or outgoing call abstraction.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html">com.bandyer.android_sdk.intent.call.CallCapabilities</a></td>
 <td>
 <p>This class represents call capabilities that can be used for a call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.model/-call-direction/index.html">com.bandyer.android_sdk.call.model.CallDirection</a></td>
+<td>
+<p>Enum class representing the direction of the call</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.call/-call-display-mode/index.html">com.bandyer.android_sdk.intent.call.CallDisplayMode</a></td>
+<td>
+<p>Represent the call UI display mode</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call.notification/-call-event-broadcast-receiver/index.html">com.bandyer.android_sdk.call.notification.CallEventBroadcastReceiver</a></td>
+<td>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
 </td>
 </tr>
 <tr>
@@ -230,6 +272,34 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
+<a href="../com.bandyer.android_sdk.call.model/-call-type/index.html">com.bandyer.android_sdk.call.model.CallType</a></td>
+<td>
+<p>Enum representing the different types of calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.call/-call-u-i-observer/index.html">com.bandyer.android_sdk.call.CallUIObserver</a></td>
+<td>
+<p>This class represent a call UI observer which will be notified when a call activity event has occurred.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.intent.chat/-chat/index.html">com.bandyer.android_sdk.intent.chat.Chat</a></td>
+<td>
+<p>Chat interface that represents a chat abstraction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat.notification/-chat-event-broadcast-receiver/index.html">com.bandyer.android_sdk.chat.notification.ChatEventBroadcastReceiver</a></td>
+<td>
+<p>A broadcast receiver that receive broadcast when a chat starts, ends or ends with error.</p>
+</td>
+</tr>
+<tr>
+<td>
 <a href="../com.bandyer.android_sdk.chat/-chat-exception/index.html">com.bandyer.android_sdk.chat.ChatException</a></td>
 <td>
 <p>This exception represents an error that has been received from chat UI.</p>
@@ -289,6 +359,13 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 <a href="../com.bandyer.android_sdk.chat/-chat-observer/index.html">com.bandyer.android_sdk.chat.ChatObserver</a></td>
 <td>
 <p>This class represent a chat status observer which will be notified when a chat is started or ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.chat/-chat-u-i-observer/index.html">com.bandyer.android_sdk.chat.ChatUIObserver</a></td>
+<td>
+<p>This class represent a chat UI observer which will be notified when a chat activity event has occurred.</p>
 </td>
 </tr>
 <tr>
@@ -395,7 +472,7 @@ This context may be used to customize an incoming event, based on the component 
 <td>
 <a href="../com.bandyer.android_sdk.intent.chat/-incoming-chat/index.html">com.bandyer.android_sdk.intent.chat.IncomingChat</a></td>
 <td>
-<p>Incoming Chat received</p>
+<p>Incoming Chat abstraction</p>
 </td>
 </tr>
 <tr>

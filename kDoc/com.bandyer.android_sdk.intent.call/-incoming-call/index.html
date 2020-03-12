@@ -8,7 +8,7 @@
 <a href="../index.html">com.bandyer.android_sdk.intent.call</a>&nbsp;/&nbsp;<a href="./index.html">IncomingCall</a><br/>
 <br/>
 <h1>IncomingCall</h1>
-<code><span class="keyword">class </span><span class="identifier">IncomingCall</span></code>
+<code><span class="keyword">interface </span><span class="identifier">IncomingCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-call/index.html"><span class="identifier">Call</span></a></code>
 <p>IncomingCall received</p>
 <h3>Parameters</h3>
 <p><a name="callInfo"></a>
@@ -17,16 +17,16 @@
 kristiyan</p>
 <p><strong>Since</strong><br/>
 v1.1.0</p>
-<h3>Properties</h3>
+<h3>Inherited Properties</h3>
 <table>
 <tbody>
 <tr>
 <td>
-<p><a href="call-info.html">callInfo</a></p>
+<p><a href="../-call/call-info.html">callInfo</a></p>
 </td>
 <td>
-<code><span class="keyword">val </span><span class="identifier">callInfo</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.call.model/-call-info/index.html"><span class="identifier">CallInfo</span></a></code>
-<p>Call details</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">callInfo</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.call.model/-call-info/index.html"><span class="identifier">CallInfo</span></a></code>
+<p>Call info.</p>
 </td>
 </tr>
 </tbody>
@@ -39,7 +39,7 @@ v1.1.0</p>
 <p><a href="as-notification.html">asNotification</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">asNotification</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingCall</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">asNotification</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingCall</span></a></code>
 <p>Set the incoming call to be displayed as notification</p>
 </td>
 </tr>
@@ -48,8 +48,26 @@ v1.1.0</p>
 <p><a href="show.html">show</a></p>
 </td>
 <td>
-<code><span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCall$show(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCall$show(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Display the incoming call</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-capabilities.html">withCapabilities</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">withCapabilities</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCall$withCapabilities(com.bandyer.android_sdk.intent.call.CallCapabilities)/capabilities">capabilities</span><span class="symbol">:</span>&nbsp;<a href="../-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingCall</span></a></code>
+<p>Define the call capabilities such as screen sharing, whiteboard, file sharing, chat...</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-options.html">withOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">withOptions</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCall$withOptions(com.bandyer.android_sdk.intent.call.IncomingCallOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingCall</span></a></code>
+<p>Define the call options such as backCamera as starting camera, recording</p>
 </td>
 </tr>
 </tbody>

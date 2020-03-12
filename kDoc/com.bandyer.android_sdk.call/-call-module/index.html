@@ -15,20 +15,20 @@
 <tbody>
 <tr>
 <td>
-<p><a href="call-observers.html">callObservers</a></p>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">callObservers</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">&gt;</span></code>
-<p>Ongoing call observers.</p>
-</td>
-</tr>
-<tr>
-<td>
 <p><a href="is-in-call.html">isInCall</a></p>
 </td>
 <td>
 <code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">isInCall</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
 <p>Indicates if there is an ongoing call</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ongoing-call.html">ongoingCall</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">ongoingCall</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">?</span></code>
+<p>Current ongoing call abstraction.</p>
 </td>
 </tr>
 </tbody>
@@ -65,10 +65,24 @@
 </td>
 <td>
 <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Observe the starting or ending event of a call from an activity.
+<p>Observe the starting or ending event of a call.
 Remember to remove the observer or a leak will occur!</p>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/appCompatActivity">appCompatActivity</span><span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><s><span class="identifier">addCallObserver</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/appCompatActivity">appCompatActivity</span><span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.appcompat.app.AppCompatActivity, com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.call.CallObserver)/activity">activity</span><span class="symbol">:</span>&nbsp;<span class="identifier">FragmentActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Observe the starting or ending event of a call from an activity.
+The observer is automatically disposed when activity is destroyed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-call-u-i-observer.html">addCallUIObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addCallUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallUIObserver(com.bandyer.android_sdk.call.CallUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-u-i-observer/index.html"><span class="identifier">CallUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the start or destroy event of an activity created for calls.
+Remember to remove the observer or a leak will occur!</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.call.CallUIObserver)/activity">activity</span><span class="symbol">:</span>&nbsp;<span class="identifier">FragmentActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$addCallUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.call.CallUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-u-i-observer/index.html"><span class="identifier">CallUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the starting or destroy event of an activity created for calls.
 The observer is automatically disposed when activity is destroyed.</p>
 </td>
 </tr>
@@ -92,11 +106,58 @@ The observer is automatically disposed when activity is destroyed.</p>
 </tr>
 <tr>
 <td>
+<p><a href="remove-all-call-u-i-observers.html">removeAllCallUIObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeAllCallUIObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Removes all call ui observers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-all-observers.html">removeAllObservers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeAllObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Removes all observers.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="remove-call-observer.html">removeCallObserver</a></p>
 </td>
 <td>
 <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeCallObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$removeCallObserver(com.bandyer.android_sdk.call.CallObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-observer/index.html"><span class="identifier">CallObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Remove specified call observer, if already added.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-call-u-i-observer.html">removeCallUIObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeCallUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$removeCallUIObserver(com.bandyer.android_sdk.call.CallUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-call-u-i-observer/index.html"><span class="identifier">CallUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove specified call ui observer, if already added.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-display-mode.html">setDisplayMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDisplayMode</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setDisplayMode(com.bandyer.android_sdk.intent.call.Call, com.bandyer.android_sdk.intent.call.CallDisplayMode)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setDisplayMode(com.bandyer.android_sdk.intent.call.Call, com.bandyer.android_sdk.intent.call.CallDisplayMode)/callDisplayMode">callDisplayMode</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-display-mode/index.html"><span class="identifier">CallDisplayMode</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setDisplayMode</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setDisplayMode(kotlin.String, com.bandyer.android_sdk.intent.call.CallDisplayMode)/callId">callId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setDisplayMode(kotlin.String, com.bandyer.android_sdk.intent.call.CallDisplayMode)/callDisplayMode">callDisplayMode</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-display-mode/index.html"><span class="identifier">CallDisplayMode</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the call UI display mode.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-verified.html">setVerified</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setVerified</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setVerified(com.bandyer.android_sdk.intent.call.Call, kotlin.Boolean)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setVerified(com.bandyer.android_sdk.intent.call.Call, kotlin.Boolean)/verified">verified</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setVerified</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setVerified(kotlin.String, kotlin.Boolean)/callId">callId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallModule$setVerified(kotlin.String, kotlin.Boolean)/verified">verified</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This function allows the logged user to broadcast to other call participants that has been verified or not within the host app.</p>
 </td>
 </tr>
 </tbody>

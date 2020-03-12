@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallEventBroadcastReceiver - </title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">com.bandyer.android_sdk.call.notification</a>&nbsp;/&nbsp;<a href="./index.html">CallEventBroadcastReceiver</a><br/>
+<br/>
+<h1>CallEventBroadcastReceiver</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CallEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.notification/-base-event-broadcast-receiver/index.html"><span class="identifier">BaseEventBroadcastReceiver</span></a><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.call/-call-observer/index.html"><span class="identifier">CallObserver</span></a></code>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CallEventBroadcastReceiver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.notification/-base-event-broadcast-receiver/action.html">action</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">action</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>the action that this receiver handles</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.notification/-base-event-broadcast-receiver/context.html">context</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">context</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></code>
+<p>Application context</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-ended.html">onCallEnded</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEnded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This function will be called when the ongoing call has ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-ended-with-error.html">onCallEndedWithError</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEndedWithError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallEndedWithError(com.bandyer.android_sdk.call.CallException)/callException">callException</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.call/-call-exception/index.html"><span class="identifier">CallException</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This function is called when the ongoing call ends with an error.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-started.html">onCallStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This function will be called when the ongoing call has started.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

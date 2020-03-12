@@ -16,7 +16,7 @@
 <p><a href="-chat-info/index.html">ChatInfo</a></p>
 </td>
 <td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">ChatInfo</span></code>
+<code><span class="keyword">interface </span><span class="identifier">ChatInfo</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
 <p>Information about the chat</p>
 </td>
 </tr>
@@ -36,6 +36,15 @@
 <td>
 <code><span class="keyword">interface </span><span class="identifier">ChatObserver</span></code>
 <p>This class represent a chat status observer which will be notified when a chat is started or ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-chat-u-i-observer/index.html">ChatUIObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChatUIObserver</span></code>
+<p>This class represent a chat UI observer which will be notified when a chat activity event has occurred.</p>
 </td>
 </tr>
 </tbody>
