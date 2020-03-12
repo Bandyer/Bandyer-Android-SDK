@@ -7,11 +7,13 @@ package com.bandyer.demo_android_sdk.utils.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
@@ -20,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.DPadNavigationHelper;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 
@@ -72,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void showConfirmDialog(@StringRes int title, @StringRes int message, DialogInterface.OnClickListener onConfirm) {
         if (dialog != null) dialog.dismiss();
         if (isFinishing()) return;
-        dialog = new AlertDialog.Builder(this)
+        dialog = new AlertDialog.Builder(this, R.style.AppTheme_AlertDialogTheme)
                 .setTitle(title)
                 .setMessage(message)
                 .setNegativeButton(R.string.cancel_action, (dialogInterface, i) -> dialogInterface.dismiss())
@@ -113,5 +117,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (force) hideMethod = 0;
         if (getCurrentFocus() == null) return;
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), hideMethod);
+    }
+
+    protected void loadImage(ImageView imageView, Uri uri) {
+        Picasso.get()
+                .load(uri)
+//                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
+                .into(imageView);
     }
 }

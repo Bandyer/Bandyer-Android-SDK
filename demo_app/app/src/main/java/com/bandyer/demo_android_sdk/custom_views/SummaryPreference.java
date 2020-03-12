@@ -1,10 +1,14 @@
+/*
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,7 +17,6 @@ import androidx.annotation.LayoutRes;
 import androidx.preference.PreferenceViewHolder;
 
 import com.bandyer.demo_android_sdk.R;
-import com.bandyer.demo_android_sdk.utils.Utils;
 
 /**
  * @author kristiyan
@@ -40,9 +43,6 @@ public interface SummaryPreference {
             ((LinearLayout) holder.itemView).setOrientation(LinearLayout.VERTICAL);
         }
 
-        ViewGroup.MarginLayoutParams secondarySummaryLayoutParams = new ViewGroup.MarginLayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        secondarySummaryLayoutParams.bottomMargin = Utils.dpToPx(context, 16);
-        root.setLayoutParams(secondarySummaryLayoutParams);
         return root;
     }
 }

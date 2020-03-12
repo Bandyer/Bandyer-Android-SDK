@@ -175,21 +175,9 @@ public class ConfigurationPrefsManager {
      * @return true if mock user details provider should be enabled by default, false otherwise
      */
     public static Boolean isMockUserDetailsProviderEnabled(Context context) {
-        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
-        return prefs.getBoolean("isMockUserDetailsProviderEnabled", BuildConfig.USE_MOCK_USER_DETAILS_PROVIDER);
-    }
-
-    /**
-     * Utility to set mock user details provider  default setting.
-     *
-     * @param context Activity or App
-     * @param enabled true if mock user details provider should be enabled by default, false otherwise
-     */
-    @SuppressLint("ApplySharedPref")
-    public static void setMockUserDetailsProviderEnabled(Context context, boolean enabled) {
-        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putBoolean("isMockUserDetailsProviderEnabled", enabled);
-        editor.commit();
+        String mockedUserDetailsProviderMode = getMockedUserDetailsMode(context);
+        return mockedUserDetailsProviderMode.equals(context.getResources().getString(R.string.mock_user_details_config_random)) ||
+                mockedUserDetailsProviderMode.equals(context.getResources().getString(R.string.mock_user_details_config_custom));
     }
 
     /**
@@ -298,5 +286,69 @@ public class ConfigurationPrefsManager {
     @SuppressLint("ApplySharedPref")
     public static void setWatermarkText(Context context, String text) {
         context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("call_watermark_text", text).commit();
+    }
+
+    /**
+     * Utility to get custom user details image uri if set
+     *
+     * @param context context
+     * @return uri
+     */
+    public static Uri getCustomUserDetailsImageUri(Context context) {
+        String url = context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).getString("custom_user_details_image_uri", "");
+        return MediaStorageUtils.getUriFromString(url);
+    }
+
+    /**
+     * Utility to get custom user details display name text if set, otherwise will return Bandyer
+     *
+     * @param context context
+     * @return text representing the custom user details display name
+     */
+    public static String getCustomUserDetailsDisplayName(Context context) {
+        return context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).getString("custom_user_details_display_name", "");
+    }
+
+    /**
+     * Utility to set the custom user details image uri
+     *
+     * @param context context
+     * @param uri new uri to be used as custom user details logo
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setCustomUserDetailsImageUri(Context context, String uri) {
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("custom_user_details_image_uri", uri).commit();
+    }
+
+    /**
+     * Utility to set the custom user details display name text
+     *
+     * @param context context
+     * @param text new text to be used as custom user details display name
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setCustomUserDetailsDisplayName(Context context, String text) {
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("custom_user_details_display_name", text).commit();
+    }
+
+    /**
+     * Utility to get mock user details mode
+     *
+     * @param context context
+     * @return text representing the mock user details mode, NONE, RANDOM or CUSTOM
+     */
+    public static String getMockedUserDetailsMode(Context context) {
+        return context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).getString("mock_user_details_mode", "NONE");
+    }
+
+    /**
+     * Utility to set mock user details mode
+     *
+     * @param context context
+     * @param mode new mock user details mode
+     */
+    @SuppressLint("ApplySharedPref")
+    public static void setMockedUserDetailsMode(Context context, String mode) {
+        context.getSharedPreferences(BandyerSDK.DESIGN_PREFS, MODE_PRIVATE).edit().putString("mock_user_details_mode", mode).commit();
     }
 }

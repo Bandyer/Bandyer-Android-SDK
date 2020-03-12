@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.utils.activities;
 
 import android.app.Activity;
@@ -15,7 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.bandyer.demo_android_sdk.R;
-import com.squareup.picasso.Picasso;
 
 import static com.bandyer.demo_android_sdk.utils.storage.MediaStorageUtils.getUriFromString;
 import static com.bandyer.demo_android_sdk.utils.storage.MediaStorageUtils.saveFileInApp;
@@ -25,30 +29,30 @@ import static com.bandyer.demo_android_sdk.utils.storage.MediaStorageUtils.saveF
  */
 public class ImageTextEditActivity extends BaseActivity {
 
-    public static final int PICK_IMAGE = 1;
-    public static final int IMAGE_TEXT_REQUEST = 111;
+    private static int PICK_IMAGE = -1;
 
     public static final String PRESET_URI_PARAM = "uri_param";
     public static final String PRESET_TEXT_PARAM = "text_param";
 
     private ImageView imageView;
-
     private EditText editTextView;
 
     private String imageUrl = "";
     private String title = "";
 
-    public static void showForResult(Fragment fragment, Uri uri, String text) {
-        fragment.startActivityForResult(buildIntent(fragment.getContext(), uri, text), IMAGE_TEXT_REQUEST);
+    public static void showForResult(Fragment fragment, Uri uri, String text, int requestCode) {
+        PICK_IMAGE = requestCode;
+        fragment.startActivityForResult(buildIntent(fragment.getContext(), uri, text), requestCode);
     }
 
-    public static void showForResult(Activity context, Uri uri, String text) {
-        context.startActivityForResult(buildIntent(context, uri, text), IMAGE_TEXT_REQUEST);
+    public static void showForResult(Activity context, Uri uri, String text, int requestCode) {
+        PICK_IMAGE = requestCode;
+        context.startActivityForResult(buildIntent(context, uri, text), requestCode);
     }
 
     private static Intent buildIntent(Context context, Uri uri, String text) {
         Intent intent = new Intent(context, ImageTextEditActivity.class);
-        intent.putExtra(PRESET_URI_PARAM, uri.toString());
+        if (uri != null && uri.getLastPathSegment() != null) intent.putExtra(PRESET_URI_PARAM, uri.toString());
         intent.putExtra(PRESET_TEXT_PARAM, text);
         return intent;
     }
@@ -68,9 +72,10 @@ public class ImageTextEditActivity extends BaseActivity {
         title = getIntent().getStringExtra(PRESET_TEXT_PARAM);
         imageUrl = getIntent().getStringExtra(PRESET_URI_PARAM);
 
-        Uri uri = getUriFromString(imageUrl);
-
-        Picasso.get().load(uri).into(imageView);
+        if (imageUrl != null) {
+            Uri uri = getUriFromString(imageUrl);
+            loadImage(imageView, uri);
+        }
 
         editTextView.setText(title);
 
@@ -88,13 +93,12 @@ public class ImageTextEditActivity extends BaseActivity {
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             // save the file in application folder to be accessible to the app
-            String url = saveFileInApp(this, selectedImage, "custom_logo");
+            String url = saveFileInApp(this, selectedImage, "custom_logo_" + selectedImage.toString());
             if (url == null) return;
             imageUrl = url;
-            Picasso.get().load(getUriFromString(url)).into(imageView);
+            loadImage(imageView, getUriFromString(imageUrl));
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,7 +113,7 @@ public class ImageTextEditActivity extends BaseActivity {
             case R.id.save:
                 title = editTextView.getText().toString();
                 Intent resultDataIntent = new Intent();
-                resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl);
+                if (imageUrl != null) resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl);
                 resultDataIntent.putExtra(PRESET_TEXT_PARAM, title);
                 setResult(2, resultDataIntent);
                 onBackPressed();
@@ -117,7 +121,7 @@ public class ImageTextEditActivity extends BaseActivity {
             case R.id.clear_all:
                 imageUrl = "";
                 title = "";
-                imageView.setImageDrawable(null);
+                imageView.setImageResource(R.drawable.outline_insert_photo_white_24);
                 editTextView.setText(null);
                 break;
             case android.R.id.home:

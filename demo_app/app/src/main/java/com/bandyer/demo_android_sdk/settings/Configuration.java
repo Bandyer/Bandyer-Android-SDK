@@ -17,7 +17,7 @@ public class Configuration {
     String logoUrl;
     String logoName;
     boolean useLeakCanary;
-    boolean useMockUserDetailsProvider;
+    boolean useRandomMockUserDetailsProvider;
     boolean useSimplifiedVersion;
     String defaultCallType;
     boolean withWhiteboardCapability;
@@ -40,7 +40,7 @@ public class Configuration {
                 ", pushProvider='" + pushProvider + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", logoName='" + logoName + '\'' +
-                ", useMockUserDetailsProvider=" + useMockUserDetailsProvider +
+                ", useRandomMockUserDetailsProvider=" + useRandomMockUserDetailsProvider +
                 ", useLeakCanary=" + useLeakCanary +
                 ", useSimplifiedVersion=" + useSimplifiedVersion +
                 ", defaultCallType='" + defaultCallType + '\'' +

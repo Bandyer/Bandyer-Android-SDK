@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.content.Context;
@@ -12,6 +17,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.bandyer.demo_android_sdk.R;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class SummaryImageEditTextPreference extends Preference implements SummaryPreference {
@@ -55,7 +61,10 @@ public class SummaryImageEditTextPreference extends Preference implements Summar
 
         textView.setText(text);
 
-        Picasso.get().load(imageUri).into(imageView);
+        Picasso.get()
+                .load(imageUri)
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .into(imageView);
     }
 
     public void setImageUri(Uri uri) {

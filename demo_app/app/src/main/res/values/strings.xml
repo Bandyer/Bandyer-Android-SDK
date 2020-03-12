@@ -18,8 +18,10 @@
     <string name="pref_title_app_id" translatable="false">APP_ID</string>
     <string name="pref_hint_app_id" translatable="false">mAppId_xxx</string>
     <string name="pref_watermark_id" translatable="false">watermarkId</string>
+    <string name="pref_custom_user_details" translatable="false">customUserDetails</string>
 
     <!-- FIREBASE CONFIGS -->
+
     <string name="pref_project_number" translatable="false">projectNumber</string>
     <string name="pref_title_project_number" translatable="false">Firebase Project Number</string>
     <string name="pref_hint_project_number" translatable="false">1035469437089</string>
@@ -30,15 +32,18 @@
     <string name="pref_title_environment" translatable="false">ENVIRONMENT</string>
     <string name="pref_hint_environment" translatable="false">sandbox</string>
     <string name="summary_environment" translatable="false">The environment to use for the BandyerSDK.</string>
-    <string name="summary_leak_canary" translatable="false">LeakCanary is useful to debug, if any object is retained outside of context.\nWhich will lead to excessive usage of RAM.</string>
+    <string name="summary_leak_canary" translatable="false">LeakCanary is useful to debug if any object is retained outside of context, which will lead to excessive usage of RAM.</string>
     <string name="summary_watermark" translatable="false">Watermark to setup on calls to brandify your application.\nThis is useful to ensure the final user that the caller is receiving a call from a known source.</string>
+    <string name="summary_custom_user_details" translatable="false">Custom display name and image of users displayed in call.</string>
 
     <!-- DEMO APP CONFIGS -->
+
     <string name="leak_canary" translatable="false">LeakCanary</string>
     <string name="use_mock_user_details_provider" translatable="false">Mock user details</string>
+    <string name="pref_mockUserDetails_title" translatable="false">Mock user details</string>
+    <string name="pref_mockUserDetails" translatable="false">MOCK USER DETAILS</string>
 
-    <string name="summary_use_mock_user_details_provider" translatable="false">This setting allows you to show user details such as name or surname
-        instead of the userAliases when a chat or call UI is presented.</string>
+    <string name="summary_use_mock_user_details_provider" translatable="false">Use this setting to customize user details when a chat or call UI is presented.</string>
 
     <string name="use_simplified_version_title" translatable="false">Simplified version</string>
     <string name="use_simplified_version_summary" translatable="false">Automatically executes call and chat opening requests based on default settings.</string>
@@ -143,7 +148,13 @@
     <string name="pref_call_type_title" translatable="false">Default call type</string>
     <string name="pref_call_capabilities_title" translatable="false">In-call default capabilities</string>
     <string name="pref_call_options_title" translatable="false">In-call default options</string>
-
+    <string name="mock_user_details_config_none" translatable="false">NONE</string>
+    <string name="mock_user_details_config_random" translatable="false">RANDOM</string>
+    <string name="mock_user_details_config_custom" translatable="false">CUSTOM</string>
+    <string name="mock_user_details_display_name" translatable="false">Display name</string>
+    <string name="mock_user_details_config_none_summary" translatable="false">No user details provider will be used, default avatars and user aliases will be shown.</string>
+    <string name="mock_user_details_config_random_summary" translatable="false">A web based random user generator\n(https://randomuser.me/)\nwill be used to display random users details.</string>
+    <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
     <string name="join_call_url" translatable="false">Join call in Bandyer</string>
 
 </resources>

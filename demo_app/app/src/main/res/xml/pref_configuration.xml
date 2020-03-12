@@ -13,13 +13,13 @@
 
         <com.bandyer.demo_android_sdk.custom_views.SummaryListPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:entries="@array/pushProviders" ns0:entryValues="@array/pushProviders" ns0:icon="@null" ns0:id="@+id/pref_pushProvider" ns0:key="@string/pref_pushProvider" ns0:title="@string/pref_title_pushProvider" />
 
-        <com.bandyer.demo_android_sdk.custom_views.SummaryCheckBoxPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:defaultValue="false" ns0:icon="@null" ns0:id="@+id/mock_user_details_provider_option" ns0:key="@string/use_mock_user_details_provider" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:title="@string/use_mock_user_details_provider" />
-
     </PreferenceCategory>
 
     <PreferenceCategory ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:key="@string/pref_extra_options" ns0:title="@string/pref_extra_options">
 
         <com.bandyer.demo_android_sdk.custom_views.SummaryImageEditTextPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:icon="@null" ns0:id="@+id/pref_watermark_id" ns0:key="@string/pref_watermark_id" ns0:selectAllOnFocus="true" ns0:singleLine="true" ns0:title="Watermark info" />
+
+        <com.bandyer.demo_android_sdk.custom_views.SummaryListIntentPreference ns1:allowDividerAbove="false" ns1:allowDividerBelow="false" ns1:iconSpaceReserved="false" ns0:defaultValue="NONE" ns0:entries="@array/mockUserDetailsType" ns0:entryValues="@array/mockUserDetailsType" ns0:icon="@null" ns0:id="@+id/pref_mockUserDetails" ns0:key="@string/pref_mockUserDetails" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:title="@string/pref_mockUserDetails_title" />
 
     </PreferenceCategory>
 

@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.content.Context;
@@ -35,19 +40,16 @@ public class SummaryCheckBoxPreference extends CheckBoxPreference implements Sum
 
     @Override
     public int getLayout() {
-        return R.layout.preference_summary_layout;
+        return R.layout.preference_checkbox_summary_layout;
     }
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
         View root = onBind(getContext(), false, secondarySummaryText, holder);
-
         RelativeLayout summaryParent = (RelativeLayout) ((LinearLayout) holder.itemView).getChildAt(1);
-        RelativeLayout.LayoutParams secondarySummaryLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams secondarySummaryLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         secondarySummaryLayoutParams.addRule(RelativeLayout.BELOW, android.R.id.title);
-        secondarySummaryLayoutParams.bottomMargin = Utils.dpToPx(getContext(), 16);
-        secondarySummaryLayoutParams.topMargin = Utils.dpToPx(getContext(), 16);
         root.setLayoutParams(secondarySummaryLayoutParams);
 
         if (holder.findViewById(R.id.root_pref) == null)

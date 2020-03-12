@@ -19,9 +19,11 @@ public class LeakCanaryManager {
                 leakCanaryConfig.getReferenceMatchers(),
                 leakCanaryConfig.getObjectInspectors(),
                 leakCanaryConfig.getOnHeapAnalyzedListener(),
+                leakCanaryConfig.getMetadataExtractor(),
                 leakCanaryConfig.getComputeRetainedHeapSize(),
                 leakCanaryConfig.getMaxStoredHeapDumps(),
                 leakCanaryConfig.getRequestWriteExternalStoragePermission(),
+                leakCanaryConfig.getLeakingObjectFinder(),
                 leakCanaryConfig.getUseExperimentalLeakFinders()
         );
         LeakCanary.INSTANCE.setConfig(newLeakCanaryConfig);

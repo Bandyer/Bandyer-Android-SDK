@@ -5,16 +5,22 @@
 
 package com.bandyer.demo_android_sdk.mock;
 
-import androidx.annotation.NonNull;
+import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener;
 import com.bandyer.android_sdk.utils.provider.UserContactProvider;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.networking.APIInterface;
 import com.bandyer.demo_android_sdk.utils.networking.DemoAppUsers;
+import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -32,6 +38,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class MockedUserProvider implements UserContactProvider {
 
+    private Context context;
+
+    public MockedUserProvider(Context context) {
+        this.context = context;
+    }
+
     @Override
     public void provideUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
         // this will be called multiple times, use a cache to avoid excessive work
@@ -40,6 +52,39 @@ public class MockedUserProvider implements UserContactProvider {
         // The rest call following is an example of an asynchronous usage.
         // It is NOT intended to be done here as this method will be called multiple times
 
+        MockUserProviderMode mockedUserProviderMode = MockUserProviderMode.valueOf(ConfigurationPrefsManager.getMockedUserDetailsMode(context));
+
+        switch (mockedUserProviderMode) {
+            case RANDOM:
+                provideRandomUserDetails(userAliases, onProviderListener);
+                break;
+            case CUSTOM:
+                provideCustomUserDetails(userAliases, onProviderListener);
+                break;
+        }
+    }
+
+    private void provideCustomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
+        String displayName = ConfigurationPrefsManager.getCustomUserDetailsDisplayName(context);
+        Uri customImage = ConfigurationPrefsManager.getCustomUserDetailsImageUri(context);
+        ArrayList<UserDetails> customDetails = new ArrayList<>();
+
+        for (String alias : userAliases) {
+
+            if (alias.equals(BandyerSDKClient.getInstance().getMyAlias()))
+                customDetails.add(new UserDetails.Builder(alias).build());
+            else
+                customDetails.add(
+                        new UserDetails.Builder(alias)
+                                .withNickName(displayName)
+                                .withImageUri(customImage)
+                                .build());
+        }
+
+        onProviderListener.onProvided(customDetails);
+    }
+
+    private void provideRandomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://randomuser.me/")
                 .addConverterFactory(GsonConverterFactory.create())

@@ -38,6 +38,7 @@ import com.bandyer.android_sdk.intent.file.IncomingFile;
 import com.bandyer.android_sdk.notification.NotificationAction;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
+import com.bandyer.demo_android_sdk.mock.MockUserProviderMode;
 import com.bandyer.demo_android_sdk.notification.NotificationProxy;
 import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.Utils;
@@ -96,11 +97,22 @@ public class App extends MultiDexApplication {
                 .withFileSharingEnabled(getFileSharingNotificationListener());
 
         // If you desire to personalize the user details shown you should set a provider and formatter
-        // otherwise the userAlias will be shown in chat or call.
-        if (ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(this)) {
-            builder.withUserContactProvider(new MockedUserProvider())
-                   .withUserDetailsFormatter((userDetails, context) -> "Operator " + userDetails.getFirstName() + " " + userDetails.getLastName());
-        }
+        // otherwise the userAlias and default avatar will be shown in chat or call.
+
+        if (ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(this))
+            builder.withUserContactProvider(new MockedUserProvider(this));
+
+        builder.withUserDetailsFormatter((userDetails, context) -> {
+            MockUserProviderMode mockedUserProviderMode = MockUserProviderMode.valueOf(ConfigurationPrefsManager.getMockedUserDetailsMode(this));
+            switch (mockedUserProviderMode) {
+                case RANDOM:
+                    return userDetails.getFirstName() + " " + userDetails.getLastName();
+                case CUSTOM:
+                    return userDetails.getNickName();
+                default:
+                    return userDetails.getUserAlias();
+            }
+        });
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             builder.withWhiteboardEnabled();

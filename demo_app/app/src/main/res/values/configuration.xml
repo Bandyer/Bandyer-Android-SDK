@@ -29,6 +29,7 @@
         <item>production</item>
     </string-array>
 
+    <!-- push providers -->
     <string-array name="pushProviders">
         <item>FCM</item>
         <item>Pushy</item>

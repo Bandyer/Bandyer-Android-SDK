@@ -8,9 +8,7 @@
     <color name="colorPrimary">#FF0277BD</color>
     <color name="colorPrimaryLight">#58a5f0</color>
     <color name="colorPrimaryDarkLight">#A1004F7E</color>
-
     <color name="colorAccent">#FFED6603</color>
-    <color name="accent">#FFED6603</color>
 
     <color name="colorModuleError">#e53935</color>
     <color name="colorModuleChatOffline">#f57c00</color>

@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.content.Context;
@@ -35,7 +40,7 @@ public class SummaryListPreference extends ListPreference implements SummaryPref
 
     @Override
     public int getLayout() {
-        return R.layout.preference_summary_layout;
+        return R.layout.preference_edittext_summary_layout;
     }
 
     @Override

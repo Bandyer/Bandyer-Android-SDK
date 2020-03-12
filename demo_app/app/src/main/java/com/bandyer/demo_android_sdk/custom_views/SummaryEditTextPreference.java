@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 package com.bandyer.demo_android_sdk.custom_views;
 
 import android.content.Context;
@@ -9,6 +14,7 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.bandyer.demo_android_sdk.R;
+import com.bandyer.demo_android_sdk.utils.Utils;
 
 public class SummaryEditTextPreference extends EditTextPreference implements SummaryPreference {
 
@@ -32,7 +38,7 @@ public class SummaryEditTextPreference extends EditTextPreference implements Sum
 
     @Override
     public int getLayout() {
-        return R.layout.preference_summary_layout;
+        return R.layout.preference_edittext_summary_layout;
     }
 
     @Override

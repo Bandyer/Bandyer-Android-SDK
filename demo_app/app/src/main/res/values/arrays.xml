@@ -11,4 +11,10 @@
         <item>@string/call_type_audio_upgradable_name</item>
         <item>@string/call_type_audio_video_name</item>
     </array>
+
+    <string-array name="mockUserDetailsType">
+        <item>@string/mock_user_details_config_none</item>
+        <item>@string/mock_user_details_config_random</item>
+        <item>@string/mock_user_details_config_custom</item>
+    </string-array>
 </resources>

@@ -76,7 +76,8 @@ public class ConfigurationActivity extends BaseActivity {
                 ConfigurationPrefsManager.setWatermarkUri(this, conf.logoUrl);
 
                 ConfigurationPrefsManager.setLeakCanaryEnabled(this, conf.useLeakCanary);
-                ConfigurationPrefsManager.setMockUserDetailsProviderEnabled(this, conf.useMockUserDetailsProvider);
+                if (conf.useRandomMockUserDetailsProvider)
+                    ConfigurationPrefsManager.setMockedUserDetailsMode(this, getResources().getString(R.string.mock_user_details_config_random));
                 ConfigurationPrefsManager.setSimplifiedVersionEnabled(this, conf.useSimplifiedVersion);
 
                 DefaultCallSettingsManager.setDefaultCallType(this, conf.defaultCallType);

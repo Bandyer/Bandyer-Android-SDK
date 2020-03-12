@@ -41,7 +41,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/selected_users_chipgroup"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space32"
+            android:layout_height="@dimen/space48"
             android:layout_marginTop="@dimen/space16"
             android:layout_marginBottom="@dimen/space16"
             android:clipToPadding="false"
