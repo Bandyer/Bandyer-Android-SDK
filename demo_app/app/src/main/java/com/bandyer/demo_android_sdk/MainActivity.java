@@ -23,6 +23,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -34,17 +35,22 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bandyer.android_sdk.call.CallException;
 import com.bandyer.android_sdk.call.CallModule;
 import com.bandyer.android_sdk.call.CallObserver;
+import com.bandyer.android_sdk.call.CallUIObserver;
 import com.bandyer.android_sdk.chat.ChatException;
 import com.bandyer.android_sdk.chat.ChatModule;
 import com.bandyer.android_sdk.chat.ChatObserver;
+import com.bandyer.android_sdk.chat.ChatUIObserver;
 import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.bandyer.android_sdk.client.BandyerSDKClientObserver;
 import com.bandyer.android_sdk.client.BandyerSDKClientOptions;
 import com.bandyer.android_sdk.client.BandyerSDKClientState;
 import com.bandyer.android_sdk.intent.BandyerIntent;
+import com.bandyer.android_sdk.intent.call.Call;
 import com.bandyer.android_sdk.intent.call.CallCapabilities;
+import com.bandyer.android_sdk.intent.call.CallDisplayMode;
 import com.bandyer.android_sdk.intent.call.CallIntentOptions;
 import com.bandyer.android_sdk.intent.call.CallOptions;
+import com.bandyer.android_sdk.intent.chat.Chat;
 import com.bandyer.android_sdk.intent.chat.ChatIntentOptions;
 import com.bandyer.android_sdk.module.AuthenticationException;
 import com.bandyer.android_sdk.module.BandyerModule;
@@ -68,6 +74,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.ItemFilterListener;
 import com.mikepenz.fastadapter.select.SelectExtension;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,42 +130,85 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     private ArrayList<UserSelectionItem> usersList = new ArrayList<>();
 
-    private CallObserver callObserver = new CallObserver() {
+    abstract class MyCallObserver implements CallUIObserver, CallObserver {
+    }
+
+    abstract class MyChatObserver implements ChatUIObserver, ChatObserver {
+    }
+
+    private MyCallObserver callObserver = new MyCallObserver() {
+
         @Override
-        public void onCallStarted() {
+        public void onActivityError(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity, @NonNull CallException error) {
+            Log.e(TAG, "onCallActivityError " + error.getMessage());
+        }
+
+        @Override
+        public void onActivityDestroyed(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity) {
+            Log.d(TAG, "onCallActivityDestroyed");
+        }
+
+        @Override
+        public void onActivityStarted(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity) {
+            Log.d(TAG, "onCallActivityStarted");
+        }
+
+        @Override
+        public void onCallStarted(@NonNull Call ongoingCall) {
             Log.d(TAG, "onCallStarted");
+        }
+
+        @Override
+        public void onCallCreated(@NonNull Call ongoingCall) {
+            Log.d(TAG, "onCallCreated");
             showOngoingCallLabel();
         }
 
         @Override
-        public void onCallEnded() {
+        public void onCallEnded(@NonNull Call ongoingCall) {
             Log.d(TAG, "onCallEnded");
             hideOngoingCallLabel();
         }
 
         @Override
-        public void onCallEndedWithError(@NonNull CallException callException) {
+        public void onCallEndedWithError(@NonNull Call ongoingCall, @NonNull CallException callException) {
             Log.d(TAG, "onCallEnded with error: " + callException.getMessage());
             hideOngoingCallLabel();
             showErrorDialog(callException.getMessage());
         }
     };
 
-    private ChatObserver chatObserver = new ChatObserver() {
+    private MyChatObserver chatObserver = new MyChatObserver() {
+
+        @Override
+        public void onActivityError(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity, @NonNull ChatException error) {
+            Log.e(TAG, "onChatActivityError " + error.getMessage());
+        }
+
+        @Override
+        public void onActivityDestroyed(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity) {
+            Log.d(TAG, "onChatActivityDestroyed");
+        }
+
+        @Override
+        public void onActivityStarted(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity) {
+            Log.d(TAG, "onChatActivityStarted");
+        }
+
         @Override
         public void onChatStarted() {
             Log.d(TAG, "onChatStarted");
         }
 
         @Override
-        public void onChatEnded() {
-            Log.d(TAG, "onChatEnded");
-        }
-
-        @Override
         public void onChatEndedWithError(@NonNull ChatException chatException) {
             Log.d(TAG, "onChatEndedWithError: " + chatException.getMessage());
             showErrorDialog(chatException.getMessage());
+        }
+
+        @Override
+        public void onChatEnded() {
+            Log.d(TAG, "onChatEnded");
         }
     };
 
@@ -190,7 +240,15 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
 
-        ongoingCallLabel.setOnClickListener(v -> BandyerSDKClient.getInstance().resumeCallActivity());
+        ongoingCallLabel.setOnClickListener(v -> {
+            CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
+            if (callModule == null) return;
+
+            Call ongoingCall = callModule.getOngoingCall();
+            if (ongoingCall == null) return;
+
+            callModule.setDisplayMode(ongoingCall, CallDisplayMode.FOREGROUND);
+        });
 
         refreshUsers.setOnRefreshListener(this);
 
@@ -275,14 +333,17 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
         if (callModule != null) {
             callModule.addCallObserver(this, callObserver);
+            callModule.addCallUIObserver(this, callObserver);
             if (callModule.isInCall()) showOngoingCallLabel();
             else hideOngoingCallLabel();
         }
 
         // set an observer for the chat
         ChatModule chatModule = BandyerSDKClient.getInstance().getChatModule();
-        if (chatModule != null)
+        if (chatModule != null) {
             chatModule.addChatObserver(this, chatObserver);
+            chatModule.addChatUIObserver(this, chatObserver);
+        }
     }
 
     /**

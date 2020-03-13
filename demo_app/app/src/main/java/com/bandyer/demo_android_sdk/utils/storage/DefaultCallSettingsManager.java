@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.bandyer.demo_android_sdk.BuildConfig;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.custom_views.CallOptionsDialog;
 
@@ -187,5 +188,16 @@ public class DefaultCallSettingsManager {
     public static void setProximitySensorDisabled(Context context, boolean enabled) {
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(CALL_OPTIONS_PREFS_NAME, MODE_PRIVATE);
         prefs.edit().putBoolean(context.getString(R.string.disable_proximity_sensor), enabled).commit();
+    }
+
+    /**
+     * Utility to return if the mocked user authentication is enabled.
+     *
+     * @param context Activity or App
+     * @return true if enabled, false otherwise
+     */
+    public static Boolean isMockedUserAuthenticationEnabled(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(CALL_OPTIONS_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getBoolean(context.getString(R.string.call_options_mock_user_authentication_request), BuildConfig.USE_MOCK_USER_DETAILS_PROVIDER);
     }
 }

@@ -26,7 +26,7 @@
     <string name="pref_title_project_number" translatable="false">Firebase Project Number</string>
     <string name="pref_hint_project_number" translatable="false">1035469437089</string>
     <string name="summary_project_number" translatable="false">The project number is used to send notifications from our backend to this sample app.
-        \n\nThis is not mandatory for the sdk to work, it\'s used by us to notificate this sample app.</string>
+        \n\nThis is not mandatory for the sdk to work, it\'s used by us to notify this sample app.</string>
 
     <string name="pref_environment" translatable="false">environment</string>
     <string name="pref_title_environment" translatable="false">ENVIRONMENT</string>
@@ -97,16 +97,17 @@
         \n\nWhen integrating you shall use this key only SERVER SIDE!</string>
     <string name="summary_app_id" translatable="false">The app id is mandatory for the sdk to work!.</string>
     <string name="pref_credentials_category" translatable="false">Credentials</string>
-
-
     <string name="pref_pushProvider" translatable="false">pushProvider</string>
     <string name="pref_title_pushProvider" translatable="false">PUSH PROVIDER</string>
     <string name="pref_hint_pushProvider" translatable="false">FCM</string>
     <string name="summary_pushProvider" translatable="false">The provider to use for push notifications.</string>
-
     <string name="clear_all" translatable="false">Clear all</string>
     <string name="reset_all" translatable="false">Reset all</string>
     <string name="save" translatable="false">Save</string>
+    <string name="mock_user_authentication_failed" translatable="false">Biometric user authentication failed.</string>
+    <string name="mock_user_authentication_dialog_title" translatable="false">User authentication request</string>
+    <string name="mock_user_authentication_dialog_subtitle" translatable="false">Bandyer voip call authentication.</string>
+    <string name="mock_user_authentication_dialog_description" translatable="false">Authentication requested by Bandyer voip call needed to verify your identity.</string>
 
     <!-- CALL OPTIONS -->
 
@@ -126,6 +127,8 @@
     <string name="call" translatable="false">Call</string>
     <string name="select_call_capabilities_from_chat_ui" translatable="false">Select call types that can be started from chat UI:</string>
     <string name="chat" translatable="false">Chat</string>
+    <string name="call_options_mock_user_authentication_request" translatable="false">Mock user biometric authentication request</string>
+    <string name="call_options_mock_user_authentication_request_summary" translatable="false">The biometric mocked request will be triggered after 10s that the call has been established.</string>
     <string name="back_camera_as_default_if_available" translatable="false">Back camera as default (if available)</string>
     <string name="disable_proximity_sensor" translatable="false">Disable proximity sensor</string>
     <string name="screen_sharing_requires_api_21" translatable="false">Screen sharing (requires API 21)</string>
@@ -148,6 +151,9 @@
     <string name="pref_call_type_title" translatable="false">Default call type</string>
     <string name="pref_call_capabilities_title" translatable="false">In-call default capabilities</string>
     <string name="pref_call_options_title" translatable="false">In-call default options</string>
+
+    <string name="pref_call_options_experimental" translatable="false">Experimental</string>
+
     <string name="mock_user_details_config_none" translatable="false">NONE</string>
     <string name="mock_user_details_config_random" translatable="false">RANDOM</string>
     <string name="mock_user_details_config_custom" translatable="false">CUSTOM</string>
@@ -155,6 +161,7 @@
     <string name="mock_user_details_config_none_summary" translatable="false">No user details provider will be used, default avatars and user aliases will be shown.</string>
     <string name="mock_user_details_config_random_summary" translatable="false">A web based random user generator\n(https://randomuser.me/)\nwill be used to display random users details.</string>
     <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
+
     <string name="join_call_url" translatable="false">Join call in Bandyer</string>
 
 </resources>

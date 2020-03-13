@@ -113,4 +113,22 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="@string/pref_call_options_experimental"
+        android:title="@string/pref_call_options_experimental"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            android:id="@+id/call_options_mock_user_authentication_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space16"
+            android:defaultValue="false"
+            android:key="@string/call_options_mock_user_authentication_request"
+            android:title="@string/call_options_mock_user_authentication_request"
+            android:summary="@string/call_options_mock_user_authentication_request_summary"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

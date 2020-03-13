@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bandyer.demo_android_sdk">
+
     <!-- chat permissions -->
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name=" android.permission.USE_BIOMETRIC" />
 
     <application
         android:name=".App"
@@ -19,9 +22,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
+
         <activity
             android:name=".LoginActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
@@ -51,6 +56,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".settings.ConfigurationActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
@@ -76,10 +82,17 @@
                     android:scheme="bandyer" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".settings.DefaultCallSettingsActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
             android:label="@string/default_call_options" />
+
+        <activity
+            android:name=".utils.activities.MockUserAuthenticationRequestActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:theme="@style/SplashScreenAppTheme" />
+
         <activity android:name=".utils.activities.ImageTextEditActivity" />
         <activity android:name="com.bandyer.demo_android_sdk.utils.activities.MockUserDetailsSettingsActivity">
             <intent-filter>
@@ -91,7 +104,10 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service> <!-- Used for install referrer tracking -->
+        </service>
+
+        <!-- Used for install referrer tracking -->
+
         <receiver
             android:name=".settings.ConfigurationReceiver"
             android:exported="true"
@@ -103,48 +119,93 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabric_api_key}" /> <!-- Bandyer unhandled broadcast receiver -->
+            android:value="${fabric_api_key}" />
+
+        <!-- Bandyer call event broadcast receiver -->
+
         <receiver
-            android:name=".exceptions.BandyerUnhandledExceptionBroadcastReceiver"
+            android:name=".utils.receivers.CallEventBroadcastReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.bandyer.bandyer_android_sdk.BANDYER_UNHANDLED_EXCEPTION" />
+                <action android:name="com.bandyer.android_sdk.CALL_EVENT_ACTION" />
             </intent-filter>
-        </receiver> <!-- Pushy Notifications -->
+        </receiver>
+
+        <!-- Bandyer chat event broadcast receiver -->
+
+        <receiver
+            android:name=".utils.receivers.ChatEventBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.android_sdk.CHAT_EVENT_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Bandyer unhandled broadcast receiver -->
+
+        <receiver
+            android:name=".exceptions.BandyerExceptionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.android_sdk.BANDYER_UNHANDLED_EXCEPTION" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Authentication Request Receiver -->
+
+        <receiver
+            android:name=".utils.receivers.AuthenticationRequestNotificationClickedReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Pushy Notifications -->
         <!-- Pushy Notification Receiver -->
         <!-- Incoming push notifications will invoke the following BroadcastReceiver -->
+
         <receiver
             android:name=".notification.PushyCompat"
             android:exported="false">
             <intent-filter>
-
                 <!-- Do not modify this -->
                 <action android:name="pushy.me" />
             </intent-filter>
-        </receiver> <!-- Pushy Update Receiver -->
+        </receiver>
+
+        <!-- Pushy Update Receiver -->
         <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
+
         <receiver
             android:name="me.pushy.sdk.receivers.PushyUpdateReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
-        </receiver> <!-- Pushy Boot Receiver -->
+        </receiver>
+
+        <!-- Pushy Boot Receiver -->
         <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
+
         <receiver
             android:name="me.pushy.sdk.receivers.PushyBootReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver> <!-- Pushy Socket Service -->
+        </receiver>
+
+        <!-- Pushy Socket Service -->
         <!-- Do not modify - internal service -->
-        <service android:name="me.pushy.sdk.services.PushySocketService" /> <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
+
+        <service android:name="me.pushy.sdk.services.PushySocketService" />
+
+        <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
         <!-- Do not modify - internal service -->
+
         <service
             android:name="me.pushy.sdk.services.PushyJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

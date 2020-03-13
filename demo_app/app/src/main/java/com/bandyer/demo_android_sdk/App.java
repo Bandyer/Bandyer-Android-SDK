@@ -20,7 +20,7 @@ import com.bandyer.android_sdk.call.model.CallInfo;
 import com.bandyer.android_sdk.call.notification.CallNotificationListener;
 import com.bandyer.android_sdk.call.notification.CallNotificationStyle;
 import com.bandyer.android_sdk.call.notification.CallNotificationType;
-import com.bandyer.android_sdk.chat.ChatInfo;
+import com.bandyer.android_sdk.chat.model.ChatInfo;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationListener;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationStyle;
 import com.bandyer.android_sdk.file_sharing.model.FileInfo;
@@ -30,12 +30,9 @@ import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotification
 import com.bandyer.android_sdk.intent.call.CallCapabilities;
 import com.bandyer.android_sdk.intent.call.CallOptions;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
-import com.bandyer.android_sdk.intent.call.IncomingCallIntentOptions;
 import com.bandyer.android_sdk.intent.call.IncomingCallOptions;
-import com.bandyer.android_sdk.intent.chat.ChatIntentOptions;
 import com.bandyer.android_sdk.intent.chat.IncomingChat;
 import com.bandyer.android_sdk.intent.file.IncomingFile;
-import com.bandyer.android_sdk.notification.NotificationAction;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.bandyer.demo_android_sdk.mock.MockUserProviderMode;
@@ -100,7 +97,7 @@ public class App extends MultiDexApplication {
         // otherwise the userAlias and default avatar will be shown in chat or call.
 
         if (ConfigurationPrefsManager.isMockUserDetailsProviderEnabled(this))
-            builder.withUserContactProvider(new MockedUserProvider(this));
+            builder.withUserDetailsProvider(new MockedUserProvider(this));
 
         builder.withUserDetailsFormatter((userDetails, context) -> {
             MockUserProviderMode mockedUserProviderMode = MockUserProviderMode.valueOf(ConfigurationPrefsManager.getMockedUserDetailsMode(this));
@@ -180,20 +177,19 @@ public class App extends MultiDexApplication {
 
     private CallNotificationListener getCallNotificationListener() {
         return new CallNotificationListener() {
-
             @Override
             public void onIncomingCall(@NonNull IncomingCall incomingCall, boolean isDnd, boolean isScreenLocked) {
-                if (!isDnd || isScreenLocked)
-                    incomingCall.show(App.this);
-                else {
-                    incomingCall.asNotification().show(App.this);
-                }
-            }
+                incomingCall.withCapabilities(getDefaultCallCapabilities());
+                incomingCall.withOptions(getDefaultIncomingCallOptions());
 
-            @Override
-            public void onCallActivityStartedFromNotificationAction(@NonNull CallInfo callInfo, @NonNull IncomingCallIntentOptions callIntentOptions) {
-                callIntentOptions.withCapabilities(getDefaultCallCapabilities());
-                callIntentOptions.withOptions(getDefaultIncomingCallOptions());
+                if (!isDnd || isScreenLocked)
+                    incomingCall
+                            .show(App.this);
+                else {
+                    incomingCall
+                            .asNotification()
+                            .show(App.this);
+                }
             }
 
             @Override
@@ -202,33 +198,14 @@ public class App extends MultiDexApplication {
                                              @NonNull CallNotificationStyle notificationStyle) {
                 notificationStyle.setNotificationColor(Color.RED);
             }
-
-            @Override
-            public void onNotificationAction(@NonNull final NotificationAction action) {
-                // Here you can execute your own code before executing the default action of the notification
-                action.execute();
-            }
         };
     }
 
     private ChatNotificationListener getChatNotificationListener() {
         return new ChatNotificationListener() {
-
             @Override
             public void onIncomingChat(@NonNull IncomingChat chat, boolean isDnd, boolean isScreenLocked) {
-                chat.asNotification(App.this).show();
-            }
-
-            @Override
-            public void onCreateNotification(@NonNull ChatInfo chatInfo, @NonNull ChatNotificationStyle notificationStyle) {
-
-            }
-
-            @Override
-            @SuppressLint("NewApi")
-            public void onChatActivityStartedFromNotificationAction(@NonNull ChatInfo chatInfo, @NonNull ChatIntentOptions chatIntentOptions) {
                 CallCapabilities callCapabilities = getDefaultCallCapabilities();
-
                 // You may also initialize the callOptions without any argument in the constructor
                 // You can enable a single option using the utility methods
                 // Example :
@@ -238,16 +215,15 @@ public class App extends MultiDexApplication {
                         DefaultCallSettingsManager.isBackCameraAsDefaultEnabled(App.this),
                         DefaultCallSettingsManager.isProximitySensorDisabled(App.this));
 
-                chatIntentOptions
-                        .withAudioCallCapability(callCapabilities, callOptions)
+                chat.withAudioCallCapability(callCapabilities, callOptions)
                         .withAudioUpgradableCallCapability(callCapabilities, callOptions)
                         .withAudioVideoCallCapability(callCapabilities, callOptions);
+
+                chat.asNotification().show(App.this);
             }
 
             @Override
-            public void onNotificationAction(@NonNull final NotificationAction action) {
-                // Here you can execute your own code before executing the default action of the notification
-                action.execute();
+            public void onCreateNotification(@NonNull ChatInfo chatInfo, @NonNull ChatNotificationStyle notificationStyle) {
             }
         };
     }
@@ -266,12 +242,6 @@ public class App extends MultiDexApplication {
                                              @NonNull FileSharingNotificationType notificationType,
                                              @NonNull FileSharingNotificationStyle notificationStyle) {
                 notificationStyle.setNotificationColor(Color.GREEN);
-            }
-
-            @Override
-            public void onNotificationAction(@NonNull final NotificationAction action) {
-                // Here you can execute your own code before executing the default action of the notification
-                action.execute();
             }
         };
     }

@@ -80,6 +80,8 @@ public class ConfigurationActivity extends BaseActivity {
                     ConfigurationPrefsManager.setMockedUserDetailsMode(this, getResources().getString(R.string.mock_user_details_config_random));
                 ConfigurationPrefsManager.setSimplifiedVersionEnabled(this, conf.useSimplifiedVersion);
 
+                ConfigurationPrefsManager.setMockUserAuthenticationRequest(this,conf.withMockAuthentication);
+
                 DefaultCallSettingsManager.setDefaultCallType(this, conf.defaultCallType);
                 DefaultCallSettingsManager.setBackCameraAsDefaultEnabled(this, conf.withBackCameraAsDefault);
                 DefaultCallSettingsManager.setCallRecordingEnabled(this, conf.withRecordingEnabled);

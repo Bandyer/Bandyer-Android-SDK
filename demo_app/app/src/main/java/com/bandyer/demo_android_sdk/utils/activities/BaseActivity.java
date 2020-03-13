@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
@@ -22,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.DPadNavigationHelper;
 import com.bandyer.demo_android_sdk.utils.networking.MockedNetwork;
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
@@ -58,6 +58,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void showErrorDialog(String text) {
         showErrorDialog(text, null);
+    }
+
+    protected void showToast(String text) {
+        Toast.makeText(this.getApplication(), text, Toast.LENGTH_LONG).show();
     }
 
     protected void showErrorDialog(String text, DialogInterface.OnClickListener clickListener) {
@@ -120,9 +124,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadImage(ImageView imageView, Uri uri) {
-        Picasso.get()
-                .load(uri)
-//                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
-                .into(imageView);
+        Picasso.get().load(uri).into(imageView);
     }
 }

@@ -27,6 +27,7 @@ public class Configuration {
     boolean withRecordingEnabled;
     boolean withBackCameraAsDefault;
     boolean withProximityEnabled;
+    boolean withMockAuthentication;
 
     @NonNull
     @Override
@@ -51,6 +52,7 @@ public class Configuration {
                 ", withRecordingEnabled=" + withRecordingEnabled +
                 ", withBackCameraAsDefault=" + withBackCameraAsDefault +
                 ", withProximityEnabled=" + withProximityEnabled +
+                ", withMockAuthentication=" + withMockAuthentication +
                 '}';
     }
 }

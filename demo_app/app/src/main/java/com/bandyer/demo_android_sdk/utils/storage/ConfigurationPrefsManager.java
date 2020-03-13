@@ -245,6 +245,28 @@ public class ConfigurationPrefsManager {
     }
 
     /**
+     * Set mock user authentication request.
+     * Let the demo app ask for mocked biometric authentication that will be forwarded to other call participants.
+     * @param context context
+     * @param enabled true if enabled false otherwise
+     */
+    public static void setMockUserAuthenticationRequest(Context context, boolean enabled) {
+        SharedPreferences.Editor editor = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean("mock_user_authentication_request", enabled);
+        editor.commit();
+    }
+
+    /**
+     * Check if demo app has enabled mocked user authentication request.
+     * @param context context
+     * @return true if enabled, false otherwise
+     */
+    public static Boolean isMockUserAuthenticationRequest(Context context) {
+        SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, MODE_PRIVATE);
+        return prefs.getBoolean("mock_user_authentication_request", false);
+    }
+
+    /**
      * Utility to get watermarkUri if set, otherwise will return the default logo asset
      *
      * @param context context

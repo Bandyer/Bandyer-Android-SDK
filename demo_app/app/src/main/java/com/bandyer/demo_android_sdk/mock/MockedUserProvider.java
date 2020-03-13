@@ -12,9 +12,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.bandyer.android_sdk.client.BandyerSDKClient;
-import com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener;
-import com.bandyer.android_sdk.utils.provider.UserContactProvider;
+import com.bandyer.android_sdk.utils.provider.OnUserDetailsListener;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
+import com.bandyer.android_sdk.utils.provider.UserDetailsProvider;
 import com.bandyer.demo_android_sdk.utils.Utils;
 import com.bandyer.demo_android_sdk.utils.networking.APIInterface;
 import com.bandyer.demo_android_sdk.utils.networking.DemoAppUsers;
@@ -36,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Implementation of a UserContactProvider interface, used from the SDK to retrieve user details.
  * Results can be fetched from your data sources synchronously or asynchronously.
  */
-public class MockedUserProvider implements UserContactProvider {
+public class MockedUserProvider implements UserDetailsProvider {
 
     private Context context;
 
@@ -45,7 +45,7 @@ public class MockedUserProvider implements UserContactProvider {
     }
 
     @Override
-    public void provideUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
+    public void onUserDetailsRequested(@NonNull final List<String> userAliases, @NonNull final OnUserDetailsListener onDetailsListener) {
         // this will be called multiple times, use a cache to avoid excessive work
         // You may also work on another thread and then call the onProviderListener to notify when you have the list of user details ready
         // You have 2 seconds to fetch all the necessary information from your DB/Cache.
@@ -56,15 +56,15 @@ public class MockedUserProvider implements UserContactProvider {
 
         switch (mockedUserProviderMode) {
             case RANDOM:
-                provideRandomUserDetails(userAliases, onProviderListener);
+                provideRandomUserDetails(userAliases, onDetailsListener);
                 break;
             case CUSTOM:
-                provideCustomUserDetails(userAliases, onProviderListener);
+                provideCustomUserDetails(userAliases, onDetailsListener);
                 break;
         }
     }
 
-    private void provideCustomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
+    private void provideCustomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserDetailsListener onDetailsListener) {
         String displayName = ConfigurationPrefsManager.getCustomUserDetailsDisplayName(context);
         Uri customImage = ConfigurationPrefsManager.getCustomUserDetailsImageUri(context);
         ArrayList<UserDetails> customDetails = new ArrayList<>();
@@ -81,10 +81,10 @@ public class MockedUserProvider implements UserContactProvider {
                                 .build());
         }
 
-        onProviderListener.onProvided(customDetails);
+        onDetailsListener.provide(customDetails);
     }
 
-    private void provideRandomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserInformationProviderListener<UserDetails> onProviderListener) {
+    private void provideRandomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserDetailsListener onDetailsListener) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://randomuser.me/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -115,7 +115,7 @@ public class MockedUserProvider implements UserContactProvider {
                     userDetailsMap.put(userAlias, generateUserDisplayInfo(userAlias, user));
 
                     if (!userDetailsMap.values().contains(null))
-                        onProviderListener.onProvided(userDetailsMap.values());
+                        onDetailsListener.provide(userDetailsMap.values());
                 }
             });
         }
