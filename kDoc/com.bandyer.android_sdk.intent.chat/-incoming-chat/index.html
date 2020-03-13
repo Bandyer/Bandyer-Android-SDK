@@ -11,7 +11,7 @@
 <code><span class="keyword">interface </span><span class="identifier">IncomingChat</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-chat/index.html"><span class="identifier">Chat</span></a></code>
 <p>Incoming Chat abstraction</p>
 <p><strong>Since</strong><br/>
-changed in v1.4.10</p>
+v1.4.10</p>
 <h3>Inherited Properties</h3>
 <table>
 <tbody>
@@ -20,7 +20,7 @@ changed in v1.4.10</p>
 <p><a href="../-chat/chat-info.html">chatInfo</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">chatInfo</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.chat/-chat-info/index.html"><span class="identifier">ChatInfo</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">chatInfo</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.chat.model/-chat-info/index.html"><span class="identifier">ChatInfo</span></a></code>
 <p>Call info.</p>
 </td>
 </tr>
@@ -31,22 +31,11 @@ changed in v1.4.10</p>
 <tbody>
 <tr>
 <td>
-<p><a href="as-activity.html">asActivity</a></p>
-</td>
-<td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><s><span class="identifier">asActivity</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$asActivity(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.intent/-bandyer-intent/index.html"><span class="identifier">BandyerIntent</span></a></code>
-<p>Display the incoming chat message as activity</p>
-</td>
-</tr>
-<tr>
-<td>
 <p><a href="as-notification.html">asNotification</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><s><span class="identifier">asNotification</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$asNotification(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification.html"><span class="identifier">ChatNotification</span></a></code>
-<p>Display the incoming chat message as notification</p>
 <code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">asNotification</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code>
-<p>Display the incoming chat  message as notification</p>
+<p>Set the incoming chat to be displayed as notification</p>
 </td>
 </tr>
 <tr>

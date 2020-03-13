@@ -52,10 +52,19 @@
 <tbody>
 <tr>
 <td>
+<p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-created.html">onCallCreated</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallCreated</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallCreated(com.bandyer.android_sdk.intent.call.Call)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This function will be called when the ongoing call has been created.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-ended.html">onCallEnded</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEnded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEnded</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallEnded(com.bandyer.android_sdk.intent.call.Call)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>This function will be called when the ongoing call has ended.</p>
 </td>
 </tr>
@@ -64,7 +73,7 @@
 <p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-ended-with-error.html">onCallEndedWithError</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEndedWithError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallEndedWithError(com.bandyer.android_sdk.call.CallException)/callException">callException</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.call/-call-exception/index.html"><span class="identifier">CallException</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallEndedWithError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallEndedWithError(com.bandyer.android_sdk.intent.call.Call, com.bandyer.android_sdk.call.CallException)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallEndedWithError(com.bandyer.android_sdk.intent.call.Call, com.bandyer.android_sdk.call.CallException)/callException">callException</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.call/-call-exception/index.html"><span class="identifier">CallException</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>This function is called when the ongoing call ends with an error.</p>
 </td>
 </tr>
@@ -73,7 +82,7 @@
 <p><a href="../../com.bandyer.android_sdk.call/-call-observer/on-call-started.html">onCallStarted</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCallStarted</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallObserver$onCallStarted(com.bandyer.android_sdk.intent.call.Call)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>This function will be called when the ongoing call has started.</p>
 </td>
 </tr>

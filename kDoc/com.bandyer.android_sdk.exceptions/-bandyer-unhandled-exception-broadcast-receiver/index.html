@@ -8,8 +8,10 @@
 <a href="../index.html">com.bandyer.android_sdk.exceptions</a>&nbsp;/&nbsp;<a href="./index.html">BandyerUnhandledExceptionBroadcastReceiver</a><br/>
 <br/>
 <h1>BandyerUnhandledExceptionBroadcastReceiver</h1>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BandyerUnhandledExceptionBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html"><span class="identifier">BroadcastReceiver</span></a></code>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BandyerUnhandledExceptionBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html"><span class="identifier">BroadcastReceiver</span></a></code>
 <p>Broadcast Receiver to be used to receive unexpected exceptions' stacktrace from Bandyer SDK.</p>
+<p><strong>Since</strong><br/>
+v1.5.0</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -18,7 +20,9 @@
 <p><a href="-init-.html">&lt;init&gt;</a></p>
 </td>
 <td>
-<code><span class="identifier">BandyerUnhandledExceptionBroadcastReceiver</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+<code><span class="identifier">BandyerUnhandledExceptionBroadcastReceiver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Broadcast Receiver to be used to receive unexpected exceptions' stacktrace from Bandyer SDK.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -27,10 +31,12 @@
 <tbody>
 <tr>
 <td>
-<p><a href="on-receive.html">onReceive</a></p>
+<p><a href="on-exception.html">onException</a></p>
 </td>
 <td>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onReceive</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.exceptions.BandyerUnhandledExceptionBroadcastReceiver$onReceive(android.content.Context, android.content.Intent)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.exceptions.BandyerUnhandledExceptionBroadcastReceiver$onReceive(android.content.Context, android.content.Intent)/intent">intent</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Intent.html"><span class="identifier">Intent</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onException</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.exceptions.BandyerUnhandledExceptionBroadcastReceiver$onException(kotlin.Throwable)/e">e</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method will be called when an unexpected exception has occured</p>
+</td>
 </tr>
 </tbody>
 </table>

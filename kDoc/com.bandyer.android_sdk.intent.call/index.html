@@ -25,7 +25,7 @@
 <p><a href="-base-call-options/index.html">BaseCallOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseCallOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseCallOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
 <p>BaseCallOptions is an object to personalize how a call should behave</p>
 </td>
 </tr>
@@ -43,7 +43,7 @@
 <p><a href="-call-capabilities/index.html">CallCapabilities</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">CallCapabilities</span></code>
+<code><span class="keyword">class </span><span class="identifier">CallCapabilities</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
 <p>This class represents call capabilities that can be used for a call.</p>
 </td>
 </tr>
@@ -79,7 +79,7 @@
 <p><a href="-call-options/index.html">CallOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">&gt;</span></code>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="https://developer.android.com/reference/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
 <p>CallOptions all properties that can be enabled for a Outgoing call</p>
 </td>
 </tr>
@@ -106,7 +106,7 @@
 <p><a href="-incoming-call-options/index.html">IncomingCallOptions</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">IncomingCallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">&gt;</span></code>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="https://developer.android.com/reference/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
 <p>IncomingCallOptions all properties that can be enabled for a Incoming call</p>
 </td>
 </tr>

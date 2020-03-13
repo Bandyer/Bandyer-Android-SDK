@@ -10,13 +10,6 @@
 <tbody>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.notification/-actionable-notification/index.html">com.bandyer.android_sdk.notification.ActionableNotification</a></td>
-<td>
-<p>ActionableNotification is a notification which can handle a user action</p>
-</td>
-</tr>
-<tr>
-<td>
 <a href="../com.bandyer.android_sdk.module/-authentication-exception/index.html">com.bandyer.android_sdk.module.AuthenticationException</a></td>
 <td>
 <p>Exception representing an authentication problem</p>
@@ -156,6 +149,16 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 <a href="../com.bandyer.android_sdk.notification/-base-notification-style/index.html">com.bandyer.android_sdk.notification.BaseNotificationStyle</a></td>
 <td>
 <p>BaseNotificationStyle</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-cached-user-details-provider/index.html">com.bandyer.android_sdk.utils.provider.CachedUserDetailsProvider</a></td>
+<td>
+<p>This is an utility class useful to setup a cache and re-use the details provided per user.
+You may invalidate the single user details, all or some.
+The cache provided by this class will be valid per App session.
+If you wish for more advanced cache types you may implement your own by implementing and customizing the interface of UserDetailsProvider.</p>
 </td>
 </tr>
 <tr>
@@ -307,7 +310,7 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.chat/-chat-info/index.html">com.bandyer.android_sdk.chat.ChatInfo</a></td>
+<a href="../com.bandyer.android_sdk.chat.model/-chat-info/index.html">com.bandyer.android_sdk.chat.model.ChatInfo</a></td>
 <td>
 <p>Information about the chat</p>
 </td>
@@ -505,7 +508,7 @@ This context may be used to customize an incoming event, based on the component 
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.utils.provider/-on-user-information-provider-listener/index.html">com.bandyer.android_sdk.utils.provider.OnUserInformationProviderListener</a></td>
+<a href="../com.bandyer.android_sdk.utils.provider/-on-user-details-listener/index.html">com.bandyer.android_sdk.utils.provider.OnUserDetailsListener</a></td>
 <td>
 <p>Interface that must be called on user mapped from user aliases.</p>
 </td>
@@ -568,14 +571,6 @@ This context may be used to customize an incoming event, based on the component 
 </tr>
 <tr>
 <td>
-<a href="../com.bandyer.android_sdk.utils.provider/-user-contact-provider/index.html">com.bandyer.android_sdk.utils.provider.UserContactProvider</a></td>
-<td>
-<p>Utility to be used to map user userAlias with a class representation of a user.
-Load your user synchronously or asynchronously and return result using the listeners provided by the interface.</p>
-</td>
-</tr>
-<tr>
-<td>
 <a href="../com.bandyer.android_sdk.utils.provider/-user-details/index.html">com.bandyer.android_sdk.utils.provider.UserDetails</a></td>
 <td>
 <p>This class represents some user display info.
@@ -594,6 +589,14 @@ A user can be represented with the following info:</p>
 <a href="../com.bandyer.android_sdk.utils.provider/-user-details-formatter-impl/index.html">com.bandyer.android_sdk.utils.provider.UserDetailsFormatterImpl</a></td>
 <td>
 <p>UserDetailsFormatter default Implementation</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">com.bandyer.android_sdk.utils.provider.UserDetailsProvider</a></td>
+<td>
+<p>Utility to be used to map user userAlias with a class representation of a user.
+Load your user synchronously or asynchronously and return result using the listeners provided by the interface.</p>
 </td>
 </tr>
 <tr>
