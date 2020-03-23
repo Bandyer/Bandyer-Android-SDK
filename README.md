@@ -84,8 +84,10 @@ Support AppCompat <= **v1.2.1**
     - [Destroy Client](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Initialize-BandyerSDKClient#dispose-bandyersdkclient)
     - [Delete user data](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Initialize-BandyerSDKClient#clear-all-user-data)
     - [Observe Client](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Initialize-BandyerSDKClient#bandyersdkclient-observers)
-1. [Create a Chat](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Create-a-chat)
-1. [Create a Call](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Create-a-call)
+1. [Start a Call](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Start-a-call)
+1. [Observe Call Events](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Observe-call-events)
+1. [Start a Chat](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Start-a-chat)
+1. [Observe Chat Events](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Observe-Chat-Events)
 1. [Handle Push Notifications](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Handle-Push-Notifications)
 1. [Handle External Links](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Handle-External-Links)
 
@@ -98,12 +100,16 @@ Support AppCompat <= **v1.2.1**
 [FileSharing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Customize-FileSharing-Notifications)
 
 ### User Details Display Customization
-[User Contact Provider](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-contact-provider)
+[User Details Provider](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-provider)
 
 [User Details Formatter](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-formatter)
 
 ### More
 [Logging](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Logging)
+
+[Call UI Display Mode](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Call-UI-Display-Mode)
+
+[User Identity Verification](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-Identity-Verification)
 
 [Unexpected exception handling](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Unexpected-exception-handling)
 
@@ -117,13 +123,16 @@ Support AppCompat <= **v1.2.1**
 > Coming soon 
 
 ### Migrations
-[ Upgrade to v1.1.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.1.x)
 
-[ Upgrade to v1.2.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.2.x)
+[Upgrade to v1.1.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.1.x)
 
-[ Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
+[Upgrade to v1.2.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.2.x)
 
-[ Upgrade to v1.4.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.4.x)
+[Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
+
+[Upgrade to v1.4.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.4.x)
+
+[Upgrade to v1.5.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
 
 
 ### Code documentation
