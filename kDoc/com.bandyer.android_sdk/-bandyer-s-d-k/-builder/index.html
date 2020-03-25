@@ -57,11 +57,33 @@ We strongly suggest to initialize it in the Application if possible.</p>
 </tr>
 <tr>
 <td>
+<p><a href="set-gson.html">setGson</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setGson</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setGson(com.google.gson.Gson)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">Gson</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>For advanced users only!!
+Method to use your implementation of gson.
+be sure to apply the gsonBuilder provided by the sdk, otherwise a new gson instance will be created and used!!</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="set-gson-builder.html">setGsonBuilder</a></p>
 </td>
 <td>
 <code><span class="keyword">fun </span><span class="identifier">setGsonBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setGsonBuilder(com.google.gson.GsonBuilder)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">GsonBuilder</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
 <p>Method to personalize the gson builder</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-http-stack.html">setHttpStack</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setHttpStack</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Builder$setHttpStack(okhttp3.OkHttpClient)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">OkHttpClient</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Builder</span></a></code>
+<p>For advanced users only!!
+Method to personalize the http stack
+be sure to apply the httpStackBuilder provided by the sdk, otherwise a new httpStack instance will be created and used!!</p>
 </td>
 </tr>
 <tr>
