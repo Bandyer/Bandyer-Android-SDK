@@ -6,6 +6,7 @@
 package com.bandyer.demo_android_sdk.utils.networking;
 
 import com.bandyer.android_sdk.Environment;
+import com.bandyer.demo_android_sdk.App;
 import com.bandyer.demo_android_sdk.utils.Utils;
 
 import java.util.concurrent.TimeUnit;
@@ -30,14 +31,12 @@ class APIClient {
     static Retrofit getClient(final String apikey, final String environmentName) {
         if (retrofit != null) return retrofit;
 
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.addInterceptor(authenticationHeaders(apikey))
+        OkHttpClient client = App.client.newBuilder()
+                .addInterceptor(authenticationHeaders(apikey))
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true);
-
-        OkHttpClient client = builder.build();
+                .retryOnConnectionFailure(true).build();
 
         Environment env = Utils.getEnvironmentByName(environmentName);
 

@@ -34,8 +34,8 @@ import com.bandyer.android_sdk.intent.call.IncomingCallOptions;
 import com.bandyer.android_sdk.intent.chat.IncomingChat;
 import com.bandyer.android_sdk.intent.file.IncomingFile;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
-import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.bandyer.demo_android_sdk.mock.MockUserProviderMode;
+import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.bandyer.demo_android_sdk.notification.NotificationProxy;
 import com.bandyer.demo_android_sdk.utils.LeakCanaryManager;
 import com.bandyer.demo_android_sdk.utils.Utils;
@@ -58,6 +58,8 @@ import okhttp3.OkHttpClient;
  * @author kristiyan
  */
 public class App extends MultiDexApplication {
+
+    public static OkHttpClient client;
 
     @Override
     public void onCreate() {
@@ -146,8 +148,8 @@ public class App extends MultiDexApplication {
                 }
             });
         }
-
-        builder.setHttpStackBuilder(new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()))
+        client = new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()).build();
+        builder.setHttpStack(client)
                 .setGsonBuilder(new GsonBuilder().setPrettyPrinting());
 
         BandyerSDK.init(builder);
