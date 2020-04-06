@@ -63,7 +63,7 @@ Support AppCompat <= **v1.2.1**
 - Call Recording
 
 ## News 1.5.x
-- 2020-03-20: Bandyer-Android-SDK 1.5.2 has been released. Improved UI/UX and fixed minor bugs. Added new chat and call observers. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.2)
+- 2020-03-25: Bandyer-Android-SDK 1.5.3 has been released. Improved filesharing and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.3)
 
 ## News 1.4.x
 - 2020-03-20: Bandyer-Android-SDK 1.4.11 has been released. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.11)
