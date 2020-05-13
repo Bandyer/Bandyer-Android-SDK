@@ -743,6 +743,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 break;
             case DISCONNECTED:
             case RECONNECTING:
+            case READY:
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
                 chatButton.setEnabled(true);
                 break;
