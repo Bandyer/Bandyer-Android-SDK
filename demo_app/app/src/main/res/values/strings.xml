@@ -163,5 +163,6 @@
     <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
 
     <string name="join_call_url" translatable="false">Join call in Bandyer</string>
+    <string name="use_qr_code">QR-Code Configuration</string>
 
 </resources>

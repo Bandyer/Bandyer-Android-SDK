@@ -3,7 +3,7 @@
 
     <com.google.android.material.appbar.AppBarLayout ns0:id="@+id/toolbar_layout" ns0:layout_height="wrap_content" ns0:layout_width="match_parent">
 
-        <androidx.appcompat.widget.Toolbar ns1:navigationIcon="?attr/homeAsUpIndicator" ns1:title="@string/action_settings" ns0:background="?attr/colorPrimary" ns0:id="@+id/toolbar" ns0:layout_height="wrap_content" ns0:layout_width="match_parent" ns0:minHeight="?attr/actionBarSize" ns0:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <androidx.appcompat.widget.Toolbar ns1:layout_collapseMode="pin" ns0:background="@color/colorPrimary" ns0:id="@+id/toolbar" ns0:layout_height="?attr/actionBarSize" ns0:layout_width="match_parent" ns0:theme="@style/ToolBarStyle" />
         
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bandyer.demo_android_sdk.R;
 import com.bandyer.demo_android_sdk.utils.activities.BaseActivity;
+import com.bandyer.demo_android_sdk.utils.activities.QRConfigurationActivity;
 import com.bandyer.demo_android_sdk.utils.storage.ConfigurationPrefsManager;
 import com.bandyer.demo_android_sdk.utils.storage.DefaultCallSettingsManager;
 import com.bandyer.demo_android_sdk.utils.storage.LoginManager;
@@ -130,8 +132,19 @@ public class ConfigurationActivity extends BaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == QRConfigurationActivity.REQUEST_CONFIGURATION_VIA_QR){
+            configure(data);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.qr_code:
+                QRConfigurationActivity.show(this);
+                break;
             case R.id.reset_all:
                 ConfigurationPrefsManager.clear(this);
                 configurationFragment.updateAllCredentials();

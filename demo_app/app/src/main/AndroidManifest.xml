@@ -54,6 +54,11 @@
                     android:host="sandbox.bandyer.com"
                     android:pathPrefix="/connect/rest-call-handler/"
                     android:scheme="https" />
+
+                <data
+                    android:host="sandbox.bandyer.com"
+                    android:pathPrefix="/connect/direct-rest-call-handler/"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
 
@@ -99,6 +104,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".utils.activities.QRConfigurationActivity" />
 
         <service android:name=".notification.NotificationService">
             <intent-filter>

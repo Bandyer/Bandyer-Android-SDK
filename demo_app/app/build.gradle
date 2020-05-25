@@ -36,7 +36,7 @@ def crashlyticsLibVersion = "2.10.1"
 def firebaseMessagingLibVersion = '20.0.1'
 def phoenixProcessLibVersion = "2.0.0"
 def work_version = '2.3.3'
-def bandyerLibVersion = "1.5.4"
+def bandyerLibVersion = "1.5.5"
 def androidX = '1.1.0'
 def androidDesign = '1.1.0'
 def androidXPreference = "1.1.0"
@@ -181,6 +181,7 @@ dependencies {
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
 
     /*** UI ***/
     implementation "com.mikepenz:fastadapter:$fastAdapterVersion"

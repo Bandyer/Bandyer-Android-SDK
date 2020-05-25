@@ -198,6 +198,6 @@ public class DefaultCallSettingsManager {
      */
     public static Boolean isMockedUserAuthenticationEnabled(Context context) {
         SharedPreferences prefs = context.getApplicationContext().getSharedPreferences(CALL_OPTIONS_PREFS_NAME, MODE_PRIVATE);
-        return prefs.getBoolean(context.getString(R.string.call_options_mock_user_authentication_request), BuildConfig.USE_MOCK_USER_DETAILS_PROVIDER);
+        return prefs.getBoolean(context.getString(R.string.call_options_mock_user_authentication_request), false);
     }
 }
