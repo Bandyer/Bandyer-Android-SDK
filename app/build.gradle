@@ -1,0 +1,190 @@
+/*
+ * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
+buildscript {
+    repositories {
+        google()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath "com.github.triplet.gradle:play-publisher:2.5.0"
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:2.0.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply from: 'versions.gradle'
+apply plugin: "com.github.triplet.play"
+apply plugin: 'com.google.firebase.appdistribution'
+apply plugin: 'com.google.firebase.crashlytics'
+
+def leakCanaryVersion = '2.4'
+def butterKnifeVersion = '10.2.1'
+def jUnitLibVersion = '4.13'
+def multiDexLibVersion = "2.0.1"
+def firebaseMessagingLibVersion = '20.2.3'
+def work_version = '2.3.4'
+def bandyerLibVersion = "1.5.6"
+def pushy_version = '1.0.56'
+def androidX = '1.1.0'
+
+android {
+    compileSdkVersion sdkVersion
+    buildToolsVersion buildToolsVersion
+    defaultConfig {
+        applicationId "com.bandyer.demo_android_sdk"
+        minSdkVersion 16
+        targetSdkVersion sdkVersion
+        versionCode VERSION_CODE.toInteger()
+        versionName bandyerLibVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    signingConfigs {
+        debug {
+            if (keyStoreFilePath(name)?.trim()) {
+                keyAlias keyStoreAlias(name)
+                keyPassword keyStorePassword(name)
+                storeFile file(keyStoreFilePath(name))
+                storePassword keyStorePassword(name)
+            }
+        }
+        release {
+            if (keyStoreFilePath(name)?.trim()) {
+                keyAlias keyStoreAlias(name)
+                keyPassword keyStorePassword(name)
+                storeFile file(keyStoreFilePath(name))
+                storePassword keyStorePassword(name)
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keyStoreFilePath(name)?.trim()) signingConfig signingConfigs.release
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled false
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix '-DEBUG'
+            if (keyStoreFilePath(name)?.trim()) signingConfig signingConfigs.debug
+
+            // Firebase distribution
+            if (getDistributionCredentialsFilePath(name)?.trim()) firebaseAppDistribution {
+                appId getDistributionAppId(name)
+                serviceCredentialsFile getDistributionCredentialsFilePath(name)
+                releaseNotes getDistributionReleaseNotes(bandyerLibVersion)
+                groups getDistributionTestGroup()
+            }
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled false
+                mappingFileUploadEnabled false
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // If you are not building an AAB, which we recommend you to do.
+    // You can optionally configures multiple APKs based on screen density and cpu architecture.
+    // Be aware that you will need to handle the versionCode differently for each split.
+
+    // For further information see:
+    // https://developer.android.com/studio/build/configure-apk-splits
+    // and to see a more in depth guide:
+    // https://androidbycode.wordpress.com/2015/06/30/android-ndk-version-code-scheme-for-publishing-apks-per-architecture/
+    splits {
+
+        abi {
+            enable true
+            include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            universalApk true
+        }
+
+        // Optionally configures multiple APKs based on screen density.
+        density {
+            enable true
+            compatibleScreens 'small', 'normal', 'large', 'xlarge'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    /*** Platform ***/
+    implementation "androidx.multidex:multidex:$multiDexLibVersion"
+    implementation "androidx.appcompat:appcompat:$androidX"
+
+    /*** Testing ***/
+    testImplementation "junit:junit:$jUnitLibVersion"
+
+    /*** Utilities & Debug Tools ***/
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    api "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    /*** Notification ***/
+    implementation "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
+    implementation "androidx.work:work-runtime:$work_version"
+
+    /*** Notification alternative ***/
+    implementation "me.pushy:sdk:$pushy_version"
+
+    /** Utilities **/
+    implementation project(":app_utilities")
+    implementation project(":app_configuration")
+    implementation project(":app_design")
+
+    /*** Bandyer Android SDK ***/
+    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+}
+
+play {
+    def canPublish = playStoreCredentialsFilePath()?.trim()
+    if (canPublish) serviceAccountCredentials = file(playStoreCredentialsFilePath())
+    track = "beta"
+    enabled = canPublish
+    defaultToAppBundles = true
+}
+
+/**
+ * The following code is used to release the demo App on firebase
+ * This code is also prepared to be tweaked to support different flavors
+ */
+android.applicationVariants.all { variant ->
+    versions.apply(variant)
+    variant.outputs.each { output ->
+        // Filter is null for universal APKs.
+        def filter = output.getFilter(com.android.build.OutputFile.ABI)
+
+        if (filter == null) {
+
+            def variantSuffix = variant.name.capitalize()
+
+            tasks.findAll {
+                it.name.startsWith("appDistributionUpload${variantSuffix}")
+            }.each {
+                it.doFirst {
+                    it.appDistributionProperties.apkPath = output.outputFile.absolutePath
+                }
+            }
+        }
+    }
+}

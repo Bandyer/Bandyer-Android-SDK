@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<resources>
+
+    <style name="BandyerSDKDesign.Call.Layout.Watermark.ImageViewStyle" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:src">@drawable/logo</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="BandyerSDKDesign.Call.Layout.Watermark.TextViewStyle" parent="">
+        <item name="android:paddingStart">@dimen/space8</item>
+        <item name="android:paddingLeft">@dimen/space8</item>
+        <item name="android:text">@string/watermark_label</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+  ~  See LICENSE.txt for licensing information
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/clear_all"
+        android:title="@string/clear_all"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save"
+        android:title="@string/save"
+        android:visible="true"
+        app:showAsAction="always" />
+</menu>

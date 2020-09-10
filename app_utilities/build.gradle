@@ -1,0 +1,116 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def gsonVersion = '2.8.6'
+def okHttpVersion = '3.12.0'
+def stethoVersion = "1.5.1"
+def retrofitVersion = '2.6.1'
+def leakCanaryVersion = '2.4'
+def fastAdapterVersion = "3.3.1"
+def multiDexLibVersion = "2.0.1"
+def crashlyticsLibVersion = "17.2.1"
+def firebaseMessagingLibVersion = '20.2.4'
+def phoenixProcessLibVersion = "2.0.0"
+def bandyerLibVersion = "1.+"
+def androidX = '1.2.0'
+def lifecycleVersion = '2.2.0'
+def expansionLayoutVersion = "1.2.2"
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "USE_LEAK_CANARY", "false"
+            buildConfigField "boolean", "USE_MOCK_USER_DETAILS_PROVIDER", "false"
+            buildConfigField "boolean", "USE_SIMPLIFIED_VERSION", "true"
+            buildConfigField "boolean", "MOCK_USER_AUTHENTICATION_REQUEST", "false"
+        }
+        debug {
+            buildConfigField "boolean", "USE_LEAK_CANARY", "$useLeakCanary"
+            buildConfigField "boolean", "USE_MOCK_USER_DETAILS_PROVIDER", "$useMockUserDetailsProvider"
+            buildConfigField "boolean", "USE_SIMPLIFIED_VERSION", "false"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    /*** Testing ***/
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    /*** Platform ***/
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    api 'androidx.core:core-ktx:1.3.1'
+    api "androidx.appcompat:appcompat:$androidX"
+    api "androidx.multidex:multidex:$multiDexLibVersion"
+    api 'com.google.android.material:material:1.2.1'
+
+    /*** Networking ***/
+    api "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    api "com.facebook.stetho:stetho:$stethoVersion"
+    api "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    /*** UI ***/
+    api "androidx.recyclerview:recyclerview:1.1.0"
+    api "com.mikepenz:fastadapter:$fastAdapterVersion"
+    api("com.github.florent37:expansionpanel:$expansionLayoutVersion") {
+        exclude module: 'constraintlayout'
+    }
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    /*** Utility ***/
+    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation "com.jakewharton:process-phoenix:$phoenixProcessLibVersion"
+
+    /*** Debug leaks ***/
+    debugCompileOnly "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+
+    api "com.google.code.gson:gson:$gsonVersion"
+
+    /*** FCM setup ***/
+    implementation "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
+
+    /*** Pushy notification service, useful for China ***/
+    compileOnly 'me.pushy:sdk:1.0.56'
+
+    /*** Crashlytics ***/
+
+    api "com.google.firebase:firebase-crashlytics-ndk:$crashlyticsLibVersion"
+
+    implementation project(":app_configuration")
+    implementation project(":app_design")
+
+    /*** Bandyer Android SDK ***/
+    compileOnly("com.bandyer:bandyer-android-sdk:$bandyerLibVersion")
+}

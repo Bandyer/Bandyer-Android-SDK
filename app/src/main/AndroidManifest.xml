@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+  ~  See LICENSE.txt for licensing information
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bandyer.demo_android_sdk">
+
+    <!-- chat permissions -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/BaseTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/BaseTheme.SplashScreen"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:theme="@style/BaseTheme.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true"
+                android:icon="@drawable/ic_bandyer_audio_call"
+                android:label="@string/join_call_url"
+                android:order="999"
+                android:priority="999"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="sandbox.bandyer.com"
+                    android:pathPrefix="/connect/rest-call-handler/"
+                    android:scheme="https" />
+
+                <data
+                    android:host="sandbox.bandyer.com"
+                    android:pathPrefix="/connect/direct-rest-call-handler/"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <!-- FCM Notification Service -->
+        <service
+            android:name=".notification.FCMNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Pushy Notification Receiver -->
+        <receiver
+            android:name=".notification.PushyNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <!-- Do not modify this -->
+                <action android:name="pushy.me" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Bandyer call event broadcast receiver -->
+
+        <receiver
+            android:name=".receivers.CallEventBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.android_sdk.CALL_EVENT_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Bandyer chat event broadcast receiver -->
+
+        <receiver
+            android:name=".receivers.ChatEventBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.android_sdk.CHAT_EVENT_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Bandyer unhandled broadcast receiver -->
+
+        <receiver
+            android:name=".exceptions.BandyerExceptionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.bandyer.android_sdk.BANDYER_UNHANDLED_EXCEPTION" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

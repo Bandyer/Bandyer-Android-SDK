@@ -2,6 +2,9 @@
  * Copyright (C) 2018 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
+include ':app_utilities',
+		':app_configuration',
+		':app_design',
+		':app'
 
-include ':demo_app'
-project(':demo_app').projectDir = file('demo_app/app')
+project(':app').projectDir = file('app')

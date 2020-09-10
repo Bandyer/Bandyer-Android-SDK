@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/use_simplified_version">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/use_simplified_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/use_simplified_version_summary"
+            app:title="@string/use_simplified_version_title" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_call_type_title">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationListPreference
+            android:id="@+id/default_call_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:defaultValue="@string/call_type_audio_video"
+            app:entries="@array/call_types"
+            app:entryValues="@array/call_types"
+            app:title="@string/call_type" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_call_capabilities_title">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/whiteboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/whiteboard_requires_api_19" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/file_sharing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/file_sharing" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/chat_requires_api_19" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/screen_sharing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/screen_sharing_requires_api_21" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_call_options_title">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/call_recording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/call_recording" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/back_camera_as_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/back_camera_as_default_if_available" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/disable_proximity_sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/disable_proximity_sensor" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:id="@+id/experimental_configurations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_call_options_experimental">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/mock_user_authentication_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/call_options_mock_user_authentication_request_summary"
+            app:title="@string/call_options_mock_user_authentication_request" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+</LinearLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
+            android:id="@+id/ongoing_call_label"
+            style="@style/BandyerSDKDesign.TextView.OngoingCallLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/ongoing_call_description"
+            android:focusableInTouchMode="false"
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/selected_users_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space16"
+            android:layout_marginLeft="@dimen/space16"
+            android:layout_marginTop="@dimen/space16"
+            android:layout_marginEnd="@dimen/space16"
+            android:layout_marginRight="@dimen/space16"
+            android:text="@string/selected_users"
+            android:textSize="@dimen/text_h3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selected_users_chipgroup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space48"
+            android:layout_marginTop="@dimen/space16"
+            android:layout_marginBottom="@dimen/space16"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/space16"
+            android:paddingLeft="@dimen/space16"
+            android:paddingEnd="@dimen/space16"
+            android:paddingRight="@dimen/space16" />
+
+        <TextView
+            android:id="@+id/no_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space56"
+            android:gravity="center_horizontal"
+            android:text="@string/no_user_found"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space56"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contactsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/white"
+            android:nextFocusRight="@+id/chat"
+            android:requiresFadingEdge="vertical" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="@dimen/space16"
+        android:clickable="true"
+        android:contentDescription="@string/chat"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:nextFocusLeft="@+id/checkbox"
+        android:nextFocusRight="@+id/call"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_bandyer_chat"
+        app:backgroundTint="@color/colorModuleNotActive"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/spacer"
+        app:layout_anchorGravity="start|left|bottom"
+        app:maxImageSize="56dp"
+        app:tint="#ffffff" />
+
+    <View
+        android:id="@+id/chat_info_api_21"
+        android:layout_width="@dimen/space72"
+        android:layout_height="@dimen/space72"
+        android:layout_gravity="start"
+        android:layout_margin="@dimen/space16"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:nextFocusLeft="@+id/checkbox"
+        android:nextFocusRight="@+id/call"
+        android:scaleType="centerCrop"
+        app:layout_anchor="@+id/spacer"
+        app:layout_anchorGravity="start|left|bottom" />
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="@dimen/space16"
+        android:layout_height="@dimen/space16"
+        android:layout_gravity="start"
+        app:layout_anchor="@+id/call"
+        app:layout_anchorGravity="start|left|bottom" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space16"
+        android:clickable="true"
+        android:contentDescription="@string/call"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:nextFocusLeft="@+id/chat"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_bandyer_audio_call"
+        app:backgroundTint="@color/colorModuleNotActive"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/content"
+        app:layout_anchorGravity="bottom|right"
+        app:maxImageSize="40dp"
+        app:tint="#ffffff" />
+
+</merge>

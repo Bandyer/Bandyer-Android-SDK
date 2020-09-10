@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+
+<resources>
+    <item name="colorPrimary" type="color">#0c2e41</item>
+    <item name="colorPrimaryDark" type="color">#00031b</item>
+    <item name="colorPrimaryLight" type="color">#3a576c</item>
+    <item name="colorSecondary" type="color">#009fe3</item>
+    <item name="colorOnPrimary" type="color">@android:color/white</item>
+    <item name="colorOnSecondary" type="color">@android:color/white</item>
+    <item name="colorPrimaryVariant" type="color">#00031b</item>
+    <item name="colorSecondaryVariant" type="color">#009fe3</item>
+    <color name="colorAccent">@color/colorSecondary</color>
+</resources>

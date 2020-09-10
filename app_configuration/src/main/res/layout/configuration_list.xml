@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+  ~  See LICENSE.txt for licensing information
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configuration_list_title"
+        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space16"
+        android:layout_marginLeft="@dimen/space16"
+        android:layout_marginTop="@dimen/space16"
+        android:layout_marginEnd="@dimen/space16"
+        android:layout_marginRight="@dimen/space16"
+        android:clickable="false" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/configuration_list_value"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space16"
+        android:layout_marginLeft="@dimen/space16"
+        android:layout_marginTop="@dimen/space16"
+        android:layout_marginEnd="@dimen/space16"
+        android:layout_marginRight="@dimen/space16"
+        android:layout_marginBottom="@dimen/space16"
+        android:clickable="false" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/configuration_list_summary_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space16"
+        android:layout_marginLeft="@dimen/space16"
+        android:layout_marginEnd="@dimen/space16"
+        android:layout_marginRight="@dimen/space16"
+        android:layout_marginBottom="@dimen/space16"
+        android:clickable="false"
+        app:cardCornerRadius="@dimen/space8"
+        app:contentPadding="@dimen/space8">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/configuration_list_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space8" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

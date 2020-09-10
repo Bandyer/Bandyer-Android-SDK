@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<resources>
+
+    <string name="app_name" translatable="false">Bandyer SDK Showcase</string>
+
+    <!-- ACTIVITIES -->
+
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+
+    <string name="show_camera" translatable="false">Show camera preview</string>
+    <string name="permission_camera_rationale" translatable="false">Camera permission is needed to show the camera preview.</string>
+    <string name="permission_camera_denied" translatable="false">Camera permission was denied. Please consider granting it in order to access the camera!</string>
+    <string name="permission_camera_never_ask_again" translatable="false">Camera permission was denied with never ask again.</string>
+    <string name="oto_call_error_no_selected_user" translatable="false">You must provide at least one valid user alias to start a call.</string>
+    <string name="oto_chat_error_no_selected_user" translatable="false">You must provide at least one valid user alias to start a chat.</string>
+    <string name="oto_chat_error_group_selected" translatable="false">Group chats are not yet supported.</string>
+    <string name="hang_up" translatable="false">Hang up</string>
+    <string name="calling_user" translatable="false">Calling user…</string>
+    <string name="decline" translatable="false">Decline</string>
+    <string name="answer" translatable="false">Answer</string>
+    <plurals name="user_is_ringing">
+        <item quantity="one">is ringing…</item>
+        <item quantity="other">are ringing…</item>
+    </plurals>
+    <plurals name="user_is_calling_you">
+        <item quantity="one">is calling you…</item>
+        <item quantity="other">are calling you…</item>
+    </plurals>
+    <plurals name="error_over_count">
+        <item quantity="one">error</item>
+        <item quantity="other">error</item>
+    </plurals>
+    <string name="selected_users" translatable="false">Selected users:</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="logout_confirmation" translatable="false">Do you want to logout?</string>
+    <string name="caller_name" translatable="false">Caller name</string>
+    <string name="preparing_call" translatable="false">Call is loading…</string>
+    <string name="no_user_found" translatable="false">No user found.</string>
+
+    <string name="join_call_url" translatable="false">Join call in Bandyer</string>
+    <string name="biometric_notification_title">User authentication request.</string>
+    <string name="biometric_notification_description">Please click on notification to verify your identity.</string>
+
+</resources>

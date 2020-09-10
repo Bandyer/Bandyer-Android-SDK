@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+  ~  See LICENSE.txt for licensing information
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/reset_all"
+        android:contentDescription="@string/reset_all"
+        android:title="@string/reset_all"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/qr_code"
+        android:contentDescription="@string/use_qr_code"
+        android:title="@string/use_qr_code"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/save"
+        android:contentDescription="@string/save"
+        android:title="@string/save"
+        app:showAsAction="collapseActionView" />
+</menu>
