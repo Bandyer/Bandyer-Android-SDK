@@ -16,10 +16,6 @@ import com.jakewharton.processphoenix.ProcessPhoenix
  */
 abstract class MultiDexApplication : MultiDexApplication() {
 
-    init {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-    }
-    
     override fun onCreate() {
         super.onCreate()
 
@@ -37,6 +33,9 @@ abstract class MultiDexApplication : MultiDexApplication() {
 
         // Debug tools
         registerDevicePushToken()
+
+        // Vector assets Resources NotFoundException on Samsung device
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
         create()
     }

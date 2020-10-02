@@ -291,7 +291,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     protected void onPause() {
         super.onPause();
         if (!LoginManager.isUserLogged(this)) return;
-        if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED)
+        if (configuration.isMockConfiguration() || BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED)
             return;
         BandyerSDKClient.getInstance().removeObserver(this);
         BandyerSDKClient.getInstance().removeModuleObserver(this);
@@ -405,7 +405,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (!LoginManager.isUserLogged(this)) return;
+        if (configuration.isMockConfiguration() || !LoginManager.isUserLogged(this)) return;
         BandyerSDKClient.getInstance().dispose();
     }
 

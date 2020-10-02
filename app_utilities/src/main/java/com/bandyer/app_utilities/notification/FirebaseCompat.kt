@@ -96,7 +96,8 @@ object FirebaseCompat {
      * In normal use-cases you shall not need to refresh the configuration as it will use the google-services.json file.
      */
     fun refreshConfiguration(context: Context, onComplete: Runnable, notifications: Boolean = true) {
-        val post = Thread(Runnable {
+        val post = Thread {
+            kotlin.runCatching { FirebaseApp.getInstance().delete() }
             kotlin.runCatching {
                 val configuration = ConfigurationPrefsManager.getConfiguration(context)
                 val app = FirebaseApp.initializeApp(context, FirebaseOptions.Builder()
@@ -106,10 +107,10 @@ object FirebaseCompat {
                         .setApiKey(configuration.firebaseApiKey!!)
                         .build())
                 FirebaseInstanceId.getInstance(app).instanceId
-                if(notifications) FirebaseMessaging.getInstance().isAutoInitEnabled = true
+                if (notifications) FirebaseMessaging.getInstance().isAutoInitEnabled = true
                 onComplete.run()
-            }
-        })
+            }.onFailure { it.printStackTrace() }
+        }
         post.start()
     }
 }

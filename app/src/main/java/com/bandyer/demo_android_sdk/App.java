@@ -32,11 +32,11 @@ import com.bandyer.android_sdk.intent.call.IncomingCall;
 import com.bandyer.android_sdk.intent.call.IncomingCallOptions;
 import com.bandyer.android_sdk.intent.chat.IncomingChat;
 import com.bandyer.android_sdk.intent.file.IncomingFile;
-import com.bandyer.android_sdk.utils.BandyerSDKLogger;;
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider;
+import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.app_configuration.external_configuration.model.Configuration;
-import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
+import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider;
 import com.bandyer.app_utilities.MultiDexApplication;
+import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
 import com.bandyer.app_utilities.utils.Utils;
 import com.bandyer.demo_android_sdk.mock.MockedUserProvider;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -51,12 +51,10 @@ import okhttp3.OkHttpClient;
  */
 public class App extends MultiDexApplication {
 
-    private Configuration configuration = null;
-
     @Override
     public void create() {
 
-        configuration = ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
+        Configuration configuration = getConfiguration();
 
         if (configuration.isMockConfiguration()) return;
 
@@ -140,6 +138,7 @@ public class App extends MultiDexApplication {
         // You can enable a single capability using the utility methods
         // Example :
         // new CallCapabilities().withChat();
+        Configuration configuration = getConfiguration();
         return new CallCapabilities(configuration.getWithChatCapability(),
                 configuration.getWithFileSharingCapability(),
                 configuration.getWithScreenSharingCapability(),
@@ -151,9 +150,10 @@ public class App extends MultiDexApplication {
         // You can enable a single option using the utility methods
         // Example :
         // new IncomingCallOptions().withBackCameraAsDefault();
+        Configuration configuration = getConfiguration();
         return new IncomingCallOptions(
                 configuration.getWithBackCameraAsDefault(),
-                !configuration.getWithProximitySensorDisabled());
+                configuration.getWithProximitySensorDisabled());
     }
 
     private CallNotificationListener getCallNotificationListener() {
@@ -191,6 +191,7 @@ public class App extends MultiDexApplication {
                 // You can enable a single option using the utility methods
                 // Example :
                 // new CallOptions().withBackCameraAsDefault();
+                Configuration configuration = getConfiguration();
                 CallOptions callOptions = new CallOptions(
                         configuration.getWithRecordingEnabled(),
                         configuration.getWithBackCameraAsDefault(),
@@ -227,4 +228,7 @@ public class App extends MultiDexApplication {
         };
     }
 
+    private Configuration getConfiguration() {
+        return ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
+    }
 }
