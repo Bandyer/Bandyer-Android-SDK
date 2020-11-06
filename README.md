@@ -63,7 +63,7 @@ Support AppCompat <= **v1.2.1**
 - Call Recording
 
 ## News 1.5.x
-- 2020-10-08: Bandyer-Android-SDK 1.5.8 has been released. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.8).
+- 2020-10-08: Bandyer-Android-SDK 1.5.9 has been released. Added the capability to use usb camera during the call. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.9).
 
 ## News 1.4.x
 - 2020-10-08: Bandyer-Android-SDK 1.4.16 has been released. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.16).
@@ -136,9 +136,7 @@ Support AppCompat <= **v1.2.1**
 
 
 ### Code documentation
-[Kotlin](https://bandyer.github.io/Bandyer-Android-SDK/kDoc/)
-
-[Java](https://bandyer.github.io/Bandyer-Android-SDK/jDoc/)
+[Kotlin](https://docs.bandyer.com/Bandyer-Android-SDK/kDoc/bandyer-android-sdk/)
 
 ### Other
 [Pricing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Pricing)
