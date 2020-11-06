@@ -119,7 +119,7 @@ Support AppCompat <= **v1.2.1**
 
 [Proguard](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Proguard)
 
-# Extensions
+### Extensions
 
 [USB Camera](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/USB-Camera)
 
