@@ -21,6 +21,11 @@ def autoIncrementVersionCode = task("autoIncrementVersionCode") {
     }
 }
 
+/*
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * See LICENSE.txt for licensing information
+ */
+
 // increments version code
 project.ext.versions.applyVersionCode = { variant ->
     variant.outputs.all { output ->

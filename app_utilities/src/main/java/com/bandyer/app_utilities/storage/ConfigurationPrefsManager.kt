@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 package com.bandyer.app_utilities.storage
@@ -325,7 +325,7 @@ internal object LegacyConfigurationPrefsManager {
     @JvmStatic
     fun getPushProvider(context: Context): String {
         val prefs = context.applicationContext.getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getString("pushProvider", "NONE")!!
+        return prefs.getString("pushProvider", context.getString(R.string.push_provider))!!
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
@@ -27,7 +27,8 @@ def jUnitLibVersion = '4.13'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.3.4'
-def bandyerLibVersion = "1.5.8"
+def bandyerLibVersion = "1.5.9"
+def bandyerExtensionUsbCamera = "1.1.0"
 def pushy_version = '1.0.56'
 def androidX = '1.1.0'
 
@@ -154,6 +155,9 @@ dependencies {
 
     /*** Bandyer Android SDK ***/
     implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+
+    // define this dependency only if you desire to handle usb camera input in a video call
+    implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"
 }
 
 play {
