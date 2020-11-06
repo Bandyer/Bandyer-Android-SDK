@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallInfo - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.call.model</a>&nbsp;/&nbsp;<a href="./index.html">CallInfo</a><br/>
+<br/>
+<h1>CallInfo</h1>
+<code><span class="keyword">interface </span><span class="identifier">CallInfo</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
+<p>CallInfo representing the call information such as the type ( Audio&Video, Audio Upgradable, Audio Only) or the participants details</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="callees.html">callees</a></h4>
+</td>
+<td>
+<p>List of the callees user aliases</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">callees</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html"><span class="identifier">Iterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="caller.html">caller</a></h4>
+</td>
+<td>
+<p>User alias of the caller</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">caller</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="call-id.html">callId</a></h4>
+</td>
+<td>
+<p>call identifier</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">callId</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="direction.html">direction</a></h4>
+</td>
+<td>
+<p>call direction outgoing or incoming</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">direction</span><span class="symbol">: </span><a href="../-call-direction/index.html"><span class="identifier">CallDirection</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="type.html">type</a></h4>
+</td>
+<td>
+<p>Call type ( Audio&Video, Audio Upgradable, Audio Only)</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="../-call-type/index.html"><span class="identifier">CallType</span></a><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

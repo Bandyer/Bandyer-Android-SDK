@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.bandyer.android_sdk.intent.call - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="./index.html">com.bandyer.android_sdk.intent.call</a><br/>
+<br/>
+<h2>Package com.bandyer.android_sdk.intent.call</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-base-call-intent-options/index.html">BaseCallIntentOptions</a></h4>
+</td>
+<td>
+<p>BaseCallIntentOptions defines the base properties that can be set on a call</p>
+<code><span class="keyword">interface </span><span class="identifier">BaseCallIntentOptions</span><span class="symbol">&lt;</span><span class="identifier">C</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier">O</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-base-call-options/index.html">BaseCallOptions</a></h4>
+</td>
+<td>
+<p>BaseCallOptions is an object to personalize how a call should behave</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseCallOptions</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call/index.html">Call</a></h4>
+</td>
+<td>
+<p>Call interface that represents an incoming or outgoing call abstraction.</p>
+<code><span class="keyword">interface </span><span class="identifier">Call</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call-capabilities/index.html">CallCapabilities</a></h4>
+</td>
+<td>
+<p>This class represents call capabilities that can be used for a call.</p>
+<code><span class="keyword">class </span><span class="identifier">CallCapabilities</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call-display-mode/index.html">CallDisplayMode</a></h4>
+</td>
+<td>
+<p>Represent the call UI display mode</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">CallDisplayMode</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call-intent-builder/index.html">CallIntentBuilder</a></h4>
+</td>
+<td>
+<p>Call Intent Builder used to define the call properties</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentBuilder</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call-intent-options.html">CallIntentOptions</a></h4>
+</td>
+<td>
+<p>CallIntentOptions class allows to specify properties for outgoing calls</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="-call-intent-options.html"><span class="identifier">CallIntentOptions</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-call-options/index.html">CallOptions</a></h4>
+</td>
+<td>
+<p>CallOptions all properties that can be enabled for a Outgoing call</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-incoming-call/index.html">IncomingCall</a></h4>
+</td>
+<td>
+<p>IncomingCall received</p>
+<code><span class="keyword">interface </span><span class="identifier">IncomingCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-call/index.html"><span class="identifier">Call</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-incoming-call-intent-options.html">IncomingCallIntentOptions</a></h4>
+</td>
+<td>
+<p>IncomingCallIntentOptions class allows to specify properties for incoming calls</p>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallIntentOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html"><span class="identifier">BandyerBaseIntentOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-base-call-intent-options/index.html"><span class="identifier">BaseCallIntentOptions</span></a><span class="symbol">&lt;</span><a href="-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">,</span>&nbsp;<a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">,</span>&nbsp;<a href="-incoming-call-intent-options.html"><span class="identifier">IncomingCallIntentOptions</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-incoming-call-options/index.html">IncomingCallOptions</a></h4>
+</td>
+<td>
+<p>IncomingCallOptions all properties that can be enabled for a Incoming call</p>
+<code><span class="keyword">class </span><span class="identifier">IncomingCallOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-call-options/index.html"><span class="identifier">BaseCallOptions</span></a><span class="symbol">&lt;</span><a href="-incoming-call-options/index.html"><span class="identifier">IncomingCallOptions</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScreenSharingNotificationListener - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.screen_sharing.notification</a>&nbsp;/&nbsp;<a href="./index.html">ScreenSharingNotificationListener</a><br/>
+<br/>
+<h1>ScreenSharingNotificationListener</h1>
+<code><span class="keyword">interface </span><span class="identifier">ScreenSharingNotificationListener</span></code>
+<p>Listener for screen sharing generated notifications</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<p><strong>Since</strong><br/>
+v1.2.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-create-notification.html">onCreateNotification</a></h4>
+</td>
+<td>
+<p>This method will be called when a notification is going to be displayed.
+The notification look&feel can be customized here.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateNotification</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.screen_sharing.model.ScreenShareInfo, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationType, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationStyle)/screenShareInfo">screenShareInfo</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.screen_sharing.model/-screen-share-info/index.html"><span class="identifier">ScreenShareInfo</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.screen_sharing.model.ScreenShareInfo, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationType, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationStyle)/notificationType">notificationType</span><span class="symbol">:</span>&nbsp;<a href="../-screen-sharing-notification-type/index.html"><span class="identifier">ScreenSharingNotificationType</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.screen_sharing.model.ScreenShareInfo, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationType, com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationStyle)/notificationStyle">notificationStyle</span><span class="symbol">:</span>&nbsp;<a href="../-screen-sharing-notification-style.html"><span class="identifier">ScreenSharingNotificationStyle</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-screen-sharing-event.html">onScreenSharingEvent</a></h4>
+</td>
+<td>
+<p>This method will be called when a screen share event has been started.
+Here it is possible to display or not the notification.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onScreenSharingEvent</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onScreenSharingEvent(com.bandyer.android_sdk.intent.screenshare.ScreenShare, kotlin.Boolean, kotlin.Boolean)/screenShare">screenShare</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.screenshare/-screen-share/index.html"><span class="identifier">ScreenShare</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onScreenSharingEvent(com.bandyer.android_sdk.intent.screenshare.ScreenShare, kotlin.Boolean, kotlin.Boolean)/isDnd">isDnd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener$onScreenSharingEvent(com.bandyer.android_sdk.intent.screenshare.ScreenShare, kotlin.Boolean, kotlin.Boolean)/isScreenLocked">isScreenLocked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

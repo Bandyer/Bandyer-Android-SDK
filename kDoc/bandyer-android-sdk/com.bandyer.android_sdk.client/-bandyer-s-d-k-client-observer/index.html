@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerSDKClientObserver - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.client</a>&nbsp;/&nbsp;<a href="./index.html">BandyerSDKClientObserver</a><br/>
+<br/>
+<h1>BandyerSDKClientObserver</h1>
+<code><span class="keyword">interface </span><span class="identifier">BandyerSDKClientObserver</span></code>
+<p>Client Observer for initialization events of the modules (ex. chat, call)</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-client-error.html">onClientError</a></h4>
+</td>
+<td>
+<p>Called when an error has occurred</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onClientError(kotlin.Throwable)/throwable">throwable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-client-ready.html">onClientReady</a></h4>
+</td>
+<td>
+<p>Called as soon as the first module is ready</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientReady</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-client-status-change.html">onClientStatusChange</a></h4>
+</td>
+<td>
+<p>Called when the SDKClient has changed it's state</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientStatusChange</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.client.BandyerSDKClientObserver$onClientStatusChange(com.bandyer.android_sdk.client.BandyerSDKClientState)/state">state</span><span class="symbol">:</span>&nbsp;<a href="../-bandyer-s-d-k-client-state/index.html"><span class="identifier">BandyerSDKClientState</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-client-stopped.html">onClientStopped</a></h4>
+</td>
+<td>
+<p>Called when all the modules have been stopped</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onClientStopped</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

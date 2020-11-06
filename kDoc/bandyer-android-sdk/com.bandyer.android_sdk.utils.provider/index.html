@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.bandyer.android_sdk.utils.provider - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="./index.html">com.bandyer.android_sdk.utils.provider</a><br/>
+<br/>
+<h2>Package com.bandyer.android_sdk.utils.provider</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-cached-user-details-provider/index.html">CachedUserDetailsProvider</a></h4>
+</td>
+<td>
+<p>This is an utility class useful to setup a cache and re-use the details provided per user.
+You may invalidate the single user details, all or some.
+The cache provided by this class will be valid per App session.
+If you wish for more advanced cache types you may implement your own by implementing and customizing the interface of UserDetailsProvider.</p>
+<code><span class="keyword">class </span><span class="identifier">CachedUserDetailsProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-user-details-provider/index.html"><span class="identifier">UserDetailsProvider</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-on-user-details-listener/index.html">OnUserDetailsListener</a></h4>
+</td>
+<td>
+<p>Interface that must be called on user mapped from user aliases.</p>
+<code><span class="keyword">interface </span><span class="identifier">OnUserDetailsListener</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-user-details/index.html">UserDetails</a></h4>
+</td>
+<td>
+<p>This class represents some user display info.
+A user can be represented with the following info:</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">UserDetails</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/os/Parcelable.html"><span class="identifier">Parcelable</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-user-details-formatter/index.html">UserDetailsFormatter</a></h4>
+</td>
+<td>
+<p>UserDetailsFormatter interface is used to customize how a user is displayed with a UserDetails object.</p>
+<code><span class="keyword">interface </span><span class="identifier">UserDetailsFormatter</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-user-details-formatter-impl/index.html">UserDetailsFormatterImpl</a></h4>
+</td>
+<td>
+<p>UserDetailsFormatter default Implementation</p>
+<code><span class="keyword">class </span><span class="identifier">UserDetailsFormatterImpl</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-user-details-formatter/index.html"><span class="identifier">UserDetailsFormatter</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-user-details-provider/index.html">UserDetailsProvider</a></h4>
+</td>
+<td>
+<p>Utility to be used to map user userAlias with a class representation of a user.
+Load your user synchronously or asynchronously and return result using the listeners provided by the interface.</p>
+<code><span class="keyword">interface </span><span class="identifier">UserDetailsProvider</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

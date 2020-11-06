@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ChatModule.addChatUIObserver - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.chat</a>&nbsp;/&nbsp;<a href="index.html">ChatModule</a>&nbsp;/&nbsp;<a href="./add-chat-u-i-observer.html">addChatUIObserver</a><br/>
+<br/>
+<h1>addChatUIObserver</h1>
+<a name="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(com.bandyer.android_sdk.chat.ChatUIObserver)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addChatUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(com.bandyer.android_sdk.chat.ChatUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-u-i-observer/index.html"><span class="identifier">ChatUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the starting or ending event of a chat from an activity.
+Remember to remove the observer or a leak will occur!</p>
+<h3>Parameters</h3>
+<p><a name="observer"></a>
+<code>observer</code> - ChatUIObserver</p>
+<p><strong>Since</strong><br/>
+v1.4.10</p>
+<a name="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatUIObserver)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addChatUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatUIObserver)/activity">activity</span><span class="symbol">:</span>&nbsp;<span class="identifier">FragmentActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-u-i-observer/index.html"><span class="identifier">ChatUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Observe the starting or destroy event of an activity created for chats.
+The observer is automatically disposed when activity is destroyed.</p>
+<h3>Parameters</h3>
+<p><a name="activity"></a>
+<code>activity</code> - FragmentActivity</p>
+<p><a name="observer"></a>
+<code>observer</code> - ChatUIObserver</p>
+<p><strong>Since</strong><br/>
+v1.4.10</p>
+</BODY>
+</HTML>

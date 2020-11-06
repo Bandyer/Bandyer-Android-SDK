@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerComponent - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="./index.html">BandyerComponent</a><br/>
+<br/>
+<h1>BandyerComponent</h1>
+<code><span class="keyword">interface </span><span class="identifier">BandyerComponent</span></code>
+<p>Bandyer components currently supported are Chat and Call.</p>
+<p><strong>Author</strong><br/>
+kristiyan</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-call-component/index.html">CallComponent</a></h4>
+</td>
+<td>
+<p>Call component</p>
+<code><span class="keyword">object </span><span class="identifier">CallComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-chat-component/index.html">ChatComponent</a></h4>
+</td>
+<td>
+<p>Chat component</p>
+<code><span class="keyword">object </span><span class="identifier">ChatComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-file-sharing-component/index.html">FileSharingComponent</a></h4>
+</td>
+<td>
+<p>FileSharing component</p>
+<code><span class="keyword">object </span><span class="identifier">FileSharingComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-whiteboard-component/index.html">WhiteboardComponent</a></h4>
+</td>
+<td>
+<p>Whiteboard component</p>
+<code><span class="keyword">object </span><span class="identifier">WhiteboardComponent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="get-name.html">getName</a></h4>
+</td>
+<td>
+<p>Returns the name of the component</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html">BandyerModule</a></h4>
+</td>
+<td>
+<p>A Module is a component of the SDK.
+A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
+<code><span class="keyword">interface </span><span class="identifier">BandyerModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

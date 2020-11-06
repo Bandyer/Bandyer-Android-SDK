@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ChatNotificationListener - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.chat.notification</a>&nbsp;/&nbsp;<a href="./index.html">ChatNotificationListener</a><br/>
+<br/>
+<h1>ChatNotificationListener</h1>
+<code><span class="keyword">interface </span><span class="identifier">ChatNotificationListener</span></code>
+<p>Listener for chat notifications</p>
+<p><strong>Since</strong><br/>
+v1.1.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-create-notification.html">onCreateNotification</a></h4>
+</td>
+<td>
+<p>This method will be called when a notification is going to be displayed.
+The notification look&feel can be customized here.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateNotification</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.notification.ChatNotificationListener$onCreateNotification(com.bandyer.android_sdk.chat.model.ChatInfo, com.bandyer.android_sdk.chat.notification.ChatNotificationStyle)/chatInfo">chatInfo</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.chat.model/-chat-info/index.html"><span class="identifier">ChatInfo</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.notification.ChatNotificationListener$onCreateNotification(com.bandyer.android_sdk.chat.model.ChatInfo, com.bandyer.android_sdk.chat.notification.ChatNotificationStyle)/notificationStyle">notificationStyle</span><span class="symbol">:</span>&nbsp;<a href="../-chat-notification-style.html"><span class="identifier">ChatNotificationStyle</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-incoming-chat.html">onIncomingChat</a></h4>
+</td>
+<td>
+<p>This method will be called when an incoming chat has been received.
+Here it is possible to launch the incoming chat as activity, notification or not display it at all.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onIncomingChat</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.notification.ChatNotificationListener$onIncomingChat(com.bandyer.android_sdk.intent.chat.IncomingChat, kotlin.Boolean, kotlin.Boolean)/chat">chat</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.chat/-incoming-chat/index.html"><span class="identifier">IncomingChat</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.notification.ChatNotificationListener$onIncomingChat(com.bandyer.android_sdk.intent.chat.IncomingChat, kotlin.Boolean, kotlin.Boolean)/isDnd">isDnd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.notification.ChatNotificationListener$onIncomingChat(com.bandyer.android_sdk.intent.chat.IncomingChat, kotlin.Boolean, kotlin.Boolean)/isScreenLocked">isScreenLocked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

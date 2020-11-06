@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.bandyer.android_sdk.module - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="./index.html">com.bandyer.android_sdk.module</a><br/>
+<br/>
+<h2>Package com.bandyer.android_sdk.module</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-bandyer-module/index.html">BandyerModule</a></h4>
+</td>
+<td>
+<p>A Module is a component of the SDK.
+A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
+<code><span class="keyword">interface </span><span class="identifier">BandyerModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../com.bandyer.android_sdk/-bandyer-component/index.html"><span class="identifier">BandyerComponent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-bandyer-module-observer/index.html">BandyerModuleObserver</a></h4>
+</td>
+<td>
+<p>BandyerModuleObserver</p>
+<code><span class="keyword">interface </span><span class="identifier">BandyerModuleObserver</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-bandyer-module-status/index.html">BandyerModuleStatus</a></h4>
+</td>
+<td>
+<p>BandyerModuleStatus</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">BandyerModuleStatus</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-authentication-exception/index.html">AuthenticationException</a></h4>
+</td>
+<td>
+<p>Exception representing an authentication problem</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AuthenticationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-module-exception/index.html"><span class="identifier">ModuleException</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-end-of-support-exception/index.html">EndOfSupportException</a></h4>
+</td>
+<td>
+<p>Exception representing a problem with current version of the module.
+This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
+<code><span class="keyword">class </span><span class="identifier">EndOfSupportException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-module-exception/index.html"><span class="identifier">ModuleException</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-initialization-exception/index.html">InitializationException</a></h4>
+</td>
+<td>
+<p>Exception representing an initialization problem</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InitializationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-module-exception/index.html"><span class="identifier">ModuleException</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-module-exception/index.html">ModuleException</a></h4>
+</td>
+<td>
+<p>Exception representing a problem with a bandyer module</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModuleException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

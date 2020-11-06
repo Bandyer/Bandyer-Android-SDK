@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseEventBroadcastReceiver - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.notification</a>&nbsp;/&nbsp;<a href="./index.html">BaseEventBroadcastReceiver</a><br/>
+<br/>
+<h1>BaseEventBroadcastReceiver</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html"><span class="identifier">BroadcastReceiver</span></a></code>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">BaseEventBroadcastReceiver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.notification.BaseEventBroadcastReceiver$<init>(kotlin.String)/action">action</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="action.html">action</a></h4>
+</td>
+<td>
+<p>the action that this receiver handles</p>
+<code><span class="keyword">val </span><span class="identifier">action</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="context.html">context</a></h4>
+</td>
+<td>
+<p>Application context</p>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">context</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-t-a-g.html">TAG</a></h4>
+</td>
+<td>
+<p>BaseEventBroadcastReceiver tag identifier</p>
+<code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">TAG</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.call.notification/-call-event-broadcast-receiver/index.html">CallEventBroadcastReceiver</a></h4>
+</td>
+<td>
+<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CallEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseEventBroadcastReceiver</span></a><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.call/-call-observer/index.html"><span class="identifier">CallObserver</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.chat.notification/-chat-event-broadcast-receiver/index.html">ChatEventBroadcastReceiver</a></h4>
+</td>
+<td>
+<p>A broadcast receiver that receive broadcast when a chat starts, ends or ends with error.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ChatEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseEventBroadcastReceiver</span></a><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.chat/-chat-observer/index.html"><span class="identifier">ChatObserver</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BandyerSDK - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="./index.html">BandyerSDK</a><br/>
+<br/>
+<h1>BandyerSDK</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BandyerSDK</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BandyerSDKInterface</span></code>
+<p>Represents the entry point for the Bandyer SDK module</p>
+<p>The global singleton instance contains functions that handle the global configuration for the module.</p>
+<p>In order to use this module you must call the <code>initWithDefaults</code> or <code>init</code> methods on the BandyerSDK singleton instance.</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-builder/index.html">Builder</a></h4>
+</td>
+<td>
+<p>Builder class for BandyerSDK</p>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Builder</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="gson.html">gson</a></h4>
+</td>
+<td>
+<p>Gson used to serialize/deserialize objects within the SDK</p>
+<code><span class="keyword">open</span> <span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">gson</span><span class="symbol">: </span><span class="identifier">Gson</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="http-stack.html">httpStack</a></h4>
+</td>
+<td>
+<p>OKHttpClient used for the communication within the SDK</p>
+<code><span class="keyword">open</span> <span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">httpStack</span><span class="symbol">: </span><span class="identifier">OkHttpClient</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-d-e-s-i-g-n_-p-r-e-f-s.html">DESIGN_PREFS</a></h4>
+</td>
+<td>
+<p>Design prefs that can be used as an alternative way to set default values to some views</p>
+<code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">DESIGN_PREFS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="instance.html">instance</a></h4>
+</td>
+<td>
+<p>BandyerSdkModule instance</p>
+<code><span class="keyword">var </span><span class="identifier">instance</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="init.html">init</a></h4>
+</td>
+<td>
+<p>Utility method to initialize the sdk</p>
+<code><span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Companion$init(com.bandyer.android_sdk.BandyerSDK.Builder)/builder">builder</span><span class="symbol">:</span>&nbsp;<span class="identifier">Builder</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

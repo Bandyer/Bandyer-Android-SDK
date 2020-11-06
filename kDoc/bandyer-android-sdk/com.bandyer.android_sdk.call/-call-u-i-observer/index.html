@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallUIObserver - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.call</a>&nbsp;/&nbsp;<a href="./index.html">CallUIObserver</a><br/>
+<br/>
+<h1>CallUIObserver</h1>
+<code><span class="keyword">interface </span><span class="identifier">CallUIObserver</span></code>
+<p>This class represent a call UI observer which will be notified when a call activity event has occurred.</p>
+<p><strong>Since</strong><br/>
+v1.4.10</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-activity-destroyed.html">onActivityDestroyed</a></h4>
+</td>
+<td>
+<p>This function will be called when the call UI has been destroyed and hidden.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onActivityDestroyed</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityDestroyed(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)))/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityDestroyed(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)))/activity">activity</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/lang/ref/WeakReference.html"><span class="identifier">WeakReference</span></a><span class="symbol">&lt;</span><span class="identifier">AppCompatActivity</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-activity-error.html">onActivityError</a></h4>
+</td>
+<td>
+<p>This function will be called when in the call UI has occurred an error.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onActivityError</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityError(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)), com.bandyer.android_sdk.call.CallException)/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityError(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)), com.bandyer.android_sdk.call.CallException)/activity">activity</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/lang/ref/WeakReference.html"><span class="identifier">WeakReference</span></a><span class="symbol">&lt;</span><span class="identifier">AppCompatActivity</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityError(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)), com.bandyer.android_sdk.call.CallException)/error">error</span><span class="symbol">:</span>&nbsp;<a href="../-call-exception/index.html"><span class="identifier">CallException</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="on-activity-started.html">onActivityStarted</a></h4>
+</td>
+<td>
+<p>This function will be called when the call UI has been created&shown.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onActivityStarted</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityStarted(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)))/call">call</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call/index.html"><span class="identifier">Call</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.CallUIObserver$onActivityStarted(com.bandyer.android_sdk.intent.call.Call, java.lang.ref.WeakReference((androidx.appcompat.app.AppCompatActivity)))/activity">activity</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/lang/ref/WeakReference.html"><span class="identifier">WeakReference</span></a><span class="symbol">&lt;</span><span class="identifier">AppCompatActivity</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

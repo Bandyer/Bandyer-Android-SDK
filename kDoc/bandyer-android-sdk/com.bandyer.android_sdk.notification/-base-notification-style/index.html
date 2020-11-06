@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseNotificationStyle - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.notification</a>&nbsp;/&nbsp;<a href="./index.html">BaseNotificationStyle</a><br/>
+<br/>
+<h1>BaseNotificationStyle</h1>
+<code><span class="keyword">interface </span><span class="identifier">BaseNotificationStyle</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>BaseNotificationStyle</p>
+<h3>Parameters</h3>
+<p><a name="T"></a>
+<code>T</code> - type of notification to style</p>
+<p><strong>Since</strong><br/>
+v1.1.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="set-notification-color.html">setNotificationColor</a></h4>
+</td>
+<td>
+<p>The resource to use as icon background when received a notification</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNotificationColor</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.notification.BaseNotificationStyle$setNotificationColor(kotlin.Int)/color">color</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="set-notification-small-icon.html">setNotificationSmallIcon</a></h4>
+</td>
+<td>
+<p>The resource to use as icon when received a chat notification it may represent the app icon or message icon</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNotificationSmallIcon</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.notification.BaseNotificationStyle$setNotificationSmallIcon(kotlin.Int)/resId">resId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.call.notification/-call-notification-style.html">CallNotificationStyle</a></h4>
+</td>
+<td>
+<p>Style of the call notification</p>
+<code><span class="keyword">interface </span><span class="identifier">CallNotificationStyle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotificationStyle</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.call.notification/-call-notification-style.html"><span class="identifier">CallNotificationStyle</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification-style.html">ChatNotificationStyle</a></h4>
+</td>
+<td>
+<p>Chat notification style</p>
+<code><span class="keyword">interface </span><span class="identifier">ChatNotificationStyle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotificationStyle</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.chat.notification/-chat-notification-style.html"><span class="identifier">ChatNotificationStyle</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.file_sharing.notification/-file-sharing-notification-style.html">FileSharingNotificationStyle</a></h4>
+</td>
+<td>
+<p>File sharing notification style</p>
+<code><span class="keyword">interface </span><span class="identifier">FileSharingNotificationStyle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotificationStyle</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.file_sharing.notification/-file-sharing-notification-style.html"><span class="identifier">FileSharingNotificationStyle</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.screen_sharing.notification/-screen-sharing-notification-style.html">ScreenSharingNotificationStyle</a></h4>
+</td>
+<td>
+<p>Screen sharing notification style</p>
+<code><span class="keyword">interface </span><span class="identifier">ScreenSharingNotificationStyle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotificationStyle</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.screen_sharing.notification/-screen-sharing-notification-style.html"><span class="identifier">ScreenSharingNotificationStyle</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-style.html">WhiteboardNotificationStyle</a></h4>
+</td>
+<td>
+<p>Whiteboard notification style</p>
+<code><span class="keyword">interface </span><span class="identifier">WhiteboardNotificationStyle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseNotificationStyle</span></a><span class="symbol">&lt;</span><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-style.html"><span class="identifier">WhiteboardNotificationStyle</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
