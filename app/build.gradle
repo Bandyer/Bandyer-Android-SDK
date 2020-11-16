@@ -10,7 +10,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath "com.github.triplet.gradle:play-publisher:2.5.0"
+        classpath "com.github.triplet.gradle:play-publisher:2.8.0"
         classpath 'com.google.firebase:firebase-appdistribution-gradle:2.0.0'
     }
 }
@@ -27,8 +27,8 @@ def jUnitLibVersion = '4.13'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.3.4'
-def bandyerLibVersion = "1.5.9"
-def bandyerExtensionUsbCamera = "1.1.0"
+def bandyerLibVersion = "1.5.10"
+def bandyerExtensionUsbCamera = "1.1.2"
 def pushy_version = '1.0.56'
 def androidX = '1.1.0'
 
