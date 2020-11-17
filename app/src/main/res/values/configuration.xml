@@ -2,6 +2,7 @@
   ~ Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
   ~ See LICENSE.txt for licensing information
   -->
+
 <resources>
 
     <!--
@@ -22,7 +23,6 @@
     !-->
     <string name="environment" translatable="false">sandbox</string>
 
-
     <!--
     The firebase project number is used to send notifications from our backend to this sample app.
     This is not mandatory for the sdk to work, it's used by us to notify this sample app.
@@ -35,5 +35,4 @@
 
     <!-- push provider to be used -->
     <string name="push_provider" translatable="false">NONE</string>
-
 </resources>
