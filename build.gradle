@@ -11,7 +11,7 @@ buildscript {
     ext.sdkVersion = 29
     ext.buildToolsVersion = "29.0.3"
     ext.stethoVersion = "1.5.0"
-    ext.kotlin_version = '1.3.72'
+    ext.kotlin_version = '1.4.10'
 
     ext.keyStoreAlias = { buildType -> return " " }
     ext.keyStorePassword = { buildType -> return " " }
@@ -39,7 +39,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'

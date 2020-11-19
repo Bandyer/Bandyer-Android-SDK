@@ -38,3 +38,10 @@
 # Pushy
 -dontwarn me.pushy.**
 -keep class me.pushy.** { *; }
+
+# Enums
+-keepclassmembers class * extends java.lang.Enum {
+    <fields>;
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}

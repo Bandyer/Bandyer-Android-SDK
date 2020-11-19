@@ -27,7 +27,7 @@ def jUnitLibVersion = '4.13'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.3.4'
-def bandyerLibVersion = "1.5.10"
+def bandyerLibVersion = "1.5.11"
 def bandyerExtensionUsbCamera = "1.1.2"
 def pushy_version = '1.0.56'
 def androidX = '1.1.0'
@@ -71,11 +71,20 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (keyStoreFilePath(name)?.trim()) signingConfig signingConfigs.release
+
+            if (getDistributionCredentialsFilePath(name)?.trim()) firebaseAppDistribution {
+                appId getDistributionAppId(name)
+                serviceCredentialsFile getDistributionCredentialsFilePath(name)
+                releaseNotes getDistributionReleaseNotes(bandyerLibVersion)
+                groups getDistributionTestGroup()
+            }
+
             firebaseCrashlytics {
                 nativeSymbolUploadEnabled false
+                mappingFileUploadEnabled false
             }
         }
         debug {
