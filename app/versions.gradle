@@ -31,9 +31,4 @@ project.ext.versions.applyVersionCode = { variant ->
     variant.outputs.all { output ->
         output.setVersionCodeOverride(versionCode)
     }
-    tasks.findAll {
-        it.name.contains("publishRelease")
-    }.each {
-        it.dependsOn autoIncrementVersionCode
-    }
 }

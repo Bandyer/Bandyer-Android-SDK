@@ -35,6 +35,7 @@ abstract class BaseConfigurationActivity(override var withToolbar: Boolean = tru
         try {
             val gson = Gson()
             val configuration = gson.fromJson(uriToJsonObject(uri), Configuration::class.java)
+            configuration.logoName = configuration.logoName?.replace("+", " ")?.trim()
             return configuration.also {
                 val hasChanged = currentConfiguration != configuration
                 if (!hasChanged) {
@@ -53,7 +54,7 @@ abstract class BaseConfigurationActivity(override var withToolbar: Boolean = tru
         super.onCreate(savedInstanceState)
         currentConfiguration = getInitialConfiguration()
     }
-    
+
     private fun isValidUriScheme(scheme: String?) = scheme == "https" || scheme == "bandyer"
 
     protected fun sendBroadcastConfigurationResult(action: String, configuration: Configuration?) {
