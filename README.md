@@ -100,9 +100,9 @@ Support AppCompat <= **v1.2.1**
 [FileSharing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Customize-FileSharing-Notifications)
 
 ### User Details Display Customization
-[User Details Provider](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-provider)
+[User Details Provider](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Customize-user-details#user-details-provider)
 
-[User Details Formatter](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-provider#user-details-formatter)
+[User Details Formatter](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Customize-user-details#user-details-formatter)
 
 ### More
 [Logging](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Logging)
