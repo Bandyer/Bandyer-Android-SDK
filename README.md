@@ -102,7 +102,7 @@ Support AppCompat <= **v1.2.1**
 ### User Details Display Customization
 [User Details Provider](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-provider)
 
-[User Details Formatter](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-formatter)
+[User Details Formatter](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-details-provider#user-details-formatter)
 
 ### More
 [Logging](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Logging)
