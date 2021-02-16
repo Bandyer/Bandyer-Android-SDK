@@ -62,11 +62,12 @@ Support AppCompat <= **v1.2.1**
 - Screen sharing in call
 - Call Recording
 
+
+## News 2.0.0
+- 2020-02-16: Bandyer-Android-SDK 2.0.0 has been released. New UI system with breaking changes and simplification of APIs. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.0.0).
+
 ## News 1.5.x
 - 2020-11-06: Bandyer-Android-SDK 1.5.9 has been released. Added the capability to use usb camera during the call. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.9).
-
-## News 1.4.x
-- 2020-10-08: Bandyer-Android-SDK 1.4.16 has been released. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.4.16).
 
 ## Documentation
 
@@ -124,19 +125,20 @@ Support AppCompat <= **v1.2.1**
 [USB Camera](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/USB-Camera)
 
 ### Customize UI
-> Coming soon 
+
+🎨  &nbsp; [Color System](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Color-System)
+
+🎑  &nbsp; [Customize Colors & Themes](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Customize-Colors-&-Themes)
+
+🆎  &nbsp; [Customize Font](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Customize-Font)
+
+👾  &nbsp; [Customize Icons](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Customize-Icons)
 
 ### Migrations
 
-[Upgrade to v1.1.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.1.x)
-
-[Upgrade to v1.2.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.2.x)
-
-[Upgrade to v1.3.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.3.x)
-
-[Upgrade to v1.4.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-BandyerSDK-1.4.x)
-
 [Upgrade to v1.5.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
+
+[Upgrade to v2.0.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v2.0.x)
 
 
 ### Code documentation
