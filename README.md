@@ -33,7 +33,7 @@
 
 ## Requirements
 
-Bandyer Android SDK is supported from API level 16 (Android 4.1 Jelly Bean).
+Bandyer Android SDK is supported from API level 21 (Android 5.0 Lollipop).
 
 **Bandyer Android SDK requires compileOptions for Java8**
 ```java
@@ -64,7 +64,7 @@ Support AppCompat <= **v1.2.1**
 
 
 ## News 2.0.0
-- 2020-02-16: Bandyer-Android-SDK 2.0.0 has been released. New UI system with breaking changes and simplification of APIs. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.0.0).
+- 2020-02-16: Bandyer-Android-SDK 2.0.0 has been released. Change min support from api16 to api21. New UI system with breaking changes and simplification of APIs. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.0.0).
 
 ## News 1.5.x
 - 2020-11-06: Bandyer-Android-SDK 1.5.9 has been released. Added the capability to use usb camera during the call. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.9).
