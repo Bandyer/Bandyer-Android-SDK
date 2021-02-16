@@ -14,10 +14,11 @@ import android.os.AsyncTask
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bandyer.app_utilities.storage.LoginManager.getLoggedUser
+import com.bandyer.app_configuration.external_configuration.model.PushProvider
 import com.bandyer.app_utilities.activities.BaseActivity
 import com.bandyer.app_utilities.networking.MockedNetwork.registerDeviceForPushNotification
 import com.bandyer.app_utilities.networking.MockedNetwork.unregisterDeviceForPushNotification
+import com.bandyer.app_utilities.storage.ConfigurationPrefsManager
 import me.pushy.sdk.Pushy
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,17 +37,19 @@ open class PushyCompat : BroadcastReceiver() {
         private val TAG = PushyCompat::class.java.simpleName
 
         @JvmStatic
-        fun registerDevice(context: Context) {
+        fun registerDevice(context: Context, loggedUser: String) {
             Pushy.toggleNotifications(true, context)
             if (Pushy.isRegistered(context)) {
                 val devicePushToken = Pushy.getDeviceCredentials(context).token
-                registerDeviceForPushNotification(context, getLoggedUser(context!!), devicePushToken, callback)
+                val configuration = ConfigurationPrefsManager.getConfiguration(context)
+                registerDeviceForPushNotification(loggedUser, PushProvider.Pushy, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!, callback)
                 return
             }
             AsyncTask.execute {
                 try {
                     val devicePushToken = Pushy.register(context)
-                    registerDeviceForPushNotification(context, getLoggedUser(context!!), devicePushToken, callback)
+                    val configuration = ConfigurationPrefsManager.getConfiguration(context)
+                    registerDeviceForPushNotification(loggedUser, PushProvider.Pushy, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!, callback)
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }
@@ -68,8 +71,10 @@ open class PushyCompat : BroadcastReceiver() {
         @JvmStatic
         fun unregisterDevice(context: BaseActivity, loggedUser: String?) {
             if (!Pushy.isRegistered(context)) return
+            loggedUser ?: return
             val devicePushToken = Pushy.getDeviceCredentials(context).token
-            unregisterDeviceForPushNotification(context, loggedUser, devicePushToken)
+            val configuration = ConfigurationPrefsManager.getConfiguration(context)
+            unregisterDeviceForPushNotification(loggedUser, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!)
             Pushy.toggleNotifications(false, context)
             // Every unregister will generate a new token, resulting in a new device usage
             // Pushy.unregister(context);

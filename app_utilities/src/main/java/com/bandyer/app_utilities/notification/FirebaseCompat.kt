@@ -7,14 +7,17 @@ package com.bandyer.app_utilities.notification
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.bandyer.app_utilities.storage.ConfigurationPrefsManager
+import com.bandyer.app_configuration.external_configuration.model.PushProvider
 import com.bandyer.app_utilities.networking.ConnectionStatusChangeReceiver.Companion.isConnected
 import com.bandyer.app_utilities.networking.ConnectionStatusChangeReceiver.Companion.register
 import com.bandyer.app_utilities.networking.ConnectionStatusChangeReceiver.Companion.unRegister
 import com.bandyer.app_utilities.networking.MockedNetwork.registerDeviceForPushNotification
 import com.bandyer.app_utilities.networking.MockedNetwork.unregisterDeviceForPushNotification
 import com.bandyer.app_utilities.networking.OnNetworkConnectionChanged
-import com.bandyer.app_utilities.storage.LoginManager.getLoggedUser
+import com.bandyer.app_utilities.storage.ConfigurationPrefsManager
+import com.bandyer.app_utilities.storage.LoginManager
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.iid.FirebaseInstanceId
@@ -35,26 +38,28 @@ object FirebaseCompat {
     private val onNetworkConnectionChanged: OnNetworkConnectionChanged = object : OnNetworkConnectionChanged {
         override fun onNetworkConnectionChanged(context: Context, connected: Boolean) {
             if (deviceRegistered || !connected) return
-            registerDevice(context)
+            registerDevice(context, LoginManager.getLoggedUser(context))
         }
     }
 
     fun unregisterDevice(context: Context?, loggedUser: String?) {
         if (!deviceRegistered) return
+        loggedUser ?: return
         unRegister(context!!)
         deviceRegistered = false
         try {
             FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
-                val post = Thread(Runnable {
+                val post = Thread {
                     val devicePushToken = instanceIdResult.token
-                    unregisterDeviceForPushNotification(context, loggedUser, devicePushToken)
+                    val configuration = ConfigurationPrefsManager.getConfiguration(context)
+                    unregisterDeviceForPushNotification(loggedUser, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!)
                     try {
                         FirebaseInstanceId.getInstance().deleteInstanceId()
                         FirebaseApp.getInstance().delete()
                     } catch (e: Throwable) {
                         e.printStackTrace()
                     }
-                })
+                }
                 post.start()
             }
         } catch (e: Throwable) {
@@ -63,7 +68,7 @@ object FirebaseCompat {
     }
 
     @JvmStatic
-    fun registerDevice(context: Context) {
+    fun registerDevice(context: Context, loggedUser: String) {
         if (deviceRegistered) return
         register(context, onNetworkConnectionChanged)
         if (!isConnected(context)) return
@@ -71,7 +76,8 @@ object FirebaseCompat {
             try {
                 FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
                     val devicePushToken = instanceIdResult.token
-                    registerDeviceForPushNotification(context, getLoggedUser(context), devicePushToken, object : Callback<Void?> {
+                    val configuration = ConfigurationPrefsManager.getConfiguration(context)
+                    registerDeviceForPushNotification(loggedUser, PushProvider.FCM, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!, object : Callback<Void?> {
                         override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
                             if (!response.isSuccessful) {
                                 Log.e("PushNotification", "Failed to register device for push notifications!")
@@ -112,5 +118,15 @@ object FirebaseCompat {
             }.onFailure { it.printStackTrace() }
         }
         post.start()
+    }
+
+    fun isGmsAvailable(context: Context?): Boolean {
+        var isAvailable = false
+        if (null != context) {
+            val result = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context)
+            isAvailable = ConnectionResult.SUCCESS == result
+        }
+        Log.i("PushNotification", "isGmsAvailable: $isAvailable")
+        return isAvailable
     }
 }

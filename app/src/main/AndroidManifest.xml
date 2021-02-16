@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+
+
+    <uses-sdk tools:overrideLibrary="com.huawei.android.hms.push,com.huawei.android.hms.openid,com.huawei.android.hms.base,com.huawei.hms.base.availableupdate,com.huawei.hms.stats,com.huawei.hms.base.ui,com.huawei.hms.base.device,com.huawei.hms.log,com.huawei.agconnect.core" />
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -26,12 +29,13 @@
 
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/BaseTheme.SplashScreen"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:theme="@style/BaseTheme.SplashScreen" />
 
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTask"
             android:theme="@style/BaseTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,6 +73,14 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".notification.HuaweiNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 

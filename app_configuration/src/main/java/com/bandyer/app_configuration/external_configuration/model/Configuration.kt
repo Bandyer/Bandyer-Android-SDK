@@ -40,10 +40,12 @@ data class Configuration(
         var withMockAuthentication: Boolean = false,
         var firebaseProjectId: String? = null,
         var firebaseMobileAppId: String? = null,
-        var firebaseApiKey: String? = null) : Parcelable {
+        var firebaseApiKey: String? = null,
+        var hmsAppId: String? = null) : Parcelable {
+
 
     override fun toString(): String {
-        return "Configuration(environment=$environment, userAlias=$userAlias, appId=$appId, apiKey=$apiKey, projectNumber=$projectNumber, pushProvider=$pushProvider, logoUrl=$logoUrl, logoName=$logoName, customUserDetailsName=$customUserDetailsName, customUserDetailsImageUrl=$customUserDetailsImageUrl, useLeakCanary=$useLeakCanary, useRandomMockUserDetailsProvider=$useRandomMockUserDetailsProvider, useSimplifiedVersion=$useSimplifiedVersion, defaultCallType=$defaultCallType, withWhiteboardCapability=$withWhiteboardCapability, withFileSharingCapability=$withFileSharingCapability, withChatCapability=$withChatCapability, withScreenSharingCapability=$withScreenSharingCapability, withRecordingEnabled=$withRecordingEnabled, withBackCameraAsDefault=$withBackCameraAsDefault, withProximityEnabled=$withProximitySensorDisabled, withMockAuthentication=$withMockAuthentication, firebaseProjectId=$firebaseProjectId, firebaseMobileAppId=$firebaseMobileAppId, firebaseApiKey=$firebaseApiKey)"
+        return "Configuration(environment=$environment, userAlias=$userAlias, appId=$appId, apiKey=$apiKey, projectNumber=$projectNumber, pushProvider=$pushProvider, logoUrl=$logoUrl, logoName=$logoName, customUserDetailsName=$customUserDetailsName, customUserDetailsImageUrl=$customUserDetailsImageUrl, useLeakCanary=$useLeakCanary, useRandomMockUserDetailsProvider=$useRandomMockUserDetailsProvider, useSimplifiedVersion=$useSimplifiedVersion, defaultCallType=$defaultCallType, withWhiteboardCapability=$withWhiteboardCapability, withFileSharingCapability=$withFileSharingCapability, withChatCapability=$withChatCapability, withScreenSharingCapability=$withScreenSharingCapability, withRecordingEnabled=$withRecordingEnabled, withBackCameraAsDefault=$withBackCameraAsDefault, withProximityEnabled=$withProximitySensorDisabled, withMockAuthentication=$withMockAuthentication, firebaseProjectId=$firebaseProjectId, firebaseMobileAppId=$firebaseMobileAppId, firebaseApiKey=$firebaseApiKey, hmsAppId=$hmsAppId)"
     }
 
     fun isMockConfiguration(): Boolean {
@@ -82,6 +84,7 @@ data class Configuration(
         if (firebaseProjectId != other.firebaseProjectId) return false
         if (firebaseMobileAppId != other.firebaseMobileAppId) return false
         if (firebaseApiKey != other.firebaseApiKey) return false
+        if (hmsAppId != other.hmsAppId) return false
 
         return true
     }
@@ -113,6 +116,7 @@ data class Configuration(
         result = 31 * result + (firebaseProjectId?.hashCode() ?: 0)
         result = 31 * result + (firebaseMobileAppId?.hashCode() ?: 0)
         result = 31 * result + (firebaseApiKey?.hashCode() ?: 0)
+        result = 31 * result + (hmsAppId?.hashCode() ?: 0)
         return result
     }
 
@@ -140,6 +144,7 @@ fun getMockConfiguration(context: Context): Configuration {
             firebaseProjectId = getString(R.string.firebase_project_id)
             firebaseMobileAppId = getString(R.string.firebase_mobile_app_id)
             firebaseApiKey = getString(R.string.firebase_api_key)
+            hmsAppId = getString(R.string.hms_app_id)
             logoUrl = "android.resource://" + context.packageName + "/drawable/logo";
         }
     }

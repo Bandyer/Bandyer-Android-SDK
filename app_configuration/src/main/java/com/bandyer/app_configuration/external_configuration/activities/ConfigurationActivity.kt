@@ -12,23 +12,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.bandyer.app_configuration.R
-import com.bandyer.app_configuration.external_configuration.model.Configuration
-import com.bandyer.app_configuration.external_configuration.model.ConfigurationFieldChangeListener
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider
-import com.bandyer.app_configuration.external_configuration.model.PushProvider
-import com.bandyer.app_configuration.external_configuration.model.bindToConfigurationProperty
+import com.bandyer.app_configuration.external_configuration.model.*
 import com.bandyer.app_configuration.external_configuration.utils.MediaStorageUtils
-import kotlinx.android.synthetic.main.activity_configuration.api_key
-import kotlinx.android.synthetic.main.activity_configuration.app_id
-import kotlinx.android.synthetic.main.activity_configuration.environment
-import kotlinx.android.synthetic.main.activity_configuration.fcm_configuration_fields
-import kotlinx.android.synthetic.main.activity_configuration.firebase_api_key
-import kotlinx.android.synthetic.main.activity_configuration.firebase_mobile_app_id
-import kotlinx.android.synthetic.main.activity_configuration.firebase_project_id
-import kotlinx.android.synthetic.main.activity_configuration.firebase_project_number
-import kotlinx.android.synthetic.main.activity_configuration.leak_canary
-import kotlinx.android.synthetic.main.activity_configuration.mock_user_details
-import kotlinx.android.synthetic.main.activity_configuration.push_provider
+import kotlinx.android.synthetic.main.activity_configuration.*
 import kotlinx.android.synthetic.main.activity_configuration.watermark
 
 open class ConfigurationActivity : BaseConfigurationActivity() {
@@ -89,6 +75,7 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
         firebase_project_id!!.setValue(configuration.firebaseProjectId)
         firebase_api_key!!.setValue(configuration.firebaseApiKey)
         firebase_mobile_app_id!!.setValue(configuration.firebaseMobileAppId)
+        hms_app_id!!.setValue(configuration.hmsAppId)
         watermark!!.setImageName(configuration.logoName)
         configuration.logoUrl?.let { textUri ->
             watermark!!.setImageUri(MediaStorageUtils.getUriFromString(textUri))
@@ -110,12 +97,13 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
         firebase_project_id!!.bindToConfigurationProperty(currentConfiguration!!, currentConfiguration!!::firebaseProjectId)
         firebase_api_key!!.bindToConfigurationProperty(currentConfiguration!!, currentConfiguration!!::firebaseApiKey)
         firebase_mobile_app_id!!.bindToConfigurationProperty(currentConfiguration!!, currentConfiguration!!::firebaseMobileAppId)
+        hms_app_id!!.bindToConfigurationProperty(currentConfiguration!!, currentConfiguration!!::hmsAppId)
         leak_canary!!.bindToConfigurationProperty(currentConfiguration!!, currentConfiguration!!::useLeakCanary)
 
         watermark!!.setOnClickListener {
             ImageTextEditActivity.showForResult(
                     this,
-                    Uri.parse(currentConfiguration!!.logoUrl),
+                    Uri.parse(currentConfiguration?.logoUrl ?: ""),
                     currentConfiguration!!.logoName ?: "",
                     BRAND_IMAGE_TEXT_REQUEST)
         }
@@ -133,8 +121,8 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
 
     private fun onPushProviderChanged(pushProvider: PushProvider) {
         fcm_configuration_fields.visibility = when (pushProvider) {
-            PushProvider.NONE, PushProvider.Pushy -> View.GONE
             PushProvider.FCM -> View.VISIBLE
+            else-> View.GONE
         }
     }
 
@@ -171,6 +159,9 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
             R.id.qr_code -> show(this, currentConfiguration, true)
             R.id.reset_all -> {
                 setDefaultValues(getInitialConfiguration())
+            }
+            R.id.clear_all -> {
+                setDefaultValues(getMockConfiguration(this))
             }
             R.id.save -> {
                 if (currentConfiguration!!.isMockConfiguration()) {

@@ -19,6 +19,12 @@
 # tables to get line numbers in the stack traces.
 # You can comment this out if you're not interested in stack traces.
 
+-ignorewarnings
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
 
 # Bandyer proprietary SDK
 -keep class com.bandyer.** { *; }
@@ -45,3 +51,9 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+
+# Huawei pushkit rules
+
+-keep class com.huawei.hianalytics.**{*;}
+-keep class com.huawei.updatesdk.**{*;}
+-keep class com.huawei.hms.**{*;}

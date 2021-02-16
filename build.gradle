@@ -35,7 +35,6 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url "https://dl.bintray.com/bandyer/General" }
     }
 
     dependencies {
@@ -57,9 +56,7 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven { url "https://dl.bintray.com/bandyer/Communication" }
         maven { url 'https://jitpack.io' }
-        maven { url "https://dl.bintray.com/bandyer/General" }
     }
 }
 

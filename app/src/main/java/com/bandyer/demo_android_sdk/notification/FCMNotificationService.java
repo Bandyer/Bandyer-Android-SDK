@@ -13,6 +13,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import com.bandyer.app_utilities.notification.FirebaseCompat;
+import com.bandyer.app_utilities.storage.LoginManager;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -60,6 +61,8 @@ public class FCMNotificationService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String newToken) {
         super.onNewToken(newToken);
-        FirebaseCompat.registerDevice(this);
+        String loggedUser = LoginManager.getLoggedUser(getApplicationContext());
+        if (loggedUser == null) return;
+        FirebaseCompat.registerDevice(this, loggedUser);
     }
 }

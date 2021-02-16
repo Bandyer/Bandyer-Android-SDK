@@ -84,6 +84,13 @@
             app:summary="@string/summary_firebaseMobileAppId"
             app:title="@string/pref_title_firebaseMobileAppId" />
 
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/hms_app_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_hmsAppId"
+            app:title="@string/pref_title_hmsAppId" />
+
     </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
 
     <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference

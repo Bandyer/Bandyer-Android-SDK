@@ -32,6 +32,7 @@
     <string name="firebase_project_id" translatable="false">firebase-project-id</string>
     <string name="firebase_mobile_app_id" translatable="false">1:1035469437089:android:2doijfos234123</string>
     <string name="firebase_api_key" translatable="false">AIza_xxx</string>
+    <string name="hms_app_id" translatable="false">12344234</string>
 
     <!-- push provider to be used -->
     <string name="push_provider" translatable="false">NONE</string>

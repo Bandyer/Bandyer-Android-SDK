@@ -34,13 +34,14 @@ object LoginManager {
 
         // Set userAlias on Crashlytics to identify the user in crash logs.
         try {
-            FirebaseCrashlytics.getInstance().setUserId(userAlias!!);
+            FirebaseCrashlytics.getInstance().setUserId(userAlias!!)
         } catch (ignored: Exception) {
         }
 
         // Register device for receive push notifications
         // It will not work for you, you should implement your own server for notification send/receive logics
-        NotificationProxy.registerDevice(context)
+        userAlias ?: return
+        NotificationProxy.registerDevice(context, userAlias)
     }
 
     /**

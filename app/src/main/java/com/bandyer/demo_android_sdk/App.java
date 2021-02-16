@@ -65,7 +65,7 @@ public class App extends MultiDexApplication {
         Environment env = Utils.getEnvironmentByName(environmentName);
 
         // Bandyer SDK Module initialization
-        BandyerSDK.Builder builder = new BandyerSDK.Builder(this, configuration.getAppId())
+        BandyerSDK.Configuration config = new BandyerSDK.Configuration(this, configuration.getAppId())
                 .setEnvironment(env)
                 .withCallEnabled(getCallNotificationListener())
                 .withChatEnabled(getChatNotificationListener())
@@ -75,9 +75,9 @@ public class App extends MultiDexApplication {
         // otherwise the userAlias and default avatar will be shown in chat or call.
 
         if (configuration.getCustomUserDetailsProvider() != CustomUserDetailsProvider.NONE)
-            builder.withUserDetailsProvider(new MockedUserProvider(this));
+            config.withUserDetailsProvider(new MockedUserProvider(this));
 
-        builder.withUserDetailsFormatter((userDetails, context) -> {
+        config.withUserDetailsFormatter((userDetails, context) -> {
             CustomUserDetailsProvider customUserDetailsProvider = configuration.getCustomUserDetailsProvider();
             switch (customUserDetailsProvider) {
                 case RANDOM:
@@ -90,13 +90,13 @@ public class App extends MultiDexApplication {
         });
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-            builder.withWhiteboardEnabled();
+            config.withWhiteboardEnabled();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            builder.withScreenSharingEnabled();
+            config.withScreenSharingEnabled();
 
         if (BuildConfig.DEBUG) {
-            builder.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
+            config.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
 
                 @Override
                 public void verbose(@NonNull String tag, @NonNull String message) {
@@ -126,10 +126,10 @@ public class App extends MultiDexApplication {
         }
 
         OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()).build();
-        builder.setHttpStack(client)
+        config.setHttpStack(client)
                 .setGsonBuilder(new GsonBuilder().setPrettyPrinting());
 
-        BandyerSDK.init(builder);
+        BandyerSDK.init(config);
     }
 
     @SuppressLint("NewApi")

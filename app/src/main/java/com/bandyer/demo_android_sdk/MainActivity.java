@@ -35,6 +35,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.call.CallException;
 import com.bandyer.android_sdk.call.CallModule;
 import com.bandyer.android_sdk.call.CallObserver;
@@ -62,8 +63,6 @@ import com.bandyer.android_sdk.module.BandyerModuleStatus;
 import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity;
 import com.bandyer.app_configuration.external_configuration.model.CallOptionsType;
 import com.bandyer.app_utilities.BuildConfig;
-import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
-import com.bandyer.app_utilities.storage.LoginManager;
 import com.bandyer.app_utilities.activities.CollapsingToolbarActivity;
 import com.bandyer.app_utilities.adapter_items.NoUserSelectedItem;
 import com.bandyer.app_utilities.adapter_items.SelectedUserItem;
@@ -72,6 +71,8 @@ import com.bandyer.app_utilities.custom_views.CallOptionsDialog;
 import com.bandyer.app_utilities.networking.MockedNetwork;
 import com.bandyer.app_utilities.notification.NotificationProxy;
 import com.bandyer.app_utilities.settings.DefaultCallSettingsActivity;
+import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
+import com.bandyer.app_utilities.storage.LoginManager;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.fastadapter.FastAdapter;
@@ -208,22 +209,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         public void onActivityStarted(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity) {
             Log.d(TAG, "onChatActivityStarted");
         }
-
-        @Override
-        public void onChatStarted() {
-            Log.d(TAG, "onChatStarted");
-        }
-
-        @Override
-        public void onChatEndedWithError(@NonNull ChatException chatException) {
-            Log.d(TAG, "onChatEndedWithError: " + chatException.getMessage());
-            showErrorDialog(chatException.getMessage());
-        }
-
-        @Override
-        public void onChatEnded() {
-            Log.d(TAG, "onChatEnded");
-        }
     };
 
     public static void show(Activity context) {
@@ -293,8 +278,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         if (!LoginManager.isUserLogged(this)) return;
         if (configuration.isMockConfiguration() || BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED)
             return;
-        BandyerSDKClient.getInstance().removeObserver(this);
-        BandyerSDKClient.getInstance().removeModuleObserver(this);
         hideKeyboard(true);
     }
 
@@ -313,9 +296,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             return;
         }
 
-        BandyerSDKClient.getInstance().addObserver(this);
-        BandyerSDKClient.getInstance().addModuleObserver(this);
-
         startBandyerSdk(LoginManager.getLoggedUser(this));
 
         // BE AWARE that you don't get notified if the modules are already initialized/running as it is already in the past.
@@ -328,19 +308,16 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     private void startBandyerSdk(String userAlias) {
         Log.d(TAG, "startBandyerSDK");
 
-        if (chatButton != null) chatButton.setEnabled(false);
-        if (callButton != null) callButton.setEnabled(false);
-
         if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
+
             BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
                     .keepListeningForEventsInBackground(false)
                     .build();
             BandyerSDKClient.getInstance().init(userAlias, options);
+            BandyerSDKClient.getInstance().addObserver(this);
+            BandyerSDKClient.getInstance().addModuleObserver(this);
         }
-
-        // Start listening for events
-        BandyerSDKClient.getInstance().startListening();
-
+        
         addModulesObservers();
     }
 
@@ -406,6 +383,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     public void onDestroy() {
         super.onDestroy();
         if (configuration.isMockConfiguration() || !LoginManager.isUserLogged(this)) return;
+        BandyerSDKClient.getInstance().removeObserver(this);
+        BandyerSDKClient.getInstance().removeModuleObserver(this);
         BandyerSDKClient.getInstance().dispose();
     }
 
@@ -538,7 +517,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
                 itemAdapter.set(usersList);
 
-                for (String userSelected: calleeSelected)
+                for (String userSelected : calleeSelected)
                     selectUser(userSelected, usersList.indexOf(new UserSelectionItem(userSelected)));
 
                 if (searchView != null) itemAdapter.filter(searchView.getQuery());
@@ -720,11 +699,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         if (module instanceof ChatModule && chatButton != null) {
             chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
-            chatButton.setEnabled(true);
         } else if (module instanceof CallModule) {
             if (callButton != null) {
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
-                callButton.setEnabled(true);
             }
             if (joinUrl != null) {
 
@@ -755,8 +732,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 com.bandyer.app_configuration.external_configuration.model.Configuration configuration = ConfigurationPrefsManager.INSTANCE.getConfiguration(MainActivity.this);
                 ConfigurationActivity.Companion.showNew(this, configuration, configuration.isMockConfiguration());
             });
-        } else
-            setModuleButtonsColors(module, BandyerModuleStatus.FAILED);
+        } else showErrorDialog(throwable.getMessage());
     }
 
     @Override
@@ -776,24 +752,21 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         // the chat module is offline first, which means that you can interact with it even when you are not connected to internet
         // here we color the button in black until the module gets online
         switch (moduleStatus) {
-            case CONNECTED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
-                chatButton.setEnabled(true);
-                break;
-            case PAUSED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
-                chatButton.setEnabled(false);
-                break;
-            case DESTROYED:
-            case FAILED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
-                chatButton.setEnabled(false);
-                break;
+            case CONNECTING:
             case DISCONNECTED:
             case RECONNECTING:
             case READY:
                 chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
-                chatButton.setEnabled(true);
+                break;
+            case CONNECTED:
+                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
+                break;
+            case PAUSED:
+                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+                break;
+            case DESTROYED:
+            case FAILED:
+                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
                 break;
         }
     }
@@ -803,16 +776,13 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             case CONNECTED:
             case READY:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
-                callButton.setEnabled(true);
                 break;
             case DESTROYED:
             case FAILED:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
-                callButton.setEnabled(false);
                 break;
             default:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
-                callButton.setEnabled(false);
                 break;
         }
     }

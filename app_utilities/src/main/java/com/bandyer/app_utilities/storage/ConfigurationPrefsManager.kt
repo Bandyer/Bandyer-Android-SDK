@@ -89,7 +89,8 @@ object ConfigurationPrefsManager {
                 LegacyConfigurationPrefsManager.isMockUserAuthenticationRequest(context),
                 LegacyConfigurationPrefsManager.getFirebaseProjectId(context),
                 LegacyConfigurationPrefsManager.getFirebaseProjectMobileAppId(context),
-                LegacyConfigurationPrefsManager.getFirebaseApiKey(context))
+                LegacyConfigurationPrefsManager.getFirebaseApiKey(context),
+                LegacyConfigurationPrefsManager.getHmsAppId(context))
 
         LegacyConfigurationPrefsManager.clearAll(context)
         DefaultCallSettingsManager.clearAll(context)
@@ -245,6 +246,20 @@ internal object LegacyConfigurationPrefsManager {
     }
 
     /**
+     * Utility to set hms app id
+     *
+     * @param context               App or Activity
+     * @param hmsAppId the hms app id
+     */
+    @JvmStatic
+    @SuppressLint("ApplySharedPref")
+    fun setHmsAppId(context: Context, hmsAppId: String?) {
+        val editor = context.applicationContext.getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, Context.MODE_PRIVATE).edit()
+        editor.putString("hmsAppId", hmsAppId)
+        editor.commit()
+    }
+
+    /**
      * Utility to return the apiKey
      *
      * @param context Activity or App
@@ -314,6 +329,19 @@ internal object LegacyConfigurationPrefsManager {
     fun getFirebaseApiKey(context: Context): String {
         val prefs = context.applicationContext.getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, Context.MODE_PRIVATE)
         return prefs.getString("firebaseApiKey", context.getString(R.string.firebase_api_key))!!
+    }
+
+
+    /**
+     * Utility to return the hms app id
+     *
+     * @param context Activity or App
+     * @return hms app id
+     */
+    @JvmStatic
+    fun getHmsAppId(context: Context): String {
+        val prefs = context.applicationContext.getSharedPreferences(MY_CREDENTIAL_PREFS_NAME, Context.MODE_PRIVATE)
+        return prefs.getString("hmsAppId", context.getString(R.string.hms_app_id))!!
     }
 
     /**

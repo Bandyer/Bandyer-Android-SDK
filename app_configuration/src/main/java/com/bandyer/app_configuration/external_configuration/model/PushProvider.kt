@@ -11,5 +11,6 @@ package com.bandyer.app_configuration.external_configuration.model
 enum class PushProvider {
     NONE,
     FCM,
-    Pushy
+    Pushy,
+    HMS
 }

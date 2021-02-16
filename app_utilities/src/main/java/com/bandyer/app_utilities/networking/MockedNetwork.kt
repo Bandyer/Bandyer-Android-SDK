@@ -36,7 +36,7 @@ object MockedNetwork {
         getUsers = getClient(configuration.apiKey!!, configuration.environment)!!.create(APIInterface::class.java).users
         getUsers!!.enqueue(object : Callback<BandyerUsers?> {
             override fun onResponse(call: Call<BandyerUsers?>, response: Response<BandyerUsers?>) {
-                if (getUsers?.isCanceled != false) return
+                getUsers = null
                 if (response.body() == null || response.body()!!.user_id_list == null || !response.isSuccessful) {
                     callback?.onError("No users found or credentials are invalid!")
                     return
@@ -45,37 +45,34 @@ object MockedNetwork {
             }
 
             override fun onFailure(call: Call<BandyerUsers?>, t: Throwable) {
-                if (getUsers?.isCanceled != false) return
+                getUsers = null
                 callback?.onError(t.message)
             }
         })
     }
 
     @JvmStatic
-    fun registerDeviceForPushNotification(context: Context, userAlias: String?, devicePushToken: String?, callback: Callback<Void?>?) {
+    fun registerDeviceForPushNotification(userAlias: String, pushProvider: PushProvider, devicePushToken: String, apiKey: String, appId: String, environment: String, callback: Callback<Void?>?) {
         cancelRegisterUser()
-        val configuration = ConfigurationPrefsManager.getConfiguration(context)
-        if (configuration.pushProvider == PushProvider.NONE) return
-        val info = DeviceRegistrationInfo(userAlias!!, configuration.appId!!, devicePushToken!!, configuration.pushProvider.name)
-        registerDevice = getClient(configuration.apiKey!!, configuration.environment)!!.create(APIInterface::class.java).registerDeviceForPushNotifications(info)
+        val info = DeviceRegistrationInfo(userAlias, appId, devicePushToken, pushProvider.name)
+        registerDevice = getClient(apiKey, environment)!!.create(APIInterface::class.java).registerDeviceForPushNotifications(info)
         registerDevice!!.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
-                if (registerDevice?.isCanceled != false) return
+                registerDevice = null
                 callback?.onResponse(call, response)
             }
 
             override fun onFailure(call: Call<Void?>, t: Throwable) {
-                if (registerDevice?.isCanceled != false) return
+                registerDevice = null
                 callback?.onFailure(call, t)
             }
         })
     }
 
     @JvmStatic
-    fun unregisterDeviceForPushNotification(context: Context, userAlias: String?, devicePushToken: String?) {
+    fun unregisterDeviceForPushNotification(userAlias: String, devicePushToken: String, apiKey: String, appId: String, environment: String) {
         cancelUnRegisterUser()
-        val configuration = ConfigurationPrefsManager.getConfiguration(context)
-        unregisterDevice = getClient(configuration.apiKey!!, configuration.environment)!!.create(APIInterface::class.java).unregisterDeviceForPushNotifications(userAlias, configuration.appId, devicePushToken)
+        unregisterDevice = getClient(apiKey, environment)!!.create(APIInterface::class.java).unregisterDeviceForPushNotifications(userAlias, appId, devicePushToken)
         unregisterDevice!!.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
                 if (unregisterDevice?.isCanceled != false) return

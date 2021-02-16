@@ -87,6 +87,7 @@ abstract class MultiDexApplication : MultiDexApplication() {
      * https://firebase.google.com/docs/cloud-messaging
      */
     protected fun registerDevicePushToken() {
-        NotificationProxy.registerDevice(this)
+        val loggedUsed = LoginManager.getLoggedUser(this).takeIf { it.isNotBlank() } ?: return
+        NotificationProxy.registerDevice(this, loggedUsed)
     }
 }

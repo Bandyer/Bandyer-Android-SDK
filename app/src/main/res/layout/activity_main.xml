@@ -13,9 +13,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.bandyer.sdk_design.textviews.BandyerTextViewSubtitle
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/ongoing_call_label"
-            style="@style/BandyerSDKDesign.TextView.OngoingCallLabel"
+            style="@style/BandyerSDKDesign.OngoingCallButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -134,7 +134,7 @@
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         app:layout_anchor="@+id/content"
-        app:layout_anchorGravity="bottom|right"
+        app:layout_anchorGravity="bottom|right|end"
         app:maxImageSize="40dp"
         app:tint="#ffffff" />
 

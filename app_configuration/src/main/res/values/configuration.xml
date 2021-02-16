@@ -37,6 +37,7 @@
     <string name="firebase_project_id" translatable="false" />
     <string name="firebase_mobile_app_id" translatable="false" />
     <string name="firebase_api_key" translatable="false" />
+    <string name="hms_app_id" translatable="false" />
 
     <!-- push providers -->
     <string name="push_provider" translatable="false" />

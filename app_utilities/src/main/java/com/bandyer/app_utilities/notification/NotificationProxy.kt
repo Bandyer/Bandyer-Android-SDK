@@ -18,20 +18,30 @@ import com.bandyer.app_utilities.activities.BaseActivity
  */
 object NotificationProxy {
 
-    fun registerDevice(context: Context) {
+    fun registerDevice(context: Context, loggedUser: String) {
         if (!isUserLogged(context)) return
         val configuration = ConfigurationPrefsManager.getConfiguration(context)
         when (configuration.pushProvider) {
-            PushProvider.FCM -> FirebaseCompat.registerDevice(context)
-            PushProvider.Pushy -> PushyCompat.registerDevice(context)
+            PushProvider.FCM -> {
+                if (FirebaseCompat.isGmsAvailable(context)) FirebaseCompat.registerDevice(context, loggedUser)
+                else if (HuaweiCompat.isHmsAvailable(context)) HuaweiCompat.registerDevice(context, loggedUser)
+            }
+            PushProvider.Pushy -> PushyCompat.registerDevice(context, loggedUser)
+            PushProvider.HMS -> if (HuaweiCompat.isHmsAvailable(context)) HuaweiCompat.registerDevice(context, loggedUser)
+            PushProvider.NONE -> Unit
         }
     }
 
     fun unregisterDevice(context: BaseActivity, loggedUser: String?) {
         val configuration = ConfigurationPrefsManager.getConfiguration(context)
         when (configuration.pushProvider) {
-            PushProvider.FCM -> FirebaseCompat.unregisterDevice(context, loggedUser)
+            PushProvider.FCM -> {
+                if (FirebaseCompat.isGmsAvailable(context)) FirebaseCompat.unregisterDevice(context, loggedUser)
+                else if (HuaweiCompat.isHmsAvailable(context)) HuaweiCompat.unregisterDevice(context, loggedUser)
+            }
             PushProvider.Pushy -> PushyCompat.unregisterDevice(context, loggedUser)
+            PushProvider.HMS -> if (HuaweiCompat.isHmsAvailable(context)) HuaweiCompat.unregisterDevice(context, loggedUser)
+            PushProvider.NONE -> Unit
         }
     }
 

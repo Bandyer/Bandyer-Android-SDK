@@ -64,6 +64,11 @@
     <string name="pref_title_firebaseMobileAppId" translatable="false">Firebase Mobile AppId</string>
     <string name="pref_hint_firebaseMobileAppId" translatable="false">Firebase Mobile AppId</string>
     <string name="summary_firebaseMobileAppId" translatable="false">Unique app identifier of the Firebase app inside a project.</string>
+
+    <string name="pref_title_hmsAppId" translatable="false">Huawei Mobile AppId</string>
+    <string name="pref_hint_hmsAppId" translatable="false">Huawei Mobile AppId</string>
+    <string name="summary_hmsAppId" translatable="false">Unique app identifier of the Huawei app inside a project.</string>
+
     <string name="pref_title_firebaseProjectId" translatable="false">Firebase ProjectId</string>
     <string name="pref_hint_firebaseProjectId" translatable="false">Firebase ProjectId</string>
     <string name="summary_firebaseProjectId" translatable="false">Unique identifier for the Firebase project that you can find in the project URL:\nhttps://console.firebase.google.com/project/*projectId*</string>
