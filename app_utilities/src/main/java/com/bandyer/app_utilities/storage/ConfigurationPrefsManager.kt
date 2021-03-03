@@ -100,6 +100,17 @@ object ConfigurationPrefsManager {
     }
 
     /**
+     * Logout user
+     *
+     * @param context
+     */
+    fun logoutUser(context: Context) {
+        val config = getConfiguration(context)
+        config.userAlias = null
+        configure(context, config)
+    }
+
+    /**
      * Clears all configuration preferences
      *
      * @param context Context
@@ -129,7 +140,7 @@ internal object LegacyConfigurationPrefsManager {
         val apiKey = getApiKey(context)
         val firebaseProjectNumber = getFirebaseProjectNumber(context)
         return apiKey!!.isEmpty() || apiKey == "ak_xxx" ||
-                appId!!.isEmpty() || appId == "mAppId_xxx" || firebaseProjectNumber == "1035469437089"
+               appId!!.isEmpty() || appId == "mAppId_xxx" || firebaseProjectNumber == "1035469437089"
     }
 
     /**

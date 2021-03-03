@@ -88,5 +88,6 @@ object LoginManager {
         }
         val prefs = context.applicationContext.getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().clear().commit()
+        ConfigurationPrefsManager.logoutUser(context)
     }
 }
