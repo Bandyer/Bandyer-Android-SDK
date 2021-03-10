@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.bandyer.android_sdk.BandyerSDK;
 import com.bandyer.android_sdk.call.CallException;
 import com.bandyer.android_sdk.call.CallModule;
 import com.bandyer.android_sdk.call.CallObserver;
@@ -138,10 +137,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     @BindView(R.id.loading)
     ProgressBar loading;
-
-    // the external url to provide to the call client in case we want to setup a call coming from an url.
-    // The url may be provided to join an existing call, or to create a new one.
-    private String joinUrl;
 
     private ArrayList<UserSelectionItem> usersList = new ArrayList<>();
 
@@ -282,6 +277,12 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        resetButtonsState();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -298,7 +299,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         startBandyerSdk(LoginManager.getLoggedUser(this));
 
-        // BE AWARE that you don't get notified if the modules are already initialized/running as it is already in the past.
         // Update the button colors based on their current module status to avoid interaction before the modules are ready.
         for (BandyerModule module : BandyerSDKClient.getInstance().getModules()) {
             setModuleButtonsColors(module, module.getStatus());
@@ -309,23 +309,27 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         Log.d(TAG, "startBandyerSDK");
 
         if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
-
             BandyerSDKClientOptions options = new BandyerSDKClientOptions.Builder()
                     .keepListeningForEventsInBackground(false)
                     .build();
             BandyerSDKClient.getInstance().init(userAlias, options);
-            BandyerSDKClient.getInstance().addObserver(this);
-            BandyerSDKClient.getInstance().addModuleObserver(this);
         }
-        
-        addModulesObservers();
+
+        // BE AWARE that you don't get notified if the modules are already initialized/running as it is already in the past.
+        addObservers();
     }
 
     /**
-     * Adds chat and call modules observers.
+     * Adds sdk client observer, chat and call modules observers.
      * The observers will be notified when a chat or a call UI will be started, closed or closed with errors.
      */
-    private void addModulesObservers() {
+    private void addObservers() {
+        // set an observer for the sdk client
+        BandyerSDKClient.getInstance().addObserver(this);
+
+        // set an observer for the chat and call modules
+        BandyerSDKClient.getInstance().addModuleObserver(this);
+
         // set an observer for the call to show ongoing call label
         CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
         if (callModule != null) {
@@ -335,7 +339,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             else hideOngoingCallLabel();
         }
 
-        // set an observer for the chat
+        // set an observer for the ongoing chat
         ChatModule chatModule = BandyerSDKClient.getInstance().getChatModule();
         if (chatModule != null) {
             chatModule.addChatObserver(this, chatObserver);
@@ -352,31 +356,23 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
      */
     @SuppressLint("NewApi")
     private void handleExternalUrl(Intent intent) {
+        if (!Intent.ACTION_VIEW.equals(intent.getAction())) return;
+        Uri uri = intent.getData();
+        if (uri == null) return;
+
         // do not handle the url if we do not have a valid user
         if (!LoginManager.isUserLogged(this)) return;
 
-        String userAlias = LoginManager.getLoggedUser(this);
+        // if client is not running, then I need to initialize it
+        startBandyerSdk(LoginManager.getLoggedUser(this));
 
-        if (!Intent.ACTION_VIEW.equals(intent.getAction())) return;
+        BandyerIntent bandyerIntent = new BandyerIntent.Builder()
+                .startFromJoinCallUrl(this, uri.toString())
+                .withCapabilities(new CallCapabilities().withChat().withFileSharing().withScreenSharing().withWhiteboard())
+                .withOptions(new CallOptions())
+                .build();
 
-        Uri uri = intent.getData();
-        if (uri != null) {
-            joinUrl = uri.toString();
-            // if client is not running, then I need to initialize it
-            if (BandyerSDKClient.getInstance().getState() == BandyerSDKClientState.UNINITIALIZED) {
-                startBandyerSdk(userAlias);
-            } else if (BandyerSDKClient.getInstance().getCallModule().getStatus() == BandyerModuleStatus.CONNECTED) {
-
-                BandyerIntent bandyerIntent = new BandyerIntent.Builder()
-                        .startFromJoinCallUrl(this, joinUrl)
-                        .withCapabilities(new CallCapabilities().withChat().withFileSharing().withScreenSharing().withWhiteboard())
-                        .withOptions(new CallOptions())
-                        .build();
-
-                startActivity(bandyerIntent);
-                joinUrl = null;
-            }
-        }
+        startActivity(bandyerIntent);
     }
 
     @Override
@@ -696,37 +692,16 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     @SuppressLint("NewApi")
     public void onModuleReady(@NonNull BandyerModule module) {
         Log.d(TAG, "onModuleReady " + module.getName());
-
-        if (module instanceof ChatModule && chatButton != null) {
-            chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
-        } else if (module instanceof CallModule) {
-            if (callButton != null) {
-                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
-            }
-            if (joinUrl != null) {
-
-                BandyerIntent bandyerIntent = new BandyerIntent.Builder()
-                        .startFromJoinCallUrl(this, joinUrl)
-                        .withOptions(new CallOptions())
-                        .withCapabilities(new CallCapabilities().withChat().withWhiteboard().withScreenSharing().withFileSharing())
-                        .build();
-
-                startActivity(bandyerIntent);
-                joinUrl = null; // reset boolean to avoid reopening external url twice on resume
-            }
-        }
     }
 
     @Override
     public void onModulePaused(@NonNull BandyerModule module) {
         Log.d(TAG, "onModulePaused " + module.getName());
-        setModuleButtonsColors(module, module.getStatus());
     }
 
     @Override
     public void onModuleFailed(@NonNull final BandyerModule module, @NonNull Throwable throwable) {
         Log.e(TAG, "onModuleFailed " + module.getName() + " error " + throwable.getLocalizedMessage());
-        setModuleButtonsColors(module, module.getStatus());
         if (throwable instanceof AuthenticationException) {
             showErrorDialog("The credentials provided are not valid!", (dialog, which) -> {
                 com.bandyer.app_configuration.external_configuration.model.Configuration configuration = ConfigurationPrefsManager.INSTANCE.getConfiguration(MainActivity.this);
@@ -773,6 +748,10 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     private void setCallButtonColor(@NonNull BandyerModuleStatus moduleStatus) {
         switch (moduleStatus) {
+            case RECONNECTING:
+            case CONNECTING:
+                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnecting)));
+                break;
             case CONNECTED:
             case READY:
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
@@ -785,6 +764,12 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
                 break;
         }
+    }
+
+    private void resetButtonsState() {
+        if(callButton == null || chatButton == null) return;
+        callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+        chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
     }
 
     ///////////////////////////////////////////////// BANDYER SDK CLIENT OBSERVER /////////////////////////////////////////////////

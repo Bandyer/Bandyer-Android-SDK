@@ -59,8 +59,12 @@ abstract class BaseActivity : AppCompatActivity() {
         dPadNavigationHelper.bind(this)
     }
 
-    override fun onPause() {
+    override fun onStop() {
+        super.onStop()
         MockedNetwork.cancel()
+    }
+
+    override fun onPause() {
         if (dialog != null) dialog!!.dismiss()
         dialog = null
         super.onPause()

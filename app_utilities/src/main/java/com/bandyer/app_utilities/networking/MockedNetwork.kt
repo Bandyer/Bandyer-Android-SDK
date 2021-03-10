@@ -45,6 +45,7 @@ object MockedNetwork {
             }
 
             override fun onFailure(call: Call<BandyerUsers?>, t: Throwable) {
+                if (call.isCanceled) return
                 getUsers = null
                 callback?.onError(t.message)
             }
@@ -63,6 +64,7 @@ object MockedNetwork {
             }
 
             override fun onFailure(call: Call<Void?>, t: Throwable) {
+                if (call.isCanceled) return
                 registerDevice = null
                 callback?.onFailure(call, t)
             }
@@ -75,14 +77,14 @@ object MockedNetwork {
         unregisterDevice = getClient(apiKey, environment)!!.create(APIInterface::class.java).unregisterDeviceForPushNotifications(userAlias, appId, devicePushToken)
         unregisterDevice!!.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
-                if (unregisterDevice?.isCanceled != false) return
+                if (call.isCanceled) return
                 if (!response.isSuccessful) {
                     Log.e("PushNotification", "Failed to unregister device for push notifications!")
                 }
             }
 
             override fun onFailure(call: Call<Void?>, t: Throwable) {
-                if (unregisterDevice?.isCanceled != false) return
+                if (call.isCanceled) return
                 Log.e("PushNotification", "Failed to unregister device for push notifications!")
             }
         })
