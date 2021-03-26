@@ -29,6 +29,9 @@ buildscript {
     ext.useLeakCanary = { -> return false }
     ext.useMockUserDetailsProvider = { -> return false }
 
+    ext.getHmsClientId = { -> return "" }
+    ext.getHmsClientSecret = { -> return "" }
+
     repositories {
         mavenLocal()
         google()

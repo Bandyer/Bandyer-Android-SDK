@@ -34,11 +34,11 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
         imageView = findViewById(R.id.image_view)
         editTextView = findViewById(R.id.pref_text_view)
         title = intent.getStringExtra(PRESET_TEXT_PARAM) ?: ""
-        imageUrl = intent.getStringExtra(PRESET_URI_PARAM)
-        if (imageUrl != null) {
+        imageUrl = intent.getStringExtra(PRESET_URI_PARAM) ?: ""
+        if (!imageUrl.isNullOrBlank()) {
             val uri = MediaStorageUtils.getUriFromString(imageUrl)
             Picasso.get().load(uri).into(imageView)
-        }
+        } else imageView!!.setImageResource(R.drawable.ic_outline_photo_24)
         editTextView!!.setText(title)
         findViewById<View>(R.id.chooseButton).setOnClickListener {
             val galleryIntent = Intent(
@@ -68,20 +68,24 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
-        if (itemId == R.id.save) {
-            title = editTextView!!.text.toString()
-            val resultDataIntent = Intent()
-            if (imageUrl != null) resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl)
-            resultDataIntent.putExtra(PRESET_TEXT_PARAM, title)
-            setResult(2, resultDataIntent)
-            onBackPressed()
-        } else if (itemId == R.id.clear_all) {
-            imageUrl = ""
-            title = ""
-            imageView!!.setImageResource(R.drawable.ic_outline_photo_24)
-            editTextView!!.setText(null)
-        } else if (itemId == android.R.id.home) {
-            onBackPressed()
+        when (itemId) {
+            R.id.save -> {
+                title = editTextView!!.text.toString()
+                val resultDataIntent = Intent()
+                if (imageUrl != null) resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl)
+                resultDataIntent.putExtra(PRESET_TEXT_PARAM, title)
+                setResult(2, resultDataIntent)
+                onBackPressed()
+            }
+            R.id.clear_all -> {
+                imageUrl = ""
+                title = ""
+                imageView!!.setImageResource(R.drawable.ic_outline_photo_24)
+                editTextView!!.setText(null)
+            }
+            android.R.id.home -> {
+                onBackPressed()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

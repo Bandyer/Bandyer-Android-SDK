@@ -230,7 +230,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         // If the user is already logged, setup the activity.
         setUpRecyclerView();
-        loadUsersList();
 
         ImageView header = findViewById(R.id.headerView);
         if (!BuildConfig.DEBUG) header.setImageResource(R.drawable.landing_image);
@@ -296,6 +295,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             finish();
             return;
         }
+
+        if (usersList.isEmpty()) loadUsersList();
 
         startBandyerSdk(LoginManager.getLoggedUser(this));
 

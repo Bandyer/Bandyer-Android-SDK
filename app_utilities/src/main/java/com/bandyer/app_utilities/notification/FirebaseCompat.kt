@@ -42,6 +42,8 @@ object FirebaseCompat {
         }
     }
 
+    fun isProcessValid(context: Context) = FirebaseApp.getApps(context).isNotEmpty()
+
     fun unregisterDevice(context: Context?, loggedUser: String?) {
         if (!deviceRegistered) return
         loggedUser ?: return

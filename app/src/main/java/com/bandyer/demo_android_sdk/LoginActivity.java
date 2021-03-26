@@ -132,7 +132,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
             return;
         }
 
-        onRefresh();
+        if (usersList.isEmpty()) onRefresh();
     }
 
 

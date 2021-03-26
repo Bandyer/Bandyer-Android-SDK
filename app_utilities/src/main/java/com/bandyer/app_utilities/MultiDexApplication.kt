@@ -66,12 +66,14 @@ abstract class MultiDexApplication : MultiDexApplication() {
     protected fun initCrashlytics() {
         if (BuildConfig.DEBUG) return
         val userAlias = LoginManager.getLoggedUser(this)
+        if (!FirebaseCompat.isProcessValid(this)) return
         if (userAlias.isNotEmpty()) {
             FirebaseCompat.refreshConfiguration(this, Runnable {
                 FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
                 FirebaseCrashlytics.getInstance().setUserId(userAlias)
             }, false)
-        } else {
+        }
+        else {
             FirebaseCompat.refreshConfiguration(this, Runnable {
                 FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
             }, false)
