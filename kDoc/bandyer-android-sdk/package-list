@@ -25,6 +25,7 @@ com.bandyer.android_sdk.screen_sharing.model
 com.bandyer.android_sdk.screen_sharing.notification
 com.bandyer.android_sdk.screen_sharing.screen_sharing_center
 com.bandyer.android_sdk.screen_sharing.screen_sharing_center.utils
+com.bandyer.android_sdk.tool_configuration
 com.bandyer.android_sdk.utils
 com.bandyer.android_sdk.utils.provider
 com.bandyer.android_sdk.whiteboard

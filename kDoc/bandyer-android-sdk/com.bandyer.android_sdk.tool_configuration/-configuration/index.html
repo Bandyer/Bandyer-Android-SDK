@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Configuration - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.tool_configuration</a>&nbsp;/&nbsp;<a href="./index.html">Configuration</a><br/>
+<br/>
+<h1>Configuration</h1>
+<code><span class="keyword">interface </span><span class="identifier">Configuration</span><span class="symbol">&lt;</span><span class="identifier">C</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-capability-set.html"><span class="identifier">CapabilitySet</span></a><span class="symbol">, </span><span class="identifier">O</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-option-set.html"><span class="identifier">OptionSet</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/os/Parcelable.html"><span class="identifier">Parcelable</span></a></code>
+<p>Configuration</p>
+<h3>Parameters</h3>
+<p><a name="C"></a>
+<code>C</code> - type of CapabilitySet</p>
+<p><a name="O"></a>
+<code>O</code> - type of Options Set</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-call.html">Call</a></h4>
+</td>
+<td>
+<p>Call</p>
+<code><span class="keyword">interface </span><span class="identifier">Call</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Configuration</span></a><span class="symbol">&lt;</span><a href="../-call-capability-set/index.html"><span class="identifier">CallCapabilitySet</span></a><span class="symbol">,</span>&nbsp;<a href="../-call-option-set/index.html"><span class="identifier">CallOptionSet</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-chat.html">Chat</a></h4>
+</td>
+<td>
+<p>Chat</p>
+<code><span class="keyword">interface </span><span class="identifier">Chat</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Configuration</span></a><span class="symbol">&lt;</span><a href="../-chat-capability-set/index.html"><span class="identifier">ChatCapabilitySet</span></a><span class="symbol">,</span>&nbsp;<a href="../-option-set.html"><span class="identifier">OptionSet</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-file-share.html">FileShare</a></h4>
+</td>
+<td>
+<p>File share</p>
+<code><span class="keyword">interface </span><span class="identifier">FileShare</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Configuration</span></a><span class="symbol">&lt;</span><a href="../-capability-set.html"><span class="identifier">CapabilitySet</span></a><span class="symbol">,</span>&nbsp;<a href="../-option-set.html"><span class="identifier">OptionSet</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-incoming-call/index.html">IncomingCall</a></h4>
+</td>
+<td>
+<p>Incoming call</p>
+<code><span class="keyword">interface </span><span class="identifier">IncomingCall</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Call</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-screen-share.html">ScreenShare</a></h4>
+</td>
+<td>
+<p>Screen share</p>
+<code><span class="keyword">interface </span><span class="identifier">ScreenShare</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Configuration</span></a><span class="symbol">&lt;</span><a href="../-capability-set.html"><span class="identifier">CapabilitySet</span></a><span class="symbol">,</span>&nbsp;<a href="../-screen-share-option-set/index.html"><span class="identifier">ScreenShareOptionSet</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-whiteboard.html">Whiteboard</a></h4>
+</td>
+<td>
+<p>Whiteboard</p>
+<code><span class="keyword">interface </span><span class="identifier">Whiteboard</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Configuration</span></a><span class="symbol">&lt;</span><a href="../-capability-set.html"><span class="identifier">CapabilitySet</span></a><span class="symbol">,</span>&nbsp;<a href="../-option-set.html"><span class="identifier">OptionSet</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="capability-set.html">capabilitySet</a></h4>
+</td>
+<td>
+<p>Capability set</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">capabilitySet</span><span class="symbol">: </span><span class="identifier">C</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="option-set.html">optionSet</a></h4>
+</td>
+<td>
+<p>Option set</p>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">optionSet</span><span class="symbol">: </span><span class="identifier">O</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

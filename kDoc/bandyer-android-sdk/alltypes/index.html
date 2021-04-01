@@ -13,10 +13,6 @@
 <p>Exception representing an authentication problem</p>
 </tr>
 <tr>
-<h5><a href="../com.bandyer.android_sdk.intent/-bandyer-base-intent-options/index.html">com.bandyer.android_sdk.intent.BandyerBaseIntentOptions</a></h5>
-<p>BandyerBaseIntentOptions of Type T</p>
-</tr>
-<tr>
 <h5><a href="../com.bandyer.android_sdk/-bandyer-component/index.html">com.bandyer.android_sdk.BandyerComponent</a></h5>
 <p>Bandyer components currently supported are Chat and Call.</p>
 </tr>
@@ -72,14 +68,6 @@ A bandyer module has a status, a name and exposes a function to reconnect in cas
 <p>Broadcast Receiver to be used to receive unexpected exceptions' stacktrace from Bandyer SDK.</p>
 </tr>
 <tr>
-<h5><a href="../com.bandyer.android_sdk.intent.call/-base-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallIntentOptions</a></h5>
-<p>BaseCallIntentOptions defines the base properties that can be set on a call</p>
-</tr>
-<tr>
-<h5><a href="../com.bandyer.android_sdk.intent.call/-base-call-options/index.html">com.bandyer.android_sdk.intent.call.BaseCallOptions</a></h5>
-<p>BaseCallOptions is an object to personalize how a call should behave</p>
-</tr>
-<tr>
 <h5><a href="../com.bandyer.android_sdk.notification/-base-event-broadcast-receiver/index.html">com.bandyer.android_sdk.notification.BaseEventBroadcastReceiver</a></h5>
 <p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
 </tr>
@@ -107,6 +95,14 @@ If you wish for more advanced cache types you may implement your own by implemen
 <p>This class represents call capabilities that can be used for a call.</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-call-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.CallCapabilitySet</a></h5>
+<p>Call capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-call-configuration/index.html">com.bandyer.android_sdk.tool_configuration.CallConfiguration</a></h5>
+<p>Call configuration</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.call.model/-call-direction/index.html">com.bandyer.android_sdk.call.model.CallDirection</a></h5>
 <p>Enum class representing the direction of the call</p>
 </tr>
@@ -131,7 +127,7 @@ If you wish for more advanced cache types you may implement your own by implemen
 <p>Call Intent Builder used to define the call properties</p>
 </tr>
 <tr>
-<h5><a href="../com.bandyer.android_sdk.intent.call/-call-intent-options.html">com.bandyer.android_sdk.intent.call.CallIntentOptions</a></h5>
+<h5><a href="../com.bandyer.android_sdk.intent.call/-call-intent-options/index.html">com.bandyer.android_sdk.intent.call.CallIntentOptions</a></h5>
 <p>CallIntentOptions class allows to specify properties for outgoing calls</p>
 </tr>
 <tr>
@@ -160,7 +156,11 @@ If you wish for more advanced cache types you may implement your own by implemen
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.intent.call/-call-options/index.html">com.bandyer.android_sdk.intent.call.CallOptions</a></h5>
-<p>CallOptions all properties that can be enabled for a Outgoing call</p>
+<p>Call options</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-call-option-set/index.html">com.bandyer.android_sdk.tool_configuration.CallOptionSet</a></h5>
+<p>CallOptionSet  describes the options available in call</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.call.model/-call-type/index.html">com.bandyer.android_sdk.call.model.CallType</a></h5>
@@ -171,8 +171,20 @@ If you wish for more advanced cache types you may implement your own by implemen
 <p>This class represent a call UI observer which will be notified when a call activity event has occurred.</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-capability-set.html">com.bandyer.android_sdk.tool_configuration.CapabilitySet</a></h5>
+<p>Capability set</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.intent.chat/-chat/index.html">com.bandyer.android_sdk.intent.chat.Chat</a></h5>
 <p>Chat interface that represents a chat abstraction.</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-chat-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.ChatCapabilitySet</a></h5>
+<p>Chat capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-chat-configuration/index.html">com.bandyer.android_sdk.tool_configuration.ChatConfiguration</a></h5>
+<p>Chat configuration</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.chat.notification/-chat-event-broadcast-receiver/index.html">com.bandyer.android_sdk.chat.notification.ChatEventBroadcastReceiver</a></h5>
@@ -223,6 +235,18 @@ If you wish for more advanced cache types you may implement your own by implemen
 <p>Exception thrown when the client has failed it's initialization</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-configuration/index.html">com.bandyer.android_sdk.tool_configuration.Configuration</a></h5>
+<p>Configuration</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-empty-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.EmptyCapabilitySet</a></h5>
+<p>Empty capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-empty-option-set/index.html">com.bandyer.android_sdk.tool_configuration.EmptyOptionSet</a></h5>
+<p>Empty option set</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.module/-end-of-support-exception/index.html">com.bandyer.android_sdk.module.EndOfSupportException</a></h5>
 <p>Exception representing a problem with current version of the module.
 This exception will be thrown when the version used is outdated and no longer supported from Bandyer.</p>
@@ -238,6 +262,14 @@ This exception will be thrown when the version used is outdated and no longer su
 <tr>
 <h5><a href="../com.bandyer.android_sdk.file_sharing.model/-file-info/index.html">com.bandyer.android_sdk.file_sharing.model.FileInfo</a></h5>
 <p>File information</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-file-share-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.FileShareCapabilitySet</a></h5>
+<p>File share capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-file-share-configuration/index.html">com.bandyer.android_sdk.tool_configuration.FileShareConfiguration</a></h5>
+<p>File share configuration</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.file_sharing/-file-sharing-module/index.html">com.bandyer.android_sdk.file_sharing.FileSharingModule</a></h5>
@@ -269,8 +301,8 @@ This context may be used to customize an incoming event, based on the component 
 <p>IncomingCall received</p>
 </tr>
 <tr>
-<h5><a href="../com.bandyer.android_sdk.intent.call/-incoming-call-intent-options.html">com.bandyer.android_sdk.intent.call.IncomingCallIntentOptions</a></h5>
-<p>IncomingCallIntentOptions class allows to specify properties for incoming calls</p>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-incoming-call-configuration/index.html">com.bandyer.android_sdk.tool_configuration.IncomingCallConfiguration</a></h5>
+<p>Incoming Call configuration</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.intent.call/-incoming-call-options/index.html">com.bandyer.android_sdk.intent.call.IncomingCallOptions</a></h5>
@@ -301,12 +333,28 @@ This context may be used to customize an incoming event, based on the component 
 <p>Interface that must be called on user mapped from user aliases.</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-option-set.html">com.bandyer.android_sdk.tool_configuration.OptionSet</a></h5>
+<p>Option set</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.intent.screenshare/-screen-share/index.html">com.bandyer.android_sdk.intent.screenshare.ScreenShare</a></h5>
 <p>Screen Share</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-screen-share-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.ScreenShareCapabilitySet</a></h5>
+<p>Screen share capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-screen-share-configuration/index.html">com.bandyer.android_sdk.tool_configuration.ScreenShareConfiguration</a></h5>
+<p>Screen share configuration</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.screen_sharing.model/-screen-share-info/index.html">com.bandyer.android_sdk.screen_sharing.model.ScreenShareInfo</a></h5>
 <p>Screen share information</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-screen-share-option-set/index.html">com.bandyer.android_sdk.tool_configuration.ScreenShareOptionSet</a></h5>
+<p>Screen share option set</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.screen_sharing.screen_sharing_center.utils/-screen-sharing-center-logger/index.html">com.bandyer.android_sdk.screen_sharing.screen_sharing_center.utils.ScreenSharingCenterLogger</a></h5>
@@ -333,6 +381,24 @@ This context may be used to customize an incoming event, based on the component 
 <p>Types of screen sharing notifications that are currently handled</p>
 </tr>
 <tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-simple-call-configuration/index.html">com.bandyer.android_sdk.tool_configuration.SimpleCallConfiguration</a></h5>
+<p>Simple call configuration</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.call.notification/-simple-call-notification-listener/index.html">com.bandyer.android_sdk.call.notification.SimpleCallNotificationListener</a></h5>
+<p>Simple call notification listener handles how the incoming calls will be shown and uses the SimpleCallConfiguration</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-simple-chat-configuration/index.html">com.bandyer.android_sdk.tool_configuration.SimpleChatConfiguration</a></h5>
+<p>Simple chat configuration
+This configuration enables audioUpgradable and audioVideo options in the menu.
+Both the options will have the following features:</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.chat.notification/-simple-chat-notification-listener/index.html">com.bandyer.android_sdk.chat.notification.SimpleChatNotificationListener</a></h5>
+<p>Simple chat notification listener handles how the incoming chat message will be shown and uses the SimpleChatConfiguration</p>
+</tr>
+<tr>
 <h5><a href="../com.bandyer.android_sdk.utils.provider/-user-details/index.html">com.bandyer.android_sdk.utils.provider.UserDetails</a></h5>
 <p>This class represents some user display info.
 A user can be represented with the following info:</p>
@@ -353,6 +419,14 @@ Load your user synchronously or asynchronously and return result using the liste
 <tr>
 <h5><a href="../com.bandyer.android_sdk.module/-user-force-disconnect-exception/index.html">com.bandyer.android_sdk.module.UserForceDisconnectException</a></h5>
 <p>Exception representing the condition in which a logged user has been disabled by company administrators.</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-whiteboard-capability-set/index.html">com.bandyer.android_sdk.tool_configuration.WhiteboardCapabilitySet</a></h5>
+<p>Whiteboard capability set</p>
+</tr>
+<tr>
+<h5><a href="../com.bandyer.android_sdk.tool_configuration/-whiteboard-configuration/index.html">com.bandyer.android_sdk.tool_configuration.WhiteboardConfiguration</a></h5>
+<p>Whiteboard configuration</p>
 </tr>
 <tr>
 <h5><a href="../com.bandyer.android_sdk.whiteboard/-whiteboard-info/index.html">com.bandyer.android_sdk.whiteboard.WhiteboardInfo</a></h5>

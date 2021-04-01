@@ -8,7 +8,9 @@
 <a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.intent.call</a>&nbsp;/&nbsp;<a href="./index.html">CallCapabilities</a><br/>
 <br/>
 <h1>CallCapabilities</h1>
-<code><span class="keyword">class </span><span class="identifier">CallCapabilities</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/6/docs/api/java/io/Serializable.html"><span class="identifier">Serializable</span></a></code>
+<code><span class="keyword">class </span><s><span class="identifier">CallCapabilities</span></s>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.tool_configuration/-call-capability-set/index.html"><span class="identifier">CallCapabilitySet</span></a></code><br/>
+<strong>Deprecated:</strong> This api has been deprecated and it will be removed in v3.x<br/>
+<br/>
 <p>This class represents call capabilities that can be used for a call.</p>
 <h3>Constructors</h3>
 <table>
@@ -18,8 +20,9 @@
 <h4><a href="-init-.html">&lt;init&gt;</a></h4>
 </td>
 <td>
-<code><span class="identifier">CallCapabilities</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
-<code><span class="identifier">CallCapabilities</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/chat">chat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/fileSharing">fileSharing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/screenSharing">screenSharing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/whiteboard">whiteboard</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code></td>
+<code><span class="identifier">CallCapabilities</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/chat">chat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/fileSharing">fileSharing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/screenSharing">screenSharing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/whiteboard">whiteboard</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create Call capabilities</p>
+<code><span class="identifier">CallCapabilities</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(com.bandyer.android_sdk.tool_configuration.Configuration.Chat, com.bandyer.android_sdk.tool_configuration.Configuration.FileShare, com.bandyer.android_sdk.tool_configuration.Configuration.ScreenShare, com.bandyer.android_sdk.tool_configuration.Configuration.Whiteboard)/_chat">_chat</span><span class="symbol">:</span>&nbsp;<span class="identifier">Chat</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(com.bandyer.android_sdk.tool_configuration.Configuration.Chat, com.bandyer.android_sdk.tool_configuration.Configuration.FileShare, com.bandyer.android_sdk.tool_configuration.Configuration.ScreenShare, com.bandyer.android_sdk.tool_configuration.Configuration.Whiteboard)/_fileShare">_fileShare</span><span class="symbol">:</span>&nbsp;<span class="identifier">FileShare</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(com.bandyer.android_sdk.tool_configuration.Configuration.Chat, com.bandyer.android_sdk.tool_configuration.Configuration.FileShare, com.bandyer.android_sdk.tool_configuration.Configuration.ScreenShare, com.bandyer.android_sdk.tool_configuration.Configuration.Whiteboard)/_screenShare">_screenShare</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScreenShare</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.CallCapabilities$<init>(com.bandyer.android_sdk.tool_configuration.Configuration.Chat, com.bandyer.android_sdk.tool_configuration.Configuration.FileShare, com.bandyer.android_sdk.tool_configuration.Configuration.ScreenShare, com.bandyer.android_sdk.tool_configuration.Configuration.Whiteboard)/_whiteboard">_whiteboard</span><span class="symbol">:</span>&nbsp;<span class="identifier">Whiteboard</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -31,32 +34,32 @@
 <h4><a href="chat.html">chat</a></h4>
 </td>
 <td>
-<p>Boolean true to enable chat feature in call UI, false otherwise</p>
-<code><span class="keyword">var </span><span class="identifier">chat</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+<p>Chat configuration</p>
+<code><span class="keyword">val </span><span class="identifier">chat</span><span class="symbol">: </span><span class="identifier">Chat</span><span class="symbol">?</span></code></td>
 </tr>
 <tr>
 <td>
-<h4><a href="file-sharing.html">fileSharing</a></h4>
+<h4><a href="file-share.html">fileShare</a></h4>
 </td>
 <td>
-<p>Boolean true to enable fileSharing feature in call UI, false otherwise</p>
-<code><span class="keyword">var </span><span class="identifier">fileSharing</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+<p>File share configuration</p>
+<code><span class="keyword">val </span><span class="identifier">fileShare</span><span class="symbol">: </span><span class="identifier">FileShare</span><span class="symbol">?</span></code></td>
 </tr>
 <tr>
 <td>
-<h4><a href="screen-sharing.html">screenSharing</a></h4>
+<h4><a href="screen-share.html">screenShare</a></h4>
 </td>
 <td>
-<p>Boolean true to enable screenSharing feature in call UI, false otherwise</p>
-<code><span class="keyword">var </span><span class="identifier">screenSharing</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+<p>Screen share configuration</p>
+<code><span class="keyword">val </span><span class="identifier">screenShare</span><span class="symbol">: </span><span class="identifier">ScreenShare</span><span class="symbol">?</span></code></td>
 </tr>
 <tr>
 <td>
 <h4><a href="whiteboard.html">whiteboard</a></h4>
 </td>
 <td>
-<p>Boolean true to enable whiteboard feature in call UI, false otherwise</p>
-<code><span class="keyword">var </span><span class="identifier">whiteboard</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+<p>Whiteboard configuration</p>
+<code><span class="keyword">val </span><span class="identifier">whiteboard</span><span class="symbol">: </span><span class="identifier">Whiteboard</span><span class="symbol">?</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -73,11 +76,27 @@
 </tr>
 <tr>
 <td>
+<h4><a href="with-file-share.html">withFileShare</a></h4>
+</td>
+<td>
+<p>This function adds file sharing capability to call UI.</p>
+<code><span class="keyword">fun </span><span class="identifier">withFileShare</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
+</tr>
+<tr>
+<td>
 <h4><a href="with-file-sharing.html">withFileSharing</a></h4>
 </td>
 <td>
 <p>This function adds file sharing capability to call UI.</p>
-<code><span class="keyword">fun </span><span class="identifier">withFileSharing</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
+<code><span class="keyword">fun </span><s><span class="identifier">withFileSharing</span></s><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="with-screen-share.html">withScreenShare</a></h4>
+</td>
+<td>
+<p>This function adds screen sharing capability to call UI.</p>
+<code><span class="keyword">fun </span><span class="identifier">withScreenShare</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
 </tr>
 <tr>
 <td>
@@ -85,7 +104,7 @@
 </td>
 <td>
 <p>This function adds screen sharing capability to call UI.</p>
-<code><span class="keyword">fun </span><span class="identifier">withScreenSharing</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
+<code><span class="keyword">fun </span><s><span class="identifier">withScreenSharing</span></s><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">CallCapabilities</span></a></code></td>
 </tr>
 <tr>
 <td>
