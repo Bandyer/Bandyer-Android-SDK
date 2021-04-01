@@ -5,9 +5,7 @@
 
 package com.bandyer.demo_android_sdk;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -19,19 +17,26 @@ import com.bandyer.android_sdk.call.model.CallInfo;
 import com.bandyer.android_sdk.call.notification.CallNotificationListener;
 import com.bandyer.android_sdk.call.notification.CallNotificationStyle;
 import com.bandyer.android_sdk.call.notification.CallNotificationType;
+import com.bandyer.android_sdk.call.notification.SimpleCallNotificationListener;
 import com.bandyer.android_sdk.chat.model.ChatInfo;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationListener;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationStyle;
+import com.bandyer.android_sdk.chat.notification.SimpleChatNotificationListener;
 import com.bandyer.android_sdk.file_sharing.model.FileInfo;
 import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener;
 import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationStyle;
 import com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationType;
-import com.bandyer.android_sdk.intent.call.CallCapabilities;
-import com.bandyer.android_sdk.intent.call.CallOptions;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
 import com.bandyer.android_sdk.intent.call.IncomingCallOptions;
 import com.bandyer.android_sdk.intent.chat.IncomingChat;
 import com.bandyer.android_sdk.intent.file.IncomingFile;
+import com.bandyer.android_sdk.tool_configuration.CallCapabilitySet;
+import com.bandyer.android_sdk.tool_configuration.CallConfiguration;
+import com.bandyer.android_sdk.tool_configuration.ChatConfiguration;
+import com.bandyer.android_sdk.tool_configuration.FileShareConfiguration;
+import com.bandyer.android_sdk.tool_configuration.IncomingCallConfiguration;
+import com.bandyer.android_sdk.tool_configuration.ScreenShareConfiguration;
+import com.bandyer.android_sdk.tool_configuration.WhiteboardConfiguration;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.app_configuration.external_configuration.model.Configuration;
 import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider;
@@ -89,11 +94,9 @@ public class App extends MultiDexApplication {
             }
         });
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-            config.withWhiteboardEnabled();
+        config.withWhiteboardEnabled();
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            config.withScreenSharingEnabled();
+        config.withScreenSharingEnabled();
 
         if (BuildConfig.DEBUG) {
             config.setLogger(new BandyerSDKLogger(BaseLogger.ERROR) {
@@ -132,20 +135,49 @@ public class App extends MultiDexApplication {
         BandyerSDK.init(config);
     }
 
-    @SuppressLint("NewApi")
-    private CallCapabilities getDefaultCallCapabilities() {
-        // You may also initialize the callCapabilities without any argument in the constructor
-        // You can enable a single capability using the utility methods
-        // Example :
-        // new CallCapabilities().withChat();
-        Configuration configuration = getConfiguration();
-        return new CallCapabilities(configuration.getWithChatCapability(),
-                configuration.getWithFileSharingCapability(),
-                configuration.getWithScreenSharingCapability(),
-                configuration.getWithWhiteboardCapability());
+    private CallCapabilitySet getDefaultCallCapabilitySet() {
+        Configuration appConfiguration = getConfiguration();
+
+        ChatConfiguration chatConfiguration = appConfiguration.getWithChatCapability() ? new ChatConfiguration(getDefaultChatCallCapabilities()) : null;
+        FileShareConfiguration fileShareConfiguration = appConfiguration.getWithFileSharingCapability() ? new FileShareConfiguration() : null;
+        ScreenShareConfiguration screenShareConfiguration = appConfiguration.getWithScreenSharingCapability() ? new ScreenShareConfiguration() : null;
+        WhiteboardConfiguration whiteboardConfiguration = appConfiguration.getWithWhiteboardCapability() ? new WhiteboardConfiguration() : null;
+
+        return new CallConfiguration.CapabilitySet(chatConfiguration, fileShareConfiguration, screenShareConfiguration, whiteboardConfiguration);
     }
 
-    private IncomingCallOptions getDefaultIncomingCallOptions() {
+    private ChatConfiguration.CapabilitySet getDefaultChatCallCapabilities() {
+        Configuration appConfiguration = getConfiguration();
+
+        FileShareConfiguration fileShareConfiguration = appConfiguration.getWithFileSharingCapability() ? new FileShareConfiguration() : null;
+        ScreenShareConfiguration screenShareConfiguration = appConfiguration.getWithScreenSharingCapability() ? new ScreenShareConfiguration() : null;
+        WhiteboardConfiguration whiteboardConfiguration = appConfiguration.getWithWhiteboardCapability() ? new WhiteboardConfiguration() : null;
+
+        ChatConfiguration.CapabilitySet.CallConfiguration audioOnlyCallCapabilitySet = new ChatConfiguration.CapabilitySet.CallConfiguration(
+                new ChatConfiguration.CapabilitySet.CallConfiguration.CapabilitySet(
+                        fileShareConfiguration,
+                        screenShareConfiguration,
+                        whiteboardConfiguration),
+                getDefaultIncomingCallOptionSet());
+
+        ChatConfiguration.CapabilitySet.CallConfiguration audioUpgradableCallCapabilitySet = new ChatConfiguration.CapabilitySet.CallConfiguration(
+                new ChatConfiguration.CapabilitySet.CallConfiguration.CapabilitySet(
+                        fileShareConfiguration,
+                        screenShareConfiguration,
+                        whiteboardConfiguration),
+                getDefaultIncomingCallOptionSet());
+
+        ChatConfiguration.CapabilitySet.CallConfiguration audioVideoCallCapabilitySet = new ChatConfiguration.CapabilitySet.CallConfiguration(
+                new ChatConfiguration.CapabilitySet.CallConfiguration.CapabilitySet(
+                        fileShareConfiguration,
+                        screenShareConfiguration,
+                        whiteboardConfiguration),
+                getDefaultIncomingCallOptionSet());
+
+        return new ChatConfiguration.CapabilitySet(audioOnlyCallCapabilitySet, audioUpgradableCallCapabilitySet, audioVideoCallCapabilitySet);
+    }
+
+    private IncomingCallOptions getDefaultIncomingCallOptionSet() {
         // You may also initialize the callOptions without any argument in the constructor
         // You can enable a single option using the utility methods
         // Example :
@@ -157,11 +189,14 @@ public class App extends MultiDexApplication {
     }
 
     private CallNotificationListener getCallNotificationListener() {
+        if (getConfiguration().getUseSimplifiedVersion())
+            return new SimpleCallNotificationListener(this);
+
+        // custom notification listener
         return new CallNotificationListener() {
             @Override
             public void onIncomingCall(@NonNull IncomingCall incomingCall, boolean isDnd, boolean isScreenLocked) {
-                incomingCall.withCapabilities(getDefaultCallCapabilities());
-                incomingCall.withOptions(getDefaultIncomingCallOptions());
+                incomingCall.withConfiguration(new IncomingCallConfiguration(getDefaultCallCapabilitySet(), getDefaultIncomingCallOptionSet()));
 
                 if (!isDnd || isScreenLocked)
                     incomingCall
@@ -183,24 +218,15 @@ public class App extends MultiDexApplication {
     }
 
     private ChatNotificationListener getChatNotificationListener() {
+        if (getConfiguration().getUseSimplifiedVersion())
+            return new SimpleChatNotificationListener(this);
+
+        // custom notification listener
         return new ChatNotificationListener() {
             @Override
             public void onIncomingChat(@NonNull IncomingChat chat, boolean isDnd, boolean isScreenLocked) {
-                CallCapabilities callCapabilities = getDefaultCallCapabilities();
-                // You may also initialize the callOptions without any argument in the constructor
-                // You can enable a single option using the utility methods
-                // Example :
-                // new CallOptions().withBackCameraAsDefault();
-                Configuration configuration = getConfiguration();
-                CallOptions callOptions = new CallOptions(
-                        configuration.getWithRecordingEnabled(),
-                        configuration.getWithBackCameraAsDefault(),
-                        !configuration.getWithProximitySensorDisabled());
-
-                chat.withAudioCallCapability(callCapabilities, callOptions)
-                        .withAudioUpgradableCallCapability(callCapabilities, callOptions)
-                        .withAudioVideoCallCapability(callCapabilities, callOptions);
-
+                ChatConfiguration chatConfiguration = new ChatConfiguration(getDefaultChatCallCapabilities());
+                chat.withConfiguration(chatConfiguration);
                 chat.asNotification().show(App.this);
             }
 

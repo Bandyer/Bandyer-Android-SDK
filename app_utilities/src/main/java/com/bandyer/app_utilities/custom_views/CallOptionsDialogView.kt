@@ -6,7 +6,6 @@ package com.bandyer.app_utilities.custom_views
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -21,15 +20,15 @@ import com.github.florent37.expansionpanel.ExpansionHeader
 import com.github.florent37.expansionpanel.ExpansionLayout
 
 @SuppressLint("ViewConstructor")
-class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptionsDialog.CallOptionsDialogType, val configuration: Configuration) : LinearLayout(context) {
+class CallOptionsDialogView(context: Context, customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType, val configuration: Configuration) : LinearLayout(context) {
 
-    var callOptionsDialogType: CallOptionsDialog.CallOptionsDialogType? = null
+    var customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType? = null
     var audioOnlyCallOptionsView: CallOptionsView? = null
     var audioUpgradableCallOptionsView: CallOptionsView? = null
     var audioVideoCallOptionsView: CallOptionsView? = null
 
-    private fun setup(context: Context, callOptionsDialogType: CallOptionsDialog.CallOptionsDialogType) {
-        this.callOptionsDialogType = callOptionsDialogType
+    private fun setup(context: Context, customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType) {
+        this.customConfigurationDialogType = customConfigurationDialogType
         orientation = VERTICAL
         @SuppressLint("InflateParams") val layout = LayoutInflater.from(context).inflate(R.layout.call_options_dialog_layout, null)
         addView(layout)
@@ -55,7 +54,7 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
         val deselectAllCallOptionsButton: AppCompatButton = findViewById(R.id.deselect_all_call_options)
 
         selectAllCallCapabilityButton.setOnClickListener { buttonView: View? ->
-            if (callOptionsDialogType === CallOptionsDialog.CallOptionsDialogType.CALL) {
+            if (customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CALL) {
                 selectedOptionsView!!.selectAllCallCapabilities()
                 return@setOnClickListener
             }
@@ -63,15 +62,15 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
         }
         deselectAllCallCapabilityButton.setOnClickListener { buttonView: View? -> deselectAllCallCapabilities() }
         selectAllCallOptionsButton.setOnClickListener { buttonView: View? ->
-            if (callOptionsDialogType === CallOptionsDialog.CallOptionsDialogType.CALL) {
+            if (customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CALL) {
                 selectedOptionsView!!.selectAllCallOptions()
                 return@setOnClickListener
             }
             selectAllCallOptions()
         }
         deselectAllCallOptionsButton.setOnClickListener { buttonView: View? -> deselectAllCallOptions() }
-        when (callOptionsDialogType) {
-            CallOptionsDialog.CallOptionsDialogType.CALL -> {
+        when (customConfigurationDialogType) {
+            CustomConfigurationDialog.CallOptionsDialogType.CALL -> {
                 chat.text = context.getString(R.string.call)
                 info.text = context.getString(R.string.select_call_type)
                 deSelectAllCallTypes()
@@ -90,7 +89,7 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
                     }
                 }
             }
-            CallOptionsDialog.CallOptionsDialogType.CHAT -> {
+            CustomConfigurationDialog.CallOptionsDialogType.CHAT -> {
                 chat.text = context.getString(R.string.chat)
                 info.text = context.getString(R.string.select_call_capabilities_from_chat_ui)
                 selectAllCallTypes()
@@ -100,7 +99,7 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
 
     private val selectedOptionsView: CallOptionsView?
         get() {
-            if (callOptionsDialogType === CallOptionsDialog.CallOptionsDialogType.CHAT) return null
+            if (customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CHAT) return null
             return if (audioOnlyCallOptionsView!!.isChecked) audioOnlyCallOptionsView else if (audioUpgradableCallOptionsView!!.isChecked) audioUpgradableCallOptionsView else if (audioVideoCallOptionsView!!.isChecked) audioVideoCallOptionsView else null
         }
 
@@ -157,7 +156,7 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
 
     private fun setupCallOptionsViewCompoundClickListener(callOptionsView: CallOptionsView) {
         callOptionsView.expansionHeader!!.titleView.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
-            if (isChecked && callOptionsDialogType === CallOptionsDialog.CallOptionsDialogType.CALL) {
+            if (isChecked && customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CALL) {
                 when {
                     callOptionsView === audioOnlyCallOptionsView -> {
                         deselectAll(audioUpgradableCallOptionsView)
@@ -207,9 +206,9 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
 
             init {
                 var view: View? = null
-                when (callOptionsDialogType) {
-                    CallOptionsDialog.CallOptionsDialogType.CALL -> view = View.inflate(context, R.layout.call_options_header_layout, this)
-                    CallOptionsDialog.CallOptionsDialogType.CHAT -> view = View.inflate(context, R.layout.chat_options_header_layout, this)
+                when (customConfigurationDialogType) {
+                    CustomConfigurationDialog.CallOptionsDialogType.CALL -> view = View.inflate(context, R.layout.call_options_header_layout, this)
+                    CustomConfigurationDialog.CallOptionsDialogType.CHAT -> view = View.inflate(context, R.layout.chat_options_header_layout, this)
                 }
                 titleView = view!!.findViewById(R.id.call_options_title)
                 view.setPadding(0, 0, 0, Utils.dpToPx(context, 16f))
@@ -351,6 +350,6 @@ class CallOptionsDialogView(context: Context, callOptionsDialogType: CallOptions
     }
 
     init {
-        setup(context, callOptionsDialogType)
+        setup(context, customConfigurationDialogType)
     }
 }

@@ -15,7 +15,7 @@ buildscript {
         classpath "com.github.triplet.gradle:play-publisher:2.8.0"
         classpath 'com.google.firebase:firebase-appdistribution-gradle:2.0.0'
         classpath 'com.huawei.agconnect:agcp:1.4.2.300'
-        classpath "ru.cian:huawei-publish-gradle-plugin:1.2.2"
+        classpath "ru.cian:huawei-publish-gradle-plugin:1.2.1"
     }
 }
 
@@ -32,7 +32,7 @@ def jUnitLibVersion = '4.13'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.3.4'
-def bandyerLibVersion = "2.0.3"
+def bandyerLibVersion = "2.1.0"
 def bandyerExtensionUsbCamera = "1.1.4"
 def pushy_version = '1.0.56'
 def huawei_push_version = '5.0.4.302'
@@ -157,7 +157,8 @@ dependencies {
     implementation project(":app_design")
 
     /*** Bandyer Android SDK ***/
-    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+//    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+    implementation project(":bandyer-android-sdk")
 
     // define this dependency only if you desire to handle usb camera input in a video call
     implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"

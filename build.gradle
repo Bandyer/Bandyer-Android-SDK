@@ -8,10 +8,10 @@ apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
 
-    ext.sdkVersion = 29
-    ext.buildToolsVersion = "29.0.3"
+    ext.sdkVersion = 30
+    ext.buildToolsVersion = "30.0.2"
     ext.stethoVersion = "1.5.0"
-    ext.kotlin_version = '1.4.10'
+    ext.kotlin_version = '1.4.31'
 
     ext.keyStoreAlias = { buildType -> return " " }
     ext.keyStorePassword = { buildType -> return " " }
@@ -60,6 +60,7 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.bandyer.com/releases' }
     }
 }
 

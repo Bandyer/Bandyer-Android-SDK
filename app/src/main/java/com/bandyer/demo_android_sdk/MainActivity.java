@@ -51,22 +51,28 @@ import com.bandyer.android_sdk.intent.BandyerIntent;
 import com.bandyer.android_sdk.intent.call.Call;
 import com.bandyer.android_sdk.intent.call.CallCapabilities;
 import com.bandyer.android_sdk.intent.call.CallDisplayMode;
-import com.bandyer.android_sdk.intent.call.CallIntentOptions;
+import com.bandyer.android_sdk.intent.call.CallIntentBuilder;
 import com.bandyer.android_sdk.intent.call.CallOptions;
 import com.bandyer.android_sdk.intent.chat.Chat;
-import com.bandyer.android_sdk.intent.chat.ChatIntentOptions;
+import com.bandyer.android_sdk.intent.chat.ChatIntentBuilder;
 import com.bandyer.android_sdk.module.AuthenticationException;
 import com.bandyer.android_sdk.module.BandyerModule;
 import com.bandyer.android_sdk.module.BandyerModuleObserver;
 import com.bandyer.android_sdk.module.BandyerModuleStatus;
+import com.bandyer.android_sdk.tool_configuration.CallConfiguration;
+import com.bandyer.android_sdk.tool_configuration.ChatConfiguration;
+import com.bandyer.android_sdk.tool_configuration.FileShareConfiguration;
+import com.bandyer.android_sdk.tool_configuration.ScreenShareConfiguration;
+import com.bandyer.android_sdk.tool_configuration.SimpleCallConfiguration;
+import com.bandyer.android_sdk.tool_configuration.SimpleChatConfiguration;
+import com.bandyer.android_sdk.tool_configuration.WhiteboardConfiguration;
 import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity;
-import com.bandyer.app_configuration.external_configuration.model.CallOptionsType;
 import com.bandyer.app_utilities.BuildConfig;
 import com.bandyer.app_utilities.activities.CollapsingToolbarActivity;
 import com.bandyer.app_utilities.adapter_items.NoUserSelectedItem;
 import com.bandyer.app_utilities.adapter_items.SelectedUserItem;
 import com.bandyer.app_utilities.adapter_items.UserSelectionItem;
-import com.bandyer.app_utilities.custom_views.CallOptionsDialog;
+import com.bandyer.app_utilities.custom_views.CustomConfigurationDialog;
 import com.bandyer.app_utilities.networking.MockedNetwork;
 import com.bandyer.app_utilities.notification.NotificationProxy;
 import com.bandyer.app_utilities.settings.DefaultCallSettingsActivity;
@@ -151,11 +157,13 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         @Override
         public void onActivityError(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity, @NonNull CallException error) {
             Log.e(TAG, "onCallActivityError " + error.getMessage());
+            hideOngoingCallLabel();
         }
 
         @Override
         public void onActivityDestroyed(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity) {
             Log.d(TAG, "onCallActivityDestroyed");
+            hideOngoingCallLabel();
         }
 
         @Override
@@ -367,10 +375,33 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         // if client is not running, then I need to initialize it
         startBandyerSdk(LoginManager.getLoggedUser(this));
 
+        com.bandyer.app_configuration.external_configuration.model.Configuration appConfiguration = ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
+
+        ChatConfiguration chatConfiguration = null;
+        if (appConfiguration.getWithChatCapability()) chatConfiguration = new ChatConfiguration();
+
+        FileShareConfiguration fileShareConfiguration = null;
+        if (appConfiguration.getWithFileSharingCapability()) fileShareConfiguration = new FileShareConfiguration();
+
+        ScreenShareConfiguration screenShareConfiguration = null;
+        if (appConfiguration.getWithScreenSharingCapability()) screenShareConfiguration = new ScreenShareConfiguration();
+
+        WhiteboardConfiguration whiteboardConfiguration = null;
+        if (appConfiguration.getWithWhiteboardCapability()) whiteboardConfiguration = new WhiteboardConfiguration();
+
+
+        CallOptions callOptions = new CallOptions(
+                appConfiguration.getWithRecordingEnabled(),
+                appConfiguration.getWithBackCameraAsDefault(),
+                appConfiguration.getWithProximitySensorDisabled());
+
+        CallConfiguration joinCallConfiguration = new CallConfiguration(
+                new CallConfiguration.CapabilitySet(chatConfiguration, fileShareConfiguration, screenShareConfiguration, whiteboardConfiguration),
+                callOptions);
+
         BandyerIntent bandyerIntent = new BandyerIntent.Builder()
                 .startFromJoinCallUrl(this, uri.toString())
-                .withCapabilities(new CallCapabilities().withChat().withFileSharing().withScreenSharing().withWhiteboard())
-                .withOptions(new CallOptions())
+                .withConfiguration(joinCallConfiguration)
                 .build();
 
         startActivity(bandyerIntent);
@@ -593,38 +624,26 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         hideKeyboard(this);
 
-        ChatIntentOptions chatIntentOptions = new BandyerIntent.Builder()
+        ChatIntentBuilder.ChatConfigurationBuilder chatConfigurationBuilder = new BandyerIntent.Builder()
                 .startWithChat(MainActivity.this)
                 .with(calleeSelected.get(0));
 
-        CallOptionsDialog dialog = CallOptionsDialog.newInstance(
-                calleeSelected,
-                CallOptionsDialog.CallOptionsDialogType.CHAT,
-                ConfigurationPrefsManager.INSTANCE.getConfiguration(this));
+        com.bandyer.app_configuration.external_configuration.model.Configuration configuration
+                = ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
 
-        dialog.setOnCallOptionsUpdatedListener(new CallOptionsDialog.OnCallOptionsUpdatedListener() {
-            @Override
-            public void onCallOptionsUpdated(CallOptionsType callOptionsType, CallCapabilities callCapabilities, CallOptions callOptions) {
-                switch (callOptionsType) {
-                    case AUDIO_ONLY:
-                        chatIntentOptions.withAudioCallCapability(callCapabilities, callOptions);
-                        break;
-                    case AUDIO_UPGRADABLE:
-                        chatIntentOptions.withAudioUpgradableCallCapability(callCapabilities, callOptions);
-                        break;
-                    case AUDIO_VIDEO:
-                        chatIntentOptions.withAudioVideoCallCapability(callCapabilities, callOptions);
-                        break;
-                }
-            }
+        if (configuration.getUseSimplifiedVersion()) {
+            BandyerIntent chatIntent = chatConfigurationBuilder.withConfiguration(new SimpleChatConfiguration()).build();
+            startActivity(chatIntent);
+            return;
+        }
 
-            @Override
-            public void onOptionsConfirmed() {
-                BandyerIntent chatIntent = chatIntentOptions.build();
-                startActivity(chatIntent);
-            }
+        CustomConfigurationDialog.show(this, calleeSelected, CustomConfigurationDialog.CallOptionsDialogType.CHAT, configuration);
+
+        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result) -> {
+            chatConfigurationBuilder.withConfiguration(result.getParcelable("configuration"));
+            BandyerIntent chatIntent = chatConfigurationBuilder.build();
+            startActivity(chatIntent);
         });
-        dialog.show(getSupportFragmentManager(), "chat_options_dialog");
     }
 
 
@@ -645,46 +664,43 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         hideKeyboard(this);
 
-        CallOptionsDialog dialog = CallOptionsDialog.newInstance(
-                calleeSelected,
-                CallOptionsDialog.CallOptionsDialogType.CALL,
-                ConfigurationPrefsManager.INSTANCE.getConfiguration(this));
+        com.bandyer.app_configuration.external_configuration.model.Configuration configuration =
+                ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
 
-        dialog.setOnCallOptionsUpdatedListener(new CallOptionsDialog.OnCallOptionsUpdatedListener() {
+        BandyerIntent.Builder bandyerIntentBuilder = new BandyerIntent.Builder();
 
-            CallIntentOptions callIntentOptions = null;
+        if (configuration.getUseSimplifiedVersion()) {
+            BandyerIntent chatIntent = bandyerIntentBuilder
+                    .startWithAudioVideoCall(MainActivity.this)
+                    .with(calleeSelected)
+                    .withConfiguration(new SimpleCallConfiguration())
+                    .build();
+            startActivity(chatIntent);
+            return;
+        }
 
-            @Override
-            public void onCallOptionsUpdated(CallOptionsType callOptionsType, CallCapabilities callCapabilities, CallOptions callOptions) {
-                switch (callOptionsType) {
-                    case AUDIO_ONLY:
-                        callIntentOptions = new BandyerIntent.Builder()
-                                .startWithAudioCall(MainActivity.this)
-                                .with(calleeSelected);
-                        break;
-                    case AUDIO_UPGRADABLE:
-                        callIntentOptions = new BandyerIntent.Builder()
-                                .startWithAudioUpgradableCall(MainActivity.this)
-                                .with(calleeSelected);
-                        break;
-                    case AUDIO_VIDEO:
-                        callIntentOptions = new BandyerIntent.Builder()
-                                .startWithAudioVideoCall(MainActivity.this)
-                                .with(calleeSelected);
-                        break;
-                }
-                callIntentOptions
-                        .withCapabilities(callCapabilities)
-                        .withOptions(callOptions);
+        CustomConfigurationDialog.show(this, calleeSelected, CustomConfigurationDialog.CallOptionsDialogType.CALL, configuration);
+
+        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result) -> {
+            BandyerIntent.Builder intentBuilder = new BandyerIntent.Builder();
+            CallIntentBuilder callIntentBuilder = null;
+            switch (CustomConfigurationDialog.Callype.valueOf(result.getString("call_type"))) {
+                case AUDIO_ONLY:
+                    callIntentBuilder = intentBuilder.startWithAudioCall(MainActivity.this);
+                    break;
+                case AUDIO_UPGRADABLE:
+                    callIntentBuilder = intentBuilder.startWithAudioUpgradableCall(MainActivity.this);
+                    break;
+                case AUDIO_VIDEO:
+                    callIntentBuilder = intentBuilder.startWithAudioVideoCall(MainActivity.this);
+                    break;
             }
-
-            @Override
-            public void onOptionsConfirmed() {
-                BandyerIntent callIntent = callIntentOptions.build();
-                startActivity(callIntent);
-            }
+            BandyerIntent bandyerIntent = callIntentBuilder
+                    .with(calleeSelected)
+                    .withConfiguration(result.getParcelable("configuration"))
+                    .build();
+            startActivity(bandyerIntent);
         });
-        dialog.show(getSupportFragmentManager(), "call_options_dialog");
     }
 
     ///////////////////////////////////////////////// BANDYER SDK CLIENT MODULE OBSERVER /////////////////////////////////////////////////
