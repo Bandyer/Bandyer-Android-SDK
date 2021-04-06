@@ -27,7 +27,7 @@
 
 **Bandyer Android SDK** makes it easy to add video conference and chat communication to mobile apps.
 
-**Even though this sdk encloses strongly the UI/UX, it is fully stylable through default Android style system.**
+**Even though this sdk encloses strongly the UI/UX, it is fully styleable through default Android style system.**
 
 <img src="img/img0.png" height="360"/><img src="img/img1.png" height="360"/><img src="img/img2.png" height="360"/><img src="img/img3.png" height="360"/><img src="img/img4.png" height="360"/><img src="img/img5.png" height="360"/><img src="img/img6.png" height="360"/><img src="img/img7.png" height="360"/> 
 
@@ -44,12 +44,6 @@ android {
     }
 }
 ```
-## Latest releases
-
-AndroidX >= **v1.3.0**
-
-Support AppCompat <= **v1.2.1**
-
 
 ## Features
 
@@ -63,11 +57,11 @@ Support AppCompat <= **v1.2.1**
 - Call Recording
 
 
-## News 2.0.0
-- 2020-02-16: Bandyer-Android-SDK 2.0.0 has been released. Change min support from api16 to api21. New UI system with breaking changes and simplification of APIs. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.0.0).
+## News 2.+
+- 2021-04-06: Bandyer-Android-SDK 2.1.1 has been released. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.1.1).
 
-## News 1.5.x
-- 2020-11-06: Bandyer-Android-SDK 1.5.9 has been released. Added the capability to use usb camera during the call. Improved UI/UX and fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.9).
+## News 1.+
+- 2021-01-08: Bandyer-Android-SDK 1.5.14 has been released. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.14).
 
 ## Documentation
 
@@ -108,6 +102,8 @@ Support AppCompat <= **v1.2.1**
 ### More
 [Logging](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Logging)
 
+[Customize Configuration](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Customize-Configuration)
+
 [Call UI Display Mode](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Call-UI-Display-Mode)
 
 [User Identity Verification](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/User-Identity-Verification)
@@ -134,9 +130,9 @@ Support AppCompat <= **v1.2.1**
 
 ### Migrations
 
-[Upgrade to v1.5.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
+[Upgrade to v1.5.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
 
-[Upgrade to v2.0.x](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v2.0.x)
+[Upgrade to v2.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v2.x)
 
 
 ### Code documentation
@@ -161,5 +157,4 @@ Support AppCompat <= **v1.2.1**
 - [Twilio Programmable Chat](https://www.twilio.com/chat) by twilio
 - [Retrofit](https://github.com/square/retrofit) by square
 - [Picasso](https://github.com/square/picasso) by square
-- [Paris](https://github.com/airbnb/paris/) by airbnb
 - [FastAdapter](https://github.com/mikepenz/FastAdapter) by mikepenz

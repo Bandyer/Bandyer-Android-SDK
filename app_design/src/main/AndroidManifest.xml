@@ -1,0 +1,7 @@
+<!--
+  ~ Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+  ~ See LICENSE.txt for licensing information
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bandyer.app_design">
+</manifest>

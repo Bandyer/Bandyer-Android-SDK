@@ -32,7 +32,7 @@ def jUnitLibVersion = '4.13'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.3.4'
-def bandyerLibVersion = "2.1.0"
+def bandyerLibVersion = "2.1.1"
 def bandyerExtensionUsbCamera = "1.1.4"
 def pushy_version = '1.0.56'
 def huawei_push_version = '5.0.4.302'
@@ -157,8 +157,7 @@ dependencies {
     implementation project(":app_design")
 
     /*** Bandyer Android SDK ***/
-//    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
-    implementation project(":bandyer-android-sdk")
+    implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
 
     // define this dependency only if you desire to handle usb camera input in a video call
     implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"
