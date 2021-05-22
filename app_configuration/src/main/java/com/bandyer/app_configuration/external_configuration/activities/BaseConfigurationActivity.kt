@@ -35,6 +35,7 @@ abstract class BaseConfigurationActivity(override var withToolbar: Boolean = tru
         try {
             val gson = Gson()
             val configuration = gson.fromJson(uriToJsonObject(uri), Configuration::class.java)
+            configuration.skipCustomization = configuration.useSimplifiedVersion
             configuration.logoName = configuration.logoName?.replace("+", " ")?.trim()
             return configuration.also {
                 val hasChanged = currentConfiguration != configuration

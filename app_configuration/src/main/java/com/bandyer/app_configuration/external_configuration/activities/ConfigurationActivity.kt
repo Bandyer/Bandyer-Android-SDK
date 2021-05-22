@@ -80,7 +80,7 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
         configuration.logoUrl?.let { textUri ->
             watermark!!.setImageUri(MediaStorageUtils.getUriFromString(textUri))
         }
-        mock_user_details!!.setSubtitle(configuration.customUserDetailsProvider.name)
+        mock_user_details!!.setSubtitle(configuration.userDetailsProviderMode.name)
         leak_canary.setValue(configuration.useLeakCanary)
     }
 
@@ -109,13 +109,13 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
         }
         mock_user_details!!.setOnClickListener {
             MockUserDetailsSettingsActivity.showForResult(
-                    this,
-                    if (currentConfiguration!!.customUserDetailsImageUrl != null)
+                this,
+                if (currentConfiguration!!.customUserDetailsImageUrl != null)
                         Uri.parse(currentConfiguration!!.customUserDetailsImageUrl)
                     else null,
-                    currentConfiguration!!.customUserDetailsName ?: "",
-                    currentConfiguration!!.customUserDetailsProvider,
-                    MOCK_USER_DETAILS_REQUEST)
+                currentConfiguration!!.customUserDetailsName ?: "",
+                currentConfiguration!!.userDetailsProviderMode,
+                MOCK_USER_DETAILS_REQUEST)
         }
     }
 
@@ -139,10 +139,10 @@ open class ConfigurationActivity : BaseConfigurationActivity() {
         } else if (requestCode == MOCK_USER_DETAILS_REQUEST && resultCode == 2) {
             val customUserImageUrl = data!!.getStringExtra(ImageTextEditActivity.PRESET_URI_PARAM)
             val customDisplayName = data.getStringExtra(ImageTextEditActivity.PRESET_TEXT_PARAM)
-            val mockProviderMode = data.getSerializableExtra(MockUserDetailsSettingsActivity.MOCK_MODE_PARAM) as CustomUserDetailsProvider
+            val mockProviderMode = data.getSerializableExtra(MockUserDetailsSettingsActivity.MOCK_MODE_PARAM) as UserDetailsProviderMode
             currentConfiguration!!.customUserDetailsImageUrl = customUserImageUrl
             currentConfiguration!!.customUserDetailsName = customDisplayName
-            currentConfiguration!!.customUserDetailsProvider = mockProviderMode
+            currentConfiguration!!.userDetailsProviderMode = mockProviderMode
             mock_user_details!!.setSubtitle(mockProviderMode.toString())
         }
     }

@@ -34,6 +34,7 @@ class ConfigurationCheckBoxPreference @JvmOverloads constructor(
             field = value
             setValue(value)
         }
+        get() = configuration_checkbox.isChecked
 
     override var configurationFieldChangeListener: ConfigurationFieldChangeListener<Boolean>? = null
 
@@ -60,11 +61,16 @@ class ConfigurationCheckBoxPreference @JvmOverloads constructor(
                 recycle()
             }
 
-            configuration_checkbox_title.setOnClickListener { configuration_checkbox.performClick() }
+            configuration_checkbox_title.setOnClickListener { if (configuration_checkbox.isEnabled) configuration_checkbox.performClick() }
             configuration_checkbox.setOnCheckedChangeListener { _, isChecked ->
                 configurationFieldChangeListener?.onConfigurationFieldChanged(isChecked)
             }
         }
+    }
+
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        configuration_checkbox.isEnabled = enabled
     }
 
     override fun setValue(value: Boolean?) {

@@ -39,7 +39,7 @@ import com.bandyer.android_sdk.tool_configuration.ScreenShareConfiguration;
 import com.bandyer.android_sdk.tool_configuration.WhiteboardConfiguration;
 import com.bandyer.android_sdk.utils.BandyerSDKLogger;
 import com.bandyer.app_configuration.external_configuration.model.Configuration;
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider;
+import com.bandyer.app_configuration.external_configuration.model.UserDetailsProviderMode;
 import com.bandyer.app_utilities.MultiDexApplication;
 import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
 import com.bandyer.app_utilities.utils.Utils;
@@ -79,14 +79,13 @@ public class App extends MultiDexApplication {
         // If you desire to personalize the user details shown you should set a provider and formatter
         // otherwise the userAlias and default avatar will be shown in chat or call.
 
-        if (configuration.getCustomUserDetailsProvider() != CustomUserDetailsProvider.NONE)
+        if (configuration.getUserDetailsProviderMode() != UserDetailsProviderMode.NONE)
             config.withUserDetailsProvider(new MockedUserProvider(this));
 
         config.withUserDetailsFormatter((userDetails, context) -> {
-            CustomUserDetailsProvider customUserDetailsProvider = configuration.getCustomUserDetailsProvider();
-            switch (customUserDetailsProvider) {
-                case RANDOM:
-                    return userDetails.getFirstName() + " " + userDetails.getLastName();
+            UserDetailsProviderMode userDetailsProviderMode = configuration.getUserDetailsProviderMode();
+            switch (userDetailsProviderMode) {
+                case SAMPLE:
                 case CUSTOM:
                     return userDetails.getNickName();
                 default:

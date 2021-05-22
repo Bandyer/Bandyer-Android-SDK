@@ -27,11 +27,10 @@ interface APIInterface {
     /**
      * Method fakes a fetch to a remote server for users
      *
-     * @param seed get the same result based on the value of this seed
      * @return DemoAppUsers
      */
-    @GET("/api/?inc=name,email,picture")
-    fun getDemoAppUsers(@Query("seed") seed: String?): Call<DemoAppUsers?>?
+    @GET("/user_details/client")
+    fun getDemoAppUsers(): Call<List<DemoAppUser>>
 
     /**
      * Register device for push notifications

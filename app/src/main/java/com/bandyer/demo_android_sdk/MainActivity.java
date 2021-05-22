@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,15 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,7 +44,6 @@ import com.bandyer.android_sdk.client.BandyerSDKClientOptions;
 import com.bandyer.android_sdk.client.BandyerSDKClientState;
 import com.bandyer.android_sdk.intent.BandyerIntent;
 import com.bandyer.android_sdk.intent.call.Call;
-import com.bandyer.android_sdk.intent.call.CallCapabilities;
 import com.bandyer.android_sdk.intent.call.CallDisplayMode;
 import com.bandyer.android_sdk.intent.call.CallIntentBuilder;
 import com.bandyer.android_sdk.intent.call.CallOptions;
@@ -67,6 +61,7 @@ import com.bandyer.android_sdk.tool_configuration.SimpleCallConfiguration;
 import com.bandyer.android_sdk.tool_configuration.SimpleChatConfiguration;
 import com.bandyer.android_sdk.tool_configuration.WhiteboardConfiguration;
 import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity;
+import com.bandyer.app_configuration.external_configuration.model.CallOptionsType;
 import com.bandyer.app_utilities.BuildConfig;
 import com.bandyer.app_utilities.activities.CollapsingToolbarActivity;
 import com.bandyer.app_utilities.adapter_items.NoUserSelectedItem;
@@ -78,8 +73,8 @@ import com.bandyer.app_utilities.notification.NotificationProxy;
 import com.bandyer.app_utilities.settings.DefaultCallSettingsActivity;
 import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
 import com.bandyer.app_utilities.storage.LoginManager;
+import com.bandyer.demo_android_sdk.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IItem;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -90,10 +85,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * This Activity will be called after the user has logged or if an external url was opened with this app.
  * It's main job is to redirect to the dialing(outgoing) or ringing(ringing) call activities.
@@ -102,61 +93,34 @@ import butterknife.OnClick;
  */
 public class MainActivity extends CollapsingToolbarActivity implements BandyerSDKClientObserver, BandyerModuleObserver, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
 
-    private String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
 
     private ItemAdapter<UserSelectionItem> itemAdapter;
     private FastAdapter<UserSelectionItem> fastAdapter;
-    private ArrayList<String> calleeSelected = new ArrayList();
+    private ArrayList<String> calleeSelected = new ArrayList<>();
 
-    private ItemAdapter<IItem<?, ?>> selectedUsersItemAdapter = new ItemAdapter<>();
+    private final ItemAdapter<IItem<?, ?>> selectedUsersItemAdapter = new ItemAdapter<>();
 
     private com.bandyer.app_configuration.external_configuration.model.Configuration configuration = null;
 
-    @BindView(R.id.contactsList)
-    RecyclerView listContacts;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.call)
-    FloatingActionButton callButton;
-
-    @BindView(R.id.chat)
-    FloatingActionButton chatButton;
-
-    @BindView(R.id.chat_info_api_21)
-    View chatInfo;
-
-    @BindView(R.id.ongoing_call_label)
-    TextView ongoingCallLabel;
-
-    @BindView(R.id.no_results)
-    View noFilterResults;
-
-    @BindView(R.id.selected_users_chipgroup)
-    RecyclerView selectedUsersList;
-
-    @BindView((R.id.selected_users_textview))
-    TextView selectedUsersTextView;
+    private ActivityMainBinding binding;
 
     SearchView searchView;
 
-    @BindView(R.id.loading)
-    ProgressBar loading;
+    private final ArrayList<UserSelectionItem> usersList = new ArrayList<>();
 
-    private ArrayList<UserSelectionItem> usersList = new ArrayList<>();
-
-    abstract class MyCallObserver implements CallUIObserver, CallObserver {
+    abstract static class MyCallObserver implements CallUIObserver, CallObserver {
     }
 
-    abstract class MyChatObserver implements ChatUIObserver, ChatObserver {
+    abstract static class MyChatObserver implements ChatUIObserver, ChatObserver {
     }
 
-    private MyCallObserver callObserver = new MyCallObserver() {
+    private final MyCallObserver callObserver = new MyCallObserver() {
 
         @Override
         public void onActivityError(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity, @NonNull CallException error) {
             Log.e(TAG, "onCallActivityError " + error.getMessage());
+            showErrorDialog(error.getMessage());
             hideOngoingCallLabel();
         }
 
@@ -196,7 +160,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         }
     };
 
-    private MyChatObserver chatObserver = new MyChatObserver() {
+    private final MyChatObserver chatObserver = new MyChatObserver() {
 
         @Override
         public void onActivityError(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity, @NonNull ChatException error) {
@@ -233,8 +197,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         // inflate main layout and keep a reference to it in case of use with dpad navigation
         setContentView(R.layout.activity_main);
-
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.bind(getWindow().getDecorView());
 
         // If the user is already logged, setup the activity.
         setUpRecyclerView();
@@ -251,7 +214,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
 
-        ongoingCallLabel.setOnClickListener(v -> {
+        binding.ongoingCallLabel.setOnClickListener(v -> {
             CallModule callModule = BandyerSDKClient.getInstance().getCallModule();
             if (callModule == null) return;
 
@@ -268,9 +231,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
                 deselectUser(((SelectedUserItem) item).userAlias, ((SelectedUserItem) item).position);
             return true;
         });
-        selectedUsersList.setFocusable(false);
-        selectedUsersList.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
-        selectedUsersList.setAdapter(selectedUsersAdapter);
+        binding.selectedUsersChipgroup.setFocusable(false);
+        binding.selectedUsersChipgroup.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
+        binding.selectedUsersChipgroup.setAdapter(selectedUsersAdapter);
         selectedUsersItemAdapter.add(new NoUserSelectedItem());
     }
 
@@ -454,14 +417,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                logout();
-                break;
-            case R.id.options:
-                openCallOptionsActivity();
-                break;
-        }
+        int itemId = item.getItemId();
+        if (itemId == R.id.logout) logout();
+        else if (itemId == R.id.options) openCallOptionsActivity();
         return super.onOptionsItemSelected(item);
     }
 
@@ -469,7 +427,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         LoginManager.logout(this);
         BandyerSDKClient.getInstance().clearUserCache();
         BandyerSDKClient.getInstance().dispose();
-        ongoingCallLabel.setVisibility(View.GONE);
+        binding.ongoingCallLabel.setVisibility(View.GONE);
         LoginActivity.show(this);
     }
 
@@ -493,24 +451,24 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             return true;
         });
 
-        listContacts.setItemAnimator(null);
-        listContacts.setLayoutManager(new LinearLayoutManager(this));
-        listContacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        listContacts.setAdapter(fastAdapter);
+        binding.contactsList.setItemAnimator(null);
+        binding.contactsList.setLayoutManager(new LinearLayoutManager(this));
+        binding.contactsList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        binding.contactsList.setAdapter(fastAdapter);
 
         itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.name.toLowerCase().contains(constraint.toString().toLowerCase()));
         itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserSelectionItem>() {
             @Override
             public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserSelectionItem> results) {
-                noFilterResults.post(() -> {
-                    if (results.size() > 0) noFilterResults.setVisibility(View.GONE);
-                    else noFilterResults.setVisibility(View.VISIBLE);
+                binding.noResults.post(() -> {
+                    if (results.size() > 0) binding.noResults.setVisibility(View.GONE);
+                    else binding.noResults.setVisibility(View.VISIBLE);
                 });
             }
 
             @Override
             public void onReset() {
-                noFilterResults.post(() -> noFilterResults.setVisibility(View.GONE));
+                binding.noResults.post(() -> binding.noResults.setVisibility(View.GONE));
             }
         });
     }
@@ -523,14 +481,14 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     public void onRefresh() {
         usersList.clear();
         itemAdapter.clear();
-        listContacts.invalidateItemDecorations();
-        loading.setVisibility(View.VISIBLE);
+        binding.contactsList.invalidateItemDecorations();
+        binding.loading.setVisibility(View.VISIBLE);
 
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
             public void onUsers(List<String> users) {
-                loading.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.GONE);
                 // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
                 for (String user : users)
                     if (!user.equals(LoginManager.getLoggedUser(MainActivity.this)))
@@ -555,7 +513,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
             @Override
             public void onError(String error) {
-                loading.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.GONE);
                 showErrorDialog(error);
                 setRefreshing(false);
                 itemAdapter.clear();
@@ -579,7 +537,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         calleeSelected.add(userAlias);
         SelectedUserItem selectedUserItem = new SelectedUserItem(userAlias, position);
         selectedUsersItemAdapter.add(0, selectedUserItem);
-        selectedUsersList.smoothScrollToPosition(0);
+        binding.selectedUsersChipgroup.smoothScrollToPosition(0);
         selectedUsersItemAdapter.removeByIdentifier(NoUserSelectedItem.NO_USER_SELECTED_ITEM_IDENTIFIER);
     }
 
@@ -593,13 +551,13 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     }
 
     private void showOngoingCallLabel() {
-        if (ongoingCallLabel == null) return;
-        ongoingCallLabel.setVisibility(View.VISIBLE);
+        if (binding.ongoingCallLabel == null) return;
+        binding.ongoingCallLabel.setVisibility(View.VISIBLE);
     }
 
     private void hideOngoingCallLabel() {
-        if (ongoingCallLabel == null) return;
-        ongoingCallLabel.setVisibility(View.GONE);
+        if (binding.ongoingCallLabel == null) return;
+        binding.ongoingCallLabel.setVisibility(View.GONE);
     }
 
     /**
@@ -610,9 +568,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
      * Be aware that all the observers in this SDK, MUST NOT be defined as anonymous class because the call client will have a weak reference to them to avoid leaks and other scenarios.
      * If you do implement the observer anonymously the methods may not be called.
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @OnClick(R.id.chat)
-    void chat() {
+    public void onChatClicked(View view) {
         if (calleeSelected.size() == 0) {
             showErrorDialog(getResources().getString(R.string.oto_chat_error_no_selected_user));
             return;
@@ -624,26 +580,26 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         hideKeyboard(this);
 
-        ChatIntentBuilder.ChatConfigurationBuilder chatConfigurationBuilder = new BandyerIntent.Builder()
-                .startWithChat(MainActivity.this)
-                .with(calleeSelected.get(0));
-
         com.bandyer.app_configuration.external_configuration.model.Configuration configuration
                 = ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
 
-        if (configuration.getUseSimplifiedVersion()) {
-            BandyerIntent chatIntent = chatConfigurationBuilder.withConfiguration(new SimpleChatConfiguration()).build();
-            startActivity(chatIntent);
+        if (configuration.getUseSimplifiedVersion() && configuration.getSkipCustomization()) {
+            startChatActivity(new SimpleChatConfiguration());
             return;
         }
 
         CustomConfigurationDialog.show(this, calleeSelected, CustomConfigurationDialog.CallOptionsDialogType.CHAT, configuration);
 
-        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result) -> {
-            chatConfigurationBuilder.withConfiguration(result.getParcelable("configuration"));
-            BandyerIntent chatIntent = chatConfigurationBuilder.build();
-            startActivity(chatIntent);
-        });
+        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result)
+                -> startChatActivity(result.getParcelable("configuration")));
+    }
+
+    private void startChatActivity(com.bandyer.android_sdk.tool_configuration.Configuration.Chat chatConfiguration) {
+        ChatIntentBuilder.ChatConfigurationBuilder chatConfigurationBuilder = new BandyerIntent.Builder()
+                .startWithChat(MainActivity.this)
+                .with(calleeSelected.get(0));
+        BandyerIntent chatIntent = chatConfigurationBuilder.withConfiguration(chatConfiguration).build();
+        startActivity(chatIntent);
     }
 
 
@@ -655,8 +611,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
      * Be aware that all the observers in this SDK, MUST NOT be defined as anonymous class because the call client will have a weak reference to them to avoid leaks and other scenarios.
      * If you do implement the observer anonymously the methods may not be called.
      */
-    @OnClick(R.id.call)
-    void call() {
+    public void onCallClicked(View v) {
         if (calleeSelected.size() == 0) {
             showErrorDialog(getResources().getString(R.string.oto_call_error_no_selected_user));
             return;
@@ -667,41 +622,38 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         com.bandyer.app_configuration.external_configuration.model.Configuration configuration =
                 ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
 
-        BandyerIntent.Builder bandyerIntentBuilder = new BandyerIntent.Builder();
-
-        if (configuration.getUseSimplifiedVersion()) {
-            BandyerIntent chatIntent = bandyerIntentBuilder
-                    .startWithAudioVideoCall(MainActivity.this)
-                    .with(calleeSelected)
-                    .withConfiguration(new SimpleCallConfiguration())
-                    .build();
-            startActivity(chatIntent);
+        if (configuration.getUseSimplifiedVersion() && configuration.getSkipCustomization()) {
+            startCallActivity(configuration.getDefaultCallType(), new SimpleCallConfiguration());
             return;
         }
 
         CustomConfigurationDialog.show(this, calleeSelected, CustomConfigurationDialog.CallOptionsDialogType.CALL, configuration);
 
-        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result) -> {
-            BandyerIntent.Builder intentBuilder = new BandyerIntent.Builder();
-            CallIntentBuilder callIntentBuilder = null;
-            switch (CustomConfigurationDialog.Callype.valueOf(result.getString("call_type"))) {
-                case AUDIO_ONLY:
-                    callIntentBuilder = intentBuilder.startWithAudioCall(MainActivity.this);
-                    break;
-                case AUDIO_UPGRADABLE:
-                    callIntentBuilder = intentBuilder.startWithAudioUpgradableCall(MainActivity.this);
-                    break;
-                case AUDIO_VIDEO:
-                    callIntentBuilder = intentBuilder.startWithAudioVideoCall(MainActivity.this);
-                    break;
-            }
-            BandyerIntent bandyerIntent = callIntentBuilder
-                    .with(calleeSelected)
-                    .withConfiguration(result.getParcelable("configuration"))
-                    .build();
-            startActivity(bandyerIntent);
-        });
+        getSupportFragmentManager().setFragmentResultListener("customize_configuration", this, (requestKey, result)
+                -> startCallActivity(CallOptionsType.valueOf(result.getString("call_type")), result.getParcelable("configuration")));
     }
+
+    private void startCallActivity(CallOptionsType callType, com.bandyer.android_sdk.tool_configuration.Configuration.Call callConfiguration) {
+        BandyerIntent.Builder bandyerIntentBuilder = new BandyerIntent.Builder();
+        CallIntentBuilder callIntentBuilder = null;
+        switch (callType) {
+            case AUDIO_ONLY:
+                callIntentBuilder = bandyerIntentBuilder.startWithAudioCall(MainActivity.this);
+                break;
+            case AUDIO_UPGRADABLE:
+                callIntentBuilder = bandyerIntentBuilder.startWithAudioUpgradableCall(MainActivity.this);
+                break;
+            case AUDIO_VIDEO:
+                callIntentBuilder = bandyerIntentBuilder.startWithAudioVideoCall(MainActivity.this);
+                break;
+        }
+        BandyerIntent bandyerIntent = callIntentBuilder
+                .with(calleeSelected)
+                .withConfiguration(callConfiguration)
+                .build();
+        startActivity(bandyerIntent);
+    }
+
 
     ///////////////////////////////////////////////// BANDYER SDK CLIENT MODULE OBSERVER /////////////////////////////////////////////////
 
@@ -734,9 +686,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     }
 
     private void setModuleButtonsColors(@NonNull BandyerModule module, @NonNull BandyerModuleStatus moduleStatus) {
-        if (module instanceof ChatModule && chatButton != null)
+        if (module instanceof ChatModule && binding.chat != null)
             setChatButtonColor(moduleStatus);
-        else if (module instanceof CallModule && callButton != null)
+        else if (module instanceof CallModule && binding.call != null)
             setCallButtonColor(moduleStatus);
     }
 
@@ -748,17 +700,17 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             case DISCONNECTED:
             case RECONNECTING:
             case READY:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
+                binding.chat.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleChatOffline)));
                 break;
             case CONNECTED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
+                binding.chat.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
                 break;
             case PAUSED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+                binding.chat.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
                 break;
             case DESTROYED:
             case FAILED:
-                chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
+                binding.chat.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
                 break;
         }
     }
@@ -767,26 +719,26 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         switch (moduleStatus) {
             case RECONNECTING:
             case CONNECTING:
-                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnecting)));
+                binding.call.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnecting)));
                 break;
             case CONNECTED:
             case READY:
-                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
+                binding.call.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleConnected)));
                 break;
             case DESTROYED:
             case FAILED:
-                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
+                binding.call.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleError)));
                 break;
             default:
-                callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+                binding.call.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
                 break;
         }
     }
 
     private void resetButtonsState() {
-        if(callButton == null || chatButton == null) return;
-        callButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
-        chatButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+        if (binding == null || binding.call == null || binding.chat == null) return;
+        binding.call.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
+        binding.chat.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorModuleNotActive)));
     }
 
     ///////////////////////////////////////////////// BANDYER SDK CLIENT OBSERVER /////////////////////////////////////////////////

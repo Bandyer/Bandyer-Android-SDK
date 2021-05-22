@@ -7,30 +7,4 @@ package com.bandyer.app_utilities.networking
 /**
  * @author kristiyan
  */
-class DemoAppUsers {
-    @JvmField
-    var results: List<DemoAppUser>? = null
-    @JvmField
-    var info: DemoUserInfo? = null
-
-    inner class DemoAppUser {
-        @JvmField
-        var name: Name? = null
-        @JvmField
-        var email: String? = null
-        @JvmField
-        var picture: Picture? = null
-
-        inner class Name {
-            @JvmField
-            var first: String? = null
-            @JvmField
-            var last: String? = null
-        }
-
-        inner class Picture {
-            @JvmField
-            var large: String? = null
-        }
-    }
-}
+data class DemoAppUser(val user_id: String? = null, val display_name: String? = null, val user_avatar: String? = null)

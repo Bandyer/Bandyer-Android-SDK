@@ -12,23 +12,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity;
 import com.bandyer.app_configuration.external_configuration.model.Configuration;
 import com.bandyer.app_utilities.BuildConfig;
-import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
-import com.bandyer.app_utilities.storage.LoginManager;
 import com.bandyer.app_utilities.activities.CollapsingToolbarActivity;
 import com.bandyer.app_utilities.adapter_items.UserItem;
 import com.bandyer.app_utilities.networking.MockedNetwork;
+import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
+import com.bandyer.app_utilities.storage.LoginManager;
+import com.bandyer.demo_android_sdk.databinding.ActivityLoginBinding;
 import com.google.android.material.appbar.AppBarLayout;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
@@ -41,9 +39,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * This activity will allow you to choose a user from your company to use to interact with other users.
  * <p>
@@ -54,19 +49,9 @@ import butterknife.ButterKnife;
  */
 public class LoginActivity extends CollapsingToolbarActivity implements OnClickListener<UserItem>, SearchView.OnQueryTextListener {
 
-    @BindView(R.id.list_users)
-    RecyclerView listUsers;
+    private ActivityLoginBinding binding;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.no_results)
-    View noFilterResults;
-
-    private SearchView searchView;
-
-    @BindView(R.id.loading)
-    ProgressBar loading;
+    SearchView searchView;
 
     private ItemAdapter<UserItem> itemAdapter = ItemAdapter.items();
     private FastAdapter<UserItem> fastAdapter = FastAdapter.with(itemAdapter);
@@ -86,7 +71,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+        binding = com.bandyer.demo_android_sdk.databinding.ActivityLoginBinding.bind(getWindow().getDecorView());
 
         ImageView header = findViewById(R.id.headerView);
         if (!BuildConfig.DEBUG) header.setImageResource(R.drawable.landing_image);
@@ -95,10 +80,10 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
         setCollapsingToolbarTitle(getResources().getString(R.string.login_title));
 
         // set the recyclerView
-        listUsers.setAdapter(fastAdapter);
-        listUsers.setItemAnimator(null);
-        listUsers.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        listUsers.setLayoutManager(new LinearLayoutManager(this));
+        binding.listUsers.setAdapter(fastAdapter);
+        binding.listUsers.setItemAnimator(null);
+        binding.listUsers.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        binding.listUsers.setLayoutManager(new LinearLayoutManager(this));
         fastAdapter.withSelectable(true);
         fastAdapter.withOnPreClickListener(this);
 
@@ -108,14 +93,14 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
             @Override
             public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserItem> results) {
                 if (results.size() > 0)
-                    noFilterResults.setVisibility(View.GONE);
+                    binding.noResults.setVisibility(View.GONE);
                 else
-                    noFilterResults.setVisibility(View.VISIBLE);
+                    binding.noResults.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onReset() {
-                noFilterResults.setVisibility(View.GONE);
+                binding.noResults.setVisibility(View.GONE);
             }
         });
     }
@@ -166,12 +151,12 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
     @Override
     public void onRefresh() {
         itemAdapter.clear();
-        loading.setVisibility(View.VISIBLE);
+        binding.loading.setVisibility(View.VISIBLE);
         // Fetch the sample users you can use to login with.
         MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
             @Override
             public void onUsers(List<String> users) {
-                loading.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.GONE);
                 usersList.clear();
                 // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
                 for (String user : users) usersList.add(new UserItem(user));
@@ -182,7 +167,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
 
             @Override
             public void onError(String error) {
-                loading.setVisibility(View.GONE);
+                binding.loading.setVisibility(View.GONE);
                 showErrorDialog(error);
                 setRefreshing(false);
                 itemAdapter.clear();

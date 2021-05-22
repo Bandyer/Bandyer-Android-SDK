@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space8"
-            android:text="@string/mock_user_details_config_random" />
+            android:text="@string/mock_user_details_config_sample" />
 
         <TextView
             android:id="@+id/radio_button_user_details_random_summary"
@@ -50,7 +50,7 @@
             android:layout_marginStart="@dimen/space32"
             android:layout_marginLeft="@dimen/space32"
             android:layout_marginBottom="@dimen/space16"
-            android:text="@string/mock_user_details_config_random_summary" />
+            android:text="@string/mock_user_details_config_sample_summary" />
 
         <RadioButton
             android:id="@+id/radio_button_user_details_custom"

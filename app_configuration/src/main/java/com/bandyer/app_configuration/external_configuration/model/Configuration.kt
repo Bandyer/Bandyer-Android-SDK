@@ -14,38 +14,39 @@ import kotlinx.android.parcel.Parcelize
  * @author kristiyan
  */
 @Parcelize
-data class Configuration(
-        var environment: String? = null,
-        var userAlias: String? = null,
-        var appId: String? = null,
-        var apiKey: String? = null,
-        var projectNumber: String? = null,
-        var pushProvider: PushProvider = PushProvider.NONE,
-        var logoUrl: String? = null,
-        var logoName: String? = null,
-        var customUserDetailsName: String? = null,
-        var customUserDetailsImageUrl: String? = null,
-        var customUserDetailsProvider: CustomUserDetailsProvider = CustomUserDetailsProvider.NONE,
-        var useLeakCanary: Boolean = false,
-        var useRandomMockUserDetailsProvider: Boolean = false,
-        var useSimplifiedVersion: Boolean = false,
-        var defaultCallType: CallOptionsType = CallOptionsType.AUDIO_VIDEO,
-        var withWhiteboardCapability: Boolean = false,
-        var withFileSharingCapability: Boolean = false,
-        var withChatCapability: Boolean = false,
-        var withScreenSharingCapability: Boolean = false,
-        var withRecordingEnabled: Boolean = false,
-        var withBackCameraAsDefault: Boolean = false,
-        var withProximitySensorDisabled: Boolean = false,
-        var withMockAuthentication: Boolean = false,
-        var firebaseProjectId: String? = null,
-        var firebaseMobileAppId: String? = null,
-        var firebaseApiKey: String? = null,
-        var hmsAppId: String? = null) : Parcelable {
+data class Configuration (
+    var environment: String? = null,
+    var userAlias: String? = null,
+    var appId: String? = null,
+    var apiKey: String? = null,
+    var projectNumber: String? = null,
+    var pushProvider: PushProvider = PushProvider.NONE,
+    var logoUrl: String? = null,
+    var logoName: String? = null,
+    var customUserDetailsName: String? = null,
+    var customUserDetailsImageUrl: String? = null,
+    var userDetailsProviderMode: UserDetailsProviderMode = UserDetailsProviderMode.NONE,
+    var useLeakCanary: Boolean = false,
+    var useSimplifiedVersion: Boolean = false,
+    var defaultCallType: CallOptionsType = CallOptionsType.AUDIO_VIDEO,
+    var withWhiteboardCapability: Boolean = false,
+    var withFileSharingCapability: Boolean = false,
+    var withChatCapability: Boolean = false,
+    var withScreenSharingCapability: Boolean = false,
+    var withRecordingEnabled: Boolean = false,
+    var withBackCameraAsDefault: Boolean = false,
+    var withProximitySensorDisabled: Boolean = false,
+    var withMockAuthentication: Boolean = false,
+    var firebaseProjectId: String? = null,
+    var firebaseMobileAppId: String? = null,
+    var firebaseApiKey: String? = null,
+    var hmsAppId: String? = null,
+    var skipCustomization: Boolean = useSimplifiedVersion
+) : Parcelable {
 
 
     override fun toString(): String {
-        return "Configuration(environment=$environment, userAlias=$userAlias, appId=$appId, apiKey=$apiKey, projectNumber=$projectNumber, pushProvider=$pushProvider, logoUrl=$logoUrl, logoName=$logoName, customUserDetailsName=$customUserDetailsName, customUserDetailsImageUrl=$customUserDetailsImageUrl, useLeakCanary=$useLeakCanary, useRandomMockUserDetailsProvider=$useRandomMockUserDetailsProvider, useSimplifiedVersion=$useSimplifiedVersion, defaultCallType=$defaultCallType, withWhiteboardCapability=$withWhiteboardCapability, withFileSharingCapability=$withFileSharingCapability, withChatCapability=$withChatCapability, withScreenSharingCapability=$withScreenSharingCapability, withRecordingEnabled=$withRecordingEnabled, withBackCameraAsDefault=$withBackCameraAsDefault, withProximityEnabled=$withProximitySensorDisabled, withMockAuthentication=$withMockAuthentication, firebaseProjectId=$firebaseProjectId, firebaseMobileAppId=$firebaseMobileAppId, firebaseApiKey=$firebaseApiKey, hmsAppId=$hmsAppId)"
+        return "Configuration(environment=$environment, userAlias=$userAlias, appId=$appId, apiKey=$apiKey, projectNumber=$projectNumber, pushProvider=$pushProvider, logoUrl=$logoUrl, logoName=$logoName, customUserDetailsName=$customUserDetailsName, customUserDetailsImageUrl=$customUserDetailsImageUrl, useLeakCanary=$useLeakCanary, useSimplifiedVersion=$useSimplifiedVersion, defaultCallType=$defaultCallType, withWhiteboardCapability=$withWhiteboardCapability, withFileSharingCapability=$withFileSharingCapability, withChatCapability=$withChatCapability, withScreenSharingCapability=$withScreenSharingCapability, withRecordingEnabled=$withRecordingEnabled, withBackCameraAsDefault=$withBackCameraAsDefault, withProximityEnabled=$withProximitySensorDisabled, withMockAuthentication=$withMockAuthentication, firebaseProjectId=$firebaseProjectId, firebaseMobileAppId=$firebaseMobileAppId, firebaseApiKey=$firebaseApiKey, hmsAppId=$hmsAppId, customizeConfiguration=$skipCustomization)"
     }
 
     fun isMockConfiguration(): Boolean {
@@ -68,9 +69,8 @@ data class Configuration(
         if (logoName != other.logoName) return false
         if (customUserDetailsName != other.customUserDetailsName) return false
         if (customUserDetailsImageUrl != other.customUserDetailsImageUrl) return false
-        if (customUserDetailsProvider != other.customUserDetailsProvider) return false
+        if (userDetailsProviderMode != other.userDetailsProviderMode) return false
         if (useLeakCanary != other.useLeakCanary) return false
-        if (useRandomMockUserDetailsProvider != other.useRandomMockUserDetailsProvider) return false
         if (useSimplifiedVersion != other.useSimplifiedVersion) return false
         if (defaultCallType != other.defaultCallType) return false
         if (withWhiteboardCapability != other.withWhiteboardCapability) return false
@@ -85,6 +85,7 @@ data class Configuration(
         if (firebaseMobileAppId != other.firebaseMobileAppId) return false
         if (firebaseApiKey != other.firebaseApiKey) return false
         if (hmsAppId != other.hmsAppId) return false
+        if (skipCustomization != other.skipCustomization) return false
 
         return true
     }
@@ -100,9 +101,8 @@ data class Configuration(
         result = 31 * result + (logoName?.hashCode() ?: 0)
         result = 31 * result + (customUserDetailsName?.hashCode() ?: 0)
         result = 31 * result + (customUserDetailsImageUrl?.hashCode() ?: 0)
-        result = 31 * result + (customUserDetailsProvider.hashCode())
+        result = 31 * result + (userDetailsProviderMode.hashCode())
         result = 31 * result + useLeakCanary.hashCode()
-        result = 31 * result + useRandomMockUserDetailsProvider.hashCode()
         result = 31 * result + useSimplifiedVersion.hashCode()
         result = 31 * result + defaultCallType.hashCode()
         result = 31 * result + withWhiteboardCapability.hashCode()
@@ -117,6 +117,7 @@ data class Configuration(
         result = 31 * result + (firebaseMobileAppId?.hashCode() ?: 0)
         result = 31 * result + (firebaseApiKey?.hashCode() ?: 0)
         result = 31 * result + (hmsAppId?.hashCode() ?: 0)
+        result = 31 * result + (skipCustomization.hashCode() ?: 0)
         return result
     }
 

@@ -24,7 +24,7 @@ object DesignPrefsManager {
             setWatermarkUri(context, logoUrl)
             setCustomUserDetailsDisplayName(context, customUserDetailsName)
             setCustomUserDetailsImageUri(context, customUserDetailsImageUrl)
-            setMockedUserDetailsMode(context, customUserDetailsProvider?.name)
+            setMockedUserDetailsMode(context, userDetailsProviderMode?.name)
         }
     }
 

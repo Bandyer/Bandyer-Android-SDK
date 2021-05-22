@@ -14,13 +14,12 @@ import com.bandyer.app_configuration.external_configuration.activities.BaseConfi
 import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity
 import com.bandyer.app_configuration.external_configuration.activities.ScrollAwareToolbarActivity
 import com.bandyer.app_configuration.external_configuration.model.Configuration
+import com.bandyer.app_configuration.external_configuration.model.ConfigurationFieldChangeListener
 import com.bandyer.app_configuration.external_configuration.model.bindToConfigurationProperty
 import com.bandyer.app_utilities.R
-import com.bandyer.app_utilities.activities.BaseActivity
 import com.bandyer.app_utilities.utils.FingerprintUtils
 import com.bandyer.app_utilities.utils.Utils
-import kotlinx.android.synthetic.main.activity_defaul_call_settings.*
-
+import kotlinx.android.synthetic.main.activity_default_call_settings.*
 
 @Suppress("UNCHECKED_CAST")
 class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
@@ -39,9 +38,16 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
 
     private lateinit var configuration: Configuration
 
+    private val simplifiedVersionChecker = object : ConfigurationFieldChangeListener<Boolean> {
+        override fun onConfigurationFieldChanged(value: Boolean) {
+            val isSimplifiedVersion = isSimplifiedVersion()
+            use_simplified_version.setValue(isSimplifiedVersion)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_defaul_call_settings)
+        setContentView(R.layout.activity_default_call_settings)
         configuration = intent.getParcelableExtra<Configuration>(CURRENT_CONFIGURATION) as Configuration
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setDefaultValues()
@@ -50,6 +56,7 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
 
     private fun setDefaultValues() {
         use_simplified_version!!.isChecked = configuration.useSimplifiedVersion
+        skip_customization!!.isChecked = configuration.skipCustomization
         default_call_type!!.setValue(configuration.defaultCallType.name)
         whiteboard!!.isChecked = configuration.withWhiteboardCapability
         file_sharing!!.isChecked = configuration.withFileSharingCapability
@@ -68,17 +75,37 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
     }
 
     private fun addPreferencesListeners() {
-        use_simplified_version.bindToConfigurationProperty(configuration, configuration::useSimplifiedVersion)
-        whiteboard.bindToConfigurationProperty(configuration, configuration::withWhiteboardCapability)
-        file_sharing.bindToConfigurationProperty(configuration, configuration::withFileSharingCapability)
-        chat.bindToConfigurationProperty(configuration, configuration::withChatCapability)
-        screen_sharing.bindToConfigurationProperty(configuration, configuration::withScreenSharingCapability)
-        call_recording.bindToConfigurationProperty(configuration, configuration::withRecordingEnabled)
-        back_camera_as_default.bindToConfigurationProperty(configuration, configuration::withBackCameraAsDefault)
-        disable_proximity_sensor.bindToConfigurationProperty(configuration, configuration::withProximitySensorDisabled)
-        mock_user_authentication_request.bindToConfigurationProperty(configuration, configuration::withMockAuthentication)
+        use_simplified_version.bindToConfigurationProperty(configuration, configuration::useSimplifiedVersion, object : ConfigurationFieldChangeListener<Boolean> {
+            override fun onConfigurationFieldChanged(value: Boolean) {
+                if (!value || (value && isSimplifiedVersion())) return
+                whiteboard.setValue(true)
+                file_sharing.setValue(true)
+                chat.setValue(true)
+                screen_sharing.setValue(true)
+                call_recording.setValue(false)
+                back_camera_as_default.setValue(false)
+                disable_proximity_sensor.setValue(false)
+            }
+        })
+        skip_customization.bindToConfigurationProperty(configuration, configuration::skipCustomization)
+        whiteboard.bindToConfigurationProperty(configuration, configuration::withWhiteboardCapability, simplifiedVersionChecker)
+        file_sharing.bindToConfigurationProperty(configuration, configuration::withFileSharingCapability, simplifiedVersionChecker)
+        chat.bindToConfigurationProperty(configuration, configuration::withChatCapability, simplifiedVersionChecker)
+        screen_sharing.bindToConfigurationProperty(configuration, configuration::withScreenSharingCapability, simplifiedVersionChecker)
+        call_recording.bindToConfigurationProperty(configuration, configuration::withRecordingEnabled, simplifiedVersionChecker)
+        back_camera_as_default.bindToConfigurationProperty(configuration, configuration::withBackCameraAsDefault, simplifiedVersionChecker)
+        disable_proximity_sensor.bindToConfigurationProperty(configuration, configuration::withProximitySensorDisabled, simplifiedVersionChecker)
+        mock_user_authentication_request.bindToConfigurationProperty(configuration, configuration::withMockAuthentication, simplifiedVersionChecker)
         default_call_type.bindToConfigurationProperty(configuration, configuration::defaultCallType)
     }
+
+    private fun isSimplifiedVersion(): Boolean = whiteboard.isChecked &&
+            file_sharing.isChecked &&
+            chat.isChecked &&
+            screen_sharing.isChecked &&
+            !call_recording.isChecked &&
+            !back_camera_as_default.isChecked &&
+            !disable_proximity_sensor.isChecked
 
     override fun onBackPressed() {
         super.onBackPressed()

@@ -11,20 +11,6 @@
     <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/use_simplified_version">
-
-        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
-            android:id="@+id/use_simplified_version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:summary="@string/use_simplified_version_summary"
-            app:title="@string/use_simplified_version_title" />
-
-    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
-
-    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:title="@string/pref_call_type_title">
 
         <com.bandyer.app_configuration.external_configuration.views.ConfigurationListPreference
@@ -35,6 +21,25 @@
             app:entries="@array/call_types"
             app:entryValues="@array/call_types"
             app:title="@string/call_type" />
+
+    </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
+
+    <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/demo_app_options">
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/skip_customization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/skip_customization_version_title" />
+
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/use_simplified_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/use_simplified_version_title" />
 
     </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
 

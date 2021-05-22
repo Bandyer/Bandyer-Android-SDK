@@ -4,22 +4,15 @@
  */
 package com.bandyer.app_configuration.external_configuration.activities
 
-import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.bandyer.app_configuration.R
-import com.bandyer.app_configuration.external_configuration.model.Configuration
 import com.bandyer.app_configuration.external_configuration.ui.ViewFinderView
 import com.bandyer.app_configuration.external_configuration.utils.QrCodeAnalyzer
 import com.bandyer.app_configuration.external_configuration.utils.WifiConnector
-import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
-import com.otaliastudios.cameraview.CameraListener
-import com.otaliastudios.cameraview.CameraOptions
 import kotlinx.android.synthetic.main.activity_qrconfiguration.*
 import java.util.concurrent.Executors
 
@@ -40,7 +33,6 @@ open class QRConfigurationActivity : BaseConfigurationActivity(false) {
 
     private var wifiConnectedToast: Toast? = null
     private val configuredNetworks = mutableListOf<String>()
-
 
     private val cameraExecutor = Executors.newSingleThreadExecutor()
 

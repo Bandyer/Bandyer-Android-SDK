@@ -20,7 +20,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import com.bandyer.app_configuration.R
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider
+import com.bandyer.app_configuration.external_configuration.model.UserDetailsProviderMode
 import com.bandyer.app_configuration.external_configuration.utils.MediaStorageUtils
 import com.bandyer.app_configuration.external_configuration.utils.hideKeyboard
 import com.squareup.picasso.Picasso
@@ -30,14 +30,14 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
     companion object {
         private var PICK_IMAGE = -1
         const val MOCK_MODE_PARAM = "PRESET_MOCK_MODE_PARAM"
-        fun showForResult(activity: Activity, uri: Uri?, text: String, userDetailsProvider: CustomUserDetailsProvider, mockUserDetailsRequest: Int) {
+        fun showForResult(activity: Activity, uri: Uri?, text: String, userDetailsProviderMode: UserDetailsProviderMode, mockUserDetailsRequest: Int) {
             PICK_IMAGE = mockUserDetailsRequest
-            activity.startActivityForResult(buildIntent(activity, uri, text, userDetailsProvider), PICK_IMAGE)
+            activity.startActivityForResult(buildIntent(activity, uri, text, userDetailsProviderMode), PICK_IMAGE)
         }
 
-        private fun buildIntent(context: Context?, uri: Uri?, text: String, userDetailsProvider: CustomUserDetailsProvider): Intent {
+        private fun buildIntent(context: Context?, uri: Uri?, text: String, userDetailsProviderMode: UserDetailsProviderMode): Intent {
             val intent = Intent(context, MockUserDetailsSettingsActivity::class.java)
-            intent.putExtra(MOCK_MODE_PARAM, userDetailsProvider.name)
+            intent.putExtra(MOCK_MODE_PARAM, userDetailsProviderMode.name)
             if (uri != null && uri.lastPathSegment != null) intent.putExtra(ImageTextEditActivity.PRESET_URI_PARAM, uri.toString())
             intent.putExtra(ImageTextEditActivity.PRESET_TEXT_PARAM, text)
             return intent
@@ -48,13 +48,13 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
     private var editTextView: EditText? = null
     private var none: RadioButton? = null
     private var userDetailsSelectionLayout: LinearLayout? = null
-    private var currentMockUserDetailsMode: CustomUserDetailsProvider? = null
+    private var currentMockUserDetailsModeMode: UserDetailsProviderMode? = null
     private var imageUrl: String? = ""
     private var displayName = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mock_user_details_settings)
-        currentMockUserDetailsMode = CustomUserDetailsProvider.valueOf(intent.getStringExtra(MOCK_MODE_PARAM) ?: CustomUserDetailsProvider.NONE.name)
+        currentMockUserDetailsModeMode = UserDetailsProviderMode.valueOf(intent.getStringExtra(MOCK_MODE_PARAM) ?: UserDetailsProviderMode.NONE.name)
         userDetailsSelectionLayout = findViewById(R.id.user_derails_selection_layout)
         none = findViewById(R.id.radio_button_user_details_none)
         val random = findViewById<RadioButton>(R.id.radio_button_user_details_random)
@@ -72,27 +72,27 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
             when (group.checkedRadioButtonId) {
                 none!!.id -> {
                     hideKeyboard()
-                    currentMockUserDetailsMode = CustomUserDetailsProvider.NONE
+                    currentMockUserDetailsModeMode = UserDetailsProviderMode.NONE
                     userDetailsSelectionLayout!!.visibility = View.GONE
                     clearUserSelectionDetails()
                 }
                 random.id -> {
                     hideKeyboard()
-                    currentMockUserDetailsMode = CustomUserDetailsProvider.RANDOM
+                    currentMockUserDetailsModeMode = UserDetailsProviderMode.SAMPLE
                     userDetailsSelectionLayout!!.visibility = View.GONE
                     clearUserSelectionDetails()
                 }
                 custom.id -> {
-                    currentMockUserDetailsMode = CustomUserDetailsProvider.CUSTOM
+                    currentMockUserDetailsModeMode = UserDetailsProviderMode.CUSTOM
                     userDetailsSelectionLayout!!.visibility = View.VISIBLE
                     editTextView!!.requestFocus()
                 }
             }
         }
-        when (currentMockUserDetailsMode) {
-            CustomUserDetailsProvider.NONE -> none!!.isChecked = true
-            CustomUserDetailsProvider.RANDOM -> random.isChecked = true
-            CustomUserDetailsProvider.CUSTOM -> custom.isChecked = true
+        when (currentMockUserDetailsModeMode) {
+            UserDetailsProviderMode.NONE   -> none!!.isChecked = true
+            UserDetailsProviderMode.SAMPLE -> random.isChecked = true
+            UserDetailsProviderMode.CUSTOM -> custom.isChecked = true
         }
         displayName = intent.getStringExtra(ImageTextEditActivity.PRESET_TEXT_PARAM) ?: ""
         imageUrl = intent.getStringExtra(ImageTextEditActivity.PRESET_URI_PARAM)
@@ -135,7 +135,7 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
             R.id.save -> {
                 displayName = editTextView!!.text.toString()
                 val resultDataIntent = Intent()
-                resultDataIntent.putExtra(MOCK_MODE_PARAM, currentMockUserDetailsMode)
+                resultDataIntent.putExtra(MOCK_MODE_PARAM, currentMockUserDetailsModeMode)
                 if (imageUrl != null) resultDataIntent.putExtra(ImageTextEditActivity.PRESET_URI_PARAM, imageUrl)
                 resultDataIntent.putExtra(ImageTextEditActivity.PRESET_TEXT_PARAM, displayName)
                 setResult(2, resultDataIntent)

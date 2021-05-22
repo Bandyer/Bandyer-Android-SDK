@@ -15,17 +15,14 @@ import com.bandyer.android_sdk.client.BandyerSDKClient;
 import com.bandyer.android_sdk.utils.provider.OnUserDetailsListener;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.android_sdk.utils.provider.UserDetailsProvider;
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider;
 import com.bandyer.app_configuration.external_configuration.model.Configuration;
+import com.bandyer.app_configuration.external_configuration.model.UserDetailsProviderMode;
 import com.bandyer.app_configuration.external_configuration.utils.MediaStorageUtils;
+import com.bandyer.app_utilities.networking.DemoAppUser;
 import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
-import com.bandyer.app_utilities.utils.Utils;
 import com.bandyer.app_utilities.networking.APIInterface;
-import com.bandyer.app_utilities.networking.DemoAppUsers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -56,14 +53,14 @@ public class MockedUserProvider implements UserDetailsProvider {
         // It is NOT intended to be done here as this method will be called multiple times
 
 
-        CustomUserDetailsProvider customUserDetailsProvider =
-                ConfigurationPrefsManager.INSTANCE.getConfiguration(context).getCustomUserDetailsProvider();
+        UserDetailsProviderMode userDetailsProviderMode =
+                ConfigurationPrefsManager.INSTANCE.getConfiguration(context).getUserDetailsProviderMode();
 
-        if (customUserDetailsProvider == null) return;
+        if (userDetailsProviderMode == null) return;
 
-        switch (customUserDetailsProvider) {
-            case RANDOM:
-                provideRandomUserDetails(userAliases, onDetailsListener);
+        switch (userDetailsProviderMode) {
+            case SAMPLE:
+                provideSampleUsers(userAliases, onDetailsListener);
                 break;
             case CUSTOM:
                 provideCustomUserDetails(userAliases, onDetailsListener);
@@ -96,49 +93,42 @@ public class MockedUserProvider implements UserDetailsProvider {
         onDetailsListener.provide(customDetails);
     }
 
-    private void provideRandomUserDetails(@NonNull final List<String> userAliases, @NonNull final OnUserDetailsListener onDetailsListener) {
+    private void provideSampleUsers(@NonNull final List<String> userAliases, @NonNull final OnUserDetailsListener onDetailsListener) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://randomuser.me/")
+                .baseUrl("https://608c623c9f42b20017c3dd9d.mockapi.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(new OkHttpClient())
                 .build();
 
+        Call<List<DemoAppUser>> call = retrofit.create(APIInterface.class).getDemoAppUsers();
+        call.enqueue(new Callback<List<DemoAppUser>>() {
 
-        final HashMap<String, UserDetails> userDetailsMap = new LinkedHashMap<>(userAliases.size());
-        for (String userAlias : userAliases) userDetailsMap.put(userAlias, null);
+            @Override
+            public void onFailure(@NonNull Call<List<DemoAppUser>> call, @NonNull Throwable t) {
+                Log.e("MockedUserProvider", "Error provider of demo app users" + t.getLocalizedMessage());
+            }
 
-        for (String userAlias : userAliases) {
+            @Override
+            public void onResponse(@NonNull Call<List<DemoAppUser>> call, @NonNull Response<List<DemoAppUser>> response) {
+                if (response.body() == null) return;
 
-            Call<DemoAppUsers> call = retrofit.create(APIInterface.class).getDemoAppUsers(userAlias);
-            call.enqueue(new Callback<DemoAppUsers>() {
+                List<UserDetails> users = new ArrayList<>(userAliases.size());
 
-                @Override
-                public void onFailure(@NonNull Call<DemoAppUsers> call, @NonNull Throwable t) {
-                    Log.e("MockedUserProvider", "Error provider of demo app users" + t.getLocalizedMessage());
+                for (DemoAppUser user : response.body()) {
+                    if (!userAliases.contains(user.getUser_id())) continue;
+                    users.add(generateUserDisplayInfo(user));
                 }
 
-                @Override
-                public void onResponse(@NonNull Call<DemoAppUsers> call, @NonNull Response<DemoAppUsers> response) {
-                    if (response.body() == null) return;
+                onDetailsListener.provide(users);
+            }
+        });
 
-                    DemoAppUsers.DemoAppUser user = response.body().results.get(0);
-                    String userAlias = response.body().info.userAlias;
-
-                    userDetailsMap.put(userAlias, generateUserDisplayInfo(userAlias, user));
-
-                    if (!userDetailsMap.values().contains(null))
-                        onDetailsListener.provide(userDetailsMap.values());
-                }
-            });
-        }
     }
 
-    private UserDetails generateUserDisplayInfo(String userAlias, DemoAppUsers.DemoAppUser user) {
-        return new UserDetails.Builder(userAlias)
-                .withFirstName(Utils.capitalize(user.name.first))
-                .withLastName(Utils.capitalize(user.name.last))
-                .withImageUrl(user.picture.large)
-                .withEmail(user.email)
-                .build();
+    private UserDetails generateUserDisplayInfo(DemoAppUser user) {
+        UserDetails.Builder builder = new UserDetails.Builder(user.getUser_id());
+        if (user.getDisplay_name() != null) builder.withNickName(user.getDisplay_name());
+        if (user.getUser_avatar() != null) builder.withImageUrl(user.getUser_avatar());
+        return builder.build();
     }
 }

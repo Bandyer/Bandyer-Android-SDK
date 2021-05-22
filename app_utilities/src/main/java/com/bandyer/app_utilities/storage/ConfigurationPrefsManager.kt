@@ -9,13 +9,14 @@ import android.content.Context
 import android.net.Uri
 import com.bandyer.android_sdk.BandyerSDK
 import com.bandyer.app_configuration.R
-import com.bandyer.app_configuration.external_configuration.model.CustomUserDetailsProvider
-import com.bandyer.app_configuration.external_configuration.utils.MediaStorageUtils
 import com.bandyer.app_configuration.external_configuration.model.Configuration
 import com.bandyer.app_configuration.external_configuration.model.PushProvider
+import com.bandyer.app_configuration.external_configuration.model.UserDetailsProviderMode
 import com.bandyer.app_configuration.external_configuration.model.getMockConfiguration
+import com.bandyer.app_configuration.external_configuration.utils.MediaStorageUtils
 import com.bandyer.app_utilities.BuildConfig
 import com.google.gson.Gson
+
 
 /**
  * @author kristiyan
@@ -64,33 +65,32 @@ object ConfigurationPrefsManager {
     private fun getLegacyConfiguration(context: Context): Configuration? {
         if (LegacyConfigurationPrefsManager.areCredentialsMockedOrEmpty(context)) return null
         val migrationConfiguration = Configuration(
-                LegacyConfigurationPrefsManager.getEnvironmentName(context),
-                LoginManager.getLoggedUser(context),
-                LegacyConfigurationPrefsManager.getAppId(context),
-                LegacyConfigurationPrefsManager.getApiKey(context),
-                LegacyConfigurationPrefsManager.getFirebaseProjectNumber(context),
-                PushProvider.valueOf(LegacyConfigurationPrefsManager.getPushProvider(context)),
-                LegacyConfigurationPrefsManager.getWatermarkUri(context).toString(),
-                LegacyConfigurationPrefsManager.getWatermarkText(context),
-                LegacyConfigurationPrefsManager.getCustomUserDetailsDisplayName(context),
-                LegacyConfigurationPrefsManager.getCustomUserDetailsImageUri(context).toString(),
-                CustomUserDetailsProvider.valueOf(LegacyConfigurationPrefsManager.getMockedUserDetailsMode(context)),
-                LegacyConfigurationPrefsManager.isLeakCanaryEnabled(context),
-                CustomUserDetailsProvider.valueOf(LegacyConfigurationPrefsManager.getMockedUserDetailsMode(context)) == CustomUserDetailsProvider.RANDOM,
-                LegacyConfigurationPrefsManager.isSimplifiedVersionEnabled(context),
-                DefaultCallSettingsManager.getDefaultCallType(context),
-                DefaultCallSettingsManager.isWhiteboardEnabled(context),
-                DefaultCallSettingsManager.isFileSharingEnabled(context),
-                DefaultCallSettingsManager.isChatEnabled(context),
-                DefaultCallSettingsManager.isScreenSharingEnabled(context),
-                DefaultCallSettingsManager.isCallRecordingEnabled(context),
-                DefaultCallSettingsManager.isBackCameraAsDefaultEnabled(context),
-                DefaultCallSettingsManager.isProximitySensorDisabled(context),
-                LegacyConfigurationPrefsManager.isMockUserAuthenticationRequest(context),
-                LegacyConfigurationPrefsManager.getFirebaseProjectId(context),
-                LegacyConfigurationPrefsManager.getFirebaseProjectMobileAppId(context),
-                LegacyConfigurationPrefsManager.getFirebaseApiKey(context),
-                LegacyConfigurationPrefsManager.getHmsAppId(context))
+            LegacyConfigurationPrefsManager.getEnvironmentName(context),
+            LoginManager.getLoggedUser(context),
+            LegacyConfigurationPrefsManager.getAppId(context),
+            LegacyConfigurationPrefsManager.getApiKey(context),
+            LegacyConfigurationPrefsManager.getFirebaseProjectNumber(context),
+            PushProvider.valueOf(LegacyConfigurationPrefsManager.getPushProvider(context)),
+            LegacyConfigurationPrefsManager.getWatermarkUri(context).toString(),
+            LegacyConfigurationPrefsManager.getWatermarkText(context),
+            LegacyConfigurationPrefsManager.getCustomUserDetailsDisplayName(context),
+            LegacyConfigurationPrefsManager.getCustomUserDetailsImageUri(context).toString(),
+            UserDetailsProviderMode.valueOf(LegacyConfigurationPrefsManager.getMockedUserDetailsMode(context)),
+            LegacyConfigurationPrefsManager.isLeakCanaryEnabled(context),
+            LegacyConfigurationPrefsManager.isSimplifiedVersionEnabled(context),
+            DefaultCallSettingsManager.getDefaultCallType(context),
+            DefaultCallSettingsManager.isWhiteboardEnabled(context),
+            DefaultCallSettingsManager.isFileSharingEnabled(context),
+            DefaultCallSettingsManager.isChatEnabled(context),
+            DefaultCallSettingsManager.isScreenSharingEnabled(context),
+            DefaultCallSettingsManager.isCallRecordingEnabled(context),
+            DefaultCallSettingsManager.isBackCameraAsDefaultEnabled(context),
+            DefaultCallSettingsManager.isProximitySensorDisabled(context),
+            LegacyConfigurationPrefsManager.isMockUserAuthenticationRequest(context),
+            LegacyConfigurationPrefsManager.getFirebaseProjectId(context),
+            LegacyConfigurationPrefsManager.getFirebaseProjectMobileAppId(context),
+            LegacyConfigurationPrefsManager.getFirebaseApiKey(context),
+            LegacyConfigurationPrefsManager.getHmsAppId(context))
 
         LegacyConfigurationPrefsManager.clearAll(context)
         DefaultCallSettingsManager.clearAll(context)
@@ -411,7 +411,7 @@ internal object LegacyConfigurationPrefsManager {
     @JvmStatic
     fun isMockUserDetailsProviderEnabled(context: Context): Boolean {
         val mockedUserDetailsProviderMode = getMockedUserDetailsMode(context)
-        return mockedUserDetailsProviderMode == context.resources.getString(R.string.mock_user_details_config_random) || mockedUserDetailsProviderMode == context.resources.getString(R.string.mock_user_details_config_custom)
+        return mockedUserDetailsProviderMode == context.resources.getString(R.string.mock_user_details_config_sample) || mockedUserDetailsProviderMode == context.resources.getString(R.string.mock_user_details_config_custom)
     }
 
     /**

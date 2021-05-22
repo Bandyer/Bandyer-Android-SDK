@@ -16,15 +16,15 @@
     <string name="wifi_connected" translatable="false">Wifi network connected:</string>
 
     <string name="mock_user_details_config_none" translatable="false">NONE</string>
-    <string name="mock_user_details_config_random" translatable="false">RANDOM</string>
+    <string name="mock_user_details_config_sample" translatable="false">SAMPLE</string>
     <string name="mock_user_details_config_custom" translatable="false">CUSTOM</string>
     <string name="mock_user_details_display_name" translatable="false">Display name</string>
     <string name="mock_user_details_config_none_summary" translatable="false">No user details provider will be used, default avatars and user aliases will be shown.</string>
-    <string name="mock_user_details_config_random_summary" translatable="false">A web based random user generator\n(https://randomuser.me/)\nwill be used to display random users details.</string>
+    <string name="mock_user_details_config_sample_summary" translatable="false">A web based sample user details provider used to display custom users details.</string>
     <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
     <string-array name="mockUserDetailsType">
         <item>@string/mock_user_details_config_none</item>
-        <item>@string/mock_user_details_config_random</item>
+        <item>@string/mock_user_details_config_sample</item>
         <item>@string/mock_user_details_config_custom</item>
     </string-array>
 
@@ -92,8 +92,10 @@
     <string name="summary_use_mock_user_details_provider" translatable="false">Use this setting to customize user details when a chat or call UI is presented.</string>
 
     <string name="use_simplified_version_title" translatable="false">Simplified version</string>
-    <string name="use_simplified_version_summary" translatable="false">Automatically executes call and chat opening requests based on default settings.</string>
-    <string name="use_simplified_version" translatable="false">Use simplified version</string>
+
+    <string name="skip_customization_version_title" translatable="false">Skip call and chat customization dialog</string>
+
+    <string name="demo_app_options" translatable="false">App options</string>
 
     <!-- ENVIRONMENT -->
     <string name="pref_environment" translatable="false">environment</string>
