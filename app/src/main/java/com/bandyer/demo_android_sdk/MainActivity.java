@@ -76,14 +76,19 @@ import com.bandyer.app_utilities.storage.LoginManager;
 import com.bandyer.demo_android_sdk.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.AppBarLayout;
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.IItem;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.extensions.ExtensionsFactories;
 import com.mikepenz.fastadapter.listeners.ItemFilterListener;
 import com.mikepenz.fastadapter.select.SelectExtension;
+import com.mikepenz.fastadapter.select.SelectExtensionFactory;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import kotlin.jvm.functions.Function4;
 
 /**
  * This Activity will be called after the user has logged or if an external url was opened with this app.
@@ -99,7 +104,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     private FastAdapter<UserSelectionItem> fastAdapter;
     private ArrayList<String> calleeSelected = new ArrayList<>();
 
-    private final ItemAdapter<IItem<?, ?>> selectedUsersItemAdapter = new ItemAdapter<>();
+    private final ItemAdapter<IItem<?>> selectedUsersItemAdapter = new ItemAdapter<>();
 
     private com.bandyer.app_configuration.external_configuration.model.Configuration configuration = null;
 
@@ -224,13 +229,19 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
             callModule.setDisplayMode(ongoingCall, CallDisplayMode.FOREGROUND);
         });
 
-        FastAdapter<IItem<?, ?>> selectedUsersAdapter = FastAdapter.with(selectedUsersItemAdapter);
-        selectedUsersAdapter.withSelectable(true);
-        selectedUsersAdapter.withOnClickListener((v, adapter, item, position) -> {
-            if (item instanceof SelectedUserItem)
-                deselectUser(((SelectedUserItem) item).userAlias, ((SelectedUserItem) item).position);
-            return true;
+        FastAdapter<IItem<?>> selectedUsersAdapter = FastAdapter.with(selectedUsersItemAdapter);
+        SelectExtension<IItem<?>> selectExtension = selectedUsersAdapter.getOrCreateExtension(SelectExtension.class);
+        selectExtension.setSelectable(true);
+        selectedUsersAdapter.setOnClickListener(new Function4<View, IAdapter<IItem<?>>, IItem<?>, Integer, Boolean>() {
+            @Override
+            public Boolean invoke(View view, IAdapter<IItem<?>> iItemIAdapter, IItem<?> iItem, Integer integer) {
+                if (iItem instanceof SelectedUserItem) {
+                    deselectUser(((SelectedUserItem) iItem).userAlias, ((SelectedUserItem) iItem).position);
+                }
+                return true;
+            }
         });
+
         binding.selectedUsersChipgroup.setFocusable(false);
         binding.selectedUsersChipgroup.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
         binding.selectedUsersChipgroup.setAdapter(selectedUsersAdapter);
@@ -389,7 +400,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
     public void onBackPressed() {
         showConfirmDialog(R.string.logout, R.string.logout_confirmation, (dialogInterface, i) -> {
             logout();
-            finish();
         });
     }
 
@@ -429,6 +439,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         BandyerSDKClient.getInstance().dispose();
         binding.ongoingCallLabel.setVisibility(View.GONE);
         LoginActivity.show(this);
+        finish();
     }
 
     private void openCallOptionsActivity() {
@@ -440,15 +451,22 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
 
         itemAdapter = ItemAdapter.items();
         fastAdapter = FastAdapter.with(itemAdapter);
-        fastAdapter.withSelectable(true);
+
+        ExtensionsFactories.INSTANCE.register(new SelectExtensionFactory());
+
+        SelectExtension<UserSelectionItem> selectExtension = fastAdapter.getOrCreateExtension(SelectExtension.class);
+        selectExtension.setSelectable(true);
 
         // on user selection put it in a list to be called on click on call button.
-        fastAdapter.withOnPreClickListener((itemView, adapter, item, position) -> {
-            if (!item.isSelected())
-                selectUser(item.name, position);
-            else
-                deselectUser(item.name, position);
-            return true;
+        fastAdapter.setOnPreClickListener(new Function4<View, IAdapter<UserSelectionItem>, UserSelectionItem, Integer, Boolean>() {
+            @Override
+            public Boolean invoke(View view, IAdapter<UserSelectionItem> userSelectionItemIAdapter, UserSelectionItem userSelectionItem, Integer position) {
+                if (!userSelectionItem.isSelected())
+                    selectUser(userSelectionItem.name, position);
+                else
+                    deselectUser(userSelectionItem.name, position);
+                return true;
+            }
         });
 
         binding.contactsList.setItemAnimator(null);
@@ -456,10 +474,10 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         binding.contactsList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.contactsList.setAdapter(fastAdapter);
 
-        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.name.toLowerCase().contains(constraint.toString().toLowerCase()));
-        itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserSelectionItem>() {
+        itemAdapter.getItemFilter().setFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.name.toLowerCase().contains(constraint.toString().toLowerCase()));
+        itemAdapter.getItemFilter().setItemFilterListener(new ItemFilterListener<UserSelectionItem>() {
             @Override
-            public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserSelectionItem> results) {
+            public void itemsFiltered(@org.jetbrains.annotations.Nullable CharSequence charSequence, @org.jetbrains.annotations.Nullable List<? extends UserSelectionItem> results) {
                 binding.noResults.post(() -> {
                     if (results.size() > 0) binding.noResults.setVisibility(View.GONE);
                     else binding.noResults.setVisibility(View.VISIBLE);

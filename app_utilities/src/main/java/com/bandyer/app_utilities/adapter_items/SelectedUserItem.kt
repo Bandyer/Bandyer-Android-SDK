@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.selected_user_item_layout.view.*
 /**
  * A simple RecyclerView item used to display the user userAlias as a Chip in the list.
  */
-class SelectedUserItem(@JvmField val userAlias: String,@JvmField val position: Int) : AbstractItem<SelectedUserItem?, SelectedUserItem.ViewHolder>() {
+class SelectedUserItem(@JvmField val userAlias: String,@JvmField val position: Int) : AbstractItem<SelectedUserItem.ViewHolder>() {
 
-    override fun getIdentifier() = position.toLong()
-    override fun getType(): Int = R.id.user_selected_item
-    override fun getLayoutRes(): Int = R.layout.selected_user_item_layout
+    override var identifier: Long = position.toLong()
+    override val type: Int = R.id.user_selected_item
+    override val layoutRes: Int = R.layout.selected_user_item_layout
     override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
-    override fun bindView(holder: ViewHolder, payloads: MutableList<Any>) {
+    override fun bindView(holder: ViewHolder, payloads: List<Any>) {
         super.bindView(holder, payloads)
         holder.containerView.userAlias!!.text = userAlias
         holder.containerView.userAlias!!.setOnCloseIconClickListener { v: View? -> v!!.performClick() }

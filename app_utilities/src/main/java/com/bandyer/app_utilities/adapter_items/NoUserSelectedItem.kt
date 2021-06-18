@@ -14,14 +14,14 @@ import kotlinx.android.synthetic.main.no_users_selected_item_layout.view.*
 /**
  * A simple RecyclerView item used to display no selections on users' list.
  */
-class NoUserSelectedItem : AbstractItem<NoUserSelectedItem, NoUserSelectedItem.ViewHolder>() {
+class NoUserSelectedItem : AbstractItem<NoUserSelectedItem.ViewHolder>() {
 
-    override fun getIdentifier() =  NO_USER_SELECTED_ITEM_IDENTIFIER
-    override fun getType(): Int = R.id.no_user_selecte_item
-    override fun getLayoutRes(): Int = R.layout.no_users_selected_item_layout
+    override var identifier: Long =  NO_USER_SELECTED_ITEM_IDENTIFIER
+    override val type: Int = R.id.no_user_selecte_item
+    override val layoutRes: Int = R.layout.no_users_selected_item_layout
     override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
-    override fun bindView(holder: ViewHolder, payloads: MutableList<Any>) {
+    override fun bindView(holder: ViewHolder, payloads: List<Any>) {
         super.bindView(holder, payloads)
         holder.containerView.no_user_selecte_itemView.text = holder.containerView.context.getString(R.string.no_users_selected)
     }

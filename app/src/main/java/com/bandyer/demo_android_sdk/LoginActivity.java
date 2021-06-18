@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,13 +30,15 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.extensions.ExtensionsFactories;
 import com.mikepenz.fastadapter.listeners.ItemFilterListener;
-import com.mikepenz.fastadapter.listeners.OnClickListener;
+import com.mikepenz.fastadapter.select.SelectExtension;
+import com.mikepenz.fastadapter.select.SelectExtensionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nullable;
+import kotlin.jvm.functions.Function4;
 
 /**
  * This activity will allow you to choose a user from your company to use to interact with other users.
@@ -47,7 +48,7 @@ import javax.annotation.Nullable;
  * For more information about how it works FastAdapter:
  * https://github.com/mikepenz/FastAdapter
  */
-public class LoginActivity extends CollapsingToolbarActivity implements OnClickListener<UserItem>, SearchView.OnQueryTextListener {
+public class LoginActivity extends CollapsingToolbarActivity implements SearchView.OnQueryTextListener {
 
     private ActivityLoginBinding binding;
 
@@ -84,15 +85,27 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
         binding.listUsers.setItemAnimator(null);
         binding.listUsers.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.listUsers.setLayoutManager(new LinearLayoutManager(this));
-        fastAdapter.withSelectable(true);
-        fastAdapter.withOnPreClickListener(this);
 
-        itemAdapter.getItemFilter().withFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.userAlias.toLowerCase().contains(constraint.toString().toLowerCase()));
-
-        itemAdapter.getItemFilter().withItemFilterListener(new ItemFilterListener<UserItem>() {
+        ExtensionsFactories.INSTANCE.register(new SelectExtensionFactory());
+        SelectExtension<UserItem> selectExtension = fastAdapter.getOrCreateExtension(SelectExtension.class);
+        selectExtension.setSelectable(true);
+        fastAdapter.setOnPreClickListener(new Function4<View, IAdapter<UserItem>, UserItem, Integer, Boolean>() {
             @Override
-            public void itemsFiltered(@Nullable CharSequence constraint, @Nullable List<UserItem> results) {
-                if (results.size() > 0)
+            public Boolean invoke(View view, IAdapter<UserItem> userItemIAdapter, UserItem userItem, Integer integer) {
+                userAlias = userItem.userAlias;
+                if (!LoginManager.isUserLogged(LoginActivity.this))
+                    LoginManager.login(LoginActivity.this, userAlias);
+                MainActivity.show(LoginActivity.this);
+                finish();
+                return false;
+            }
+        });
+
+        itemAdapter.getItemFilter().setFilterPredicate((userSelectionItem, constraint) -> userSelectionItem.userAlias.toLowerCase().contains(constraint.toString().toLowerCase()));
+        itemAdapter.getItemFilter().setItemFilterListener(new ItemFilterListener<UserItem>() {
+            @Override
+            public void itemsFiltered(@org.jetbrains.annotations.Nullable CharSequence charSequence, @org.jetbrains.annotations.Nullable List<? extends UserItem> list) {
+                if (list.size() > 0)
                     binding.noResults.setVisibility(View.GONE);
                 else
                     binding.noResults.setVisibility(View.VISIBLE);
@@ -101,6 +114,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
             @Override
             public void onReset() {
                 binding.noResults.setVisibility(View.GONE);
+
             }
         });
     }
@@ -173,19 +187,5 @@ public class LoginActivity extends CollapsingToolbarActivity implements OnClickL
                 itemAdapter.clear();
             }
         });
-    }
-
-    /**
-     * On click on a user from the list init the call client for that user
-     * save the userAlias to be used for login after the call client has been initialized
-     */
-    @Override
-    public boolean onClick(@Nullable View v, @NonNull IAdapter<UserItem> adapter, @NonNull final UserItem item, int position) {
-        userAlias = item.userAlias;
-        if (!LoginManager.isUserLogged(this))
-            LoginManager.login(this, userAlias);
-        MainActivity.show(LoginActivity.this);
-        finish();
-        return false;
     }
 }

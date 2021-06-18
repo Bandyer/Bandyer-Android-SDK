@@ -35,9 +35,10 @@ buildscript {
     repositories {
         mavenLocal()
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url 'https://maven.bandyer.com/releases' }
     }
 
     dependencies {
@@ -45,7 +46,6 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
         classpath 'com.google.gms:google-services:4.3.3'// Google Services plugin
@@ -57,9 +57,9 @@ allprojects {
     repositories {
         mavenLocal()
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://maven.bandyer.com/releases' }
     }
 }

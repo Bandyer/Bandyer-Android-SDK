@@ -87,7 +87,7 @@ public class App extends MultiDexApplication {
             switch (userDetailsProviderMode) {
                 case SAMPLE:
                 case CUSTOM:
-                    return userDetails.getNickName();
+                    return userDetails.getNickName() != null && !userDetails.getNickName().isEmpty() ? userDetails.getNickName() : userDetails.getUserAlias();
                 default:
                     return userDetails.getUserAlias();
             }

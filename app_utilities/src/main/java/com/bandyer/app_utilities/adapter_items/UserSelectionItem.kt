@@ -14,14 +14,14 @@ import kotlinx.android.synthetic.main.user_selection_item_layout.view.*
 /**
  * A simple RecyclerView item used to display the user name with a checkbox as a cell in the list.
  */
-class UserSelectionItem(@JvmField val name: String) : AbstractItem<UserSelectionItem?, UserSelectionItem.ViewHolder>() {
+class UserSelectionItem(@JvmField val name: String) : AbstractItem<UserSelectionItem.ViewHolder>() {
 
-    override fun getIdentifier(): Long = name.hashCode().toLong()
-    override fun getType(): Int = R.id.user_selection_item_id
-    override fun getLayoutRes(): Int = R.layout.user_selection_item_layout
+    override var identifier: Long = name.hashCode().toLong()
+    override val type: Int = R.id.user_selection_item_id
+    override val layoutRes: Int= R.layout.user_selection_item_layout
     override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
-    override fun bindView(holder: ViewHolder, payloads: MutableList<Any>) {
+    override fun bindView(holder: ViewHolder, payloads: List<Any>) {
         super.bindView(holder, payloads)
         holder.containerView.checkbox!!.isChecked = isSelected
         holder.containerView.checkbox!!.text = name

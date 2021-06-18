@@ -57,11 +57,15 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     api "com.google.code.gson:gson:$gsonVersion"
-    implementation 'com.github.quickpermissions:quickpermissions-kotlin:0.4.0'
 
     // CameraX core library
-    api('com.otaliastudios:cameraview:2.6.4') {
+    api('com.github.natario1:CameraView:v2.7.0') {
         exclude group: 'com.google.android.gms', module: 'play-services-tasks'
+    }
+    constraints {
+        implementation('com.otaliastudios.opengl:egloo:0.6.0') {
+            because 'previous versions are on jcenter'
+        }
     }
 
     implementation 'com.google.zxing:core:3.3.3'
