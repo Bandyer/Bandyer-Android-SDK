@@ -61,11 +61,6 @@ public class BiometricNotificationScheduler {
     private void mockUserAuthenticationRequestWithNotification(Context context) {
         Intent intent = new Intent(context, MockUserAuthenticationRequestActivity.class);
         intent.setPackage(context.getPackageName());
-        PendingIntent contentIntent = PendingIntent.getActivity(
-                context,
-                userAuthenticationRequestNotificationRequestCode,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
 
         Intent broadcastIntent = new Intent(context, AuthenticationRequestNotificationClickedReceiver.class);
         broadcastIntent.setPackage(context.getPackageName());
@@ -74,7 +69,7 @@ public class BiometricNotificationScheduler {
                 context,
                 userAuthenticationRequestNotificationRequestCode,
                 broadcastIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                getUpdateFlag()
         );
 
         NotificationManager notificationManager = ((NotificationManager) context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE));
@@ -103,5 +98,10 @@ public class BiometricNotificationScheduler {
                 .setContentIntent(broadcastPendingIntent);
 
         notificationManager.notify(userAuthenticationRequestNotificationId, b.build());
+    }
+
+    private int getUpdateFlag() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) return PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+        else return PendingIntent.FLAG_UPDATE_CURRENT;
     }
 }
