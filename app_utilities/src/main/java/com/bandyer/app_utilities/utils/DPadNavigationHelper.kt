@@ -83,7 +83,7 @@ class DPadNavigationHelper {
 
         // enqueue highlight procedure after the os has managed the focus update
         rootView!!.post {
-            highlightFocusedView()
+            highlightFocusedView(rootView!!.findFocus())
 
             // perfofms a fake click on screen based on in-screen lastFocusedView coordinates
             if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER) clickScreen(getLocationInContainer(lastFocusedView, rootView))
@@ -137,9 +137,8 @@ class DPadNavigationHelper {
     /**
      * Highlights current focused view with red stroke foreground
      */
-    private fun highlightFocusedView() {
+    private fun highlightFocusedView(nextFocusView: View?) {
         activity ?: return
-        val nextFocusView = activity!!.window.decorView.findFocus()
         if (lastFocusedView == nextFocusView) return
         unHighlightView(lastFocusedView)
         lastFocusedView = nextFocusView

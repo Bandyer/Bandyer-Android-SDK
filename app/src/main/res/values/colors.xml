@@ -3,9 +3,10 @@
   ~ See LICENSE.txt for licensing information
   -->
 <resources>
-    <color name="colorModuleError">#D50000</color>
+    <color name="colorModuleError">#c70000</color>
     <color name="colorModuleChatOffline">#FFAB00</color>
-    <color name="colorModuleConnected">#64DD17</color>
+    <color name="colorModuleConnected">#7ED321</color>
+    <color name="colorModuleConnectedNight">#48a100</color>
     <color name="colorModuleConnecting">#FFAB00</color>
     <color name="colorModuleDisconnected">#FFAB00</color>
     <color name="colorModuleNotActive">#cfd8dc</color>
