@@ -51,4 +51,8 @@ build
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
-demo_app
+app
+app_design
+app_configuration
+app_utilities
+
