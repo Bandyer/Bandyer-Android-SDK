@@ -5,6 +5,7 @@
 package com.bandyer.app_utilities.activities
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -26,10 +27,12 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior
 import kotlinx.android.synthetic.main.activity_collapsing_toolbar.*
+import kotlin.math.abs
 
 abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
 
     private var appTitle: String? = null
+    private var collapsedTitle: String? = null
 
     private val textSizeH1 by lazy { resources.getDimensionPixelSize(R.dimen.text_h1) }
     private val textSizeH3 by lazy { resources.getDimensionPixelSize(R.dimen.text_h3) }
@@ -44,7 +47,6 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
 
     @SuppressLint("SetTextI18n")
     override fun setContentView(layoutResID: Int) {
-        appTitle = String.format(resources.getString(R.string.app_name_with_version), "v" + BuildConfig.VERSION_NAME)
         val inflater = LayoutInflater.from(this)
         val container = inflater.inflate(R.layout.activity_collapsing_toolbar, null)
         val coordinatorLayout: CoordinatorLayout = container.findViewById(R.id.main_view)
@@ -56,6 +58,7 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
         customizeSwipeRefreshLayout()
         customizeAppBarLayout()
         refreshUsersView.setOnRefreshListener(this)
+        appbar_toolbar?.setExpanded(isPortrait())
     }
 
     protected fun setRefreshing(refresh: Boolean) {
@@ -67,13 +70,17 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
         window.setBackgroundDrawable(ColorDrawable(Color.WHITE))
     }
 
-    fun setCollapsingToolbarTitle(title: String) {
-        val envTextView = SpannableString("\n@${ConfigurationPrefsManager.getConfiguration(this).environment}\n")
+    fun setCollapsingToolbarTitle(portraitTitle: String, landscapeTitle: String) {
+        val environment = ConfigurationPrefsManager.getConfiguration(this).environment
+        appTitle = String.format(resources.getString(R.string.app_name_with_version), "v" + BuildConfig.VERSION_NAME)
+        val envTextView = SpannableString("\n@${environment}\n")
         envTextView.setSpan(AbsoluteSizeSpan(textSizeH4), 0, envTextView.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
-        val infoSpan = SpannableString("\n$title")
+        val infoSpan = SpannableString("\n$portraitTitle")
         infoSpan.setSpan(AbsoluteSizeSpan(textSizeH3), 0, infoSpan.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
         val collapsingToolbarTitle = TextUtils.concat(titleSpan, envTextView, infoSpan)
         info.text = collapsingToolbarTitle
+        this@CollapsingToolbarActivity.collapsedTitle = "$appTitle  @$environment | $landscapeTitle"
+        collapsing_toolbar.title = if (isPortrait()) appTitle else collapsedTitle
     }
 
     private fun customizeSwipeRefreshLayout() {
@@ -86,15 +93,14 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
 
     private fun customizeAppBarLayout() {
         setSupportActionBar(toolbar)
-        toolbar.title = appTitle
         supportActionBar!!.setHomeButtonEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         supportActionBar!!.setDisplayShowHomeEnabled(false)
         appbar_toolbar.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout: AppBarLayout, verticalOffset: Int ->
             if (refreshUsersView.isRefreshing && verticalOffset == 0) refreshUsersView.isRefreshing = false
             refreshUsersView.isEnabled = verticalOffset == 0
-            if (Math.abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
-                collapsing_toolbar.title = appTitle
+            if (abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
+                collapsing_toolbar.title = if (isPortrait()) appTitle else collapsedTitle
                 toolbar.background = ColorDrawable(ContextCompat.getColor(this, R.color.colorPrimary))
             } else {
                 collapsing_toolbar.title = ""
@@ -111,4 +117,10 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
         return super.onKeyDown(keyCode, event)
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        appbar_toolbar?.setExpanded(isPortrait())
+    }
+
+    private fun isPortrait() = resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE
 }

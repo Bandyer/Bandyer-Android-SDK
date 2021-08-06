@@ -214,7 +214,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         String userAlias = LoginManager.getLoggedUser(this);
 
         // customize toolbar
-        setCollapsingToolbarTitle(String.format(getResources().getString(R.string.pick_users), userAlias));
+        setCollapsingToolbarTitle(String.format(getResources().getString(R.string.pick_users), userAlias), userAlias);
 
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());

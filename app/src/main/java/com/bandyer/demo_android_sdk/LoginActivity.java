@@ -78,7 +78,8 @@ public class LoginActivity extends CollapsingToolbarActivity implements SearchVi
         if (!BuildConfig.DEBUG) header.setImageResource(R.drawable.landing_image);
 
         // customize toolbar
-        setCollapsingToolbarTitle(getResources().getString(R.string.login_title));
+        String title = getResources().getString(R.string.login_title);
+        setCollapsingToolbarTitle(title, title);
 
         // set the recyclerView
         binding.listUsers.setAdapter(fastAdapter);
