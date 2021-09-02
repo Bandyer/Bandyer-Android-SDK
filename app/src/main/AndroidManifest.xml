@@ -56,12 +56,12 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="sandbox.bandyer.com"
+                    android:host="*.bandyer.com"
                     android:pathPrefix="/connect/rest-call-handler/"
                     android:scheme="https" />
 
                 <data
-                    android:host="sandbox.bandyer.com"
+                    android:host="*.bandyer.com"
                     android:pathPrefix="/connect/direct-rest-call-handler/"
                     android:scheme="https" />
             </intent-filter>
