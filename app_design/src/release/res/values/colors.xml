@@ -4,13 +4,14 @@
   -->
 
 <resources>
-    <item name="colorPrimary" type="color">#0c2e41</item>
-    <item name="colorPrimaryDark" type="color">#00031b</item>
-    <item name="colorPrimaryLight" type="color">#3a576c</item>
-    <item name="colorSecondary" type="color">#009fe3</item>
+    <item name="colorPrimary" type="color">#D80D30</item>
+    <item name="colorPrimaryDark" type="color">#9e000a</item>
+    <item name="colorPrimaryLight" type="color">#ff565a</item>
+    <item name="colorSecondary" type="color">#D80D30</item>
     <item name="colorOnPrimary" type="color">@android:color/white</item>
     <item name="colorOnSecondary" type="color">@android:color/white</item>
     <item name="colorPrimaryVariant" type="color">#00031b</item>
-    <item name="colorSecondaryVariant" type="color">#009fe3</item>
+    <item name="colorSecondaryVariant" type="color">#D80D30</item>
     <color name="colorAccent">@color/colorSecondary</color>
+
 </resources>

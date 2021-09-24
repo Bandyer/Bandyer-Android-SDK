@@ -6,8 +6,8 @@
     <color name="colorPrimary">#666666</color>
     <color name="colorPrimaryDark">#3c3c3c</color>
     <color name="colorPrimaryLight">#949494</color>
-    <color name="colorSecondary">#009FE3</color>
-    <color name="colorSecondary_night">#0071B1</color>
+    <color name="colorSecondary">#D80D30</color>
+    <color name="colorSecondary_night">#9E000A</color>
     <color name="colorOnPrimary">@android:color/white</color>
     <color name="colorOnSecondary">@android:color/white</color>
     <color name="colorPrimaryVariant">#3c3c3c</color>
