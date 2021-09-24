@@ -5,6 +5,7 @@ com.bandyer.android_sdk
 com.bandyer.android_sdk.call
 com.bandyer.android_sdk.call.model
 com.bandyer.android_sdk.call.notification
+com.bandyer.android_sdk.call.ui
 com.bandyer.android_sdk.chat
 com.bandyer.android_sdk.chat.model
 com.bandyer.android_sdk.chat.notification

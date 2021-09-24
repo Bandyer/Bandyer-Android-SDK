@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TiltController - bandyer-android-sdk</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.call.ui</a>&nbsp;/&nbsp;<a href="./index.html">TiltController</a><br/>
+<br/>
+<h1>TiltController</h1>
+<code><span class="identifier">@RequiresApi</span><span class="symbol">(</span>23<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">TiltController</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/hardware/SensorEventListener.html"><span class="identifier">SensorEventListener</span></a></code>
+<p>TiltController used to scroll a recyclerview using inputs from SensorManager.</p>
+<h3>Parameters</h3>
+<p><a name="ctx"></a>
+<code>ctx</code> - The context</p>
+<p><a name="listener"></a>
+<code>listener</code> - The listener for tilt events.</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-tilt-listener/index.html">TiltListener</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TiltListener</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>TiltController used to scroll a recyclerview using inputs from SensorManager.</p>
+<code><span class="identifier">TiltController</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.call.ui.TiltController$<init>(android.content.Context, com.bandyer.android_sdk.call.ui.TiltController.TiltListener)/ctx">ctx</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.call.ui.TiltController$<init>(android.content.Context, com.bandyer.android_sdk.call.ui.TiltController.TiltListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<span class="identifier">TiltListener</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="release-all-sensors.html">releaseAllSensors</a></h4>
+</td>
+<td>
+<p>Release the sensors when they are no longer used</p>
+<code><span class="keyword">fun </span><span class="identifier">releaseAllSensors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="request-all-sensors.html">requestAllSensors</a></h4>
+</td>
+<td>
+<p>Request access to sensors</p>
+<code><span class="keyword">fun </span><span class="identifier">requestAllSensors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
