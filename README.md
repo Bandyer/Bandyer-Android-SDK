@@ -25,7 +25,7 @@
 
 ## Overview
 
-**Bandyer Android SDK** makes it easy to add video conference and chat communication to mobile apps.
+**Kaleyra Video Android SDK** makes it easy to add video conference and chat communication to mobile apps.
 
 **Even though this sdk encloses strongly the UI/UX, it is fully styleable through default Android style system.**
 
