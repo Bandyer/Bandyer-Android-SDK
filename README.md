@@ -1,7 +1,7 @@
-# Bandyer Android SDK
+# Bandyer Android SDK - (now Kaleyra Video Android SDK)
 
 <p align="center">
-<img src="img/bandyer.png" alt="Bandyer" title="Bandyer" />
+<img src="img/kaleyra.png" alt="Kaleyra" title="Kaleyra" />
 </p>
 
 
@@ -9,14 +9,14 @@
 [![Twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=bandyersrl)
 
 
-**Bandyer** is a young innovative startup that enables audio/video communication and collaboration from any platform and browser! Through its WebRTC architecture, it makes video communication simple and punctual.
+**Kaleyra video** enables audio/video communication and collaboration from any platform and browser! Through its WebRTC architecture, it makes video communication simple and punctual.
 
 
 ---
 
 . **[Overview](#overview)** .
 **[Features](#features)** .
-**[News](#news)** .
+**[News](#news-1)** .
 **[Documentation](#documentation)** .
 **[Pricing](#other)** .
 **[Credits](#credits)** .
@@ -33,9 +33,9 @@
 
 ## Requirements
 
-Bandyer Android SDK is supported from API level 21 (Android 5.0 Lollipop).
+Supported API level 21+ (Android 5.0 Lollipop).
 
-**Bandyer Android SDK requires compileOptions for Java8**
+**Requires compileOptions for Java8**
 ```java
 android {
     compileOptions {
