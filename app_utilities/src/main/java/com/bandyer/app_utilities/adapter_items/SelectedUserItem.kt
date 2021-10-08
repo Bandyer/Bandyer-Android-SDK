@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.selected_user_item_layout.view.*
  */
 class SelectedUserItem(@JvmField val userAlias: String,@JvmField val position: Int) : AbstractItem<SelectedUserItem.ViewHolder>() {
 
-    override var identifier: Long = position.toLong()
+    override var identifier: Long = userAlias.hashCode().toLong()
     override val type: Int = R.id.user_selected_item
     override val layoutRes: Int = R.layout.selected_user_item_layout
     override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)

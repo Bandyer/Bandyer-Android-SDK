@@ -563,7 +563,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         SelectExtension<UserSelectionItem> selectExtension = fastAdapter.getExtension(SelectExtension.class);
         selectExtension.deselect(position);
         calleeSelected.remove(userAlias);
-        selectedUsersItemAdapter.removeByIdentifier(position);
+        selectedUsersItemAdapter.removeByIdentifier(userAlias.hashCode());
         if (selectedUsersItemAdapter.getAdapterItemCount() == 0)
             selectedUsersItemAdapter.add(new NoUserSelectedItem());
     }
