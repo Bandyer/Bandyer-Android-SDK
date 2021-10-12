@@ -95,7 +95,7 @@
         android:onClick="onChatClicked"
         app:layout_anchor="@+id/spacer"
         app:layout_anchorGravity="start|left|bottom"
-        app:maxImageSize="56dp"
+        app:maxImageSize="32dp"
         app:tint="#ffffff" />
 
     <View
@@ -137,7 +137,7 @@
         app:fabSize="normal"
         app:layout_anchor="@+id/content"
         app:layout_anchorGravity="bottom|right|end"
-        app:maxImageSize="40dp"
+        app:maxImageSize="32dp"
         app:tint="#ffffff" />
 
 </merge>
