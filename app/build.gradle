@@ -15,7 +15,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.triplet.play:com.github.triplet.play.gradle.plugin:2.8.1'
-        classpath 'com.google.firebase:firebase-appdistribution-gradle:2.1.3'
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:2.2.0'
         classpath 'com.huawei.agconnect:agcp:1.4.2.300'
         classpath "ru.cian:huawei-publish-gradle-plugin:1.2.1"
     }
@@ -28,15 +28,15 @@ apply plugin: 'com.google.firebase.appdistribution'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'ru.cian.huawei-publish'
 
-def leakCanaryVersion = '2.4'
-def jUnitLibVersion = '4.13'
+def leakCanaryVersion = '2.7'
+def jUnitLibVersion = '4.13.2'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
-def work_version = '2.3.4'
-def bandyerLibVersion = "2.2.14"
+def work_version = '2.7.0'
+def bandyerLibVersion = "2.2.15"
 def bandyerExtensionUsbCamera = "1.1.8"
 def pushy_version = '1.0.56'
-def huawei_push_version = '5.0.4.302'
+def huawei_push_version = '6.1.0.300'
 def androidX = '1.1.0'
 
 android {

@@ -36,6 +36,7 @@
             android:name=".MainActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTask"
+            android:exported="true"
             android:theme="@style/BaseTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
