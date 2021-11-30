@@ -53,15 +53,10 @@ android {
 - Chat
 - Collaborative whiteboard 
 - File sharing in call
-- Screen sharing in call
+- Screen sharing in call:
+	- App only
+	- System wide
 - Call Recording
-
-
-## News 2.+
-- 2021-04-06: Bandyer-Android-SDK 2.1.1 has been released. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v2.1.1).
-
-## News 1.+
-- 2021-01-08: Bandyer-Android-SDK 1.5.14 has been released. Fixed minor bugs. For other changes read the [release notes](https://github.com/Bandyer/Bandyer-Android-SDK/releases/tag/v1.5.14).
 
 ## Documentation
 
@@ -153,8 +148,6 @@ android {
 - [Android-weak-handler](https://github.com/badoo/android-weak-handler) by Badoo
 - [SiliCompressor](https://github.com/Tourenathan-G5organisation/SiliCompressor) by Tourenathan-G5organisation
 - [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) by permissions-dispatcher
-- [Matisse](https://github.com/zhihu/Matisse) by zhihu
 - [Twilio Programmable Chat](https://www.twilio.com/chat) by twilio
-- [Retrofit](https://github.com/square/retrofit) by square
 - [Picasso](https://github.com/square/picasso) by square
 - [FastAdapter](https://github.com/mikepenz/FastAdapter) by mikepenz
