@@ -64,6 +64,7 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
         screen_sharing!!.isChecked = configuration.withScreenSharingCapability
         call_recording!!.isChecked = configuration.withRecordingEnabled
         back_camera_as_default!!.isChecked = configuration.withBackCameraAsDefault
+        call_rating!!.isChecked = configuration.withCallRating
         disable_proximity_sensor!!.apply {
             this.isChecked = if (Utils.isGoogleGlassDevice()) true else configuration.withProximitySensorDisabled
             this.isEnabled = !Utils.isGoogleGlassDevice()
@@ -85,6 +86,7 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
                 call_recording.setValue(false)
                 back_camera_as_default.setValue(false)
                 disable_proximity_sensor.setValue(false)
+                call_rating.setValue(false)
             }
         })
         skip_customization.bindToConfigurationProperty(configuration, configuration::skipCustomization)
@@ -96,6 +98,7 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
         back_camera_as_default.bindToConfigurationProperty(configuration, configuration::withBackCameraAsDefault, simplifiedVersionChecker)
         disable_proximity_sensor.bindToConfigurationProperty(configuration, configuration::withProximitySensorDisabled, simplifiedVersionChecker)
         mock_user_authentication_request.bindToConfigurationProperty(configuration, configuration::withMockAuthentication, simplifiedVersionChecker)
+        call_rating.bindToConfigurationProperty(configuration, configuration::withCallRating, simplifiedVersionChecker)
         default_call_type.bindToConfigurationProperty(configuration, configuration::defaultCallType)
     }
 
@@ -105,7 +108,8 @@ class DefaultCallSettingsActivity : ScrollAwareToolbarActivity() {
             screen_sharing.isChecked &&
             !call_recording.isChecked &&
             !back_camera_as_default.isChecked &&
-            !disable_proximity_sensor.isChecked
+            !disable_proximity_sensor.isChecked &&
+            !call_rating.isChecked
 
     override fun onBackPressed() {
         super.onBackPressed()

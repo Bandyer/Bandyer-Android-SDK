@@ -97,6 +97,12 @@
             android:layout_height="wrap_content"
             app:title="@string/disable_proximity_sensor" />
 
+        <com.bandyer.app_configuration.external_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/call_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/display_call_rating" />
+
     </com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference>
 
     <com.bandyer.app_configuration.external_configuration.views.ConfigurationCategoryPreference

@@ -164,6 +164,18 @@ object DefaultCallSettingsManager {
     }
 
     /**
+     * Utility to return if the call rating displaying is requested on call end.
+     *
+     * @param context Activity or App
+     * @return true if enabled, false otherwise
+     */
+    @JvmStatic
+    fun isWithCallRating(context: Context): Boolean {
+        val prefs = context.applicationContext.getSharedPreferences(CALL_OPTIONS_PREFS_NAME, Context.MODE_PRIVATE)
+        return prefs.getBoolean(context.getString(R.string.display_call_rating), false)
+    }
+
+    /**
      * Utility to return if the back camera as default option is enabled by default.
      *
      * @param context Activity or App
@@ -195,6 +207,17 @@ object DefaultCallSettingsManager {
     fun setProximitySensorDisabled(context: Context, enabled: Boolean) {
         val prefs = context.applicationContext.getSharedPreferences(CALL_OPTIONS_PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().putBoolean(context.getString(R.string.disable_proximity_sensor), enabled).commit()
+    }
+
+    /**
+     * Utility to set if the call rating displaying is requested.
+     *
+     * @param context Activity or App
+     */
+    @SuppressLint("ApplySharedPref")
+    fun setWithCallRating(context: Context, enabled: Boolean) {
+        val prefs = context.applicationContext.getSharedPreferences(CALL_OPTIONS_PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putBoolean(context.getString(R.string.display_call_rating), enabled).commit()
     }
 
     /**

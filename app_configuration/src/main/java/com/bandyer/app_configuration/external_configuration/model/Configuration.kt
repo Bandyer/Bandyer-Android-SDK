@@ -36,6 +36,7 @@ data class Configuration (
     var withRecordingEnabled: Boolean = false,
     var withBackCameraAsDefault: Boolean = false,
     var withProximitySensorDisabled: Boolean = false,
+    var withCallRating: Boolean = false,
     var withMockAuthentication: Boolean = false,
     var firebaseProjectId: String? = null,
     var firebaseMobileAppId: String? = null,
@@ -86,6 +87,7 @@ data class Configuration (
         if (firebaseApiKey != other.firebaseApiKey) return false
         if (hmsAppId != other.hmsAppId) return false
         if (skipCustomization != other.skipCustomization) return false
+        if (withCallRating != other.withCallRating) return false
 
         return true
     }
@@ -112,6 +114,7 @@ data class Configuration (
         result = 31 * result + withRecordingEnabled.hashCode()
         result = 31 * result + withBackCameraAsDefault.hashCode()
         result = 31 * result + withProximitySensorDisabled.hashCode()
+        result = 31 * result + withCallRating.hashCode()
         result = 31 * result + withMockAuthentication.hashCode()
         result = 31 * result + (firebaseProjectId?.hashCode() ?: 0)
         result = 31 * result + (firebaseMobileAppId?.hashCode() ?: 0)

@@ -26,6 +26,7 @@ import com.bandyer.android_sdk.tool_configuration.*
 import com.bandyer.app_configuration.external_configuration.model.Configuration
 import com.bandyer.app_utilities.R
 import com.bandyer.app_utilities.custom_views.CallOptionsDialogView.CallOptionsView
+import kotlinx.android.synthetic.main.call_options_container_layout.*
 import java.util.*
 
 class CustomConfigurationDialog() : DialogFragment() {
@@ -155,7 +156,13 @@ class CustomConfigurationDialog() : DialogFragment() {
                     if (optionView.isWhiteboardChecked) WhiteboardConfiguration() else null),
                     getOptions(optionView))
 
-    private fun getOptions(optionView: CallOptionsView): CallOptionSet = CallOptions(optionView.isRecordingChecked, optionView.isBackCameraChecked, optionView.isProximitySensorDisabled)
+    private fun getOptions(optionView: CallOptionsView): CallOptionSet {
+        return CallOptions(
+            recordingEnabled = optionView.isRecordingChecked,
+            backCameraAsDefault = optionView.isBackCameraChecked,
+            disableProximitySensor = optionView.isProximitySensorDisabled,
+            callRating = optionView.isCallRatingChecked)
+    }
 
     companion object {
 

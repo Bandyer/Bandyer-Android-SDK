@@ -184,7 +184,9 @@ public class App extends MultiDexApplication {
         Configuration configuration = getConfiguration();
         return new IncomingCallOptions(
                 configuration.getWithBackCameraAsDefault(),
-                configuration.getWithProximitySensorDisabled());
+                configuration.getWithProximitySensorDisabled(),
+                false,
+                configuration.getWithCallRating());
     }
 
     private CallNotificationListener getCallNotificationListener() {

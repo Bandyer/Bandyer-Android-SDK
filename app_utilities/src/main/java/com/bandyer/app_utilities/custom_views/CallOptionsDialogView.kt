@@ -259,6 +259,7 @@ class CallOptionsDialogView(context: Context, customConfigurationDialogType: Cus
             if (configuration.withRecordingEnabled) setChecked(R.id.call_options_recording, true)
             if (configuration.withBackCameraAsDefault) setChecked(R.id.call_options_back_camera, true)
             if (configuration.withProximitySensorDisabled) setChecked(R.id.call_options_disable_proximity_sensor, true)
+            if (configuration.withCallRating) setChecked(R.id.call_options_call_rating, true)
         }
 
         private fun enableOptionClickListeners() {
@@ -274,6 +275,7 @@ class CallOptionsDialogView(context: Context, customConfigurationDialogType: Cus
             addCheckedChangeListener(R.id.call_options_chat, checkedChangeListener)
             addCheckedChangeListener(R.id.call_options_back_camera, checkedChangeListener)
             addCheckedChangeListener(R.id.call_options_disable_proximity_sensor, checkedChangeListener)
+            addCheckedChangeListener(R.id.call_options_call_rating, checkedChangeListener)
         }
 
         private fun addCheckedChangeListener(id: Int, checkedChangeListener: CompoundButton.OnCheckedChangeListener) {
@@ -329,6 +331,9 @@ class CallOptionsDialogView(context: Context, customConfigurationDialogType: Cus
 
         val isProximitySensorDisabled: Boolean
             get() = isChecked(R.id.call_options_disable_proximity_sensor)
+
+        val isCallRatingChecked: Boolean
+            get() = isChecked(R.id.call_options_call_rating)
 
         val isChecked: Boolean
             get() = expansionHeader!!.titleView.isChecked
