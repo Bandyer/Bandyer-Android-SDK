@@ -148,6 +148,5 @@ android {
 - [Android-weak-handler](https://github.com/badoo/android-weak-handler) by Badoo
 - [SiliCompressor](https://github.com/Tourenathan-G5organisation/SiliCompressor) by Tourenathan-G5organisation
 - [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) by permissions-dispatcher
-- [Twilio Programmable Chat](https://www.twilio.com/chat) by twilio
 - [Picasso](https://github.com/square/picasso) by square
 - [FastAdapter](https://github.com/mikepenz/FastAdapter) by mikepenz
