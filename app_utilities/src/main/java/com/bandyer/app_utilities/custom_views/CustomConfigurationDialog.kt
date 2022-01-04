@@ -161,7 +161,7 @@ class CustomConfigurationDialog() : DialogFragment() {
             recordingEnabled = optionView.isRecordingChecked,
             backCameraAsDefault = optionView.isBackCameraChecked,
             disableProximitySensor = optionView.isProximitySensorDisabled,
-            callRating = optionView.isCallRatingChecked)
+            feedbackEnabled = optionView.isFeedbackChecked)
     }
 
     companion object {

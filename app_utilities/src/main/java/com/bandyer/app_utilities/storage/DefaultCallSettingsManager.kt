@@ -164,15 +164,15 @@ object DefaultCallSettingsManager {
     }
 
     /**
-     * Utility to return if the call rating displaying is requested on call end.
+     * Utility to return if the call feedback displaying is requested on call end.
      *
      * @param context Activity or App
      * @return true if enabled, false otherwise
      */
     @JvmStatic
-    fun isWithCallRating(context: Context): Boolean {
+    fun isCallFeedbackEnabled(context: Context): Boolean {
         val prefs = context.applicationContext.getSharedPreferences(CALL_OPTIONS_PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getBoolean(context.getString(R.string.display_call_rating), false)
+        return prefs.getBoolean(context.getString(R.string.display_feedback_ui), false)
     }
 
     /**
@@ -210,14 +210,14 @@ object DefaultCallSettingsManager {
     }
 
     /**
-     * Utility to set if the call rating displaying is requested.
+     * Utility to set if the call feedback displaying is requested.
      *
      * @param context Activity or App
      */
     @SuppressLint("ApplySharedPref")
-    fun setWithCallRating(context: Context, enabled: Boolean) {
+    fun setCallFeedbackEnabled(context: Context, enabled: Boolean) {
         val prefs = context.applicationContext.getSharedPreferences(CALL_OPTIONS_PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().putBoolean(context.getString(R.string.display_call_rating), enabled).commit()
+        prefs.edit().putBoolean(context.getString(R.string.display_feedback_ui), enabled).commit()
     }
 
     /**

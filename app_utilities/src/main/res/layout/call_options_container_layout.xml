@@ -103,11 +103,11 @@
                     android:text="@string/disable_proximity_sensor" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/call_options_call_rating"
+                    android:id="@+id/call_options_feedback"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space16"
-                    android:text="@string/display_call_rating" />
+                    android:text="@string/display_feedback_ui" />
 
             </LinearLayout>
 

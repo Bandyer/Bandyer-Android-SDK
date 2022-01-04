@@ -42,7 +42,7 @@
     <string name="no_user_found" translatable="false">No user found.</string>
 
     <string name="join_call_url" translatable="false">Join call in Bandyer</string>
-    <string name="biometric_notification_title">User authentication request.</string>
-    <string name="biometric_notification_description">Please click on notification to verify your identity.</string>
+    <string name="biometric_notification_title" translatable="false">User authentication request.</string>
+    <string name="biometric_notification_description" translatable="false">Please click on notification to verify your identity.</string>
 
 </resources>

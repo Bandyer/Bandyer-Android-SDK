@@ -120,7 +120,7 @@
     <string name="call_options_mock_user_authentication_request_summary" translatable="false">The biometric mocked request will be triggered after 10s that the call has been established.</string>
     <string name="back_camera_as_default_if_available" translatable="false">Back camera as default (if available)</string>
     <string name="disable_proximity_sensor" translatable="false">Disable proximity sensor</string>
-    <string name="display_call_rating" translatable="false">Display call rating on call ended</string>
+    <string name="display_feedback_ui" translatable="false">Display call feedback UI on call ended</string>
     <string name="screen_sharing_requires_api_21" translatable="false">Screen sharing (requires API 21)</string>
     <string name="chat_requires_api_19" translatable="false">Chat (requires API 19)</string>
     <string name="whiteboard_requires_api_19" translatable="false">Whiteboard (requires API 19)</string>

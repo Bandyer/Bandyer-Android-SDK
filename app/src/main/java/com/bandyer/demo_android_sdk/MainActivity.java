@@ -364,10 +364,11 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerSD
         if (appConfiguration.getWithWhiteboardCapability()) whiteboardConfiguration = new WhiteboardConfiguration();
 
 
-        CallOptions callOptions = new CallOptions(
-                appConfiguration.getWithRecordingEnabled(),
-                appConfiguration.getWithBackCameraAsDefault(),
-                appConfiguration.getWithProximitySensorDisabled());
+        CallOptions callOptions = new CallOptions();
+        if (appConfiguration.getWithRecordingEnabled()) callOptions.withRecordingEnabled();
+        if (appConfiguration.getWithBackCameraAsDefault()) callOptions.withBackCameraAsDefault();
+        if (appConfiguration.getWithProximitySensorDisabled()) callOptions.getDisableProximitySensor();
+        if (appConfiguration.getWithFeedbackEnabled()) callOptions.withFeedbackEnabled();
 
         CallConfiguration joinCallConfiguration = new CallConfiguration(
                 new CallConfiguration.CapabilitySet(chatConfiguration, fileShareConfiguration, screenShareConfiguration, whiteboardConfiguration),

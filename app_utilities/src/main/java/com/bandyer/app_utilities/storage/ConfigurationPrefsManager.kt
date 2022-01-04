@@ -85,7 +85,7 @@ object ConfigurationPrefsManager {
             DefaultCallSettingsManager.isScreenSharingEnabled(context),
             DefaultCallSettingsManager.isCallRecordingEnabled(context),
             DefaultCallSettingsManager.isBackCameraAsDefaultEnabled(context),
-            DefaultCallSettingsManager.isWithCallRating(context),
+            DefaultCallSettingsManager.isCallFeedbackEnabled(context),
             DefaultCallSettingsManager.isProximitySensorDisabled(context),
             LegacyConfigurationPrefsManager.isMockUserAuthenticationRequest(context),
             LegacyConfigurationPrefsManager.getFirebaseProjectId(context),
