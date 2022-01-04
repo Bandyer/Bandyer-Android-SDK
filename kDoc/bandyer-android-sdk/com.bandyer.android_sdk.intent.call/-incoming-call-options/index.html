@@ -21,7 +21,7 @@ v1.3.0</p>
 </td>
 <td>
 <p>Constructor for Incoming Call Options</p>
-<code><span class="identifier">IncomingCallOptions</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/backCameraAsDefault">backCameraAsDefault</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/disableProximitySensor">disableProximitySensor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/autoAnswer">autoAnswer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/callRating">callRating</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span></code></td>
+<code><span class="identifier">IncomingCallOptions</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/backCameraAsDefault">backCameraAsDefault</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/disableProximitySensor">disableProximitySensor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/autoAnswer">autoAnswer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.call.IncomingCallOptions$<init>(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/feedbackEnabled">feedbackEnabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -46,19 +46,19 @@ v1.3.0</p>
 </tr>
 <tr>
 <td>
-<h4><a href="call-rating.html">callRating</a></h4>
-</td>
-<td>
-<p>Call rating on call ended</p>
-<code><span class="keyword">var </span><span class="identifier">callRating</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
 <h4><a href="disable-proximity-sensor.html">disableProximitySensor</a></h4>
 </td>
 <td>
 <p>Disable proximity sensor</p>
 <code><span class="keyword">var </span><span class="identifier">disableProximitySensor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="feedback-enabled.html">feedbackEnabled</a></h4>
+</td>
+<td>
+<p>Feedback UI on call ended</p>
+<code><span class="keyword">var </span><span class="identifier">feedbackEnabled</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
 </tr>
 <tr>
 <td>
@@ -88,6 +88,14 @@ v1.3.0</p>
 <td>
 <p>This functions adds the option to use back camera as default.</p>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.tool_configuration/-call-option-set/index.html"><span class="identifier">CallOptionSet</span></a><span class="symbol">&gt;</span> <span class="identifier">withBackCameraAsDefault</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="with-feedback-enabled.html">withFeedbackEnabled</a></h4>
+</td>
+<td>
+<p>This functions enables the displaying of the call feedback UI on call ended.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.tool_configuration/-call-option-set/index.html"><span class="identifier">CallOptionSet</span></a><span class="symbol">&gt;</span> <span class="identifier">withFeedbackEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
 </tr>
 <tr>
 <td>
