@@ -36,11 +36,6 @@
 -keep interface org.webrtc.** { *; }
 -keep enum org.webrtc.** { *; }
 
-# Twilio library used for Chat communication
--keep class com.twilio.** { *; }
--keep interface com.twilio.** { *; }
--keep enum com.twilio.** { *; }
-
 # Pushy
 -dontwarn me.pushy.**
 -keep class me.pushy.** { *; }
