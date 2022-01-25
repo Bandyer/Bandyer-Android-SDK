@@ -49,9 +49,10 @@
         <receiver
             android:name=".receivers.AuthenticationRequestNotificationClickedReceiver"
             android:enabled="true"
-            android:exported="false" /> <!-- Pushy Update Receiver -->
-        <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
+            android:exported="false" />
 
+        <!-- Pushy Update Receiver -->
+        <!-- Do not modify - internal BroadcastReceiver that restarts the listener service -->
         <receiver
             android:name="me.pushy.sdk.receivers.PushyUpdateReceiver"
             android:exported="false">
@@ -70,19 +71,21 @@
             </intent-filter>
         </receiver>
 
-        <!-- SERVICES -->
-
         <!-- Pushy Socket Service -->
         <!-- Do not modify - internal service -->
         <service
-            android:exported="true"
-            android:name="me.pushy.sdk.services.PushySocketService" /> <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
+            android:name="me.pushy.sdk.services.PushySocketService"
+            android:exported="false"
+            android:stopWithTask="false" />
 
+        <!-- Pushy Job Service (added in Pushy SDK 1.0.35) -->
         <!-- Do not modify - internal service -->
         <service
             android:name="me.pushy.sdk.services.PushyJobService"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:stopWithTask="false" />
+
+        <!-- End Pushy Declarations -->
 
     </application>
 

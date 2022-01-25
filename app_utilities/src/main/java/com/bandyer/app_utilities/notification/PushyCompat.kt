@@ -76,6 +76,7 @@ open class PushyCompat : BroadcastReceiver() {
             val configuration = ConfigurationPrefsManager.getConfiguration(context)
             unregisterDeviceForPushNotification(loggedUser, devicePushToken, configuration.apiKey!!, configuration.appId!!, configuration.environment!!)
             Pushy.toggleNotifications(false, context)
+            Pushy.unregister(context)
             // Every unregister will generate a new token, resulting in a new device usage
             // Pushy.unregister(context);
         }

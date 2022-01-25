@@ -20,7 +20,7 @@ import com.bandyer.app_utilities.notification.PushyCompat;
 /**
  * @author kristiyan
  */
-class PushyNotificationService extends PushyCompat {
+public class PushyNotificationService extends PushyCompat {
 
     private static final String TAG = PushyNotificationService.class.getSimpleName();
 
