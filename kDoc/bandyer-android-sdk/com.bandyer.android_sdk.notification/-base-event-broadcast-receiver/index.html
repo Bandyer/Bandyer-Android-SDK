@@ -1,81 +1,411 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>BaseEventBroadcastReceiver - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.notification</a>&nbsp;/&nbsp;<a href="./index.html">BaseEventBroadcastReceiver</a><br/>
-<br/>
-<h1>BaseEventBroadcastReceiver</h1>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html"><span class="identifier">BroadcastReceiver</span></a></code>
-<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<code><span class="identifier">BaseEventBroadcastReceiver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.notification.BaseEventBroadcastReceiver$<init>(kotlin.String)/action">action</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="action.html">action</a></h4>
-</td>
-<td>
-<p>the action that this receiver handles</p>
-<code><span class="keyword">val </span><span class="identifier">action</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="context.html">context</a></h4>
-</td>
-<td>
-<p>Application context</p>
-<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">context</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Companion Object Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-t-a-g.html">TAG</a></h4>
-</td>
-<td>
-<p>BaseEventBroadcastReceiver tag identifier</p>
-<code><span class="keyword">const</span> <span class="keyword">val </span><span class="identifier">TAG</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Inheritors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.call.notification/-call-event-broadcast-receiver/index.html">CallEventBroadcastReceiver</a></h4>
-</td>
-<td>
-<p>A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CallEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseEventBroadcastReceiver</span></a><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.call/-call-observer/index.html"><span class="identifier">CallObserver</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.chat.notification/-chat-event-broadcast-receiver/index.html">ChatEventBroadcastReceiver</a></h4>
-</td>
-<td>
-<p>A broadcast receiver that receive broadcast when a chat starts, ends or ends with error.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ChatEventBroadcastReceiver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseEventBroadcastReceiver</span></a><span class="symbol">, </span><a href="../../com.bandyer.android_sdk.chat/-chat-observer.html"><span class="identifier">ChatObserver</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BaseEventBroadcastReceiver</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.notification/BaseEventBroadcastReceiver///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.notification</a>/<a href="index.html">BaseEventBroadcastReceiver</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Base</span><wbr></wbr><span>Event</span><wbr></wbr><span>Broadcast</span><wbr></wbr><span><span>Receiver</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract class <a href="index.html">BaseEventBroadcastReceiver</a>(action: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>) : <a href="https://developer.android.com/reference/kotlin/android/content/BroadcastReceiver.html">BroadcastReceiver</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A broadcast receiver that receive broadcast when a call starts, ends or ends with error.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-1627999584%2FConstructors%2F-799625728" anchor-label="BaseEventBroadcastReceiver" id="-1627999584%2FConstructors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-base-event-broadcast-receiver.html">BaseEventBroadcastReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1627999584%2FConstructors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="-base-event-broadcast-receiver.html">BaseEventBroadcastReceiver</a>(action: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="1476012374%2FClasslikes%2F-799625728" anchor-label="Companion" id="1476012374%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-companion/index.html"><span><span>Companion</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1476012374%2FClasslikes%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">object <a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">BaseEventBroadcastReceiver instance</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-1578158536%2FFunctions%2F-799625728" anchor-label="abortBroadcast" id="-1578158536%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1578158536%2FFunctions%2F-799625728"><span>abort</span><wbr></wbr><span><span>Broadcast</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1578158536%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-1578158536%2FFunctions%2F-799625728">abortBroadcast</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-547655405%2FFunctions%2F-799625728" anchor-label="clearAbortBroadcast" id="-547655405%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-547655405%2FFunctions%2F-799625728"><span>clear</span><wbr></wbr><span>Abort</span><wbr></wbr><span><span>Broadcast</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-547655405%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-547655405%2FFunctions%2F-799625728">clearAbortBroadcast</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1852574954%2FFunctions%2F-799625728" anchor-label="getAbortBroadcast" id="1852574954%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1852574954%2FFunctions%2F-799625728"><span>get</span><wbr></wbr><span>Abort</span><wbr></wbr><span><span>Broadcast</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1852574954%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#1852574954%2FFunctions%2F-799625728">getAbortBroadcast</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2066178064%2FFunctions%2F-799625728" anchor-label="getDebugUnregister" id="-2066178064%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-2066178064%2FFunctions%2F-799625728"><span>get</span><wbr></wbr><span>Debug</span><wbr></wbr><span><span>Unregister</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2066178064%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-2066178064%2FFunctions%2F-799625728">getDebugUnregister</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1855658543%2FFunctions%2F-799625728" anchor-label="getResultCode" id="-1855658543%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1855658543%2FFunctions%2F-799625728"><span>get</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Code</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1855658543%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-1855658543%2FFunctions%2F-799625728">getResultCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="485630644%2FFunctions%2F-799625728" anchor-label="getResultData" id="485630644%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#485630644%2FFunctions%2F-799625728"><span>get</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Data</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="485630644%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#485630644%2FFunctions%2F-799625728">getResultData</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1243983328%2FFunctions%2F-799625728" anchor-label="getResultExtras" id="1243983328%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1243983328%2FFunctions%2F-799625728"><span>get</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Extras</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1243983328%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#1243983328%2FFunctions%2F-799625728">getResultExtras</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="478464125%2FFunctions%2F-799625728" anchor-label="goAsync" id="478464125%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#478464125%2FFunctions%2F-799625728"><span>go</span><wbr></wbr><span><span>Async</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="478464125%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#478464125%2FFunctions%2F-799625728">goAsync</a>(): <a href="https://developer.android.com/reference/kotlin/android/content/BroadcastReceiver.PendingResult.html">BroadcastReceiver.PendingResult</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-448034677%2FFunctions%2F-799625728" anchor-label="isInitialStickyBroadcast" id="-448034677%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-448034677%2FFunctions%2F-799625728"><span>is</span><wbr></wbr><span>Initial</span><wbr></wbr><span>Sticky</span><wbr></wbr><span><span>Broadcast</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-448034677%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-448034677%2FFunctions%2F-799625728">isInitialStickyBroadcast</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1250697259%2FFunctions%2F-799625728" anchor-label="isOrderedBroadcast" id="1250697259%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1250697259%2FFunctions%2F-799625728"><span>is</span><wbr></wbr><span>Ordered</span><wbr></wbr><span><span>Broadcast</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1250697259%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#1250697259%2FFunctions%2F-799625728">isOrderedBroadcast</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1162131393%2FFunctions%2F-799625728" anchor-label="peekService" id="-1162131393%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1162131393%2FFunctions%2F-799625728"><span>peek</span><wbr></wbr><span><span>Service</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1162131393%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open fun <a href="index.html#-1162131393%2FFunctions%2F-799625728">peekService</a>(p0: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, p1: <a href="https://developer.android.com/reference/kotlin/android/content/Intent.html">Intent</a>): <a href="https://developer.android.com/reference/kotlin/android/os/IBinder.html">IBinder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="375803713%2FFunctions%2F-799625728" anchor-label="setDebugUnregister" id="375803713%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#375803713%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span>Debug</span><wbr></wbr><span><span>Unregister</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="375803713%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#375803713%2FFunctions%2F-799625728">setDebugUnregister</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="48379132%2FFunctions%2F-799625728" anchor-label="setOrderedHint" id="48379132%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#48379132%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span>Ordered</span><wbr></wbr><span><span>Hint</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="48379132%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#48379132%2FFunctions%2F-799625728">setOrderedHint</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="455010187%2FFunctions%2F-799625728" anchor-label="setResult" id="455010187%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#455010187%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span><span>Result</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="455010187%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#455010187%2FFunctions%2F-799625728">setResult</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, p1: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, p2: <a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1146739549%2FFunctions%2F-799625728" anchor-label="setResultCode" id="-1146739549%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1146739549%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Code</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1146739549%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#-1146739549%2FFunctions%2F-799625728">setResultCode</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="44586972%2FFunctions%2F-799625728" anchor-label="setResultData" id="44586972%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#44586972%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Data</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="44586972%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#44586972%2FFunctions%2F-799625728">setResultData</a>(p0: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1065610694%2FFunctions%2F-799625728" anchor-label="setResultExtras" id="1065610694%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1065610694%2FFunctions%2F-799625728"><span>set</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Extras</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1065610694%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="index.html#1065610694%2FFunctions%2F-799625728">setResultExtras</a>(p0: <a href="https://developer.android.com/reference/kotlin/android/os/Bundle.html">Bundle</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-1726059723%2FProperties%2F-799625728" anchor-label="action" id="-1726059723%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="action.html">action</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1726059723%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-1726059723%2FProperties%2F-799625728" anchor-label="action" id="-1726059723%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">val <a href="action.html">action</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1726059723%2FProperties%2F-799625728" anchor-label="action" id="-1726059723%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">the action that this receiver handles</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1936686656%2FProperties%2F-799625728" anchor-label="context" id="-1936686656%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="context.html">context</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1936686656%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-1936686656%2FProperties%2F-799625728" anchor-label="context" id="-1936686656%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">lateinit var <a href="context.html">context</a>: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1936686656%2FProperties%2F-799625728" anchor-label="context" id="-1936686656%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Application context</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Inheritors</h2>
+              <div class="table" data-togglable="Inheritors"><a data-name="1761893851%2FInheritors%2F-799625728" anchor-label="CallEventBroadcastReceiver" id="1761893851%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.call.notification/-call-event-broadcast-receiver/index.html">CallEventBroadcastReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1761893851%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-12505113%2FInheritors%2F-799625728" anchor-label="ChatEventBroadcastReceiver" id="-12505113%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.chat.notification/-chat-event-broadcast-receiver/index.html">ChatEventBroadcastReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-12505113%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

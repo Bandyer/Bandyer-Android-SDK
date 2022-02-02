@@ -1,96 +1,149 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>BandyerModule - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.module</a>&nbsp;/&nbsp;<a href="./index.html">BandyerModule</a><br/>
-<br/>
-<h1>BandyerModule</h1>
-<code><span class="keyword">interface </span><span class="identifier">BandyerModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk/-bandyer-component/index.html"><span class="identifier">BandyerComponent</span></a></code>
-<p>A Module is a component of the SDK.
-A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p>
-<p><strong>Author</strong><br/>
-kristiyan</p>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="reconnection-attempts.html">reconnectionAttempts</a></h4>
-</td>
-<td>
-<p>Reconnection attempts already performed</p>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">reconnectionAttempts</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="status.html">status</a></h4>
-</td>
-<td>
-<p>Status of the module</p>
-<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">status</span><span class="symbol">: </span><a href="../-bandyer-module-status/index.html"><span class="identifier">BandyerModuleStatus</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="reconnect.html">reconnect</a></h4>
-</td>
-<td>
-<p>Call this function to launch a reconnection with this module.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reconnect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Inheritors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.call/-call-module/index.html">CallModule</a></h4>
-</td>
-<td>
-<p>Module used for audio&video communication.</p>
-<code><span class="keyword">interface </span><span class="identifier">CallModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.chat/-chat-module/index.html">ChatModule</a></h4>
-</td>
-<td>
-<p>Module used for text communication.</p>
-<code><span class="keyword">interface </span><span class="identifier">ChatModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.file_sharing/-file-sharing-module/index.html">FileSharingModule</a></h4>
-</td>
-<td>
-<p>FileSharing Module</p>
-<code><span class="keyword">interface </span><span class="identifier">FileSharingModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.screen_sharing/-screen-sharing-module/index.html">ScreenSharingModule</a></h4>
-</td>
-<td>
-<p>ScreenSharing Module</p>
-<code><span class="keyword">interface </span><span class="identifier">ScreenSharingModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="../../com.bandyer.android_sdk.whiteboard/-whiteboard-module/index.html">WhiteboardModule</a></h4>
-</td>
-<td>
-<p>Module used for whiteboard collaboration.</p>
-<code><span class="keyword">interface </span><span class="identifier">WhiteboardModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BandyerModule</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BandyerModule</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.module/BandyerModule///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.module</a>/<a href="index.html">BandyerModule</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Bandyer</span><wbr></wbr><span><span>Module</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">BandyerModule</a> : <a href="../../com.bandyer.android_sdk/-bandyer-component/index.html">BandyerComponent</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A Module is a component of the SDK. A bandyer module has a status, a name and exposes a function to reconnect in case of failures.</p><h4 class="">Author</h4><p class="paragraph">kristiyan</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-1305388464%2FFunctions%2F-799625728" anchor-label="getName" id="-1305388464%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk/-bandyer-component/get-name.html"><span>get</span><wbr></wbr><span><span>Name</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1305388464%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../../com.bandyer.android_sdk/-bandyer-component/get-name.html">getName</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Returns the name of the component</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1084434253%2FFunctions%2F-799625728" anchor-label="reconnect" id="1084434253%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="reconnect.html"><span><span>reconnect</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1084434253%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="reconnect.html">reconnect</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Call this function to launch a reconnection with this module.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="reconnection-attempts.html">reconnectionAttempts</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-765828481%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="reconnection-attempts.html">reconnectionAttempts</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Reconnection attempts already performed</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="status.html">status</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="979730020%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="status.html">status</a>: <a href="../-bandyer-module-status/index.html">BandyerModuleStatus</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Status of the module</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Inheritors</h2>
+              <div class="table" data-togglable="Inheritors"><a data-name="161320260%2FInheritors%2F-799625728" anchor-label="CallModule" id="161320260%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.call/-call-module/index.html">CallModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="161320260%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="2087811332%2FInheritors%2F-799625728" anchor-label="ChatModule" id="2087811332%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.chat/-chat-module/index.html">ChatModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2087811332%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="1812560109%2FInheritors%2F-799625728" anchor-label="FileSharingModule" id="1812560109%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.file_sharing/-file-sharing-module/index.html">FileSharingModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1812560109%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-182340499%2FInheritors%2F-799625728" anchor-label="ScreenSharingModule" id="-182340499%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.screen_sharing/-screen-sharing-module/index.html">ScreenSharingModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-182340499%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="2007349860%2FInheritors%2F-799625728" anchor-label="WhiteboardModule" id="2007349860%2FInheritors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.whiteboard/-whiteboard-module/index.html">WhiteboardModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2007349860%2FInheritors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

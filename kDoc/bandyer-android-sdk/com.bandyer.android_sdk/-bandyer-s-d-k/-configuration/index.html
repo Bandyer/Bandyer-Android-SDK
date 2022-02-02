@@ -1,169 +1,327 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>BandyerSDK.Configuration - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../../index.html">com.bandyer.android_sdk</a>&nbsp;/&nbsp;<a href="../index.html">BandyerSDK</a>&nbsp;/&nbsp;<a href="./index.html">Configuration</a><br/>
-<br/>
-<h1>Configuration</h1>
-<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Configuration</span></code>
-<p>Builder class for BandyerSDK</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<code><span class="identifier">Configuration</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$<init>(android.app.Application, kotlin.String)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/app/Application.html"><span class="identifier">Application</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$<init>(android.app.Application, kotlin.String)/appId">appId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="allow-s-d-k-init-from-activity.html">allowSDKInitFromActivity</a></h4>
-</td>
-<td>
-<p>Enables initialization of SDK from activity
-Be aware that the SDK may misbehave if initialized in an Activity!
-We strongly suggest to initialize it in the Application if possible.</p>
-<code><span class="keyword">fun </span><span class="identifier">allowSDKInitFromActivity</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="build.html">build</a></h4>
-</td>
-<td>
-<p>Builds and returns the generated BandyerSdk instance</p>
-<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BandyerSDKInterface</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="disable-unexpected-exception-handling.html">disableUnexpectedExceptionHandling</a></h4>
-</td>
-<td>
-<p>Disable unexpected exception handling</p>
-<code><span class="keyword">fun </span><span class="identifier">disableUnexpectedExceptionHandling</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-environment.html">setEnvironment</a></h4>
-</td>
-<td>
-<p>Method to set the environment for all modules</p>
-<code><span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setEnvironment(com.bandyer.android_sdk.Environment)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../-environment/index.html"><span class="identifier">Environment</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-gson.html">setGson</a></h4>
-</td>
-<td>
-<p>For advanced users only!!
-Method to use your implementation of gson.
-be sure to apply the gsonBuilder provided by the sdk, otherwise a new gson instance will be created and used!!</p>
-<code><span class="keyword">fun </span><span class="identifier">setGson</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setGson(com.google.gson.Gson)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">Gson</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-gson-builder.html">setGsonBuilder</a></h4>
-</td>
-<td>
-<p>Method to personalize the gson builder</p>
-<code><span class="keyword">fun </span><span class="identifier">setGsonBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setGsonBuilder(com.google.gson.GsonBuilder)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">GsonBuilder</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-http-stack.html">setHttpStack</a></h4>
-</td>
-<td>
-<p>For advanced users only!!
-Method to personalize the http stack
-be sure to apply the httpStackBuilder provided by the sdk, otherwise a new httpStack instance will be created and used!!</p>
-<code><span class="keyword">fun </span><span class="identifier">setHttpStack</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setHttpStack(okhttp3.OkHttpClient)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">OkHttpClient</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-http-stack-builder.html">setHttpStackBuilder</a></h4>
-</td>
-<td>
-<p>Method to personalize the http stack</p>
-<code><span class="keyword">fun </span><span class="identifier">setHttpStackBuilder</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setHttpStackBuilder(okhttp3.OkHttpClient.Builder)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">Builder</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-logger.html">setLogger</a></h4>
-</td>
-<td>
-<p>Method to personalize the base sdk logger</p>
-<code><span class="keyword">fun </span><span class="identifier">setLogger</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$setLogger(com.bandyer.android_sdk.utils.BandyerSDKLogger)/value">value</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils/-bandyer-s-d-k-logger/index.html"><span class="identifier">BandyerSDKLogger</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-call-enabled.html">withCallEnabled</a></h4>
-</td>
-<td>
-<p>Enable initialization of call capabilities
-Set also a call notification listener, use this listener to handle how to handle an incoming call</p>
-<code><span class="keyword">fun </span><span class="identifier">withCallEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withCallEnabled(com.bandyer.android_sdk.call.notification.CallNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.call.notification/-call-notification-listener/index.html"><span class="identifier">CallNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;CallDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-chat-enabled.html">withChatEnabled</a></h4>
-</td>
-<td>
-<p>Enables initialization of chat module
-Set also a chat notification listener, use this observer to handle how to handle an incoming chat message</p>
-<code><span class="keyword">fun </span><span class="identifier">withChatEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withChatEnabled(com.bandyer.android_sdk.chat.notification.ChatNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.chat.notification/-chat-notification-listener/index.html"><span class="identifier">ChatNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;ChatDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-file-sharing-enabled.html">withFileSharingEnabled</a></h4>
-</td>
-<td>
-<p>Enable initialization of file sharing capabilities
-Set also a file sharing notification listener, use this listener to handle how to handle a notification for upload and or download</p>
-<code><span class="keyword">fun </span><span class="identifier">withFileSharingEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withFileSharingEnabled(com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.file_sharing.notification/-file-sharing-notification-listener/index.html"><span class="identifier">FileSharingNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;FileSharingDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-screen-sharing-enabled.html">withScreenSharingEnabled</a></h4>
-</td>
-<td>
-<p>Enable initialization of screen sharing capabilities
-Set also a screen sharing notification listener, use this listener to handle how to handle a notification for ongoing screen recording</p>
-<code><span class="keyword">fun </span><span class="identifier">withScreenSharingEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withScreenSharingEnabled(com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.screen_sharing.notification/-screen-sharing-notification-listener/index.html"><span class="identifier">ScreenSharingNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;ScreenSharingDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-user-details-formatter.html">withUserDetailsFormatter</a></h4>
-</td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">withUserDetailsFormatter</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withUserDetailsFormatter(com.bandyer.android_sdk.utils.provider.UserDetailsFormatter)/formatter">formatter</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html"><span class="identifier">UserDetailsFormatter</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-user-details-provider.html">withUserDetailsProvider</a></h4>
-</td>
-<td>
-<p>Used to fetch users contact information based on user aliases.</p>
-<code><span class="keyword">fun </span><span class="identifier">withUserDetailsProvider</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withUserDetailsProvider(com.bandyer.android_sdk.utils.provider.UserDetailsProvider)/provider">provider</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html"><span class="identifier">UserDetailsProvider</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-whiteboard-enabled.html">withWhiteboardEnabled</a></h4>
-</td>
-<td>
-<p>Enables initialization of whiteboard module
-Set also a whiteboard notification listener, use this observer to handle how to handle an whiteboard events</p>
-<code><span class="keyword">fun </span><span class="identifier">withWhiteboardEnabled</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.BandyerSDK.Configuration$withWhiteboardEnabled(com.bandyer.android_sdk.whiteboard.notification.WhiteboardNotificationListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-listener/index.html"><span class="identifier">WhiteboardNotificationListener</span></a>&nbsp;<span class="symbol">=</span>&nbsp;WhiteboardDefaultNotificationListener(WeakReference(context!!))<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Configuration</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script><script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../../styles/style.css" rel="Stylesheet"><link href="../../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk/BandyerSDK.Configuration///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../../index.html">bandyer-android-sdk</a>/<a href="../../index.html">com.bandyer.android_sdk</a>/<a href="../index.html">BandyerSDK</a>/<a href="index.html">Configuration</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span><span>Configuration</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open class <a href="index.html">Configuration</a>(applicationContext: <a href="https://developer.android.com/reference/kotlin/android/app/Application.html">Application</a>, appId: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Builder class for BandyerSDK</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-21005011%2FConstructors%2F-799625728" anchor-label="Configuration" id="-21005011%2FConstructors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-configuration.html">Configuration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-21005011%2FConstructors%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="-configuration.html">Configuration</a>(applicationContext: <a href="https://developer.android.com/reference/kotlin/android/app/Application.html">Application</a>, appId: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1478513812%2FFunctions%2F-799625728" anchor-label="allowSDKInitFromActivity" id="1478513812%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="allow-s-d-k-init-from-activity.html"><span>allow</span><wbr></wbr><span>SDKInit</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Activity</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1478513812%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="allow-s-d-k-init-from-activity.html">allowSDKInitFromActivity</a>(): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enables initialization of SDK from activity Be aware that the SDK may misbehave if initialized in an Activity! We strongly suggest to initialize it in the Application if possible.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2101078850%2FFunctions%2F-799625728" anchor-label="build" id="-2101078850%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="build.html"><span><span>build</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2101078850%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="build.html">build</a>(): <span data-unresolved-link="com.bandyer.android_sdk/BandyerSDKInterface///PointingToDeclaration/">BandyerSDKInterface</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Builds and returns the generated BandyerSdk instance</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="147475667%2FFunctions%2F-799625728" anchor-label="disableUnexpectedExceptionHandling" id="147475667%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="disable-unexpected-exception-handling.html"><span>disable</span><wbr></wbr><span>Unexpected</span><wbr></wbr><span>Exception</span><wbr></wbr><span><span>Handling</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="147475667%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="disable-unexpected-exception-handling.html">disableUnexpectedExceptionHandling</a>(): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Disable unexpected exception handling</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="892040096%2FFunctions%2F-799625728" anchor-label="setEnvironment" id="892040096%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-environment.html"><span>set</span><wbr></wbr><span><span>Environment</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="892040096%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-environment.html">setEnvironment</a>(value: <a href="../../-environment/index.html">Environment</a>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Method to set the environment for all modules</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1208562617%2FFunctions%2F-799625728" anchor-label="setGson" id="1208562617%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-gson.html"><span>set</span><wbr></wbr><span><span>Gson</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1208562617%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-gson.html">setGson</a>(value: <span data-unresolved-link="com.google.gson/Gson///PointingToDeclaration/">Gson</span>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">For advanced users only!! Method to use your implementation of gson. be sure to apply the gsonBuilder provided by the sdk, otherwise a new gson instance will be created and used!!</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-415455027%2FFunctions%2F-799625728" anchor-label="setGsonBuilder" id="-415455027%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-gson-builder.html"><span>set</span><wbr></wbr><span>Gson</span><wbr></wbr><span><span>Builder</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-415455027%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-gson-builder.html">setGsonBuilder</a>(value: <span data-unresolved-link="com.google.gson/GsonBuilder///PointingToDeclaration/">GsonBuilder</span>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Method to personalize the gson builder</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1737935806%2FFunctions%2F-799625728" anchor-label="setHttpStack" id="-1737935806%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-http-stack.html"><span>set</span><wbr></wbr><span>Http</span><wbr></wbr><span><span>Stack</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1737935806%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-http-stack.html">setHttpStack</a>(value: <span data-unresolved-link="okhttp3/OkHttpClient///PointingToDeclaration/">OkHttpClient</span>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">For advanced users only!! Method to personalize the http stack be sure to apply the httpStackBuilder provided by the sdk, otherwise a new httpStack instance will be created and used!!</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="218149108%2FFunctions%2F-799625728" anchor-label="setHttpStackBuilder" id="218149108%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-http-stack-builder.html"><span>set</span><wbr></wbr><span>Http</span><wbr></wbr><span>Stack</span><wbr></wbr><span><span>Builder</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="218149108%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-http-stack-builder.html">setHttpStackBuilder</a>(value: <span data-unresolved-link="okhttp3/OkHttpClient.Builder///PointingToDeclaration/">OkHttpClient.Builder</span>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Method to personalize the http stack</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="924806582%2FFunctions%2F-799625728" anchor-label="setLogger" id="924806582%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-logger.html"><span>set</span><wbr></wbr><span><span>Logger</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="924806582%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="set-logger.html">setLogger</a>(value: <a href="../../../com.bandyer.android_sdk.utils/-bandyer-s-d-k-logger/index.html">BandyerSDKLogger</a>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Method to personalize the base sdk logger</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1791355697%2FFunctions%2F-799625728" anchor-label="withCallEnabled" id="1791355697%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-call-enabled.html"><span>with</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Enabled</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1791355697%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html">JvmOverloads</a></div></div>fun <a href="with-call-enabled.html">withCallEnabled</a>(listener: <a href="../../../com.bandyer.android_sdk.call.notification/-call-notification-listener/index.html">CallNotificationListener</a> = CallDefaultNotificationListener(WeakReference(context!!))): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enable initialization of call capabilities Set also a call notification listener, use this listener to handle how to handle an incoming call</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="101330359%2FFunctions%2F-799625728" anchor-label="withChatEnabled" id="101330359%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-chat-enabled.html"><span>with</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Enabled</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="101330359%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html">JvmOverloads</a></div></div>fun <a href="with-chat-enabled.html">withChatEnabled</a>(listener: <a href="../../../com.bandyer.android_sdk.chat.notification/-chat-notification-listener/index.html">ChatNotificationListener</a> = ChatDefaultNotificationListener(WeakReference(context!!))): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enables initialization of chat module Set also a chat notification listener, use this observer to handle how to handle an incoming chat message</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-627212264%2FFunctions%2F-799625728" anchor-label="withFileSharingEnabled" id="-627212264%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-file-sharing-enabled.html"><span>with</span><wbr></wbr><span>File</span><wbr></wbr><span>Sharing</span><wbr></wbr><span><span>Enabled</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-627212264%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html">JvmOverloads</a></div></div>fun <a href="with-file-sharing-enabled.html">withFileSharingEnabled</a>(listener: <a href="../../../com.bandyer.android_sdk.file_sharing.notification/-file-sharing-notification-listener/index.html">FileSharingNotificationListener</a> = FileSharingDefaultNotificationListener(WeakReference(context!!))): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enable initialization of file sharing capabilities Set also a file sharing notification listener, use this listener to handle how to handle a notification for upload and or download</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1763416104%2FFunctions%2F-799625728" anchor-label="withScreenSharingEnabled" id="1763416104%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-screen-sharing-enabled.html"><span>with</span><wbr></wbr><span>Screen</span><wbr></wbr><span>Sharing</span><wbr></wbr><span><span>Enabled</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1763416104%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html">JvmOverloads</a></div><div class="block">@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html">RequiresApi</a>(<span>value = <span class="breakable-word">21</span></span><wbr></wbr>)</div></div>fun <a href="with-screen-sharing-enabled.html">withScreenSharingEnabled</a>(listener: <a href="../../../com.bandyer.android_sdk.screen_sharing.notification/-screen-sharing-notification-listener/index.html">ScreenSharingNotificationListener</a> = ScreenSharingDefaultNotificationListener(WeakReference(context!!))): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enable initialization of screen sharing capabilities Set also a screen sharing notification listener, use this listener to handle how to handle a notification for ongoing screen recording</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1617588968%2FFunctions%2F-799625728" anchor-label="withUserDetailsFormatter" id="1617588968%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-user-details-formatter.html"><span>with</span><wbr></wbr><span>User</span><wbr></wbr><span>Details</span><wbr></wbr><span><span>Formatter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1617588968%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-user-details-formatter.html">withUserDetailsFormatter</a>(formatter: <a href="../../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">UserDetailsFormatter</a>): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="26112879%2FFunctions%2F-799625728" anchor-label="withUserDetailsProvider" id="26112879%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-user-details-provider.html"><span>with</span><wbr></wbr><span>User</span><wbr></wbr><span>Details</span><wbr></wbr><span><span>Provider</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="26112879%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-user-details-provider.html">withUserDetailsProvider</a>(provider: <a href="../../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">UserDetailsProvider</a>?): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Used to fetch users contact information based on user aliases.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1459637170%2FFunctions%2F-799625728" anchor-label="withWhiteboardEnabled" id="1459637170%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-whiteboard-enabled.html"><span>with</span><wbr></wbr><span>Whiteboard</span><wbr></wbr><span><span>Enabled</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1459637170%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block">@<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html">JvmOverloads</a></div><div class="block">@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html">RequiresApi</a>(<span>value = <span class="breakable-word">19</span></span><wbr></wbr>)</div></div>fun <a href="with-whiteboard-enabled.html">withWhiteboardEnabled</a>(listener: <a href="../../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-listener/index.html">WhiteboardNotificationListener</a> = WhiteboardDefaultNotificationListener(WeakReference(context!!))): <a href="index.html">BandyerSDK.Configuration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Enables initialization of whiteboard module Set also a whiteboard notification listener, use this observer to handle how to handle an whiteboard events</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

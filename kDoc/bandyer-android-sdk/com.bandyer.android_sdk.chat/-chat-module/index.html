@@ -1,91 +1,233 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>ChatModule - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.chat</a>&nbsp;/&nbsp;<a href="./index.html">ChatModule</a><br/>
-<br/>
-<h1>ChatModule</h1>
-<code><span class="keyword">interface </span><span class="identifier">ChatModule</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html"><span class="identifier">BandyerModule</span></a></code>
-<p>Module used for text communication.</p>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="add-chat-observer.html">addChatObserver</a></h4>
-</td>
-<td>
-<p>Observe the starting or ending event of a chat from an activity.
-Remember to remove the observer or a leak will occur!</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addChatObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatObserver(com.bandyer.android_sdk.chat.ChatObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-observer.html"><span class="identifier">ChatObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Observe the starting or ending event of a chat from an activity.
-The observer is automatically disposed when activity is destroyed.</p>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addChatObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatObserver)/activity">activity</span><span class="symbol">:</span>&nbsp;<span class="identifier">FragmentActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-observer.html"><span class="identifier">ChatObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="add-chat-u-i-observer.html">addChatUIObserver</a></h4>
-</td>
-<td>
-<p>Observe the starting or ending event of a chat from an activity.
-Remember to remove the observer or a leak will occur!</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addChatUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(com.bandyer.android_sdk.chat.ChatUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-u-i-observer/index.html"><span class="identifier">ChatUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Observe the starting or destroy event of an activity created for chats.
-The observer is automatically disposed when activity is destroyed.</p>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addChatUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatUIObserver)/activity">activity</span><span class="symbol">:</span>&nbsp;<span class="identifier">FragmentActivity</span><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$addChatUIObserver(androidx.fragment.app.FragmentActivity, com.bandyer.android_sdk.chat.ChatUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-u-i-observer/index.html"><span class="identifier">ChatUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="get-name.html">getName</a></h4>
-</td>
-<td>
-<p>Returns the name of the component</p>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-all-chat-observers.html">removeAllChatObservers</a></h4>
-</td>
-<td>
-<p>Removes all chat observers.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeAllChatObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-all-chat-u-i-observers.html">removeAllChatUIObservers</a></h4>
-</td>
-<td>
-<p>Removes all chat ui observers.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeAllChatUIObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-all-observers.html">removeAllObservers</a></h4>
-</td>
-<td>
-<p>Removes all observers.</p>
-<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeAllObservers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-chat-observer.html">removeChatObserver</a></h4>
-</td>
-<td>
-<p>Remove specified chat observer, if already added.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeChatObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$removeChatObserver(com.bandyer.android_sdk.chat.ChatObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-observer.html"><span class="identifier">ChatObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-chat-u-i-observer.html">removeChatUIObserver</a></h4>
-</td>
-<td>
-<p>Remove specified chat observer, if already added.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeChatUIObserver</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.chat.ChatModule$removeChatUIObserver(com.bandyer.android_sdk.chat.ChatUIObserver)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="../-chat-u-i-observer/index.html"><span class="identifier">ChatUIObserver</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ChatModule</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.chat/ChatModule///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.chat</a>/<a href="index.html">ChatModule</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Chat</span><wbr></wbr><span><span>Module</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">ChatModule</a> : <a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html">BandyerModule</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Module used for text communication.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="633480080%2FFunctions%2F-799625728" anchor-label="addChatObserver" id="633480080%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="add-chat-observer.html"><span>add</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Observer</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="633480080%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="add-chat-observer.html">addChatObserver</a>(observer: <a href="../-chat-observer/index.html">ChatObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Observe the starting or ending event of a chat from an activity. Remember to remove the observer or a leak will occur!</p></div></div>
+<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open fun <a href="add-chat-observer.html">addChatObserver</a>(activity: <a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a>, observer: <a href="../-chat-observer/index.html">ChatObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Observe the starting or ending event of a chat from an activity. The observer is automatically disposed when activity is destroyed.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1296070216%2FFunctions%2F-799625728" anchor-label="addChatUIObserver" id="-1296070216%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="add-chat-u-i-observer.html"><span>add</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>UIObserver</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1296070216%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="add-chat-u-i-observer.html">addChatUIObserver</a>(observer: <a href="../-chat-u-i-observer/index.html">ChatUIObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Observe the starting or ending event of a chat from an activity. Remember to remove the observer or a leak will occur!</p></div></div>
+<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open fun <a href="add-chat-u-i-observer.html">addChatUIObserver</a>(activity: <a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a>, observer: <a href="../-chat-u-i-observer/index.html">ChatUIObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Observe the starting or destroy event of an activity created for chats. The observer is automatically disposed when activity is destroyed.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-328493090%2FFunctions%2F-799625728" anchor-label="getName" id="-328493090%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-name.html"><span>get</span><wbr></wbr><span><span>Name</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-328493090%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-name.html">getName</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Returns the name of the component</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1084434253%2FFunctions%2F-799625728" anchor-label="reconnect" id="1084434253%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.module/-bandyer-module/reconnect.html"><span><span>reconnect</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1084434253%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../../com.bandyer.android_sdk.module/-bandyer-module/reconnect.html">reconnect</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Call this function to launch a reconnection with this module.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1392521197%2FFunctions%2F-799625728" anchor-label="removeAllChatObservers" id="-1392521197%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-all-chat-observers.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Observers</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1392521197%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="remove-all-chat-observers.html">removeAllChatObservers</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Removes all chat observers.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="570590439%2FFunctions%2F-799625728" anchor-label="removeAllChatUIObservers" id="570590439%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-all-chat-u-i-observers.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>UIObservers</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="570590439%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="remove-all-chat-u-i-observers.html">removeAllChatUIObservers</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Removes all chat ui observers.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1644633115%2FFunctions%2F-799625728" anchor-label="removeAllObservers" id="1644633115%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-all-observers.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Observers</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1644633115%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open fun <a href="remove-all-observers.html">removeAllObservers</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Removes all observers.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1823184163%2FFunctions%2F-799625728" anchor-label="removeChatObserver" id="1823184163%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-chat-observer.html"><span>remove</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Observer</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1823184163%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="remove-chat-observer.html">removeChatObserver</a>(observer: <a href="../-chat-observer/index.html">ChatObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Remove specified chat observer, if already added.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="366979875%2FFunctions%2F-799625728" anchor-label="removeChatUIObserver" id="366979875%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-chat-u-i-observer.html"><span>remove</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>UIObserver</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="366979875%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="remove-chat-u-i-observer.html">removeChatUIObserver</a>(observer: <a href="../-chat-u-i-observer/index.html">ChatUIObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Remove specified chat observer, if already added.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.module/-bandyer-module/reconnection-attempts.html">reconnectionAttempts</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-765828481%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="../../com.bandyer.android_sdk.module/-bandyer-module/reconnection-attempts.html">reconnectionAttempts</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-765828481%2FProperties%2F-799625728" anchor-label="reconnectionAttempts" id="-765828481%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Reconnection attempts already performed</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../../com.bandyer.android_sdk.module/-bandyer-module/status.html">status</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="979730020%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="../../com.bandyer.android_sdk.module/-bandyer-module/status.html">status</a>: <a href="../../com.bandyer.android_sdk.module/-bandyer-module-status/index.html">BandyerModuleStatus</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="979730020%2FProperties%2F-799625728" anchor-label="status" id="979730020%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Status of the module</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

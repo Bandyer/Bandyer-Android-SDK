@@ -1,71 +1,170 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>IncomingChat - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.intent.chat</a>&nbsp;/&nbsp;<a href="./index.html">IncomingChat</a><br/>
-<br/>
-<h1>IncomingChat</h1>
-<code><span class="keyword">interface </span><span class="identifier">IncomingChat</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-chat/index.html"><span class="identifier">Chat</span></a></code>
-<p>Incoming Chat abstraction</p>
-<p><strong>Since</strong><br/>
-v1.4.10</p>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="as-notification.html">asNotification</a></h4>
-</td>
-<td>
-<p>Set the incoming chat to be displayed as notification</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">asNotification</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="show.html">show</a></h4>
-</td>
-<td>
-<p>Display the incoming chat</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$show(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-audio-call-capability.html">withAudioCallCapability</a></h4>
-</td>
-<td>
-<p>Audio call capability means that you can initialize an audio call from chat activity.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><s><span class="identifier">withAudioCallCapability</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-audio-upgradable-call-capability.html">withAudioUpgradableCallCapability</a></h4>
-</td>
-<td>
-<p>Audio call capability means that you can initialize an audio/video call from chat activity.
-Upgradable means that the call will be initialized as audio call but can be
-upgraded to video if selected camera button from call action items.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><s><span class="identifier">withAudioUpgradableCallCapability</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioUpgradableCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioUpgradableCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-audio-video-call-capability.html">withAudioVideoCallCapability</a></h4>
-</td>
-<td>
-<p>Audio video call capability means that you can initialize a video call from chat activity.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><s><span class="identifier">withAudioVideoCallCapability</span></s><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioVideoCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callCapabilities">callCapabilities</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html"><span class="identifier">CallCapabilities</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withAudioVideoCallCapability(com.bandyer.android_sdk.intent.call.CallCapabilities, com.bandyer.android_sdk.intent.call.CallOptions)/callOptions">callOptions</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html"><span class="identifier">CallOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="with-configuration.html">withConfiguration</a></h4>
-</td>
-<td>
-<p>The configuration to use when instantiating this chat</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">withConfiguration</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.intent.chat.IncomingChat$withConfiguration(com.bandyer.android_sdk.tool_configuration.Configuration.Chat)/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">Chat</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">IncomingChat</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>IncomingChat</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.intent.chat/IncomingChat///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.intent.chat</a>/<a href="index.html">IncomingChat</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Incoming</span><wbr></wbr><span><span>Chat</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">IncomingChat</a> : <a href="../-chat/index.html">Chat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Incoming Chat abstraction</p><h4 class="">Since</h4><p class="paragraph">v1.4.10</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="986747106%2FFunctions%2F-799625728" anchor-label="asNotification" id="986747106%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="as-notification.html"><span>as</span><wbr></wbr><span><span>Notification</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="986747106%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="as-notification.html">asNotification</a>(): <a href="index.html">IncomingChat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Set the incoming chat to be displayed as notification</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-436766619%2FFunctions%2F-799625728" anchor-label="show" id="-436766619%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="show.html"><span><span>show</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-436766619%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="show.html">show</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Display the incoming chat</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="294473828%2FFunctions%2F-799625728" anchor-label="withAudioCallCapability" id="294473828%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-audio-call-capability.html"><span>with</span><wbr></wbr><span>Audio</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Capability</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="294473828%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike></strike><strike>fun </strike><a href="with-audio-call-capability.html"><strike>withAudioCallCapability</strike></a><strike>(</strike><strike>callCapabilities</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html">CallCapabilities</a><strike>, </strike><strike>callOptions</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html">CallOptions</a><strike>)</strike><strike>: </strike><a href="index.html">IncomingChat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Audio call capability means that you can initialize an audio call from chat activity.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-621174111%2FFunctions%2F-799625728" anchor-label="withAudioUpgradableCallCapability" id="-621174111%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-audio-upgradable-call-capability.html"><span>with</span><wbr></wbr><span>Audio</span><wbr></wbr><span>Upgradable</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Capability</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-621174111%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike></strike><strike>fun </strike><a href="with-audio-upgradable-call-capability.html"><strike>withAudioUpgradableCallCapability</strike></a><strike>(</strike><strike>callCapabilities</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html">CallCapabilities</a><strike>, </strike><strike>callOptions</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html">CallOptions</a><strike>)</strike><strike>: </strike><a href="index.html">IncomingChat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Audio call capability means that you can initialize an audio/video call from chat activity. Upgradable means that the call will be initialized as audio call but can be upgraded to video if selected camera button from call action items.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-487091635%2FFunctions%2F-799625728" anchor-label="withAudioVideoCallCapability" id="-487091635%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-audio-video-call-capability.html"><span>with</span><wbr></wbr><span>Audio</span><wbr></wbr><span>Video</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Capability</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-487091635%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike></strike><strike>fun </strike><a href="with-audio-video-call-capability.html"><strike>withAudioVideoCallCapability</strike></a><strike>(</strike><strike>callCapabilities</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-capabilities/index.html">CallCapabilities</a><strike>, </strike><strike>callOptions</strike><strike>: </strike><a href="../../com.bandyer.android_sdk.intent.call/-call-options/index.html">CallOptions</a><strike>)</strike><strike>: </strike><a href="index.html">IncomingChat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Audio video call capability means that you can initialize a video call from chat activity.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1147424982%2FFunctions%2F-799625728" anchor-label="withConfiguration" id="1147424982%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-configuration.html"><span>with</span><wbr></wbr><span><span>Configuration</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1147424982%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="with-configuration.html">withConfiguration</a>(configuration: <a href="../../com.bandyer.android_sdk.tool_configuration/-configuration/-chat/index.html">Configuration.Chat</a>): <a href="index.html">IncomingChat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The configuration to use when instantiating this chat</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-913676541%2FProperties%2F-799625728" anchor-label="chatConfiguration" id="-913676541%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../-chat/chat-configuration.html">chatConfiguration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-913676541%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-913676541%2FProperties%2F-799625728" anchor-label="chatConfiguration" id="-913676541%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="../-chat/chat-configuration.html">chatConfiguration</a>: <a href="../../com.bandyer.android_sdk.tool_configuration/-configuration/-chat/index.html">Configuration.Chat</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-913676541%2FProperties%2F-799625728" anchor-label="chatConfiguration" id="-913676541%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Chat configuration</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-31208493%2FProperties%2F-799625728" anchor-label="chatInfo" id="-31208493%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../-chat/chat-info.html">chatInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-31208493%2FProperties%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-31208493%2FProperties%2F-799625728" anchor-label="chatInfo" id="-31208493%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="../-chat/chat-info.html">chatInfo</a>: <a href="../../com.bandyer.android_sdk.chat.model/-chat-info/index.html">ChatInfo</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-31208493%2FProperties%2F-799625728" anchor-label="chatInfo" id="-31208493%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Call info.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,41 +1,74 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>FileSharingNotificationListener - bandyer-android-sdk</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">bandyer-android-sdk</a>&nbsp;/&nbsp;<a href="../index.html">com.bandyer.android_sdk.file_sharing.notification</a>&nbsp;/&nbsp;<a href="./index.html">FileSharingNotificationListener</a><br/>
-<br/>
-<h1>FileSharingNotificationListener</h1>
-<code><span class="keyword">interface </span><span class="identifier">FileSharingNotificationListener</span></code>
-<p>Listener for file sharing generated notifications</p>
-<p><strong>Author</strong><br/>
-kristiyan</p>
-<p><strong>Since</strong><br/>
-v1.1.11</p>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="on-create-notification.html">onCreateNotification</a></h4>
-</td>
-<td>
-<p>This method will be called when a notification is going to be displayed.
-The notification look&feel can be customized here.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onCreateNotification</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.file_sharing.model.FileInfo, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationType, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationStyle)/fileInfo">fileInfo</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.file_sharing.model/-file-info/index.html"><span class="identifier">FileInfo</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.file_sharing.model.FileInfo, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationType, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationStyle)/notificationType">notificationType</span><span class="symbol">:</span>&nbsp;<a href="../-file-sharing-notification-type/index.html"><span class="identifier">FileSharingNotificationType</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onCreateNotification(com.bandyer.android_sdk.file_sharing.model.FileInfo, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationType, com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationStyle)/notificationStyle">notificationStyle</span><span class="symbol">:</span>&nbsp;<a href="../-file-sharing-notification-style.html"><span class="identifier">FileSharingNotificationStyle</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-incoming-file.html">onIncomingFile</a></h4>
-</td>
-<td>
-<p>This method will be called when an incoming file has been received.
-Here it is possible to display or not the notification.</p>
-<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onIncomingFile</span><span class="symbol">(</span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onIncomingFile(com.bandyer.android_sdk.intent.file.IncomingFile, kotlin.Boolean, kotlin.Boolean)/file">file</span><span class="symbol">:</span>&nbsp;<a href="../../com.bandyer.android_sdk.intent.file/-incoming-file/index.html"><span class="identifier">IncomingFile</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onIncomingFile(com.bandyer.android_sdk.intent.file.IncomingFile, kotlin.Boolean, kotlin.Boolean)/isDnd">isDnd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.bandyer.android_sdk.file_sharing.notification.FileSharingNotificationListener$onIncomingFile(com.bandyer.android_sdk.intent.file.IncomingFile, kotlin.Boolean, kotlin.Boolean)/isScreenLocked">isScreenLocked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FileSharingNotificationListener</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.file_sharing.notification/FileSharingNotificationListener///PointingToDeclaration//-799625728">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.file_sharing.notification</a>/<a href="index.html">FileSharingNotificationListener</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>File</span><wbr></wbr><span>Sharing</span><wbr></wbr><span>Notification</span><wbr></wbr><span><span>Listener</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">FileSharingNotificationListener</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Listener for file sharing generated notifications</p><h4 class="">Author</h4><p class="paragraph">kristiyan</p><h4 class="">Since</h4><p class="paragraph">v1.1.11</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="552668833%2FFunctions%2F-799625728" anchor-label="onCreateNotification" id="552668833%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-create-notification.html"><span>on</span><wbr></wbr><span>Create</span><wbr></wbr><span><span>Notification</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="552668833%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="on-create-notification.html">onCreateNotification</a>(fileInfo: <a href="../../com.bandyer.android_sdk.file_sharing.model/-file-info/index.html">FileInfo</a>, notificationType: <a href="../-file-sharing-notification-type/index.html">FileSharingNotificationType</a>, notificationStyle: <a href="../-file-sharing-notification-style/index.html">FileSharingNotificationStyle</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">This method will be called when a notification is going to be displayed. The notification look&feel can be customized here.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1646874561%2FFunctions%2F-799625728" anchor-label="onIncomingFile" id="-1646874561%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-incoming-file.html"><span>on</span><wbr></wbr><span>Incoming</span><wbr></wbr><span><span>File</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1646874561%2FFunctions%2F-799625728"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="on-incoming-file.html">onIncomingFile</a>(file: <a href="../../com.bandyer.android_sdk.intent.file/-incoming-file/index.html">IncomingFile</a>, isDnd: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, isScreenLocked: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">This method will be called when an incoming file has been received. Here it is possible to display or not the notification.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
