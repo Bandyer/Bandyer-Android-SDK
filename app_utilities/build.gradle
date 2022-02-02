@@ -26,11 +26,11 @@ def expansionLayoutVersion = "1.2.4"
 def androidXFragmentVersion = "1.3.2"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion sdkVersion
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion sdkVersion
         versionCode 1
         versionName "1.0"
 
