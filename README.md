@@ -131,7 +131,7 @@ android {
 
 
 ### Code documentation
-[Kotlin](https://docs.bandyer.com/Bandyer-Android-SDK/kDoc/bandyer-android-sdk/)
+[Kotlin](https://docs.bandyer.com/Bandyer-Android-SDK/kDoc/bandyer-android-sdk/com.bandyer.android_sdk)
 
 ### Other
 [Pricing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Pricing)
