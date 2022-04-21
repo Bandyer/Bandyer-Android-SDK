@@ -121,6 +121,5 @@ dependencies {
     implementation project(":app_design")
 
     /*** Bandyer Android SDK ***/
-//    compileOnly("com.bandyer:bandyer-android-sdk:$bandyerLibVersion")
-    implementation project(":bandyer-android-sdk")
+    compileOnly("com.bandyer:bandyer-android-sdk:$bandyerLibVersion")
 }
