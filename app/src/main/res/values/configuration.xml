@@ -24,6 +24,11 @@
     <string name="environment" translatable="false">sandbox</string>
 
     <!--
+    The region available
+    !-->
+    <string name="region" translatable="false">Eu</string>
+
+    <!--
     The firebase project number is used to send notifications from our backend to this sample app.
     This is not mandatory for the sdk to work, it's used by us to notify this sample app.
     Check this link to learn how to implement your own notification logics: https://firebase.google.com/docs/cloud-messaging/android/client

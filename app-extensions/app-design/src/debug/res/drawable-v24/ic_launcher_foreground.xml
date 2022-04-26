@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1451.3dp"
+    android:height="1451.3dp"
+    android:viewportWidth="1451.3"
+    android:viewportHeight="1451.3">
+
+  <path
+      android:pathData="M725.4,389.6l-91.5,52.9l0,97.4l91.5,-53l92,53l0,-97.4z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M633.9,1008.8l91.5,52.9l92,-52.9l0,-97.4l-92,53l-91.5,-53z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M434.7,557.9l0,105.9l83.9,48.4l0,-105.9l92,-52.9l-84.4,-48.5z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M434.7,788l0,105.9l91.5,53l84.4,-48.9l-92,-53l0,-105.9z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M924.6,946.9l92,-53l0,-105.9l-84.3,-48.9l0,105.9l-91.5,53z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M840.8,553.4l91.5,52.9l0,105.9l84.3,-48.4l0,-105.9l-92,-53z"
+      android:fillColor="#666666"/>
+  <path
+      android:pathData="M839.4,789.4l-114,70l-113.9,-70l0,-127.4l113.9,-70l114,70z"
+      android:fillColor="#D80D30"/>
+</vector>

@@ -22,15 +22,15 @@
     <string name="calling_user" translatable="false">Calling user…</string>
     <string name="decline" translatable="false">Decline</string>
     <string name="answer" translatable="false">Answer</string>
-    <plurals name="user_is_ringing">
+    <plurals name="user_is_ringing" translatable="false">
         <item quantity="one">is ringing…</item>
         <item quantity="other">are ringing…</item>
     </plurals>
-    <plurals name="user_is_calling_you">
+    <plurals name="user_is_calling_you" translatable="false">
         <item quantity="one">is calling you…</item>
         <item quantity="other">are calling you…</item>
     </plurals>
-    <plurals name="error_over_count">
+    <plurals name="error_over_count" translatable="false">
         <item quantity="one">error</item>
         <item quantity="other">error</item>
     </plurals>
@@ -44,5 +44,50 @@
     <string name="join_call_url" translatable="false">Join call in Bandyer</string>
     <string name="biometric_notification_title" translatable="false">User authentication request.</string>
     <string name="biometric_notification_description" translatable="false">Please click on notification to verify your identity.</string>
+
+
+    <string name="search" translatable="false">Search&#8230;</string>
+    <string name="button_allow" translatable="false">Allow</string>
+
+    <string name="app_name_with_version" translatable="false">Showcase %1$s</string>
+
+    <!-- CALL OPTIONS -->
+
+    <string name="call_type_audio_only" translatable="false">AUDIO_ONLY</string>
+    <string name="call_type_audio_upgradable" translatable="false">AUDIO_UPGRADABLE</string>
+    <string name="call_type_audio_video" translatable="false">AUDIO_VIDEO</string>
+    <string name="call_type_audio_only_name" translatable="false">Audio only</string>small
+    <string name="call_type_audio_upgradable_name" translatable="false">Audio upgradable</string>
+    <string name="call_type_audio_video_name" translatable="false">Audio video</string>
+    <string name="default_call_configuration" translatable="false">Default call configuration</string>
+    <string name="default_chat_configuration" translatable="false">Default chat configuration</string>
+    <string name="select_call_type" translatable="false">Select call type:</string>
+    <string name="audio_only" translatable="false">Audio only</string>
+    <string name="audio_upgradable" translatable="false">Audio upgradable</string>
+    <string name="audio_video" translatable="false">Audio video</string>
+    <string name="call" translatable="false">Call</string>
+    <string name="select_call_capabilities_from_chat_ui" translatable="false">Select call types that can be started from chat UI:</string>
+    <string name="chat" translatable="false">Chat</string>
+    <string name="save" translatable="false">Save</string>
+
+    <string name="select_in_call_capabilities" translatable="false">Select in-call capabilities:</string>
+    <string name="select_in_call_options_audio" translatable="false">Select in-call options:</string>
+    <string name="select_all_call_capabilities" translatable="false">Select all call capabilities</string>
+    <string name="deselect_all_call_capabilities" translatable="false">Deselect all call capabilities</string>
+    <string name="select_all_call_options" translatable="false">Select all call options</string>
+    <string name="deselect_all_call_options" translatable="false">Deselect all call options</string>
+    <string name="no_users_selected" translatable="false">No users selected.</string>
+    <string name="settings_have_been_changed_alert" translatable="false">Settings have been changed, restarting app&#8230;</string>
+    <string name="ongoing_call_description" translatable="false">Tap to go back in call</string>
+
+    <string name="pref_call_type_title" translatable="false">Default call type</string>
+    <string name="pref_call_capabilities_title" translatable="false">In-call default capabilities</string>
+    <string name="pref_call_options_title" translatable="false">In-call default options</string>
+
+    <string name="pref_call_options_experimental" translatable="false">Experimental</string>
+
+    <string name="pick_users" translatable="false">Hello %1$s!\nWho do you want to call or chat with?</string>
+    <string name="login_title" translatable="false">Choose the user to login with:</string>
+
 
 </resources>

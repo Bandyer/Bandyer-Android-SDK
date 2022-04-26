@@ -15,7 +15,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ongoing_call_label"
-            style="@style/BandyerSDKDesign.OngoingCallButton"
+            style="@style/KaleyraCollaborationSuiteUI.OngoingCallButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -89,7 +89,7 @@
         android:nextFocusLeft="@+id/checkbox"
         android:nextFocusRight="@+id/call"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_bandyer_chat"
+        android:src="@drawable/ic_kaleyra_chat"
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         android:onClick="onChatClicked"
@@ -132,7 +132,7 @@
         android:nextFocusLeft="@+id/chat"
         android:scaleType="centerCrop"
         android:onClick="onCallClicked"
-        android:src="@drawable/ic_bandyer_audio_call"
+        android:src="@drawable/ic_kaleyra_audio_call"
         app:backgroundTint="@color/colorModuleNotActive"
         app:fabSize="normal"
         app:layout_anchor="@+id/content"

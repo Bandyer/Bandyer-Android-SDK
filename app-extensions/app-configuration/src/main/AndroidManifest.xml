@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kaleyra.app_configuration">
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="true" />
+    <application>
+
+        <activity
+            android:name=".activities.ConfigurationActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="configuration.app.bandyer.com"
+                    android:scheme="https" />
+                <data
+                    android:host="configuration.app.bandyer.com"
+                    android:scheme="bandyer" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.QRConfigurationActivity"
+            android:launchMode="singleTask" />
+
+        <activity android:name=".activities.ImageTextEditActivity" />
+
+        <activity
+            android:name=".activities.MockUserDetailsSettingsActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+    </application>
+
+</manifest>

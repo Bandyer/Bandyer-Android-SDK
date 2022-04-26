@@ -22,6 +22,8 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: 'versions.gradle'
 apply plugin: "com.github.triplet.play"
 apply plugin: 'com.google.firebase.appdistribution'
@@ -33,11 +35,12 @@ def jUnitLibVersion = '4.13.2'
 def multiDexLibVersion = "2.0.1"
 def firebaseMessagingLibVersion = '20.2.3'
 def work_version = '2.7.0'
-def bandyerLibVersion = "2.3.6"
-def bandyerExtensionUsbCamera = "1.2.0"
-def pushy_version = '1.0.78'
+def bandyerLibVersion = "3.0.0-beta01"
+def bandyerExtensionUsbCamera = "7.0.1"
+def pushy_version = '1.0.79'
 def huawei_push_version = '6.1.0.300'
 def androidX = '1.1.0'
+def desugaring_version = "1.1.5"
 
 android {
     compileSdkVersion sdkVersion
@@ -51,10 +54,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-    }
-
-    dexOptions {
-        preDexLibraries = false
     }
 
     signingConfigs {
@@ -114,12 +113,17 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildFeatures {
         viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     ndkVersion "23.1.7779620"
@@ -138,7 +142,9 @@ huaweiPublish {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugaring_version"
     /*** Platform ***/
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.multidex:multidex:$multiDexLibVersion"
     implementation "androidx.appcompat:appcompat:$androidX"
 
@@ -157,15 +163,18 @@ dependencies {
     implementation "com.huawei.hms:push:$huawei_push_version"
 
     /** Utilities **/
-    implementation project(":app_utilities")
-    implementation project(":app_configuration")
-    implementation project(":app_design")
+    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation project(":app-utilities")
+    implementation project(":app-configuration")
+    implementation project(":app-design")
 
     /*** Bandyer Android SDK ***/
     implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
+//    implementation project (":bandyer-android-sdk")
 
     // define this dependency only if you desire to handle usb camera input in a video call
     implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"
+//    implementation project (":bandyer-android-coreav-extension-usb-camera")
 }
 
 play {

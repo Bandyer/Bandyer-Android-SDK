@@ -14,7 +14,7 @@ import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.bandyer.app_utilities.notification.PushyCompat;
+import com.kaleyra.app_utilities.notification.PushyCompat;
 
 
 /**

@@ -12,9 +12,9 @@ import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.bandyer.app_utilities.notification.FirebaseCompat;
-import com.bandyer.app_utilities.notification.HuaweiCompat;
-import com.bandyer.app_utilities.storage.LoginManager;
+import com.kaleyra.app_utilities.notification.FirebaseCompat;
+import com.kaleyra.app_utilities.notification.HuaweiCompat;
+import com.kaleyra.app_utilities.storage.LoginManager;
 import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.RemoteMessage;
 
@@ -48,16 +48,12 @@ public class HuaweiNotificationService extends HmsMessageService {
     @Override
     public void onNewToken(String s) {
         super.onNewToken(s);
-        String loggedUser = LoginManager.getLoggedUser(getApplicationContext());
-        if (loggedUser == null) return;
-        HuaweiCompat.registerDevice(this, loggedUser);
+        HuaweiCompat.registerDevice(this);
     }
 
     @Override
     public void onNewToken(String s, Bundle bundle) {
         super.onNewToken(s, bundle);
-        String loggedUser = LoginManager.getLoggedUser(getApplicationContext());
-        if (loggedUser == null) return;
-        HuaweiCompat.registerDevice(this, loggedUser);
+        HuaweiCompat.registerDevice(this);
     }
 }

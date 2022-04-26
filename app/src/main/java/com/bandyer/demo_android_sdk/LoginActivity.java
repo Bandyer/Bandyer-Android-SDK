@@ -17,16 +17,15 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.bandyer.app_configuration.external_configuration.activities.ConfigurationActivity;
-import com.bandyer.app_configuration.external_configuration.model.Configuration;
-import com.bandyer.app_utilities.BuildConfig;
-import com.bandyer.app_utilities.activities.CollapsingToolbarActivity;
-import com.bandyer.app_utilities.adapter_items.UserItem;
-import com.bandyer.app_utilities.networking.MockedNetwork;
-import com.bandyer.app_utilities.storage.ConfigurationPrefsManager;
-import com.bandyer.app_utilities.storage.LoginManager;
 import com.bandyer.demo_android_sdk.databinding.ActivityLoginBinding;
+import com.bandyer.demo_android_sdk.ui.activities.CollapsingToolbarActivity;
+import com.bandyer.demo_android_sdk.ui.adapter_items.UserItem;
 import com.google.android.material.appbar.AppBarLayout;
+import com.kaleyra.app_configuration.activities.ConfigurationActivity;
+import com.kaleyra.app_configuration.model.Configuration;
+import com.kaleyra.app_utilities.BuildConfig;
+import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager;
+import com.kaleyra.app_utilities.storage.LoginManager;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -168,25 +167,15 @@ public class LoginActivity extends CollapsingToolbarActivity implements SearchVi
         itemAdapter.clear();
         binding.loading.setVisibility(View.VISIBLE);
         // Fetch the sample users you can use to login with.
-        MockedNetwork.getSampleUsers(this, new MockedNetwork.GetBandyerUsersCallback() {
-            @Override
-            public void onUsers(List<String> users) {
-                binding.loading.setVisibility(View.GONE);
-                usersList.clear();
-                // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
-                for (String user : users) usersList.add(new UserItem(user));
-                setRefreshing(false);
-                itemAdapter.set(usersList);
-                if (searchView != null) itemAdapter.filter(searchView.getQuery());
-            }
 
-            @Override
-            public void onError(String error) {
-                binding.loading.setVisibility(View.GONE);
-                showErrorDialog(error);
-                setRefreshing(false);
-                itemAdapter.clear();
-            }
+        getRestApi().listUsers((com.bandyer.demo_android_sdk.mock.Users) users -> {
+            binding.loading.setVisibility(View.GONE);
+            usersList.clear();
+            // Add each user(except the logged one) to the recyclerView adapter to be displayed in the list.
+            for (String user : users) usersList.add(new UserItem(user));
+            setRefreshing(false);
+            itemAdapter.set(usersList);
+            if (searchView != null) itemAdapter.filter(searchView.getQuery());
         });
     }
 }

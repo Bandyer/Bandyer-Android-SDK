@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+
+    <!--
+    TODO: Before you run your application, you need a Bandyer App Identification and Bandyer Api Key .
+
+    Once you have your key, replace the "app_id" (it starts with "mAppId") strings in this file.
+    -->
+    <string name="app_id" translatable="false" />
+
+    <!--
+    The api key is used to retrieve bandyer-users for the company.
+    This key is not mandatory for the sdk to work, it's used only by sample app to retrieve the users without the need of a backend.
+    !-->
+    <string name="api_key" translatable="false" />
+
+    <!--
+    The environments available
+    !-->
+    <string name="environment" translatable="false" />
+
+    <!--
+   The region available
+    !-->
+    <string name="region" translatable="false" />
+
+    <string-array name="Regions">
+        <item>eu</item>
+        <item>in</item>
+    </string-array>
+
+    <string-array name="Environments">
+        <item>sandbox</item>
+        <item>production</item>
+    </string-array>
+
+
+    <!--
+    The firebase project number is used to send notifications from our backend to this sample app.
+    This is not mandatory for the sdk to work, it's used by us to notify this sample app.
+    Check this link to learn how to implement your own notification logics: https://firebase.google.com/docs/cloud-messaging/android/client
+    !-->
+    <string name="project_number" translatable="false" />
+    <string name="firebase_project_id" translatable="false" />
+    <string name="firebase_mobile_app_id" translatable="false" />
+    <string name="firebase_api_key" translatable="false" />
+    <string name="hms_app_id" translatable="false" />
+
+    <!-- push providers -->
+    <string name="push_provider" translatable="false" />
+
+    <string-array name="pushProvidersEntries">
+        <item>NONE</item>
+        <item>FCM</item>
+        <item>PUSHY</item>
+    </string-array>
+
+    <string-array name="pushProvidersValues">
+        <item>NONE</item>
+        <item>FCM</item>
+        <item>Pushy</item>
+    </string-array>
+
+</resources>

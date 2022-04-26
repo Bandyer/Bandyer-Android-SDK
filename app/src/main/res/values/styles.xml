@@ -4,16 +4,16 @@
   -->
 <resources>
 
-    <style name="BandyerSDKDesign.Theme.Chat" parent="BandyerSDKDesign.Theme.Chat.DayNight"/>
-    <style name="BandyerSDKDesign.Theme.Call" parent="BandyerSDKDesign.Theme.Call.DayNight"/>
+    <style name="BandyerSDKDesign.Theme.Chat" parent="KaleyraCollaborationSuiteUI.Theme.Call.DayNight"/>
+    <style name="BandyerSDKDesign.Theme.Call" parent="KaleyraCollaborationSuiteUI.Theme.Chat.DayNight"/>
 
     <style name="BandyerSDKDesign.CallWatermark" parent="">
-        <item name="bandyer_rootLayoutStyle">@style/BandyerSDKDesign.CallWatermark.RootLayout</item>
-        <item name="bandyer_iconStyle">@style/CallWatermark</item>
-        <item name="bandyer_titleStyle">@style/BandyerSDKDesign.TextView.CallWatermark</item>
+        <item name="kaleyra_rootLayoutStyle">@style/KaleyraCollaborationSuiteUI.CallWatermark.RootLayout</item>
+        <item name="kaleyra_iconStyle">@style/CallWatermark</item>
+        <item name="kaleyra_titleStyle">@style/KaleyraCollaborationSuiteUI.TextView.CallWatermark</item>
     </style>
 
-    <style name="CallWatermark" parent="BandyerSDKDesign.CallWatermarkImageView">
+    <style name="CallWatermark" parent="KaleyraCollaborationSuiteUI.CallWatermarkImageView">
         <item name="android:src">@drawable/logo</item>
     </style>
 

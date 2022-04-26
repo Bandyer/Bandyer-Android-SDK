@@ -4,6 +4,7 @@
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/searchMain"
         android:icon="@drawable/ic_outline_search_24"
@@ -12,8 +13,14 @@
         app:showAsAction="collapseActionView|always" />
 
     <item
-        android:id="@+id/options"
-        android:title="@string/default_call_options"
+        android:id="@+id/call_configuration"
+        android:title="@string/default_call_configuration"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/chat_configuration"
+        android:title="@string/default_chat_configuration"
         android:visible="true"
         app:showAsAction="never" />
 

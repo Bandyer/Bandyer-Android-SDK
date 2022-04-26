@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.kaleyra.app_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_sdk_configuration">
+
+        <com.kaleyra.app_configuration.views.ConfigurationListPreference
+            android:id="@+id/environment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:entries="@array/Environments"
+            app:entryValues="@array/Environments"
+            app:summary="@string/summary_environment"
+            app:title="@string/pref_title_environment" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationListPreference
+            android:id="@+id/region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:entries="@array/Regions"
+            app:entryValues="@array/Regions"
+            app:summary="@string/summary_region"
+            app:title="@string/pref_title_region" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/app_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/pref_hint_app_id"
+            app:summary="@string/summary_app_id"
+            app:title="@string/pref_title_app_id" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/api_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/pref_hint_api_key"
+            app:summary="@string/summary_api_key"
+            app:title="@string/pref_title_api_key" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationListPreference
+            android:id="@+id/push_provider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:defaultValue="@string/pref_hint_pushProvider"
+            app:entries="@array/pushProvidersEntries"
+            app:entryValues="@array/pushProvidersValues"
+            app:summary="@string/summary_pushProvider"
+            app:title="@string/pref_title_pushProvider" />
+
+    </com.kaleyra.app_configuration.views.ConfigurationCategoryPreference>
+
+    <com.kaleyra.app_configuration.views.ConfigurationCategoryPreference
+        android:id="@+id/fcm_configuration_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_fcm_options">
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/firebase_project_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_firebaseProjectNumber"
+            app:title="@string/pref_title_firebaseProjectNumber" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/firebase_project_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_firebaseProjectId"
+            app:title="@string/pref_title_firebaseProjectId" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/firebase_api_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_firebaseApiKey"
+            app:title="@string/pref_title_firebaseApiKey" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/firebase_mobile_app_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_firebaseMobileAppId"
+            app:title="@string/pref_title_firebaseMobileAppId" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationEditTextPreference
+            android:id="@+id/hms_app_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_hmsAppId"
+            app:title="@string/pref_title_hmsAppId" />
+
+    </com.kaleyra.app_configuration.views.ConfigurationCategoryPreference>
+
+    <com.kaleyra.app_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_extra_options">
+
+        <com.kaleyra.app_configuration.views.ConfigurationImageTextPreference
+            android:id="@+id/watermark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_watermark"
+            app:title="@string/pref_watermark_title" />
+
+        <com.kaleyra.app_configuration.views.ConfigurationTextViewPreference
+            android:id="@+id/mock_user_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_custom_user_details"
+            app:title="@string/pref_mockUserDetails_title" />
+
+    </com.kaleyra.app_configuration.views.ConfigurationCategoryPreference>
+
+    <com.kaleyra.app_configuration.views.ConfigurationCategoryPreference
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/pref_debug_options">
+
+        <com.kaleyra.app_configuration.views.ConfigurationCheckBoxPreference
+            android:id="@+id/leak_canary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:summary="@string/summary_leak_canary"
+            app:title="@string/leak_canary" />
+
+    </com.kaleyra.app_configuration.views.ConfigurationCategoryPreference>
+
+</LinearLayout>

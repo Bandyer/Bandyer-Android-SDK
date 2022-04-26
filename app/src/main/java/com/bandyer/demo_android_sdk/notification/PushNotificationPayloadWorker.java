@@ -6,13 +6,18 @@
 package com.bandyer.demo_android_sdk.notification;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.bandyer.android_sdk.client.BandyerSDKClient;
+import com.bandyer.android_sdk.client.AccessTokenProvider;
+import com.bandyer.android_sdk.client.BandyerSDK;
+import com.bandyer.android_sdk.client.Session;
+import com.bandyer.android_sdk.client.SessionObserver;
+import com.kaleyra.app_utilities.MultiDexApplication;
+import com.kaleyra.app_utilities.storage.LoginManager;
 
 /**
  * Sample implementation of a worker object used to manage the push notification payload.
@@ -27,6 +32,34 @@ public class PushNotificationPayloadWorker extends Worker {
         super(context, workerParams);
     }
 
+    private final SessionObserver sessionObserver = new SessionObserver() {
+        @Override
+        public void onSessionAuthenticating(@NonNull Session session) {
+            Log.d(TAG, "onSessionAuthenticating for user " + session.getUserId());
+        }
+
+        @Override
+        public void onSessionAuthenticated(@NonNull Session session) {
+            Log.d(TAG, "onSessionAuthenticated for user " + session.getUserId());
+        }
+
+        @Override
+        public void onSessionRefreshing(@NonNull Session session) {
+            Log.d(TAG, "onSessionRefreshing for user " + session.getUserId());
+        }
+
+        @Override
+        public void onSessionRefreshed(@NonNull Session session) {
+            Log.d(TAG, "onSessionRefreshed for user " + session.getUserId());
+        }
+
+        @Override
+        public void onSessionError(@NonNull Session session, @NonNull Error error) {
+            Log.e(TAG, "onSessionError for user " + session.getUserId() + " with error: " + error.getMessage());
+            startBandyerSDk();
+        }
+    };
+
     @NonNull
     @Override
     public Result doWork() {
@@ -34,14 +67,39 @@ public class PushNotificationPayloadWorker extends Worker {
         try {
             String payload = getInputData().getString("payload");
             if (payload == null) return Result.failure();
+
             Log.d(TAG,"Received payload\n" + payload + "\nready to be processed.");
-            BandyerSDKClient.getInstance().handleNotification(getApplicationContext(), payload);
+
+            startBandyerSDk();
+            BandyerSDK.getInstance().handleNotification(payload);
         } catch (Throwable e) {
             e.printStackTrace();
             return Result.failure();
         }
 
         return Result.success();
+    }
+
+    private void startBandyerSDk() {
+        String userId = LoginManager.getLoggedUser(getApplicationContext());
+
+        AccessTokenProvider accessTokenProvider = (userId1, completion) -> MultiDexApplication.getRestApi().getAccessToken(accessToken -> {
+            completion.success(accessToken);
+            return null;
+        }, exception -> {
+            completion.error(exception);
+            return null;
+        });
+
+        Session session = new Session(
+                userId,
+                accessTokenProvider,
+                sessionObserver);
+
+        BandyerSDK.getInstance().connect(
+                session,
+                errorReason -> Log.e(TAG, "Unable to connect BandyerSDK with error: " + errorReason)
+        );
     }
 }
 

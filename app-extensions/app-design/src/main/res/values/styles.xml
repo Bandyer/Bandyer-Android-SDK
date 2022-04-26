@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+        <item name="colorControlNormal">@color/colorOnPrimary</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="titleTextColor">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/colorSecondary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+    </style>
+
+    <style name="BaseTheme.SplashScreen" parent="BaseTheme">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+    <style name="BaseTheme.Dark.CollapsedToolBar" parent="Widget.Design.CollapsingToolbar">
+        <item name="colorControlNormal">@color/colorOnPrimary</item>
+        <item name="collapsedTitleTextAppearance">
+            @style/TextAppearance.BaseTheme.Dark.CollapsingToolbar.Collapsed
+        </item>
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="searchViewStyle">@style/Widget.AppCompat.SearchView.ActionBar</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Dark.CollapsingToolbar.Collapsed" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2022 Kaleyra @ https://www.kaleyra.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+
+    <string name="action_settings" translatable="false">Configuration</string>
+    <string name="edit_activity" translatable="false">Edit</string>
+
+    <string name="use_qr_code" translatable="false">QR-Code Configuration</string>
+
+    <string name="clear_all" translatable="false">Clear all</string>
+    <string name="reset_all" translatable="false">Reset all</string>
+    <string name="save" translatable="false">Save</string>
+
+    <string name="wifi_connected" translatable="false">Wifi network connected:</string>
+
+    <string name="mock_user_details_config_none" translatable="false">NONE</string>
+    <string name="mock_user_details_config_sample" translatable="false">SAMPLE</string>
+    <string name="mock_user_details_config_custom" translatable="false">CUSTOM</string>
+    <string name="mock_user_details_display_name" translatable="false">Display name</string>
+    <string name="mock_user_details_config_none_summary" translatable="false">No user details provider will be used, default avatars and user aliases will be shown.</string>
+    <string name="mock_user_details_config_sample_summary" translatable="false">A web based sample user details provider used to display custom users details.</string>
+    <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
+    <string-array name="mockUserDetailsType">
+        <item>@string/mock_user_details_config_none</item>
+        <item>@string/mock_user_details_config_sample</item>
+        <item>@string/mock_user_details_config_custom</item>
+    </string-array>
+
+    <string name="pref_pushProvider" translatable="false">pushProvider</string>
+    <string name="pref_title_pushProvider" translatable="false">PUSH PROVIDER</string>
+    <string name="pref_hint_pushProvider" translatable="false">FCM</string>
+    <string name="summary_pushProvider" translatable="false">The provider to use for push notifications.</string>
+
+    <string name="pref_api_key" translatable="false">apiKey</string>
+    <string name="summary_api_key" translatable="false">The api key is used to retrieve users for the company.
+        \n\nThis key is not mandatory for the sdk to work, it\'s used only by sample app to retrieve the users without the need of a backend.
+        \n\nWhen integrating you shall use this key only SERVER SIDE!</string>
+    <string name="pref_title_api_key" translatable="false">API_KEY</string>
+    <string name="pref_hint_api_key" translatable="false">ak_xxx</string>
+
+    <string name="pref_app_id" translatable="false">appId</string>
+    <string name="summary_app_id" translatable="false">The app id is mandatory for the sdk to work!</string>
+
+
+    <string name="pref_title_app_id" translatable="false">APP_ID</string>
+    <string name="pref_hint_app_id" translatable="false">mAppId_xxx</string>
+    <string name="pref_watermark_id" translatable="false">watermarkId</string>
+    <string name="pref_custom_user_details" translatable="false">customUserDetails</string>
+
+    <!-- FIREBASE CONFIGS -->
+
+    <string name="pref_fcm_options" translatable="false">FCM required fields</string>
+    <string name="pref_project_number" translatable="false">projectNumber</string>
+    <string name="pref_title_project_number" translatable="false">Firebase Project Number</string>
+    <string name="pref_hint_project_number" translatable="false">1035469437089</string>
+    <string name="summary_project_number" translatable="false">The project number is used to send notifications from our backend to this sample app.
+        \n\nThis is not mandatory for the sdk to work, it\'s used by us to notify this sample app.</string>
+    <string name="pref_firebaseMobileAppId" translatable="false">firebaseMobileAppId</string>
+    <string name="pref_firebaseProjectId" translatable="false">firebaseProjectId</string>
+    <string name="pref_firebaseApiKey" translatable="false">firebaseApiKey</string>
+
+    <string name="pref_title_firebaseMobileAppId" translatable="false">Firebase Mobile AppId</string>
+    <string name="pref_hint_firebaseMobileAppId" translatable="false">Firebase Mobile AppId</string>
+    <string name="summary_firebaseMobileAppId" translatable="false">Unique app identifier of the Firebase app inside a project.</string>
+
+    <string name="pref_title_hmsAppId" translatable="false">Huawei Mobile AppId</string>
+    <string name="pref_hint_hmsAppId" translatable="false">Huawei Mobile AppId</string>
+    <string name="summary_hmsAppId" translatable="false">Unique app identifier of the Huawei app inside a project.</string>
+
+    <string name="pref_title_firebaseProjectId" translatable="false">Firebase ProjectId</string>
+    <string name="pref_hint_firebaseProjectId" translatable="false">Firebase ProjectId</string>
+    <string name="summary_firebaseProjectId" translatable="false">Unique identifier for the Firebase project that you can find in the project URL:\nhttps://console.firebase.google.com/project/*projectId*</string>
+    <string name="pref_title_firebaseApiKey" translatable="false">Firebase ApiKey</string>
+    <string name="pref_hint_firebaseApiKey" translatable="false">Firebase ApiKey</string>
+    <string name="summary_firebaseApiKey" translatable="false">Firebase api key used by the Firebase app to connect to Firebase\'s services.</string>
+    <string name="pref_title_firebaseProjectNumber" translatable="false">Firebase ProjectNumber</string>
+    <string name="pref_hint_firebaseProjectNumber" translatable="false">Firebase ProjectNumber</string>
+    <string name="summary_firebaseProjectNumber" translatable="false">Firebase Project Number</string>
+
+    <string name="pref_debug_options" translatable="false">Debug options</string>
+    <string name="pref_extra_options" translatable="false">Extra options</string>
+    <string name="pref_sdk_configuration" translatable="false">SDK configuration</string>
+
+    <string name="leak_canary" translatable="false">LeakCanary</string>
+    <string name="summary_leak_canary" translatable="false">LeakCanary is useful to debug if any object is retained outside of context, which will lead to excessive usage of RAM.</string>
+
+    <string name="use_mock_user_details_provider" translatable="false">Mock user details</string>
+    <string name="pref_mockUserDetails_title" translatable="false">Mock user details</string>
+    <string name="pref_mockUserDetails" translatable="false">MOCK USER DETAILS</string>
+    <string name="summary_use_mock_user_details_provider" translatable="false">Use this setting to customize user details when a chat or call UI is presented.</string>
+
+    <string name="use_simplified_version_title" translatable="false">Simplified version</string>
+
+    <string name="skip_customization_version_title" translatable="false">Skip call and chat customization dialog</string>
+
+    <string name="demo_app_options" translatable="false">App options</string>
+
+    <!-- ENVIRONMENT -->
+    <string name="pref_environment" translatable="false">environment</string>
+    <string name="pref_title_environment" translatable="false">ENVIRONMENT</string>
+    <string name="pref_hint_environment" translatable="false">sandbox</string>
+    <string name="summary_environment" translatable="false">The environment to use.</string>
+
+    <!-- REGION -->
+    <string name="pref_region" translatable="false">region</string>
+    <string name="pref_title_region" translatable="false">REGION</string>
+    <string name="pref_hint_region" translatable="false">eu</string>
+    <string name="summary_region" translatable="false">The region to use.</string>
+
+    <!-- WATERMARK -->
+    <string name="watermark_label" />
+    <string name="pref_watermark_title" translatable="false">Watermark Info</string>
+    <string name="summary_watermark" translatable="false">Watermark to setup on calls to brandify your application.\nThis is useful to ensure the final user that the caller is receiving a call from a known source.</string>
+    <string name="summary_custom_user_details" translatable="false">Custom display name and image of users displayed in call.</string>
+
+    <string name="mock_user_authentication_failed" translatable="false">Biometric user authentication failed.</string>
+    <string name="mock_user_authentication_dialog_title" translatable="false">User authentication request</string>
+    <string name="mock_user_authentication_dialog_subtitle" translatable="false">Bandyer voip call authentication.</string>
+    <string name="mock_user_authentication_dialog_description" translatable="false">Authentication requested by Bandyer voip call needed to verify your identity.</string>
+
+
+    <string name="call_type" translatable="false">Call type</string>
+    <string name="call_options_mock_user_authentication_request" translatable="false">Mock user biometric authentication request</string>
+    <string name="call_options_mock_user_authentication_request_summary" translatable="false">The biometric mocked request will be triggered after 10s that the call has been established.</string>
+    <string name="back_camera_as_default_if_available" translatable="false">Back camera as default (if available)</string>
+    <string name="disable_proximity_sensor" translatable="false">Disable proximity sensor</string>
+    <string name="display_feedback_ui" translatable="false">Display call feedback UI on call ended</string>
+    <string name="screen_sharing_requires_api_21" translatable="false">Screen sharing (requires API 21)</string>
+    <string name="chat_requires_api_19" translatable="false">Chat (requires API 19)</string>
+    <string name="whiteboard_requires_api_19" translatable="false">Whiteboard (requires API 19)</string>
+    <string name="call_recording" translatable="false">Call recording</string>
+
+    <string name="file_sharing" translatable="false">File sharing</string>
+
+    <!-- CONFIGURATION -->
+    <string name="settings_are_not_correctly_set" translatable="false">"Settings are not correctly set!"</string>
+    <string name="settings_dialog_positive_button" translatable="false">OK</string>
+    <string name="settings_dialog_negative_button" translatable="false">Cancel</string>
+    <string name="insert_configuration_manually" translatable="false">Insert configuration manually</string>
+    <string name="invalid_configuration_url" translatable="false">Invalid configuration url.</string>
+    <string name="scan_configuration_qr_code_to_setup_application" translatable="false">Scan configuration QR code to setup application\nor WiFi QR code to join a network.</string>
+    <string name="title_error">Error</string>
+
+</resources>

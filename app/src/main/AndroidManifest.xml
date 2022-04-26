@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
-  ~ See LICENSE.txt for licensing information
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bandyer.demo_android_sdk">
 
+    <uses-sdk tools:overrideLibrary="com.huawei.android.hms.push,com.huawei.android.hms.openid,com.huawei.android.hms.base,com.huawei.hms.base.availableupdate,com.huawei.hms.stats,com.huawei.hms.base.ui,com.huawei.hms.base.device,com.huawei.hms.log,com.huawei.agconnect.core" />
     <!-- chat permissions -->
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-
-
-    <uses-sdk tools:overrideLibrary="com.huawei.android.hms.push,com.huawei.android.hms.openid,com.huawei.android.hms.base,com.huawei.hms.base.availableupdate,com.huawei.hms.stats,com.huawei.hms.base.ui,com.huawei.hms.base.device,com.huawei.hms.log,com.huawei.agconnect.core" />
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -26,17 +20,15 @@
         android:theme="@style/BaseTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-
         <activity
             android:name=".LoginActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
             android:theme="@style/BaseTheme.SplashScreen" />
-
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation"
-            android:launchMode="singleTask"
             android:exported="true"
+            android:launchMode="singleTask"
             android:theme="@style/BaseTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +39,7 @@
             </intent-filter>
             <intent-filter
                 android:autoVerify="true"
-                android:icon="@drawable/ic_bandyer_audio_call"
+                android:icon="@drawable/ic_kaleyra_audio_call"
                 android:label="@string/join_call_url"
                 android:order="999"
                 android:priority="999"
@@ -59,17 +51,20 @@
 
                 <data
                     android:host="*.bandyer.com"
-                    android:pathPrefix="/connect/rest-call-handler/"
+                    android:pathPattern="/..*/rest-call-handler/..*"
                     android:scheme="https" />
-
                 <data
                     android:host="*.bandyer.com"
-                    android:pathPrefix="/connect/direct-rest-call-handler/"
+                    android:pathPattern="/..*/direct-rest-call-handler/..*"
                     android:scheme="https" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mock.MockUserAuthenticationRequestActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden|navigation" />
 
         <!-- FCM Notification Service -->
+
         <service
             android:name=".notification.FCMNotificationService"
             android:exported="false">
@@ -77,55 +72,47 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".notification.HuaweiNotificationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- Pushy Notification Receiver -->
+        </service> <!-- Pushy Notification Receiver -->
         <receiver
             android:name=".notification.PushyNotificationService"
             android:exported="false">
             <intent-filter>
+
                 <!-- Do not modify this -->
                 <action android:name="pushy.me" />
             </intent-filter>
-        </receiver>
-
-        <!-- Bandyer call event broadcast receiver -->
-
+        </receiver> <!-- Bandyer call event broadcast receiver -->
         <receiver
             android:name=".receivers.CallEventBroadcastReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.bandyer.android_sdk.CALL_EVENT_ACTION" />
             </intent-filter>
-        </receiver>
-
-        <!-- Bandyer chat event broadcast receiver -->
-
+        </receiver> <!-- Bandyer chat event broadcast receiver -->
         <receiver
             android:name=".receivers.ChatEventBroadcastReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.bandyer.android_sdk.CHAT_EVENT_ACTION" />
             </intent-filter>
-        </receiver>
-
-        <!-- Bandyer unhandled broadcast receiver -->
-
+        </receiver> <!-- Bandyer unhandled broadcast receiver -->
         <receiver
             android:name=".exceptions.BandyerExceptionReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.bandyer.android_sdk.BANDYER_UNHANDLED_EXCEPTION" />
             </intent-filter>
-        </receiver>
-
+        </receiver> <!-- Bandyer mock biometric authentication clicked broadcast receiver -->
+        <receiver
+            android:name=".mock.AuthenticationRequestNotificationClickedReceiver"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

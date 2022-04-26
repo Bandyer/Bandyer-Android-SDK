@@ -8,3 +8,6 @@ include ':app_utilities',
 		':app'
 
 project(':app').projectDir = file('app')
+project(':app_configuration').projectDir = file('app_extensions/app_configuration')
+project(':app_design').projectDir = file('app_extensions/app_design')
+project(':app_utilities').projectDir = file('app_extensions/app_utilities')
