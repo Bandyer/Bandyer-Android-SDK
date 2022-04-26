@@ -435,7 +435,8 @@ code.paragraph {
 }
 
 .sideMenuPart.hidden > .sideMenuPart {
-    display: none;
+    height: 0;
+    visibility: hidden;
 }
 
 .filtered > a, .filtered > .navButton {

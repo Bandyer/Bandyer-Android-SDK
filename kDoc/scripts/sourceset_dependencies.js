@@ -1,1 +1,1 @@
-sourceset_dependencies='{":bandyer-android-sdk:dokkaHtml/debug":[],":bandyer-android-sdk:dokkaHtml/main":[],":bandyer-android-sdk:dokkaHtml/release":[]}'
+sourceset_dependencies='{":bandyer-android-sdk:dokkaHtml/androidTestRelease":[],":bandyer-android-sdk:dokkaHtml/debug":[],":bandyer-android-sdk:dokkaHtml/main":[],":bandyer-android-sdk:dokkaHtml/release":[],":bandyer-android-sdk:dokkaHtml/testFixtures":[],":bandyer-android-sdk:dokkaHtml/testFixturesDebug":[],":bandyer-android-sdk:dokkaHtml/testFixturesRelease":[]}'
