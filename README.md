@@ -16,7 +16,6 @@
 
 . **[Overview](#overview)** .
 **[Features](#features)** .
-**[News](#news-1)** .
 **[Documentation](#documentation)** .
 **[Pricing](#other)** .
 **[Credits](#credits)** .
@@ -35,14 +34,30 @@
 
 Supported API level 21+ (Android 5.0 Lollipop).
 
-**Requires compileOptions for Java8**
+**For kotlin built apps is required at least kotlin language version v1.5.32.**
+
+**API 31 and java version 1.8 required.**
+
 ```java
 android {
+    compileSdkVersion 31
+    buildToolsVersion 31.0.0
+    
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        
+        [...]
+   }
+   
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    
+    [...]
 }
+
 ```
 
 ## Features
@@ -105,8 +120,6 @@ android {
 
 [Unexpected exception handling](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Unexpected-exception-handling)
 
-[Keep BandyerSDKClient Alive](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Keep-client-active-in-background)
-
 [Reduce APK size](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Reduce-the-APK-size)
 
 [Proguard](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Proguard)
@@ -124,11 +137,11 @@ android {
 🆎  &nbsp; [Customize Font](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Customize-Font)
 
 ### Migrations
-
-[Upgrade to v1.5.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
+[Upgrade to v3+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v3.0.x)
 
 [Upgrade to v2.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v2.x)
 
+[Upgrade to v1.5.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
 
 ### Code documentation
 [Kotlin](https://docs.bandyer.com/Bandyer-Android-SDK/kDoc/bandyer-android-sdk/com.bandyer.android_sdk)
