@@ -424,7 +424,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         int itemId = item.getItemId();
 
         if (itemId == R.id.call_configuration) {
-           showCallConfigurationDialog();
+            showCallConfigurationDialog();
         } else if (itemId == R.id.chat_configuration) {
             showChatConfigurationDialog();
         } else if (itemId == R.id.logout) logout();

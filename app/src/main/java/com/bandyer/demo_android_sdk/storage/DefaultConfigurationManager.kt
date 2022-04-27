@@ -1,45 +1,39 @@
 package com.bandyer.demo_android_sdk.storage
 
+import android.annotation.SuppressLint
 import android.content.Context
+import com.bandyer.android_sdk.tool_configuration.Configuration
 import com.bandyer.android_sdk.tool_configuration.call.CallConfiguration
-import com.bandyer.android_sdk.tool_configuration.call.CustomCallConfiguration
 import com.bandyer.android_sdk.tool_configuration.call.SimpleCallConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.ChatConfiguration
-import com.bandyer.android_sdk.tool_configuration.chat.CustomChatConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.SimpleChatConfiguration
 import com.kaleyra.collaboration_suite_utils.ContextRetainer.Companion.context
 
 object DefaultConfigurationManager {
-    private const val preferenceKey = "ConfigurationPrefs"
+    private const val preferenceKey = "DefaultConfigurationPrefs"
     private const val callConfigurationKey = "CALL_CONFIGURATION"
     private const val chatConfigurationKey = "CHAT_CONFIGURATION"
 
-    fun getDefaultCallConfiguration(): CustomCallConfiguration {
-        val prefs = context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
-        return prefs.getParcelable<CustomCallConfiguration>(callConfigurationKey, SimpleCallConfiguration())
+    private val prefs by lazy { context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE) }
+
+    fun getDefaultCallConfiguration() = prefs.getString(callConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleCallConfiguration()
+    fun getDefaultChatConfiguration() = prefs.getString(chatConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleChatConfiguration()
+
+    @SuppressLint("ApplySharedPref")
+    fun saveDefaultCallConfiguration(callConfiguration: CallConfiguration) = prefs.edit().apply {
+        putString(callConfigurationKey, callConfiguration.encode())
+        commit()
     }
 
-    fun getDefaultChatConfiguration(): CustomChatConfiguration {
-        val prefs = context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE)
-        return prefs.getParcelable<CustomChatConfiguration>(chatConfigurationKey,  SimpleChatConfiguration())
+    @SuppressLint("ApplySharedPref")
+    fun saveDefaultChatConfiguration(chatConfiguration: ChatConfiguration) = prefs.edit().apply {
+        putString(chatConfigurationKey, chatConfiguration.encode())
+        commit()
     }
 
-    fun saveDefaultCallConfiguration(customCallConfiguration: CustomCallConfiguration) {
-        val editor = context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE).edit()
-        editor.putParcelable(callConfigurationKey, customCallConfiguration)
-        editor.apply()
-    }
-
-    fun saveDefaultChatConfiguration(defaultChatConfiguration: ChatConfiguration) {
-        val editor = context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE).edit()
-        editor.putParcelable(chatConfigurationKey, defaultChatConfiguration)
-        editor.apply()
-    }
-
-    fun clearAll() {
-        val editor = context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE).edit()
-        editor.putParcelable(callConfigurationKey, SimpleCallConfiguration())
-        editor.putParcelable(chatConfigurationKey, SimpleChatConfiguration())
-        editor.apply()
+    @SuppressLint("ApplySharedPref")
+    fun clearAll() = prefs.edit().apply {
+        clear()
+        commit()
     }
 }
