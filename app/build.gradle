@@ -14,10 +14,10 @@ buildscript {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
-        classpath 'com.github.triplet.play:com.github.triplet.play.gradle.plugin:2.8.1'
-        classpath 'com.google.firebase:firebase-appdistribution-gradle:2.2.0'
-        classpath 'com.huawei.agconnect:agcp:1.4.2.300'
-        classpath "ru.cian:huawei-publish-gradle-plugin:1.2.1"
+        classpath 'com.github.triplet.play:com.github.triplet.play.gradle.plugin:3.7.0'
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.1'
+        classpath 'com.huawei.agconnect:agcp:1.6.5.300'
+        classpath "ru.cian:huawei-publish-gradle-plugin:1.3.3"
     }
 }
 
@@ -132,8 +132,7 @@ android {
 huaweiPublish {
     instances {
         release {
-            clientId = getHmsClientId()
-            clientSecret = getHmsClientSecret()
+            credentialsPath = getHmsDistributionCredentialsFilePath()
             buildFormat = "aab"
         }
     }
@@ -176,9 +175,9 @@ dependencies {
 }
 
 play {
-    def canPublish = playStoreCredentialsFilePath()?.trim()
+    def canPublish = !playStoreCredentialsFilePath()?.trim().allWhitespace
     if (canPublish) serviceAccountCredentials = file(playStoreCredentialsFilePath())
-    track = "beta"
-    enabled = canPublish
-    defaultToAppBundles = true
+    track.set("beta")
+    enabled.set(canPublish)
+    defaultToAppBundles.set(true)
 }

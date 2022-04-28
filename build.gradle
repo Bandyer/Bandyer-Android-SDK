@@ -29,8 +29,7 @@ buildscript {
     ext.useLeakCanary = { -> return false }
     ext.useMockUserDetailsProvider = { -> return false }
 
-    ext.getHmsClientId = { -> return "" }
-    ext.getHmsClientSecret = { -> return "" }
+    ext.getHmsDistributionCredentialsFilePath = { -> return " " }
 
     repositories {
         mavenLocal()
