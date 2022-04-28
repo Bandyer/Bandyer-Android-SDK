@@ -2,12 +2,12 @@
  * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
-include ':app_utilities',
-		':app_configuration',
-		':app_design',
-		':app'
+include ':app',
+        ':app-utilities',
+        ':app-configuration',
+        ':app-design'
 
 project(':app').projectDir = file('app')
-project(':app_configuration').projectDir = file('app_extensions/app_configuration')
-project(':app_design').projectDir = file('app_extensions/app_design')
-project(':app_utilities').projectDir = file('app_extensions/app_utilities')
+project(':app-utilities').projectDir = file('app-extensions/app-utilities')
+project(':app-configuration').projectDir = file('app-extensions/app-configuration')
+project(':app-design').projectDir = file('app-extensions/app-design')
