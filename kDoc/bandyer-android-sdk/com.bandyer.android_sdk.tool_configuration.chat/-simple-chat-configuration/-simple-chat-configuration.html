@@ -13,7 +13,7 @@
       </div>
       <div id="main">
         <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.tool_configuration.chat/SimpleChatConfiguration/SimpleChatConfiguration/#/PointingToDeclaration//-799625728">
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.tool_configuration.chat/SimpleChatConfiguration/SimpleChatConfiguration/#com.bandyer.android_sdk.tool_configuration.chat.ChatCapabilitySet#com.bandyer.android_sdk.tool_configuration.chat.ChatOptionSet/PointingToDeclaration//-799625728">
           <div class="navigation-wrapper" id="navigation-wrapper">
             <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.tool_configuration.chat</a>/<a href="index.html">SimpleChatConfiguration</a>/<a href="-simple-chat-configuration.html">SimpleChatConfiguration</a></div>
             <div class="pull-right d-flex">
@@ -26,7 +26,13 @@
 <div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="-simple-chat-configuration.html">SimpleChatConfiguration</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="-simple-chat-configuration.html">SimpleChatConfiguration</a>(capabilitySet: <a href="../-chat-capability-set/index.html">ChatCapabilitySet</a> = CustomCallConfiguration(
+        CustomCallConfiguration.CustomCapabilitySet(
+            CustomFileShareConfiguration(),
+            CustomScreenShareConfiguration(),
+            CustomWhiteboardConfiguration()
+        )
+    ).let { CustomCapabilitySet(audioUpgradableCallConfiguration = it, audioVideoCallConfiguration = it) }, optionSet: <a href="../-chat-option-set/index.html">ChatOptionSet</a> = ChatOptions())<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 <p class="paragraph">Create empty Simple chat configuration</p></div>
         </div>
