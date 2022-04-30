@@ -16,8 +16,8 @@ object DefaultConfigurationManager {
 
     private val prefs by lazy { context.getSharedPreferences(preferenceKey, Context.MODE_PRIVATE) }
 
-    fun getDefaultCallConfiguration() = prefs.getString(callConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleCallConfiguration()
-    fun getDefaultChatConfiguration() = prefs.getString(chatConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleChatConfiguration()
+    fun getDefaultCallConfiguration(): CallConfiguration = prefs.getString(callConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleCallConfiguration()
+    fun getDefaultChatConfiguration(): ChatConfiguration = prefs.getString(chatConfigurationKey, null)?.let { Configuration.decode(it) } ?: SimpleChatConfiguration()
 
     @SuppressLint("ApplySharedPref")
     fun saveDefaultCallConfiguration(callConfiguration: CallConfiguration) = prefs.edit().apply {

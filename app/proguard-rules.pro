@@ -26,20 +26,6 @@
 -keepattributes Signature
 -keepattributes SourceFile,LineNumberTable
 
-# Bandyer proprietary SDK
--keep class com.bandyer.** { *; }
--keep interface com.bandyer.** { *; }
--keep enum com.bandyer.** { *; }
-
--keep class com.kaleyra.** { *; }
--keep interface com.kaleyra.** { *; }
--keep enum com.kaleyra.** { *; }
-
-# WebRTC library used for Audio&Video communication
--keep class org.webrtc.** { *; }
--keep interface org.webrtc.** { *; }
--keep enum org.webrtc.** { *; }
-
 # Pushy
 -dontwarn me.pushy.**
 -keep class me.pushy.** { *; }
