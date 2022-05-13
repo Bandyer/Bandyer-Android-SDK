@@ -33,6 +33,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.bandyer.android_sdk.call.model.CallType
 import com.bandyer.android_sdk.intent.call.CallOptions
+import com.bandyer.android_sdk.intent.call.CallRecordingType
 import com.bandyer.android_sdk.tool_configuration.call.CallConfiguration
 import com.bandyer.android_sdk.tool_configuration.call.CustomCallConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.ChatConfiguration
@@ -215,7 +216,7 @@ class CustomConfigurationDialog : DialogFragment() {
         )
 
     private fun getOptions(optionView: CallOptionsView) = CallOptions(
-        recordingEnabled = optionView.isRecordingChecked,
+        callRecordingType = if (optionView.isRecordingChecked) CallRecordingType.AUTOMATIC else CallRecordingType.NONE,
         backCameraAsDefault = optionView.isBackCameraChecked,
         disableProximitySensor = optionView.isProximitySensorDisabled,
         feedbackEnabled = optionView.isFeedbackChecked

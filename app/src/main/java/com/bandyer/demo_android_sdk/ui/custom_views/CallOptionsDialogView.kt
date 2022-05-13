@@ -26,6 +26,7 @@ import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import com.bandyer.android_sdk.intent.call.CallRecordingType
 import com.bandyer.android_sdk.tool_configuration.call.CallConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.ChatConfiguration
 import com.bandyer.demo_android_sdk.R
@@ -298,7 +299,7 @@ class CallOptionsDialogView(
             if (capabilitySet.fileShare != null) setChecked(R.id.call_options_file_share, true)
             if (capabilitySet.chat != null) setChecked(R.id.call_options_chat, true)
             if (capabilitySet.screenShare != null) setChecked(R.id.call_options_screen_sharing, true)
-            if (optionSet.recordingEnabled) setChecked(R.id.call_options_recording, true)
+            if (optionSet.callRecordingType != CallRecordingType.NONE) setChecked(R.id.call_options_recording, true)
             if (optionSet.backCameraAsDefault) setChecked(R.id.call_options_back_camera, true)
             if (optionSet.disableProximitySensor) setChecked(R.id.call_options_disable_proximity_sensor, true)
             if (optionSet.feedbackEnabled) setChecked(R.id.call_options_feedback, true)
@@ -313,7 +314,7 @@ class CallOptionsDialogView(
             if (capabilitySet.whiteboard != null) setChecked(R.id.call_options_whiteboard, true)
             if (capabilitySet.fileShare != null) setChecked(R.id.call_options_file_share, true)
             if (capabilitySet.screenShare != null) setChecked(R.id.call_options_screen_sharing, true)
-            if (optionSet.recordingEnabled) setChecked(R.id.call_options_recording, true)
+            if (optionSet.callRecordingType != CallRecordingType.NONE) setChecked(R.id.call_options_recording, true)
             if (optionSet.backCameraAsDefault) setChecked(R.id.call_options_back_camera, true)
             if (optionSet.disableProximitySensor) setChecked(R.id.call_options_disable_proximity_sensor, true)
             if (optionSet.feedbackEnabled) setChecked(R.id.call_options_feedback, true)

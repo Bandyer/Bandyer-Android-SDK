@@ -33,6 +33,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bandyer.android_sdk.call.CallException;
 import com.bandyer.android_sdk.call.CallModule;
 import com.bandyer.android_sdk.call.CallObserver;
+import com.bandyer.android_sdk.call.CallRecordingObserver;
 import com.bandyer.android_sdk.call.CallUIObserver;
 import com.bandyer.android_sdk.chat.ChatException;
 import com.bandyer.android_sdk.chat.ChatModule;
@@ -46,6 +47,7 @@ import com.bandyer.android_sdk.intent.BandyerIntent;
 import com.bandyer.android_sdk.intent.call.Call;
 import com.bandyer.android_sdk.intent.call.CallDisplayMode;
 import com.bandyer.android_sdk.intent.call.CallIntentBuilder;
+import com.bandyer.android_sdk.intent.call.CallRecordingState;
 import com.bandyer.android_sdk.intent.chat.Chat;
 import com.bandyer.android_sdk.intent.chat.ChatIntentBuilder;
 import com.bandyer.android_sdk.module.AuthenticationException;
@@ -61,11 +63,14 @@ import com.bandyer.demo_android_sdk.ui.adapter_items.SelectedUserItem;
 import com.bandyer.demo_android_sdk.ui.adapter_items.UserSelectionItem;
 import com.bandyer.demo_android_sdk.ui.custom_views.CustomConfigurationDialog;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.snackbar.Snackbar;
 import com.kaleyra.app_configuration.activities.BaseConfigurationActivity;
 import com.kaleyra.app_configuration.activities.ConfigurationActivity;
 import com.kaleyra.app_utilities.notification.NotificationProxy;
 import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager;
 import com.kaleyra.app_utilities.storage.LoginManager;
+import com.kaleyra.collaboration_suite_phone_ui.recording.KaleyraRecordingSnackbar;
+import com.kaleyra.collaboration_suite_phone_ui.snackbar.KaleyraSnackbar;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.IItem;
@@ -105,7 +110,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
     private final ArrayList<UserSelectionItem> usersList = new ArrayList<>();
 
-    abstract static class MyCallObserver implements CallUIObserver, CallObserver {
+    private KaleyraSnackbar recordingSnackbar;
+
+    abstract static class MyCallObserver implements CallUIObserver, CallObserver, CallRecordingObserver {
     }
 
     abstract static class MyChatObserver implements ChatUIObserver, ChatObserver {
@@ -162,6 +169,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         @Override
         public void onCallStarted(@NonNull Call ongoingCall) {
             Log.d(TAG, "onCallStarted");
+            ongoingCall.addCallRecordingObserver(this);
         }
 
         @Override
@@ -174,6 +182,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         public void onCallEnded(@NonNull Call ongoingCall) {
             Log.d(TAG, "onCallEnded");
             hideOngoingCallLabel();
+            ongoingCall.removeCallRecordingObserver(this);
         }
 
         @Override
@@ -181,6 +190,26 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
             Log.d(TAG, "onCallEnded with error: " + callException.getMessage());
             hideOngoingCallLabel();
             showErrorDialog(callException.getMessage());
+            ongoingCall.removeCallRecordingObserver(this);
+        }
+
+        @Override
+        public void onCallRecordingStateChanged(@NonNull Call call, @NonNull CallRecordingState callRecordingState) {
+            switch (callRecordingState) {
+                case STOPPED:
+                    recordingSnackbar = KaleyraRecordingSnackbar.make(findViewById(R.id.main_view), KaleyraRecordingSnackbar.Type.TYPE_ENDED, Snackbar.LENGTH_LONG);
+                    break;
+                case STARTED:
+                    recordingSnackbar = KaleyraRecordingSnackbar.make(findViewById(R.id.main_view), KaleyraRecordingSnackbar.Type.TYPE_STARTED, Snackbar.LENGTH_LONG);
+                    break;
+            }
+            recordingSnackbar.show();
+        }
+
+        @Override
+        public void onCallRecordingFailed(@NonNull Call call, @NonNull String reason) {
+            recordingSnackbar = KaleyraRecordingSnackbar.make(findViewById(R.id.main_view), KaleyraRecordingSnackbar.Type.TYPE_ERROR, Snackbar.LENGTH_LONG);
+            recordingSnackbar.show();
         }
     };
 
@@ -201,6 +230,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
             Log.d(TAG, "onChatActivityStarted");
         }
     };
+
+    private boolean areObserversAdded = false;
 
     public static void show(Activity context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -332,6 +363,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
      * The observers will be notified when a chat or a call UI will be started, closed or closed with errors.
      */
     private void addObservers() {
+        if (areObserversAdded) return;
+        areObserversAdded = true;
+
         // Add an observer for the chat and call modules
         BandyerSDK.getInstance().addModuleObserver(this);
 
@@ -349,6 +383,26 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         if (chatModule != null) {
             chatModule.addChatObserver(this, chatObserver);
             chatModule.addChatUIObserver(this, chatObserver);
+        }
+    }
+
+    private void removeObservers() {
+        areObserversAdded = false;
+
+        BandyerSDK.getInstance().removeModuleObserver(this);
+
+        CallModule callModule = BandyerSDK.getInstance().getCallModule();
+        if (callModule != null) {
+            callModule.removeCallObserver(callObserver);
+            callModule.removeCallUIObserver(callObserver);
+            Call ongoingCall = callModule.getOngoingCall();
+            if (ongoingCall != null) callModule.getOngoingCall().removeCallRecordingObserver(callObserver);
+        }
+
+        ChatModule chatModule = BandyerSDK.getInstance().getChatModule();
+        if (chatModule != null) {
+            chatModule.removeChatObserver(chatObserver);
+            chatModule.removeChatUIObserver(chatObserver);
         }
     }
 
@@ -380,7 +434,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BandyerSDK.getInstance().removeModuleObserver(this);
+        removeObservers();
         BandyerSDK.getInstance().disconnect();
     }
 
