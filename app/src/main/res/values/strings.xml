@@ -89,5 +89,8 @@
     <string name="pick_users" translatable="false">Hello %1$s!\nWho do you want to call or chat with?</string>
     <string name="login_title" translatable="false">Choose the user to login with:</string>
 
+    <string name="missed_call" translatable="false">Missed call</string>
+    <string name="callback" translatable="false">Call back</string>
+    <string name="chatback" translatable="false">Chat</string>
 
 </resources>

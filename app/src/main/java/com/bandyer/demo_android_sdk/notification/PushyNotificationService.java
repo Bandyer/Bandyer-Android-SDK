@@ -17,6 +17,9 @@ import androidx.work.WorkManager;
 import com.kaleyra.app_utilities.notification.PushyCompat;
 
 
+import static com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker.isMissingCallMessage;
+
+
 /**
  * @author kristiyan
  */
@@ -29,16 +32,20 @@ public class PushyNotificationService extends PushyCompat {
 
     @Override
     public void onReceive(@NonNull Context context, @NonNull Intent intent) {
-        String payload = intent.getStringExtra("payload");
-        Log.d(TAG, "Pushy payload received: " + payload);
+        try {
+            String payload = intent.getStringExtra("payload");
+            Log.d(TAG, "Pushy payload received: " + payload);
 
-        Data data = new Data.Builder()
-                .putString("payload", payload)
-                .build();
+            Data data = new Data.Builder()
+                    .putString("payload", payload)
+                    .build();
 
-        OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(PushNotificationPayloadWorker.class)
-                .setInputData(data)
-                .build();
-        WorkManager.getInstance(context).enqueue(mRequest);
+            OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(isMissingCallMessage(payload) ? MissedNotificationPayloadWorker.class : PushNotificationPayloadWorker.class)
+                    .setInputData(data)
+                    .build();
+            WorkManager.getInstance(context).enqueue(mRequest);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 }

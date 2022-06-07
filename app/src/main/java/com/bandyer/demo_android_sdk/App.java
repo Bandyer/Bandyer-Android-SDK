@@ -55,13 +55,24 @@ public class App extends MultiDexApplication {
         else if ("sandbox".equals(environmentName)) environment = Environment.Sandbox.INSTANCE;
         else environment = Environment.Companion.create(environmentName);
 
-        // Retrieves Region.Eu or Region.In
+        // Retrieves Region.Eu or Region.In or Region.Us
         // as set in the configuration settings
-        String regionName = appConfiguration.getRegion();
         Region region;
-        if ("Eu".equals(regionName)) region = Region.Eu.INSTANCE;
-        else if ("In".equals(regionName)) region = Region.In.INSTANCE;
-        else region = Region.Companion.create(regionName);
+        String regionName = appConfiguration.getRegion().toLowerCase();
+        switch (regionName) {
+            case "eu":
+                region = Region.Eu.INSTANCE;
+                break;
+            case "in":
+                region = Region.In.INSTANCE;
+                break;
+            case "us":
+                region = Region.Us.INSTANCE;
+                break;
+            default:
+                region = Region.Companion.create(regionName);
+                break;
+        }
 
         PriorityLogger logger = null;
         if (BuildConfig.DEBUG)

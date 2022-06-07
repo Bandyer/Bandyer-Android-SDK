@@ -19,6 +19,9 @@ import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.RemoteMessage;
 
 
+import static com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker.isMissingCallMessage;
+
+
 public class HuaweiNotificationService extends HmsMessageService {
 
     private static final String TAG = HuaweiNotificationService.class.getSimpleName();
@@ -34,7 +37,7 @@ public class HuaweiNotificationService extends HmsMessageService {
                     .putString("payload", payload)
                     .build();
 
-            OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(PushNotificationPayloadWorker.class)
+            OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(isMissingCallMessage(payload) ? MissedNotificationPayloadWorker.class : PushNotificationPayloadWorker.class)
                     .setInputData(data)
                     .build();
 

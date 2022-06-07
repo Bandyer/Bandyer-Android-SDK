@@ -41,6 +41,7 @@
     <string-array name="Regions">
         <item>eu</item>
         <item>in</item>
+        <item>us</item>
     </string-array>
 
     <string-array name="Environments">

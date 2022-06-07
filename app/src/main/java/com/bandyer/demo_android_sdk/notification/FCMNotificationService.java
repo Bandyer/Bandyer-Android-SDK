@@ -12,10 +12,12 @@ import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.kaleyra.app_utilities.notification.FirebaseCompat;
-import com.kaleyra.app_utilities.storage.LoginManager;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.kaleyra.app_utilities.notification.FirebaseCompat;
+
+
+import static com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker.isMissingCallMessage;
 
 
 /**
@@ -47,7 +49,7 @@ public class FCMNotificationService extends FirebaseMessagingService {
                     .putString("payload", payload)
                     .build();
 
-            OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(PushNotificationPayloadWorker.class)
+            OneTimeWorkRequest mRequest = new OneTimeWorkRequest.Builder(isMissingCallMessage(payload) ? MissedNotificationPayloadWorker.class : PushNotificationPayloadWorker.class)
                     .setInputData(data)
                     .build();
 

@@ -33,10 +33,11 @@ apply plugin: 'ru.cian.huawei-publish'
 def leakCanaryVersion = '2.7'
 def jUnitLibVersion = '4.13.2'
 def multiDexLibVersion = "2.0.1"
-def firebaseMessagingLibVersion = '20.2.3'
-def work_version = '2.7.0'
-def bandyerLibVersion = "3.0.3"
-def bandyerExtensionUsbCamera = "9.0.0"
+def firebaseMessagingLibVersion = '23.0.5'
+def firebaseMessagingIidLibVersion = '21.1.0'
+def work_version = '2.7.1'
+def bandyerLibVersion = "3.1.0"
+def bandyerExtensionUsbCamera = "9.0.1"
 def pushy_version = '1.0.79'
 def huawei_push_version = '6.1.0.300'
 def androidX = '1.1.0'
@@ -155,6 +156,7 @@ dependencies {
 
     /*** Notification ***/
     implementation "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
+    implementation("com.google.firebase:firebase-iid:$firebaseMessagingIidLibVersion")
     implementation "androidx.work:work-runtime:$work_version"
 
     /*** Notification alternative ***/

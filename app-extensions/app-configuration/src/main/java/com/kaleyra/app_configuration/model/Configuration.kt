@@ -30,7 +30,7 @@ import kotlinx.serialization.json.Json
 data class Configuration(
     var appId: String,
     var apiKey: String,
-    var region: String = "Eu",
+    var region: String = "eu",
     var environment: String,
     var userId: String? = null,
     var projectNumber: String? = null,

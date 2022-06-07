@@ -56,6 +56,7 @@ import com.bandyer.android_sdk.module.BandyerModuleObserver;
 import com.bandyer.android_sdk.module.BandyerModuleStatus;
 import com.bandyer.android_sdk.tool_configuration.call.CustomCallConfiguration;
 import com.bandyer.demo_android_sdk.databinding.ActivityMainBinding;
+import com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker;
 import com.bandyer.demo_android_sdk.storage.DefaultConfigurationManager;
 import com.bandyer.demo_android_sdk.ui.activities.CollapsingToolbarActivity;
 import com.bandyer.demo_android_sdk.ui.adapter_items.NoUserSelectedItem;
@@ -269,6 +270,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
 
+        // in case the MainActivity has been shown by an action of missed call notification
+        handleMissedCall(getIntent());
+
         binding.ongoingCallLabel.setOnClickListener(v -> {
             CallModule callModule = BandyerSDK.getInstance().getCallModule();
             if (callModule == null) return;
@@ -431,6 +435,29 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         startActivity(bandyerIntent);
     }
 
+    private void handleMissedCall(Intent intent) {
+        int notificationId = intent.getIntExtra(MissedNotificationPayloadWorker.notificationId, 0);
+        if (notificationId == 0) return;
+        MissedNotificationPayloadWorker.cancelNotification(this, notificationId);
+        if (!LoginManager.isUserLogged(this)) return;
+        startBandyerSDK();
+        ArrayList<String> callUsers = intent.getStringArrayListExtra(MissedNotificationPayloadWorker.startCall);
+        if (callUsers != null) {
+            BandyerIntent.Builder bandyerIntentBuilder = new BandyerIntent.Builder();
+            CallIntentBuilder callIntentBuilder = bandyerIntentBuilder.startWithAudioUpgradableCall(getApplicationContext());
+            BandyerIntent bandyerIntent = callIntentBuilder.with(callUsers).build();
+            startActivity(bandyerIntent);
+            return;
+        }
+        String user = intent.getStringExtra(MissedNotificationPayloadWorker.startChat);
+        if (user != null) {
+            BandyerIntent.Builder bandyerIntentBuilder = new BandyerIntent.Builder();
+            ChatIntentBuilder chatIntentBuilder = bandyerIntentBuilder.startWithChat(getApplicationContext());
+            BandyerIntent bandyerIntent = chatIntentBuilder.with(user).build();
+            startActivity(bandyerIntent);
+        }
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -442,6 +469,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleExternalUrl(intent);
+        handleMissedCall(intent);
     }
 
     @Override
