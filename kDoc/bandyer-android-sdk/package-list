@@ -1,5 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
+$dokka.location:com.bandyer.android_sdk.call.audio////PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.call.audio/index.html
+$dokka.location:com.bandyer.android_sdk.call.audio/AudioCallSessionObservers///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.call.audio/-audio-call-session-observers/index.html
 $dokka.location:com.bandyer.android_sdk.call.model////PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.call.model/index.html
 $dokka.location:com.bandyer.android_sdk.call.model/CallDirection.INCOMING///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.call.model/-call-direction/-i-n-c-o-m-i-n-g/index.html
 $dokka.location:com.bandyer.android_sdk.call.model/CallDirection.INCOMING/name/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.call.model/-call-direction/-i-n-c-o-m-i-n-g/name.html
@@ -609,6 +611,7 @@ $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardInfo///PointingToDe
 $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardModule///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.whiteboard/-whiteboard-module/index.html
 $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardModule/getName/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.whiteboard/-whiteboard-module/get-name.html
 com.bandyer.android_sdk.call
+com.bandyer.android_sdk.call.audio
 com.bandyer.android_sdk.call.model
 com.bandyer.android_sdk.call.notification
 com.bandyer.android_sdk.chat
