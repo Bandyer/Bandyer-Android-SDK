@@ -136,6 +136,8 @@ android {
 
 🆎  &nbsp; [Customize Font](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Customize-Font)
 
+🎭  &nbsp; [Brand Identity Watermark](https://github.com/Bandyer/Bandyer-Android-Design/wiki/Brand-Identity-Watermark)
+
 ### Migrations
 [Upgrade to v3+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v3.0.x)
 
