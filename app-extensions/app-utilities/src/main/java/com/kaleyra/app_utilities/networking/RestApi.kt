@@ -29,12 +29,13 @@ import com.kaleyra.app_utilities.storage.LoginManager
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.okhttp.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.http.ContentType.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,8 +44,8 @@ import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
-import java.lang.Exception
 
 /**
  * WARNING!!!
@@ -110,8 +111,14 @@ class RestApi(val applicationContext: Context) {
             engine {
                 preconfigured = okHttpClient
             }
-            install(JsonFeature) {
-                serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
+
+            install(HttpRequestRetry) {
+                retryOnServerErrors(maxRetries = Int.MAX_VALUE)
+                exponentialDelay()
+            }
+
+            install(ContentNegotiation) {
+                json(Json {
                     prettyPrint = true
                     isLenient = true
                     ignoreUnknownKeys = true
@@ -144,7 +151,7 @@ class RestApi(val applicationContext: Context) {
                 headers(configurationHeaders)
                 contentType(Application.Json)
             }
-            withContext(Dispatchers.Main) { response.receive<BandyerUsers>().user_id_list }
+            withContext(Dispatchers.Main) { response.body<BandyerUsers>().user_id_list }
         } catch (t: Throwable) {
             Log.e("GetListUsers", t.message, t)
             withContext(Dispatchers.Main) { emptyList() }
@@ -159,11 +166,13 @@ class RestApi(val applicationContext: Context) {
                     client.post("$endpoint/mobile_push_notifications/rest/device") {
                         headers(configurationHeaders)
                         contentType(Application.Json)
-                        body = DeviceRegistrationInfo(
-                            userId,
-                            appId,
-                            devicePushToken,
-                            pushProvider.name
+                        setBody(
+                            DeviceRegistrationInfo(
+                                userId,
+                                appId,
+                                devicePushToken,
+                                pushProvider.name
+                            )
                         )
                     }
 
@@ -193,14 +202,13 @@ class RestApi(val applicationContext: Context) {
     fun getAccessToken(onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
         scope.launch {
             updateConfiguration()
-
             kotlin.runCatching {
                 val response: HttpResponse = client.post("$endpoint/rest/sdk/credentials") {
                     headers(configurationHeaders)
                     contentType(Application.Json)
-                    body = AccessToken.Request(LoginManager.getLoggedUser(applicationContext))
+                    setBody(AccessToken.Request(LoginManager.getLoggedUser(applicationContext)))
                 }
-                currentAccessToken = response.receive<AccessToken.Response>().access_token
+                currentAccessToken = response.body<AccessToken.Response>().access_token
             }.onFailure {
                 Log.e(TAG, it.message ?: "Unable to fetch access token")
                 withContext(Dispatchers.Main) {
@@ -222,7 +230,7 @@ class RestApi(val applicationContext: Context) {
                     headers(configurationHeaders)
                     contentType(Application.Json)
                 }
-                val demoAppUsers = ArrayList<DemoAppUser>(response.receive<List<DemoAppUser>>().filter { it.user_id in userIds })
+                val demoAppUsers = ArrayList<DemoAppUser>(response.body<List<DemoAppUser>>().filter { it.user_id in userIds })
                 withContext(Dispatchers.Main) { onSuccess(demoAppUsers) }
             }.onFailure {
                 withContext(Dispatchers.Main) { onError.invoke(it) }
