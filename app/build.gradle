@@ -39,7 +39,7 @@ def work_version = '2.7.1'
 def bandyerLibVersion = "3.1.5"
 def bandyerExtensionUsbCamera = "10.0.0"
 def pushy_version = '1.0.79'
-def huawei_push_version = '6.1.0.300'
+def huawei_push_version = '6.5.0.300'
 def androidX = '1.1.0'
 def desugaring_version = "1.1.5"
 
@@ -81,18 +81,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (keyStoreFilePath(name)?.trim()) signingConfig signingConfigs.release
-
-            if (getDistributionCredentialsFilePath(name)?.trim()) firebaseAppDistribution {
-                appId getDistributionAppId(name)
-                serviceCredentialsFile getDistributionCredentialsFilePath(name)
-                releaseNotes getDistributionReleaseNotes(bandyerLibVersion)
-                groups getDistributionTestGroup()
-            }
-
-            firebaseCrashlytics {
-                nativeSymbolUploadEnabled false
-                mappingFileUploadEnabled false
-            }
         }
         debug {
             applicationIdSuffix ".debug"
