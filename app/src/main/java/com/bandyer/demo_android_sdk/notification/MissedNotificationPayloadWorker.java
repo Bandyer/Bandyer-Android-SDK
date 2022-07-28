@@ -16,6 +16,7 @@ import androidx.work.WorkerParameters;
 
 import com.bandyer.android_sdk.client.BandyerSDK;
 import com.bandyer.android_sdk.client.Completion;
+import com.bandyer.android_sdk.client.Session;
 import com.bandyer.android_sdk.module.BandyerComponent;
 import com.bandyer.android_sdk.notification.FormatContext;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
@@ -30,7 +31,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
@@ -64,21 +64,22 @@ public class MissedNotificationPayloadWorker extends Worker {
     public Result doWork() {
         try {
             String payload = getInputData().getString("payload");
-            if (payload == null) return Result.failure();
+            Session session = BandyerSDK.getInstance().getSession();
+            if (payload == null || session == null) return Result.failure();
             Log.d(TAG, "Received payload\n" + payload + "\nready to be processed.");
             JSONObject missedCall = new JSONObject(payload);
-            ArrayList<String> userDetailsRequest = new ArrayList<String>();
+            ArrayList<String> userDetailsRequest = new ArrayList<>();
             String caller = missedCall.getJSONObject("data").getString("caller_id");
             userDetailsRequest.add(caller);
-            ArrayList<String> callbackUsers = callbackUsers(missedCall);
-
+            ArrayList<String> callbackUsers = callbackUsers(session, missedCall);
             getUserDetailsProvider().onUserDetailsRequested(userDetailsRequest, new Completion<Iterable<UserDetails>>() {
 
                 @Override
                 public void success(Iterable<UserDetails> data) {
                     UserDetails userDetails = null;
-                    Iterator<UserDetails> iterator = data.iterator();
-                    while(iterator.hasNext()) { userDetails = iterator.next(); }
+                    for (UserDetails datum : data) {
+                        userDetails = datum;
+                    }
                     if (userDetails == null) userDetails = new UserDetails.Builder(caller).build();
                     showMissedCallNotification(userDetails, payload.hashCode(), callbackUsers);
                 }
@@ -140,11 +141,11 @@ public class MissedNotificationPayloadWorker extends Worker {
         });
     }
 
-    private java.util.ArrayList<String> callbackUsers(JSONObject missedCall) throws org.json.JSONException {
-        String sessionUser = BandyerSDK.getInstance().getSession().getUserId();
+    private ArrayList<String> callbackUsers(Session session, JSONObject missedCall) throws org.json.JSONException {
+        String sessionUser = session.getUserId();
         String caller = missedCall.getJSONObject("data").getString("caller_id");
         JSONArray callees = missedCall.getJSONObject("data").getJSONArray("called_users");
-        ArrayList callbackUsers = new ArrayList();
+        ArrayList<String> callbackUsers = new ArrayList<String>();
         callbackUsers.add(caller);
         for (int i = 0; i < callees.length(); i++) {
             String userId = callees.getJSONObject(i).getString("user_id");
@@ -162,7 +163,7 @@ public class MissedNotificationPayloadWorker extends Worker {
         return PendingIntent.getActivity(getApplicationContext(), 1, intent, flags);
     }
 
-    private PendingIntent callBack(java.util.ArrayList<String> callees, int notification) {
+    private PendingIntent callBack(ArrayList<String> callees, int notification) {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra(startCall, callees);
         intent.putExtra(notificationId, notification);

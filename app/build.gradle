@@ -27,7 +27,6 @@ apply plugin: 'kotlin-android-extensions'
 apply from: 'versions.gradle'
 apply plugin: "com.github.triplet.play"
 apply plugin: 'com.google.firebase.appdistribution'
-apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'ru.cian.huawei-publish'
 
 def leakCanaryVersion = '2.7'
@@ -93,10 +92,6 @@ android {
                 serviceCredentialsFile getDistributionCredentialsFilePath(name)
                 releaseNotes getDistributionReleaseNotes(bandyerLibVersion)
                 groups getDistributionTestGroup()
-            }
-            firebaseCrashlytics {
-                nativeSymbolUploadEnabled false
-                mappingFileUploadEnabled false
             }
         }
     }
