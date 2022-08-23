@@ -76,7 +76,7 @@ public class App extends MultiDexApplication {
 
         PriorityLogger logger = null;
         if (BuildConfig.DEBUG)
-            logger = AndroidPriorityLoggerKt.androidPrioryLogger(BaseLogger.VERBOSE, BandyerSDKLoggerKt.SDK);
+            logger = AndroidPriorityLoggerKt.androidPrioryLogger(BaseLogger.ERROR, BandyerSDKLoggerKt.SDK);
 
         UserDetailsProvider userDetailsProvider = null;
         if (appConfiguration.getUserDetailsProviderMode() != UserDetailsProviderMode.NONE)
