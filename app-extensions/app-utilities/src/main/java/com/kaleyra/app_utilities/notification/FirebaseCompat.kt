@@ -18,6 +18,14 @@ package com.kaleyra.app_utilities.notification
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
+import com.google.firebase.FirebaseApp
+import com.google.firebase.FirebaseOptions
+import com.google.firebase.crashlytics.CrashlyticsRegistrar
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.provider.FirebaseInitProvider
 import com.kaleyra.app_configuration.model.PushProvider
 import com.kaleyra.app_utilities.MultiDexApplication.Companion.restApi
 import com.kaleyra.app_utilities.networking.ConnectionStatusChangeReceiver.Companion.isConnected
@@ -25,13 +33,6 @@ import com.kaleyra.app_utilities.networking.ConnectionStatusChangeReceiver.Compa
 import com.kaleyra.app_utilities.networking.ConnectionStatusChangeReceiver.Companion.unRegister
 import com.kaleyra.app_utilities.networking.OnNetworkConnectionChanged
 import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
-import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseOptions
-import com.google.firebase.iid.FirebaseInstanceId
-import com.google.firebase.iid.InstanceIdResult
-import com.google.firebase.messaging.FirebaseMessaging
 
 /**
  * This class is for Bandyer usage only
@@ -55,12 +56,15 @@ object FirebaseCompat {
         unRegister(context!!)
         deviceRegistered = false
         try {
-            FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
+            FirebaseMessaging.getInstance().token.addOnSuccessListener { devicePushToken: String ->
                 val post = Thread {
-                    val devicePushToken = instanceIdResult.token
                     restApi.unregisterDeviceForPushNotification(devicePushToken)
                     try {
-                        FirebaseInstanceId.getInstance().deleteInstanceId()
+                        FirebaseMessaging.getInstance().deleteToken()
+                    } catch (e: Throwable) {
+                        e.printStackTrace()
+                    }
+                    try {
                         FirebaseApp.getInstance().delete()
                     } catch (e: Throwable) {
                         e.printStackTrace()
@@ -80,8 +84,7 @@ object FirebaseCompat {
         if (!isConnected(context)) return
         refreshConfiguration(context, {
             try {
-                FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult: InstanceIdResult ->
-                    val devicePushToken = instanceIdResult.token
+                FirebaseMessaging.getInstance().token.addOnSuccessListener { devicePushToken: String ->
                     restApi.registerDeviceForPushNotification(PushProvider.FCM, devicePushToken)
                 }.addOnFailureListener { error: Exception? -> Toast.makeText(context, "Wrong configuration for FCM.\nYou will not receive any notifications!", Toast.LENGTH_LONG).show() }
             } catch (e: Throwable) {
@@ -99,13 +102,15 @@ object FirebaseCompat {
             kotlin.runCatching { FirebaseApp.getInstance().delete() }
             kotlin.runCatching {
                 val configuration = ConfigurationPrefsManager.getConfiguration(context)
-                val app = FirebaseApp.initializeApp(context, FirebaseOptions.Builder()
+                val app = FirebaseApp.initializeApp(
+                    context, FirebaseOptions.Builder()
                         .setGcmSenderId(configuration.projectNumber)
                         .setProjectId(configuration.firebaseProjectId)
                         .setApplicationId(configuration.firebaseMobileAppId!!)
                         .setApiKey(configuration.firebaseApiKey!!)
-                        .build())
-                FirebaseInstanceId.getInstance(app).instanceId
+                        .build()
+                )
+                FirebaseApp.getInstance().name
                 if (notifications) FirebaseMessaging.getInstance().isAutoInitEnabled = true
                 onComplete.run()
             }.onFailure { it.printStackTrace() }

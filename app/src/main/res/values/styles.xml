@@ -4,13 +4,12 @@
   -->
 <resources>
 
-    <style name="BandyerSDKDesign.Theme.Chat" parent="KaleyraCollaborationSuiteUI.Theme.Call.DayNight"/>
-    <style name="BandyerSDKDesign.Theme.Call" parent="KaleyraCollaborationSuiteUI.Theme.Chat.DayNight"/>
+    <style name="KaleyraCollaborationSuiteUI.Theme.Chat" parent="KaleyraCollaborationSuiteUI.Theme.Chat.DayNight" />
 
-    <style name="BandyerSDKDesign.CallWatermark" parent="">
-        <item name="kaleyra_rootLayoutStyle">@style/KaleyraCollaborationSuiteUI.CallWatermark.RootLayout</item>
+    <style name="KaleyraCollaborationSuiteUI.Theme.Call" parent="KaleyraCollaborationSuiteUI.Theme.Call.DayNight" />
+
+    <style name="KaleyraCollaborationSuiteUI.CallWatermark" parent="KaleyraCollaborationSuiteUI.DefaultCallWatermark">
         <item name="kaleyra_iconStyle">@style/CallWatermark</item>
-        <item name="kaleyra_titleStyle">@style/KaleyraCollaborationSuiteUI.TextView.CallWatermark</item>
     </style>
 
     <style name="CallWatermark" parent="KaleyraCollaborationSuiteUI.CallWatermarkImageView">

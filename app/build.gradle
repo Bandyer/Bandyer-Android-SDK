@@ -15,7 +15,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.triplet.play:com.github.triplet.play.gradle.plugin:3.7.0'
-        classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.2'
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.3'
         classpath 'com.huawei.agconnect:agcp:1.6.5.300'
         classpath "ru.cian:huawei-publish-gradle-plugin:1.3.3"
     }
@@ -28,16 +28,18 @@ apply from: 'versions.gradle'
 apply plugin: "com.github.triplet.play"
 apply plugin: 'com.google.firebase.appdistribution'
 apply plugin: 'ru.cian.huawei-publish'
+apply plugin: 'com.google.firebase.crashlytics'
 
 def leakCanaryVersion = '2.7'
 def jUnitLibVersion = '4.13.2'
 def multiDexLibVersion = "2.0.1"
-def firebaseMessagingLibVersion = '23.0.5'
+def firebaseMessagingLibVersion = '23.0.7'
 def firebaseMessagingIidLibVersion = '21.1.0'
+def crashlyticsLibVersion = "18.2.12"
 def work_version = '2.7.1'
-def bandyerLibVersion = "3.1.7"
+def bandyerLibVersion = "3.1.8"
 def bandyerExtensionUsbCamera = "10.0.1"
-def pushy_version = '1.0.79'
+def pushy_version = '1.0.82'
 def huawei_push_version = '6.5.0.300'
 def androidX = '1.1.0'
 def desugaring_version = "1.1.5"
@@ -80,6 +82,9 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (keyStoreFilePath(name)?.trim()) signingConfig signingConfigs.release
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         debug {
             applicationIdSuffix ".debug"
@@ -140,6 +145,7 @@ dependencies {
     /*** Notification ***/
     implementation "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
     implementation("com.google.firebase:firebase-iid:$firebaseMessagingIidLibVersion")
+    implementation "com.google.firebase:firebase-crashlytics-ndk:$crashlyticsLibVersion"
     implementation "androidx.work:work-runtime:$work_version"
 
     /*** Notification alternative ***/
