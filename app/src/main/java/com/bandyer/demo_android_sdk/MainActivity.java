@@ -153,12 +153,16 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         public void onActivityError(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity, @NonNull CallException error) {
             Log.e(TAG, "onCallActivityError " + error.getMessage());
             showErrorDialog(error.getMessage());
+            Call callModuleOngoingCall = BandyerSDK.getInstance().getCallModule().getOngoingCall();
+            if (callModuleOngoingCall != null && ongoingCall != callModuleOngoingCall) return;
             hideOngoingCallLabel();
         }
 
         @Override
         public void onActivityDestroyed(@NonNull Call ongoingCall, @NonNull WeakReference<AppCompatActivity> callActivity) {
             Log.d(TAG, "onCallActivityDestroyed");
+            Call callModuleOngoingCall = BandyerSDK.getInstance().getCallModule().getOngoingCall();
+            if (callModuleOngoingCall != null && ongoingCall != callModuleOngoingCall) return;
             hideOngoingCallLabel();
         }
 
@@ -182,6 +186,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         @Override
         public void onCallEnded(@NonNull Call ongoingCall) {
             Log.d(TAG, "onCallEnded");
+            Call callModuleOngoingCall = BandyerSDK.getInstance().getCallModule().getOngoingCall();
+            if (callModuleOngoingCall != null && ongoingCall != callModuleOngoingCall) return;
             hideOngoingCallLabel();
             ongoingCall.removeCallRecordingObserver(this);
         }
@@ -189,6 +195,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         @Override
         public void onCallEndedWithError(@NonNull Call ongoingCall, @NonNull CallException callException) {
             Log.d(TAG, "onCallEnded with error: " + callException.getMessage());
+            Call callModuleOngoingCall = BandyerSDK.getInstance().getCallModule().getOngoingCall();
+            if (callModuleOngoingCall != null && ongoingCall != callModuleOngoingCall) return;
             hideOngoingCallLabel();
             showErrorDialog(callException.getMessage());
             ongoingCall.removeCallRecordingObserver(this);
@@ -219,6 +227,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         @Override
         public void onActivityError(@NonNull Chat chat, @NonNull WeakReference<AppCompatActivity> activity, @NonNull ChatException error) {
             Log.e(TAG, "onChatActivityError " + error.getMessage());
+            showErrorDialog(error.getMessage());
         }
 
         @Override
@@ -540,8 +549,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
     private void logout() {
         LoginManager.logout(this);
-        BandyerSDK.getInstance().clearUserCache();
-        BandyerSDK.getInstance().disconnect();
+        BandyerSDK.getInstance().disconnect(true);
         DefaultConfigurationManager.INSTANCE.clearAll();
         binding.ongoingCallLabel.setVisibility(View.GONE);
         LoginActivity.show(this);
