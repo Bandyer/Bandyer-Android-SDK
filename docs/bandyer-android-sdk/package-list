@@ -362,7 +362,6 @@ $dokka.location:com.bandyer.android_sdk.module/BandyerComponent.WhiteboardCompon
 $dokka.location:com.bandyer.android_sdk.module/BandyerComponent///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-component/index.html
 $dokka.location:com.bandyer.android_sdk.module/BandyerComponent/getName/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-component/get-name.html
 $dokka.location:com.bandyer.android_sdk.module/BandyerModule///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-module/index.html
-$dokka.location:com.bandyer.android_sdk.module/BandyerModule/reconnectionAttempts/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-module/reconnection-attempts.html
 $dokka.location:com.bandyer.android_sdk.module/BandyerModule/status/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-module/status.html
 $dokka.location:com.bandyer.android_sdk.module/BandyerModuleObserver///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-module-observer/index.html
 $dokka.location:com.bandyer.android_sdk.module/BandyerModuleObserver/onModuleFailed/#com.bandyer.android_sdk.module.BandyerModule#kotlin.Throwable/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.module/-bandyer-module-observer/on-module-failed.html
