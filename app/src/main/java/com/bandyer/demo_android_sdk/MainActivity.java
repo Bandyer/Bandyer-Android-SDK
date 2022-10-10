@@ -143,7 +143,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         @Override
         public void onSessionError(@NonNull Session session, @NonNull Error error) {
             Log.e(TAG, "onSessionError for user " + session.getUserId() + " with error: " + error.getMessage());
-            startBandyerSDK();
         }
     };
 
@@ -307,6 +306,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         binding.selectedUsersChipgroup.setAdapter(selectedUsersAdapter);
         selectedUsersItemAdapter.add(new NoUserSelectedItem());
 
+        addObservers();
+
         startBandyerSDK();
     }
 
@@ -343,14 +344,12 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         for (BandyerModule module : BandyerSDK.getInstance().getModules()) {
             setModuleButtonsColors(module, module.getStatus());
         }
-
-        addObservers();
     }
 
     private void startBandyerSDK() {
         String userId = LoginManager.getLoggedUser(getApplicationContext());
 
-        AccessTokenProvider accessTokenProvider = (userId1, completion) -> getRestApi().getAccessToken(accessToken -> {
+        AccessTokenProvider accessTokenProvider = (userId1, completion) -> getRestApi().getAccessToken(userId, accessToken -> {
             completion.success(accessToken);
             return null;
         }, exception -> {
@@ -367,8 +366,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
                 session,
                 errorReason -> Log.e(TAG, "Unable to connect BandyerSDK with error: " + errorReason)
         );
-
-        addObservers();
     }
 
     /**
@@ -384,19 +381,15 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
         // set an observer for the call to show ongoing call label
         CallModule callModule = BandyerSDK.getInstance().getCallModule();
-        if (callModule != null) {
-            callModule.addCallObserver(this, callObserver);
-            callModule.addCallUIObserver(this, callObserver);
-            if (callModule.isInCall()) showOngoingCallLabel();
-            else hideOngoingCallLabel();
-        }
+        callModule.addCallObserver(this, callObserver);
+        callModule.addCallUIObserver(this, callObserver);
+        if (callModule.isInCall()) showOngoingCallLabel();
+        else hideOngoingCallLabel();
 
         // set an observer for the ongoing chat
         ChatModule chatModule = BandyerSDK.getInstance().getChatModule();
-        if (chatModule != null) {
-            chatModule.addChatObserver(this, chatObserver);
-            chatModule.addChatUIObserver(this, chatObserver);
-        }
+        chatModule.addChatObserver(this, chatObserver);
+        chatModule.addChatUIObserver(this, chatObserver);
     }
 
     private void removeObservers() {

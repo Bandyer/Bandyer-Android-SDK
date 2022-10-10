@@ -83,7 +83,7 @@ public class PushNotificationPayloadWorker extends Worker {
     private void startBandyerSDk() {
         String userId = LoginManager.getLoggedUser(getApplicationContext());
 
-        AccessTokenProvider accessTokenProvider = (userId1, completion) -> MultiDexApplication.getRestApi().getAccessToken(accessToken -> {
+        AccessTokenProvider accessTokenProvider = (userId1, completion) -> MultiDexApplication.getRestApi().getAccessToken(userId, accessToken -> {
             completion.success(accessToken);
             return null;
         }, exception -> {

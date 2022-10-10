@@ -199,14 +199,14 @@ class RestApi(val applicationContext: Context) {
         }
     }
 
-    fun getAccessToken(onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
+    fun getAccessToken(userId:String, onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
         scope.launch {
             updateConfiguration()
             kotlin.runCatching {
                 val response: HttpResponse = client.post("$endpoint/rest/sdk/credentials") {
                     headers(configurationHeaders)
                     contentType(Application.Json)
-                    setBody(AccessToken.Request(LoginManager.getLoggedUser(applicationContext)))
+                    setBody(AccessToken.Request(userId))
                 }
                 currentAccessToken = response.body<AccessToken.Response>().access_token
             }.onFailure {

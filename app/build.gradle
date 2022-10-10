@@ -8,6 +8,7 @@ buildscript {
         google()
         maven { url 'https://jitpack.io' }
         mavenCentral()
+        gradlePluginPortal()
         maven { url 'https://plugins.gradle.org/m2/' }
         maven { url 'https://maven.fabric.io/public' }
         maven { url 'https://developer.huawei.com/repo/' }
@@ -37,8 +38,8 @@ def firebaseMessagingLibVersion = '23.0.7'
 def firebaseMessagingIidLibVersion = '21.1.0'
 def crashlyticsLibVersion = "18.2.12"
 def work_version = '2.7.1'
-def bandyerLibVersion = "3.2.0"
-def bandyerExtensionUsbCamera = "10.0.1"
+def bandyerLibVersion = "3.2.1"
+def bandyerExtensionUsbCamera = "10.0.5"
 def pushy_version = '1.0.82'
 def huawei_push_version = '6.5.0.300'
 def androidX = '1.1.0'
