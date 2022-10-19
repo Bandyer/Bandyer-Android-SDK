@@ -95,7 +95,7 @@ object LoginManager {
         // Remove userAlias on Crashlytics to identify the user in crash logs.
         try {
             FirebaseCrashlytics.getInstance().setUserId("")
-        } catch (ignored: Exception) {
+        } catch (ignored: Throwable) {
         }
         val prefs = context.applicationContext.getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().clear().commit()

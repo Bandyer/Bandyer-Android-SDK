@@ -34,7 +34,7 @@ apply plugin: 'kotlinx-serialization'
 def gsonVersion = '2.8.6'
 def androidX = '1.1.0'
 def lifecycleVersion = '2.2.0'
-def kotlin_version = '1.5.32'
+def kotlin_version = '1.6.10'
 
 android {
     compileSdkVersion sdkVersion

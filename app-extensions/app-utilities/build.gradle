@@ -40,12 +40,12 @@ def crashlyticsLibVersion = "18.2.12"
 def collaborationSuiteUIVersion = "3.0.2"
 def firebaseMessagingLibVersion = '23.0.7'
 def huawei_push_version = '5.1.1.301'
-def phoenixProcessLibVersion = "2.0.0"
+def phoenixProcessLibVersion = "2.1.2"
 def androidX = '1.2.0'
 def lifecycleVersion = '2.4.1'
 def expansionLayoutVersion = "1.2.4"
 def androidXFragmentVersion = "1.3.2"
-def kotlin_version = "1.5.32"
+def kotlin_version = "1.6.10"
 
 android {
     compileSdkVersion sdkVersion

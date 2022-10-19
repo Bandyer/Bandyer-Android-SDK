@@ -22,7 +22,7 @@ apply plugin: 'kotlin-android-extensions'
 def androidDesign = '1.3.0'
 def picassoLibVersion = "2.71828"
 def constraintLayoutVersion = "2.0.0-beta7"
-def kotlin_version = "1.5.32"
+def kotlin_version = "1.6.10"
 
 android {
     compileSdkVersion sdkVersion
