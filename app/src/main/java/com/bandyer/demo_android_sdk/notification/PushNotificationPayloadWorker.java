@@ -56,7 +56,6 @@ public class PushNotificationPayloadWorker extends Worker {
         @Override
         public void onSessionError(@NonNull Session session, @NonNull Error error) {
             Log.e(TAG, "onSessionError for user " + session.getUserId() + " with error: " + error.getMessage());
-            startBandyerSDk();
         }
     };
 
@@ -70,7 +69,15 @@ public class PushNotificationPayloadWorker extends Worker {
 
             Log.d(TAG,"Received payload\n" + payload + "\nready to be processed.");
 
-            startBandyerSDk();
+            String userId = LoginManager.getLoggedUser(getApplicationContext());
+
+            if (userId.isEmpty()) {
+                Log.e(TAG,"Unable to handle notification because no user has logged in.");
+                return Result.failure();
+            }
+
+            startBandyerSDK(userId);
+
             BandyerSDK.getInstance().handleNotification(payload);
         } catch (Throwable e) {
             e.printStackTrace();
@@ -80,9 +87,7 @@ public class PushNotificationPayloadWorker extends Worker {
         return Result.success();
     }
 
-    private void startBandyerSDk() {
-        String userId = LoginManager.getLoggedUser(getApplicationContext());
-
+    private void startBandyerSDK(String userId) {
         AccessTokenProvider accessTokenProvider = (userId1, completion) -> MultiDexApplication.getRestApi().getAccessToken(userId, accessToken -> {
             completion.success(accessToken);
             return null;
