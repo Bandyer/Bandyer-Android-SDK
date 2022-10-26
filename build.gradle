@@ -35,7 +35,7 @@ buildscript {
         mavenLocal()
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
         maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://maven.bandyer.com/releases' }
     }
@@ -57,7 +57,7 @@ allprojects {
         mavenLocal()
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
         maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://maven.bandyer.com/releases' }
     }

@@ -17,8 +17,8 @@ package com.kaleyra.app_utilities.storage
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.kaleyra.app_utilities.notification.NotificationProxy
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.kaleyra.app_utilities.notification.NotificationProxy
 
 /**
  * Utility used to remember the logged user, identified by the userAlias
@@ -45,7 +45,7 @@ object LoginManager {
         // Set userAlias on Crashlytics to identify the user in crash logs.
         try {
             FirebaseCrashlytics.getInstance().setUserId(userId)
-        } catch (ignored: Exception) {
+        } catch (ignored: Throwable) {
         }
 
         // Register device for receive push notifications

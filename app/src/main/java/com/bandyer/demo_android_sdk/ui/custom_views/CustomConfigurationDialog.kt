@@ -32,8 +32,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.bandyer.android_sdk.call.model.CallType
-import com.bandyer.android_sdk.intent.call.CallOptions
-import com.bandyer.android_sdk.intent.call.CallRecordingType
+import com.bandyer.android_sdk.intent.call.CallRecordingType.AUTOMATIC
+import com.bandyer.android_sdk.intent.call.CallRecordingType.NONE
 import com.bandyer.android_sdk.tool_configuration.call.CallConfiguration
 import com.bandyer.android_sdk.tool_configuration.call.CustomCallConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.ChatConfiguration
@@ -43,7 +43,6 @@ import com.bandyer.android_sdk.tool_configuration.screen_share.CustomScreenShare
 import com.bandyer.android_sdk.tool_configuration.whiteboard.CustomWhiteboardConfiguration
 import com.bandyer.demo_android_sdk.R
 import com.bandyer.demo_android_sdk.storage.DefaultConfigurationManager
-import com.bandyer.demo_android_sdk.ui.custom_views.CallOptionsDialogView.CallOptionsView
 import com.kaleyra.app_configuration.model.CallOptionsType
 import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager
 
@@ -180,7 +179,7 @@ class CustomConfigurationDialog : DialogFragment() {
             callOptionsDialogView.isAudioOnlyCallChecked       -> getOptions(callOptionsDialogView.audioOnlyCallOptionsView!!)
             callOptionsDialogView.isAudioUpgradableCallChecked -> getOptions(callOptionsDialogView.audioUpgradableCallOptionsView!!)
             callOptionsDialogView.isAudioVideoCallChecked      -> getOptions(callOptionsDialogView.audioVideoCallOptionsView!!)
-            else                                               -> CallOptions()
+            else                                               -> com.bandyer.android_sdk.intent.call.CallOptions()
         }
     )
 
@@ -192,7 +191,7 @@ class CustomConfigurationDialog : DialogFragment() {
         )
     )
 
-    private fun getCallCapabilities(optionView: CallOptionsView): CustomCallConfiguration.CustomCapabilitySet = CustomCallConfiguration.CustomCapabilitySet(
+    private fun getCallCapabilities(optionView: CallOptionsDialogView.CallOptions): CustomCallConfiguration.CustomCapabilitySet = CustomCallConfiguration.CustomCapabilitySet(
         if (optionView.isChatChecked) CustomChatConfiguration(
             CustomChatConfiguration.CustomCapabilitySet(
                 audioCallConfiguration = getChatCallCapabilities(optionView),
@@ -205,7 +204,7 @@ class CustomConfigurationDialog : DialogFragment() {
         if (optionView.isWhiteboardChecked) CustomWhiteboardConfiguration() else null
     )
 
-    private fun getChatCallCapabilities(optionView: CallOptionsView): CustomChatConfiguration.CustomCapabilitySet.CustomCallConfiguration =
+    private fun getChatCallCapabilities(optionView: CallOptionsDialogView.CallOptions): CustomChatConfiguration.CustomCapabilitySet.CustomCallConfiguration =
         CustomChatConfiguration.CustomCapabilitySet.CustomCallConfiguration(
             CustomChatConfiguration.CustomCapabilitySet.CustomCallConfiguration.CustomCapabilitySet(
                 if (optionView.isFileShareChecked) CustomFileShareConfiguration() else null,
@@ -215,8 +214,8 @@ class CustomConfigurationDialog : DialogFragment() {
             getOptions(optionView)
         )
 
-    private fun getOptions(optionView: CallOptionsView) = CallOptions(
-        callRecordingType = if (optionView.isRecordingChecked) CallRecordingType.AUTOMATIC else CallRecordingType.NONE,
+    private fun getOptions(optionView: CallOptionsDialogView.CallOptions) = com.bandyer.android_sdk.intent.call.CallOptions(
+        callRecordingType = if (optionView.isRecordingChecked) AUTOMATIC else NONE,
         backCameraAsDefault = optionView.isBackCameraChecked,
         disableProximitySensor = optionView.isProximitySensorDisabled,
         feedbackEnabled = optionView.isFeedbackChecked

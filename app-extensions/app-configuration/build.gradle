@@ -92,13 +92,8 @@ dependencies {
     api "com.google.code.gson:gson:$gsonVersion"
 
     // CameraX core library
-    api('com.github.natario1:CameraView:v2.7.0') {
+    api('com.otaliastudios:cameraview:2.7.2') {
         exclude group: 'com.google.android.gms', module: 'play-services-tasks'
-    }
-    constraints {
-        implementation('com.otaliastudios.opengl:egloo:0.6.0') {
-            because 'previous versions are on jcenter'
-        }
     }
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1"

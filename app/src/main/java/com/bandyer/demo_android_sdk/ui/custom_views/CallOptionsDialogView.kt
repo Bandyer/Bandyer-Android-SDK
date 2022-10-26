@@ -31,10 +31,8 @@ import com.bandyer.android_sdk.tool_configuration.call.CallConfiguration
 import com.bandyer.android_sdk.tool_configuration.chat.ChatConfiguration
 import com.bandyer.demo_android_sdk.R
 import com.bandyer.demo_android_sdk.storage.DefaultConfigurationManager
-import com.github.florent37.expansionpanel.ExpansionHeader
-import com.github.florent37.expansionpanel.ExpansionLayout
 import com.kaleyra.app_configuration.model.CallOptionsType
-import com.kaleyra.app_utilities.utils.Utils
+import com.robertlevonyan.views.expandable.Expandable
 
 @SuppressLint("ViewConstructor")
 class CallOptionsDialogView(
@@ -42,12 +40,13 @@ class CallOptionsDialogView(
     customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType,
     val callOptionType: CallOptionsType? = null,
     val callConfiguration: CallConfiguration? = null,
-    val chatConfiguration: ChatConfiguration? = null) : LinearLayout(context) {
+    val chatConfiguration: ChatConfiguration? = null
+) : LinearLayout(context) {
 
     var customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType? = null
-    var audioOnlyCallOptionsView: CallOptionsView? = null
-    var audioUpgradableCallOptionsView: CallOptionsView? = null
-    var audioVideoCallOptionsView: CallOptionsView? = null
+    var audioOnlyCallOptionsView: CallOptions? = null
+    var audioUpgradableCallOptionsView: CallOptions? = null
+    var audioVideoCallOptionsView: CallOptions? = null
 
     private fun setup(context: Context, customConfigurationDialogType: CustomConfigurationDialog.CallOptionsDialogType) {
         this.customConfigurationDialogType = customConfigurationDialogType
@@ -56,20 +55,20 @@ class CallOptionsDialogView(
         addView(layout)
 
         val info = findViewById<TextView>(R.id.info)
-        audioOnlyCallOptionsView = CallOptionsView(context)
-        audioOnlyCallOptionsView!!.expansionHeader!!.titleView.text = context.getString(R.string.audio_only)
-        audioOnlyCallOptionsView!!.callOptionsViewContainer!!.findViewById<View>(R.id.call_options_back_camera).visibility = View.GONE
-        audioUpgradableCallOptionsView = CallOptionsView(context)
-        audioUpgradableCallOptionsView!!.expansionHeader!!.titleView.text = context.getString(R.string.audio_upgradable)
-        audioVideoCallOptionsView = CallOptionsView(context)
-        audioVideoCallOptionsView!!.expansionHeader!!.titleView.text = context.getString(R.string.audio_video)
+        audioOnlyCallOptionsView = CallOptions(context)
+        audioOnlyCallOptionsView!!.titleView.text = context.getString(R.string.audio_only)
+        audioOnlyCallOptionsView!!.callOptionsViewContainer.findViewById<View>(R.id.call_options_back_camera).visibility = View.GONE
+        audioUpgradableCallOptionsView = CallOptions(context)
+        audioUpgradableCallOptionsView!!.titleView.text = context.getString(R.string.audio_upgradable)
+        audioVideoCallOptionsView = CallOptions(context)
+        audioVideoCallOptionsView!!.titleView.text = context.getString(R.string.audio_video)
         setupCallOptionsViewCompoundClickListener(audioOnlyCallOptionsView!!)
         setupCallOptionsViewCompoundClickListener(audioUpgradableCallOptionsView!!)
         setupCallOptionsViewCompoundClickListener(audioVideoCallOptionsView!!)
         val options = layout.findViewById<LinearLayout>(R.id.options)
-        options.addView(audioVideoCallOptionsView, 2)
-        options.addView(audioUpgradableCallOptionsView, 2)
-        options.addView(audioOnlyCallOptionsView, 2)
+        options.addView(audioVideoCallOptionsView!!.callOptionsViewContainer, 2)
+        options.addView(audioUpgradableCallOptionsView!!.callOptionsViewContainer, 2)
+        options.addView(audioOnlyCallOptionsView!!.callOptionsViewContainer, 2)
         val selectAllCallCapabilityButton: AppCompatButton = findViewById(R.id.select_all_call_capabilities)
         val deselectAllCallCapabilityButton: AppCompatButton = findViewById(R.id.deselect_all_call_capabilities)
         val selectAllCallOptionsButton: AppCompatButton = findViewById(R.id.select_all_call_options)
@@ -96,30 +95,30 @@ class CallOptionsDialogView(
                 info.text = context.getString(R.string.select_call_type)
                 deSelectAllCallTypes()
                 when (callOptionType!!) {
-                    CallOptionsType.AUDIO_ONLY -> {
+                    CallOptionsType.AUDIO_ONLY       -> {
                         audioOnlyCallOptionsView!!.selectingProgrammatically = true
-                        audioOnlyCallOptionsView!!.expansionHeader!!.titleView.isChecked = true
+                        audioOnlyCallOptionsView!!.titleView.isChecked = true
                     }
                     CallOptionsType.AUDIO_UPGRADABLE -> {
                         audioUpgradableCallOptionsView!!.selectingProgrammatically = true
-                        audioUpgradableCallOptionsView!!.expansionHeader!!.titleView.isChecked = true
+                        audioUpgradableCallOptionsView!!.titleView.isChecked = true
                     }
-                    CallOptionsType.AUDIO_VIDEO -> {
+                    CallOptionsType.AUDIO_VIDEO      -> {
                         audioVideoCallOptionsView!!.selectingProgrammatically = true
-                        audioVideoCallOptionsView!!.expansionHeader!!.titleView.isChecked = true
+                        audioVideoCallOptionsView!!.titleView.isChecked = true
                     }
                 }
             }
             CustomConfigurationDialog.CallOptionsDialogType.CHAT -> {
                 info.text = context.getString(R.string.select_call_capabilities_from_chat_ui)
-                with (DefaultConfigurationManager.getDefaultChatConfiguration().capabilitySet) {
+                with(DefaultConfigurationManager.getDefaultChatConfiguration().capabilitySet) {
                     selectAllCallTypes(this.audioCallConfiguration != null, this.audioUpgradableCallConfiguration != null, this.audioVideoCallConfiguration != null)
                 }
             }
         }
     }
 
-    private val selectedOptionsView: CallOptionsView?
+    private val selectedOptionsView: CallOptions?
         get() {
             if (customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CHAT) return null
             return if (audioOnlyCallOptionsView!!.isChecked) audioOnlyCallOptionsView else if (audioUpgradableCallOptionsView!!.isChecked) audioUpgradableCallOptionsView else if (audioVideoCallOptionsView!!.isChecked) audioVideoCallOptionsView else null
@@ -136,20 +135,20 @@ class CallOptionsDialogView(
 
     private fun selectAllCallTypes(audioOnly: Boolean, audioUpgradable: Boolean, audioVideo: Boolean) {
         audioOnlyCallOptionsView!!.selectingProgrammatically = audioOnly
-        audioOnlyCallOptionsView!!.expansionHeader!!.titleView.isChecked = audioOnly
+        audioOnlyCallOptionsView!!.titleView.isChecked = audioOnly
         audioUpgradableCallOptionsView!!.selectingProgrammatically = audioUpgradable
-        audioUpgradableCallOptionsView!!.expansionHeader!!.titleView.isChecked = audioUpgradable
+        audioUpgradableCallOptionsView!!.titleView.isChecked = audioUpgradable
         audioVideoCallOptionsView!!.selectingProgrammatically = audioVideo
-        audioVideoCallOptionsView!!.expansionHeader!!.titleView.isChecked = audioVideo
+        audioVideoCallOptionsView!!.titleView.isChecked = audioVideo
     }
 
     private fun deSelectAllCallTypes() {
         audioOnlyCallOptionsView!!.selectingProgrammatically = false
-        audioOnlyCallOptionsView!!.expansionHeader!!.titleView.isChecked = false
+        audioOnlyCallOptionsView!!.titleView.isChecked = false
         audioUpgradableCallOptionsView!!.selectingProgrammatically = false
-        audioUpgradableCallOptionsView!!.expansionHeader!!.titleView.isChecked = false
+        audioUpgradableCallOptionsView!!.titleView.isChecked = false
         audioVideoCallOptionsView!!.selectingProgrammatically = false
-        audioVideoCallOptionsView!!.expansionHeader!!.titleView.isChecked = false
+        audioVideoCallOptionsView!!.titleView.isChecked = false
     }
 
     private fun selectAllCallCapabilities() {
@@ -176,11 +175,11 @@ class CallOptionsDialogView(
         audioVideoCallOptionsView!!.deselectAllCallOptions()
     }
 
-    private fun setupCallOptionsViewCompoundClickListener(callOptionsView: CallOptionsView) {
-        callOptionsView.expansionHeader!!.titleView.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
-            if (isChecked && customConfigurationDialogType === CustomConfigurationDialog.CallOptionsDialogType.CALL) {
+    private fun setupCallOptionsViewCompoundClickListener(callOptionsView: CallOptions) {
+        callOptionsView.titleView.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
+            if (isChecked && customConfigurationDialogType == CustomConfigurationDialog.CallOptionsDialogType.CALL) {
                 when {
-                    callOptionsView === audioOnlyCallOptionsView -> {
+                    callOptionsView === audioOnlyCallOptionsView       -> {
                         deselectAll(audioUpgradableCallOptionsView)
                         deselectAll(audioVideoCallOptionsView)
                     }
@@ -188,7 +187,7 @@ class CallOptionsDialogView(
                         deselectAll(audioOnlyCallOptionsView)
                         deselectAll(audioVideoCallOptionsView)
                     }
-                    callOptionsView === audioVideoCallOptionsView -> {
+                    callOptionsView === audioVideoCallOptionsView      -> {
                         deselectAll(audioUpgradableCallOptionsView)
                         deselectAll(audioOnlyCallOptionsView)
                     }
@@ -200,63 +199,34 @@ class CallOptionsDialogView(
                     callOptionsView.selectingProgrammatically = false
                     return@setOnCheckedChangeListener
                 }
-                callOptionsView.callOptionsViewContainer!!.expand(true)
+                callOptionsView.callOptionsViewContainer.expand()
             } else {
                 callOptionsView.deselectAllCallOptions()
                 callOptionsView.deselectAllCallCapabilities()
-                callOptionsView.expansionHeader!!.titleView.isChecked = false
-                callOptionsView.callOptionsViewContainer!!.collapse(true)
+                callOptionsView.titleView.isChecked = false
+                callOptionsView.callOptionsViewContainer.collapse()
             }
         }
     }
 
-    private fun deselectAll(callOptionsView: CallOptionsView?) {
-        callOptionsView!!.expansionHeader!!.titleView.isChecked = false
+    private fun deselectAll(callOptionsView: CallOptions?) {
+        callOptionsView!!.titleView.isChecked = false
         callOptionsView.deselectAllCallCapabilities()
         callOptionsView.deselectAllCallOptions()
-        callOptionsView.callOptionsViewContainer!!.collapse(false)
+        callOptionsView.callOptionsViewContainer.collapse()
         callOptionsView.selectingProgrammatically = false
     }
 
-    inner class CallOptionsView(context: Context) : LinearLayout(context) {
-        var expansionHeader: CallOptionViewHeader? = null
-        var callOptionsViewContainer: CallOptionsViewContainer? = null
+    inner class CallOptions(context: Context, parent: ViewGroup? = null) {
+
+        var callOptionsViewContainer: Expandable = when (customConfigurationDialogType) {
+            CustomConfigurationDialog.CallOptionsDialogType.CALL -> LayoutInflater.from(context).inflate(R.layout.call_options_container_expandable, parent) as Expandable
+            else                                                 -> LayoutInflater.from(context).inflate(R.layout.call_options_container_chat_expandable, parent) as Expandable
+        }
+
+        val titleView = callOptionsViewContainer.findViewById<CompoundButton>(R.id.call_options_title)
+
         var selectingProgrammatically = false
-
-        inner class CallOptionViewHeader(context: Context) : ExpansionHeader(context) {
-            var titleView: CompoundButton
-
-            init {
-                var view: View? = null
-                when (customConfigurationDialogType) {
-                    CustomConfigurationDialog.CallOptionsDialogType.CALL -> view = View.inflate(context, R.layout.call_options_header_layout, this)
-                    CustomConfigurationDialog.CallOptionsDialogType.CHAT -> view = View.inflate(context, R.layout.chat_options_header_layout, this)
-                }
-                titleView = view!!.findViewById(R.id.call_options_title)
-                view.setPadding(0, 0, 0, Utils.dpToPx(context, 16f))
-                isToggleOnClick = true
-                setHeaderIndicatorId(R.id.call_options_headerIndicator)
-            }
-        }
-
-        inner class CallOptionsViewContainer : ExpansionLayout {
-            constructor(context: Context) : super(context) {
-                setup(context)
-            }
-
-            constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-                setup(context)
-            }
-
-            constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-                setup(context)
-            }
-
-            private fun setup(context: Context) {
-                val view = View.inflate(context, R.layout.call_options_container_layout, this)
-                view.layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            }
-        }
 
         @SuppressLint("CustomViewStyleable")
         private fun setup(context: Context, attrs: AttributeSet?) {
@@ -264,12 +234,6 @@ class CallOptionsDialogView(
                 val a = context.obtainStyledAttributes(attrs, R.styleable.CallOptionsViewContainer, 0, 0)
                 a.recycle()
             }
-            orientation = VERTICAL
-            expansionHeader = CallOptionViewHeader(context)
-            addView(expansionHeader)
-            callOptionsViewContainer = CallOptionsViewContainer(context)
-            addView(callOptionsViewContainer)
-            expansionHeader!!.setExpansionLayout(callOptionsViewContainer)
             enableOptionClickListeners()
         }
 
@@ -278,23 +242,23 @@ class CallOptionsDialogView(
                 setDefaultCapabilities(it)
             }
             chatConfiguration?.let {
-                val configuration: com.bandyer.android_sdk.tool_configuration.chat.CallConfiguration? = when(expansionHeader!!.titleView.text) {
-                    "Audio only" -> {
+                val configuration: com.bandyer.android_sdk.tool_configuration.chat.CallConfiguration? = when (titleView.text) {
+                    "Audio only"       -> {
                         it.capabilitySet.audioCallConfiguration
                     }
                     "Audio upgradable" -> {
                         it.capabilitySet.audioUpgradableCallConfiguration
                     }
-                    "Audio video" -> {
+                    "Audio video"      -> {
                         it.capabilitySet.audioVideoCallConfiguration
                     }
-                    else -> null
+                    else               -> null
                 }
                 setDefaultCapabilities(configuration)
             }
         }
 
-        private fun setDefaultCapabilities(configuration: CallConfiguration) = with (configuration) {
+        private fun setDefaultCapabilities(configuration: CallConfiguration) = with(configuration) {
             if (capabilitySet.whiteboard != null) setChecked(R.id.call_options_whiteboard, true)
             if (capabilitySet.fileShare != null) setChecked(R.id.call_options_file_share, true)
             if (capabilitySet.chat != null) setChecked(R.id.call_options_chat, true)
@@ -305,10 +269,10 @@ class CallOptionsDialogView(
             if (optionSet.feedbackEnabled) setChecked(R.id.call_options_feedback, true)
         }
 
-        private fun setDefaultCapabilities(configuration: com.bandyer.android_sdk.tool_configuration.chat.CallConfiguration?) = with (configuration) {
-            with (R.id.call_options_chat) {
-                setChecked(this,true)
-                setEnabled(this,false)
+        private fun setDefaultCapabilities(configuration: com.bandyer.android_sdk.tool_configuration.chat.CallConfiguration?) = with(configuration) {
+            with(R.id.call_options_chat) {
+                setChecked(this, true)
+                setEnabled(this, false)
             }
             this ?: return@with
             if (capabilitySet.whiteboard != null) setChecked(R.id.call_options_whiteboard, true)
@@ -322,8 +286,8 @@ class CallOptionsDialogView(
 
         private fun enableOptionClickListeners() {
             val checkedChangeListener = CompoundButton.OnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
-                if (isChecked && !expansionHeader!!.titleView.isChecked) {
-                    expansionHeader!!.titleView.isChecked = true
+                if (isChecked && !titleView.isChecked) {
+                    titleView.isChecked = true
                 }
             }
             addCheckedChangeListener(R.id.call_options_recording, checkedChangeListener)
@@ -362,7 +326,7 @@ class CallOptionsDialogView(
         fun selectAllCallOptions() {
             selectingProgrammatically = true
             setChecked(R.id.call_options_recording, true)
-            if (this@CallOptionsView !== audioOnlyCallOptionsView) setChecked(R.id.call_options_back_camera, true)
+            if (this@CallOptions !== audioOnlyCallOptionsView) setChecked(R.id.call_options_back_camera, true)
             setChecked(R.id.call_options_disable_proximity_sensor, true)
             setChecked(R.id.call_options_feedback, true)
         }
@@ -399,23 +363,23 @@ class CallOptionsDialogView(
             get() = isChecked(R.id.call_options_feedback)
 
         val isChecked: Boolean
-            get() = expansionHeader!!.titleView.isChecked
+            get() = titleView.isChecked
 
         private fun isChecked(id: Int): Boolean {
-            val checkBox = findViewById<CheckBox>(id)
+            val checkBox = callOptionsViewContainer.findViewById<CheckBox>(id)
             return checkBox.isChecked
         }
 
         private fun setChecked(id: Int, checked: Boolean) {
-            val checkBox = findViewById<CheckBox>(id)
+            val checkBox = callOptionsViewContainer.findViewById<CheckBox>(id)
             checkBox.isChecked = checked
-            if (!callOptionsViewContainer!!.isExpanded) checkBox.jumpDrawablesToCurrentState()
+            checkBox.jumpDrawablesToCurrentState()
         }
 
         private fun setEnabled(id: Int, enabled: Boolean) {
-            val checkBox = findViewById<CheckBox>(id)
+            val checkBox = callOptionsViewContainer.findViewById<CheckBox>(id)
             checkBox.isEnabled = enabled
-            if (!callOptionsViewContainer!!.isExpanded) checkBox.jumpDrawablesToCurrentState()
+            checkBox.jumpDrawablesToCurrentState()
         }
 
         init {
