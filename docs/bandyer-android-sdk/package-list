@@ -572,6 +572,7 @@ $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder///Poi
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/Builder/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/-builder.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/build/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/build.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withCustomAttribute/#java.io.Serializable/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-custom-attribute.html
+$dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withDisplayName/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-display-name.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withEmail/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-email.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withFirstName/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-first-name.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withImageUri/#android.net.Uri/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-image-uri.html
@@ -581,6 +582,7 @@ $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withN
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails.Builder/withResId/#kotlin.Int/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/-builder/with-res-id.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/index.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails/customAttribute/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/custom-attribute.html
+$dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails/displayName/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/display-name.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails/email/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/email.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails/firstName/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/first-name.html
 $dokka.location:com.bandyer.android_sdk.utils.provider/UserDetails/imageResId/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.utils.provider/-user-details/image-res-id.html
