@@ -414,7 +414,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
     /**
      * Handle an external url by calling join method
-     * <p>
      * WARNING!!!
      * Be sure to have the call client connected before joining a call with the url provided.
      * Otherwise you will receive an error.

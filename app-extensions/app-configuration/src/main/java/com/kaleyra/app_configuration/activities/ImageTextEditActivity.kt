@@ -16,6 +16,7 @@
 package com.kaleyra.app_configuration.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -53,8 +54,8 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
         editTextView!!.setText(title)
         findViewById<View>(R.id.chooseButton).setOnClickListener {
             val galleryIntent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galleryIntent, PICK_IMAGE)
         }
     }
@@ -65,7 +66,7 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
             val selectedImage = data!!.data
             // save the file in application folder to be accessible to the app
             val url = MediaStorageUtils.saveFileInApp(this, selectedImage, "custom_logo_" + selectedImage.toString())
-                    ?: return
+                ?: return
             imageUrl = url
             Picasso.get().load(MediaStorageUtils.getUriFromString(imageUrl)).into(imageView)
         }
@@ -81,12 +82,8 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
         val itemId = item.itemId
         when (itemId) {
             R.id.save -> {
-                title = editTextView!!.text.toString()
-                val resultDataIntent = Intent()
-                if (imageUrl != null) resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl)
-                resultDataIntent.putExtra(PRESET_TEXT_PARAM, title)
-                setResult(2, resultDataIntent)
-                onBackPressed()
+                saveSettings()
+                finish()
             }
             R.id.clear_all -> {
                 imageUrl = ""
@@ -101,9 +98,36 @@ class ImageTextEditActivity : ScrollAwareToolbarActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun saveSettings() {
+        title = editTextView!!.text.toString()
+        val resultDataIntent = Intent()
+        if (imageUrl != null) resultDataIntent.putExtra(PRESET_URI_PARAM, imageUrl)
+        resultDataIntent.putExtra(PRESET_TEXT_PARAM, title)
+        setResult(2, resultDataIntent)
+    }
+
+    private fun hasChangedSettings(): Boolean =
+        editTextView!!.text.toString() != (intent.getStringExtra(PRESET_TEXT_PARAM) ?: "") ||
+            imageUrl != (intent.getStringExtra(PRESET_URI_PARAM) ?: "")
+
     override fun onBackPressed() {
-        super.onBackPressed()
-        setResult(Activity.RESULT_CANCELED)
+        if (hasChangedSettings()) {
+            AlertDialog.Builder(this)
+                .setMessage(R.string.pref_settings_save_confirmation_message)
+                .setPositiveButton(R.string.pref_settings_save_confirmation_message_confirmation) { dialog, _ ->
+                    dialog.dismiss()
+                    saveSettings()
+                    finish()
+                }
+                .setNegativeButton(R.string.pref_settings_save_confirmation_message_cancel) { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .show()
+        } else {
+            setResult(Activity.RESULT_CANCELED)
+            super.onBackPressed()
+        }
     }
 
     companion object {

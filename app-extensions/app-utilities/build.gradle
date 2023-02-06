@@ -124,7 +124,7 @@ dependencies {
     compileOnly "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
 
     /*** Pushy notification service, useful for China ***/
-    compileOnly 'me.pushy:sdk:1.0.82'
+    compileOnly 'me.pushy:sdk:1.0.90'
     compileOnly "com.huawei.hms:push:$huawei_push_version"
 
     /*** Crashlytics ***/

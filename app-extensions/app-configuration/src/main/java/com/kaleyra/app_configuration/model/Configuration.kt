@@ -39,7 +39,7 @@ data class Configuration(
     var logoName: String? = null,
     var customUserDetailsName: String? = null,
     var customUserDetailsImageUrl: String? = null,
-    var userDetailsProviderMode: UserDetailsProviderMode = if (BuildConfig.USE_MOCK_USER_DETAILS_PROVIDER) UserDetailsProviderMode.SAMPLE else UserDetailsProviderMode.NONE,
+    var userDetailsProviderMode: UserDetailsProviderMode = UserDetailsProviderMode.REMOTE,
     var useLeakCanary: Boolean = BuildConfig.USE_LEAK_CANARY,
     var defaultCallType: CallOptionsType = CallOptionsType.AUDIO_VIDEO,
     var withMockAuthentication: Boolean = false,

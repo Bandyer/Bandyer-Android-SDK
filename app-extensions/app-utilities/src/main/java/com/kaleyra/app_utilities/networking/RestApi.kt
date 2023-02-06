@@ -223,21 +223,6 @@ class RestApi(val applicationContext: Context) {
         }
     }
 
-    fun getSampleUsers(userIds: List<String>, onSuccess: (ArrayList<DemoAppUser>) -> Unit, onError: (Throwable) -> Unit) {
-        scope.launch {
-            kotlin.runCatching {
-                val response: HttpResponse = client.get("https://608c623c9f42b20017c3dd9d.mockapi.io/user_details/client/") {
-                    headers(configurationHeaders)
-                    contentType(Application.Json)
-                }
-                val demoAppUsers = ArrayList<DemoAppUser>(response.body<List<DemoAppUser>>().filter { it.user_id in userIds })
-                withContext(Dispatchers.Main) { onSuccess(demoAppUsers) }
-            }.onFailure {
-                withContext(Dispatchers.Main) { onError.invoke(it) }
-            }
-        }
-    }
-
     fun cancel() = kotlin.runCatching {
         scope.coroutineContext.cancelChildren()
     }

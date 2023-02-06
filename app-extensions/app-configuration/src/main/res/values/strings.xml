@@ -26,16 +26,13 @@
 
     <string name="wifi_connected" translatable="false">Wifi network connected:</string>
 
-    <string name="mock_user_details_config_none" translatable="false">NONE</string>
-    <string name="mock_user_details_config_sample" translatable="false">SAMPLE</string>
+    <string name="mock_user_details_config_remote" translatable="false">REMOTE</string>
     <string name="mock_user_details_config_custom" translatable="false">CUSTOM</string>
     <string name="mock_user_details_display_name" translatable="false">Display name</string>
-    <string name="mock_user_details_config_none_summary" translatable="false">No user details provider will be used, default avatars and user aliases will be shown.</string>
-    <string name="mock_user_details_config_sample_summary" translatable="false">A web based sample user details provider used to display custom users details.</string>
-    <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one. </string>
+    <string name="mock_user_details_config_custom_summary" translatable="false">A custom combination of image and display name will be used for all displayed users except the logged one.</string>
+    <string name="mock_user_details_config_remote_summary" translatable="false">If a server side user details provider has been set, its users\' representation will be used to display users\' name and image.</string>
     <string-array name="mockUserDetailsType">
-        <item>@string/mock_user_details_config_none</item>
-        <item>@string/mock_user_details_config_sample</item>
+        <item>@string/mock_user_details_config_remote</item>
         <item>@string/mock_user_details_config_custom</item>
     </string-array>
 
@@ -100,13 +97,16 @@
     <string name="use_mock_user_details_provider" translatable="false">Mock user details</string>
     <string name="pref_mockUserDetails_title" translatable="false">Mock user details</string>
     <string name="pref_mockUserDetails" translatable="false">MOCK USER DETAILS</string>
-    <string name="summary_use_mock_user_details_provider" translatable="false">Use this setting to customize user details when a chat or call UI is presented.</string>
 
     <string name="use_simplified_version_title" translatable="false">Simplified version</string>
 
     <string name="skip_customization_version_title" translatable="false">Skip call and chat customization dialog</string>
 
     <string name="demo_app_options" translatable="false">App options</string>
+
+    <string name="pref_settings_save_confirmation_message" translatable="false">Do you want to save settings?</string>
+    <string name="pref_settings_save_confirmation_message_confirmation" translatable="false">OK</string>
+    <string name="pref_settings_save_confirmation_message_cancel" translatable="false">CANCEL</string>
 
     <!-- ENVIRONMENT -->
     <string name="pref_environment" translatable="false">environment</string>

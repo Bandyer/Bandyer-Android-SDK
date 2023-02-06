@@ -13,74 +13,65 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
-    <RadioGroup
-        android:id="@+id/mock_user_details_radio_group"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/space16"
-        android:paddingLeft="@dimen/space16"
-        android:paddingTop="@dimen/space16"
-        android:paddingEnd="@dimen/space16"
-        android:paddingRight="@dimen/space16"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radio_button_user_details_none"
+        <RadioGroup
+            android:id="@+id/mock_user_details_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space8"
-            android:text="@string/mock_user_details_config_none" />
+            android:paddingStart="@dimen/space16"
+            android:paddingLeft="@dimen/space16"
+            android:paddingTop="@dimen/space16"
+            android:paddingEnd="@dimen/space16"
+            android:paddingRight="@dimen/space16"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/radio_button_user_details_none_summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space32"
-            android:layout_marginLeft="@dimen/space32"
-            android:layout_marginBottom="@dimen/space16"
-            android:text="@string/mock_user_details_config_none_summary" />
+            <RadioButton
+                android:id="@+id/radio_button_user_details_remote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space8"
+                android:text="@string/mock_user_details_config_remote" />
 
-        <RadioButton
-            android:id="@+id/radio_button_user_details_random"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space8"
-            android:text="@string/mock_user_details_config_sample" />
+            <TextView
+                android:id="@+id/radio_button_user_details_remote_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space32"
+                android:layout_marginLeft="@dimen/space32"
+                android:layout_marginBottom="@dimen/space16"
+                android:text="@string/mock_user_details_config_remote_summary" />
 
-        <TextView
-            android:id="@+id/radio_button_user_details_random_summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space32"
-            android:layout_marginLeft="@dimen/space32"
-            android:layout_marginBottom="@dimen/space16"
-            android:text="@string/mock_user_details_config_sample_summary" />
+            <RadioButton
+                android:id="@+id/radio_button_user_details_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space8"
+                android:text="@string/mock_user_details_config_custom" />
 
-        <RadioButton
-            android:id="@+id/radio_button_user_details_custom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space8"
-            android:text="@string/mock_user_details_config_custom" />
+            <TextView
+                android:id="@+id/radio_button_user_details_custom_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space32"
+                android:layout_marginLeft="@dimen/space32"
+                android:layout_marginBottom="@dimen/space16"
+                android:text="@string/mock_user_details_config_custom_summary" />
 
-        <TextView
-            android:id="@+id/radio_button_user_details_custom_summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space32"
-            android:layout_marginLeft="@dimen/space32"
-            android:layout_marginBottom="@dimen/space16"
-            android:text="@string/mock_user_details_config_custom_summary" />
+        </RadioGroup>
 
-    </RadioGroup>
+        <include layout="@layout/image_text_edit_layout" />
 
-    <include layout="@layout/image_text_edit_layout" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

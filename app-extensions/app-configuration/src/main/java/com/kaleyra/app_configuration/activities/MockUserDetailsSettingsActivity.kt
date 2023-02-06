@@ -16,6 +16,7 @@
 package com.kaleyra.app_configuration.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -56,8 +57,8 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
     }
 
     private var imageView: ImageView? = null
+    private var remote: RadioButton? = null
     private var editTextView: EditText? = null
-    private var none: RadioButton? = null
     private var userDetailsSelectionLayout: LinearLayout? = null
     private var currentMockUserDetailsModeMode: UserDetailsProviderMode? = null
     private var imageUrl: String? = ""
@@ -65,31 +66,22 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mock_user_details_settings)
-        currentMockUserDetailsModeMode = UserDetailsProviderMode.valueOf(intent.getStringExtra(MOCK_MODE_PARAM) ?: UserDetailsProviderMode.NONE.name)
+        currentMockUserDetailsModeMode = getInitialUserDetailsMode()
         userDetailsSelectionLayout = findViewById(R.id.user_derails_selection_layout)
-        none = findViewById(R.id.radio_button_user_details_none)
-        val random = findViewById<RadioButton>(R.id.radio_button_user_details_random)
+        remote = findViewById<RadioButton>(R.id.radio_button_user_details_remote)
         val custom = findViewById<RadioButton>(R.id.radio_button_user_details_custom)
         val radioGroup = findViewById<RadioGroup>(R.id.mock_user_details_radio_group)
-        val noneSummary = findViewById<TextView>(R.id.radio_button_user_details_none_summary)
-        val randomSummary = findViewById<TextView>(R.id.radio_button_user_details_random_summary)
+        val remoteSummary = findViewById<TextView>(R.id.radio_button_user_details_remote_summary)
         val customSummary = findViewById<TextView>(R.id.radio_button_user_details_custom_summary)
-        noneSummary.setOnClickListener { none!!.performClick() }
-        randomSummary.setOnClickListener { random.performClick() }
+        remoteSummary.setOnClickListener { remote!!.performClick() }
         customSummary.setOnClickListener { custom.performClick() }
         imageView = findViewById(R.id.image_view)
         editTextView = findViewById(R.id.pref_text_view)
         radioGroup.setOnCheckedChangeListener { group: RadioGroup, checkedId: Int ->
             when (group.checkedRadioButtonId) {
-                none!!.id -> {
+                remote!!.id -> {
                     hideKeyboard()
-                    currentMockUserDetailsModeMode = UserDetailsProviderMode.NONE
-                    userDetailsSelectionLayout!!.visibility = View.GONE
-                    clearUserSelectionDetails()
-                }
-                random.id -> {
-                    hideKeyboard()
-                    currentMockUserDetailsModeMode = UserDetailsProviderMode.SAMPLE
+                    currentMockUserDetailsModeMode = UserDetailsProviderMode.REMOTE
                     userDetailsSelectionLayout!!.visibility = View.GONE
                     clearUserSelectionDetails()
                 }
@@ -101,8 +93,7 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
             }
         }
         when (currentMockUserDetailsModeMode) {
-            UserDetailsProviderMode.NONE   -> none!!.isChecked = true
-            UserDetailsProviderMode.SAMPLE -> random.isChecked = true
+            UserDetailsProviderMode.REMOTE -> remote!!.isChecked = true
             UserDetailsProviderMode.CUSTOM -> custom.isChecked = true
         }
         displayName = intent.getStringExtra(ImageTextEditActivity.PRESET_TEXT_PARAM) ?: ""
@@ -115,12 +106,23 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
         editTextView!!.hint = resources.getString(R.string.mock_user_details_display_name)
         findViewById<View>(R.id.chooseButton).setOnClickListener {
             val galleryIntent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galleryIntent, PICK_IMAGE)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
+    private fun getInitialUserDetailsMode(): UserDetailsProviderMode {
+        return kotlin.runCatching {
+            UserDetailsProviderMode.valueOf(intent.getStringExtra(MOCK_MODE_PARAM) ?: UserDetailsProviderMode.REMOTE.name)
+        }.getOrNull() ?: UserDetailsProviderMode.REMOTE
+    }
+
+    private fun hasChangedSettings(): Boolean =
+        currentMockUserDetailsModeMode != getInitialUserDetailsMode() ||
+            imageUrl?.takeIf { it.isNotEmpty() } != (intent.getStringExtra(ImageTextEditActivity.PRESET_URI_PARAM)) ||
+            editTextView!!.text.toString() != (intent.getStringExtra(ImageTextEditActivity.PRESET_URI_PARAM) ?: "")
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -134,7 +136,7 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
             val selectedImage = data!!.data
             // save the file in application folder to be accessible to the app
             val url = MediaStorageUtils.saveFileInApp(this, selectedImage, "custom_user_detail_logo_" + selectedImage.toString())
-                    ?: return
+                ?: return
             imageUrl = url
             Picasso.get().load(MediaStorageUtils.getUriFromString(url)).into(imageView)
         }
@@ -144,23 +146,27 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
         val itemId = item.itemId
         when (itemId) {
             R.id.save -> {
-                displayName = editTextView!!.text.toString()
-                val resultDataIntent = Intent()
-                resultDataIntent.putExtra(MOCK_MODE_PARAM, currentMockUserDetailsModeMode)
-                if (imageUrl != null) resultDataIntent.putExtra(ImageTextEditActivity.PRESET_URI_PARAM, imageUrl)
-                resultDataIntent.putExtra(ImageTextEditActivity.PRESET_TEXT_PARAM, displayName)
-                setResult(2, resultDataIntent)
-                onBackPressed()
+                saveSettings()
+                finish()
             }
             R.id.clear_all -> {
                 clearUserSelectionDetails()
-                none!!.isChecked = true
+                remote!!.isChecked = true
             }
             android.R.id.home -> {
                 onBackPressed()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun saveSettings() {
+        displayName = editTextView!!.text.toString()
+        val resultDataIntent = Intent()
+        resultDataIntent.putExtra(MOCK_MODE_PARAM, currentMockUserDetailsModeMode)
+        if (imageUrl != null) resultDataIntent.putExtra(ImageTextEditActivity.PRESET_URI_PARAM, imageUrl)
+        resultDataIntent.putExtra(ImageTextEditActivity.PRESET_TEXT_PARAM, displayName)
+        setResult(2, resultDataIntent)
     }
 
     private fun clearUserSelectionDetails() {
@@ -171,7 +177,22 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        setResult(Activity.RESULT_CANCELED)
+        if (hasChangedSettings()) {
+            AlertDialog.Builder(this)
+                .setMessage(R.string.pref_settings_save_confirmation_message)
+                .setPositiveButton(R.string.pref_settings_save_confirmation_message_confirmation) { dialog, _ ->
+                    dialog.dismiss()
+                    saveSettings()
+                    finish()
+                }
+                .setNegativeButton(R.string.pref_settings_save_confirmation_message_cancel) { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                }
+                .show()
+        } else {
+            setResult(Activity.RESULT_CANCELED)
+            super.onBackPressed()
+        }
     }
 }

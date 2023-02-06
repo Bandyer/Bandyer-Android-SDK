@@ -22,18 +22,6 @@
     <string name="calling_user" translatable="false">Calling user…</string>
     <string name="decline" translatable="false">Decline</string>
     <string name="answer" translatable="false">Answer</string>
-    <plurals name="user_is_ringing" translatable="false">
-        <item quantity="one">is ringing…</item>
-        <item quantity="other">are ringing…</item>
-    </plurals>
-    <plurals name="user_is_calling_you" translatable="false">
-        <item quantity="one">is calling you…</item>
-        <item quantity="other">are calling you…</item>
-    </plurals>
-    <plurals name="error_over_count" translatable="false">
-        <item quantity="one">error</item>
-        <item quantity="other">error</item>
-    </plurals>
     <string name="selected_users" translatable="false">Selected users:</string>
     <string name="logout" translatable="false">Logout</string>
     <string name="logout_confirmation" translatable="false">Do you want to logout?</string>

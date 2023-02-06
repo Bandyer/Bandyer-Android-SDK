@@ -26,6 +26,8 @@ import com.bandyer.demo_android_sdk.MainActivity;
 import com.bandyer.demo_android_sdk.R.drawable;
 import com.bandyer.demo_android_sdk.R.string;
 import com.bandyer.demo_android_sdk.ui.utils.UserDetailsUtils;
+import com.kaleyra.app_utilities.storage.LoginManager;
+import com.kaleyra.collaboration_suite_utils.ContextRetainer;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -63,13 +65,25 @@ public class MissedNotificationPayloadWorker extends Worker {
     @Override
     public Result doWork() {
         try {
+            String loggedUser = LoginManager.getLoggedUser(ContextRetainer.Companion.getContext());
+            if (loggedUser == null) return Result.failure();
             String payload = getInputData().getString("payload");
             Session session = BandyerSDK.getInstance().getSession();
             if (payload == null || session == null) return Result.failure();
             Log.d(TAG, "Received payload\n" + payload + "\nready to be processed.");
             JSONObject missedCall = new JSONObject(payload);
             ArrayList<String> userDetailsRequest = new ArrayList<>();
-            String caller = missedCall.getJSONObject("data").getString("caller_id");
+            JSONObject callData = missedCall.getJSONObject("data");
+            String caller = callData.getString("caller_id");
+            JSONArray calledUsers = callData.getJSONArray("called_users");
+            boolean isValidNotification = false;
+            for (int i = 0; i < calledUsers.length(); i++) {
+                if (calledUsers.getJSONObject(i).getString("user_id").equals(loggedUser)) {
+                    isValidNotification = true;
+                    break;
+                }
+            }
+            if (!isValidNotification) return Result.failure();
             userDetailsRequest.add(caller);
             ArrayList<String> callbackUsers = callbackUsers(session, missedCall);
             getUserDetailsProvider().onUserDetailsRequested(userDetailsRequest, new Completion<Iterable<UserDetails>>() {
@@ -159,7 +173,8 @@ public class MissedNotificationPayloadWorker extends Worker {
         intent.putExtra(startChat, user);
         intent.putExtra(notificationId, notification);
         int flags = android.app.PendingIntent.FLAG_ONE_SHOT;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+            flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
         return PendingIntent.getActivity(getApplicationContext(), 1, intent, flags);
     }
 
@@ -168,14 +183,16 @@ public class MissedNotificationPayloadWorker extends Worker {
         intent.putExtra(startCall, callees);
         intent.putExtra(notificationId, notification);
         int flags = android.app.PendingIntent.FLAG_ONE_SHOT;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+            flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
         return PendingIntent.getActivity(getApplicationContext(), 2, intent, flags);
     }
 
     private PendingIntent openMainActivity() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         int flags = android.app.PendingIntent.FLAG_ONE_SHOT;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+            flags = flags | android.app.PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT;
         return PendingIntent.getActivity(getApplicationContext(), 3, intent, flags);
     }
 
@@ -201,6 +218,12 @@ public class MissedNotificationPayloadWorker extends Worker {
 
     private UserDetailsFormatter getUserDetailsFormatter() {
         UserDetailsFormatter sdkUserDetailsFormatter = BandyerSDK.getInstance().getUserDetailsFormatter();
-        return (sdkUserDetailsFormatter != null) ? sdkUserDetailsFormatter : (userDetails, context) -> userDetails.getUserAlias();
+        return (sdkUserDetailsFormatter != null) ? sdkUserDetailsFormatter : (userDetails, context) -> {
+            if (userDetails.getDisplayName() != null && !userDetails.getUserAlias().isEmpty()) {
+                return userDetails.getDisplayName();
+            } else {
+                return userDetails.getUserAlias();
+            }
+        };
     }
 }
