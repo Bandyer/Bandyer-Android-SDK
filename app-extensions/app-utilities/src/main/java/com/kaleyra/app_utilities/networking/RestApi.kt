@@ -69,7 +69,7 @@ class RestApi(val applicationContext: Context) {
 
     private var restConfiguration: RestConfiguration? = null
 
-    private val scope =
+    val scope =
         CoroutineScope(Dispatchers.IO) + CoroutineName("MockedNetwork") + SupervisorJob()
 
     private val configurationListener =
@@ -106,7 +106,7 @@ class RestApi(val applicationContext: Context) {
         )
     }
 
-    private val client by lazy {
+    val client by lazy {
         HttpClient(OkHttp) {
             engine {
                 preconfigured = okHttpClient
@@ -138,7 +138,7 @@ class RestApi(val applicationContext: Context) {
     private val userId: String
         get() = LoginManager.getLoggedUser(applicationContext)
 
-    private var configurationHeaders: HeadersBuilder.() -> Unit = {
+    var configurationHeaders: HeadersBuilder.() -> Unit = {
         append("apiKey", apiKey)
     }
 

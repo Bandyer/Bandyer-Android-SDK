@@ -21,6 +21,7 @@ import com.bandyer.android_sdk.client.BandyerSDK;
 import com.bandyer.android_sdk.client.BandyerSDKConfiguration;
 import com.bandyer.android_sdk.client.Completion;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
+import com.bandyer.android_sdk.utils.BandyerSDKLoggerKt;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.android_sdk.utils.provider.UserDetailsProvider;
 import com.bandyer.demo_android_sdk.storage.DefaultConfigurationManager;
@@ -81,7 +82,7 @@ public class App extends MultiDexApplication {
 
         PriorityLogger logger = null;
         if (BuildConfig.DEBUG)
-            logger = AndroidPriorityLoggerKt.androidPrioryLogger(BaseLogger.VERBOSE, -1);
+            logger = AndroidPriorityLoggerKt.androidPrioryLogger(BaseLogger.ERROR, BandyerSDKLoggerKt.SDK);
 
         UserDetailsProviderMode userDetailsProviderMode = appConfiguration.getUserDetailsProviderMode();
 

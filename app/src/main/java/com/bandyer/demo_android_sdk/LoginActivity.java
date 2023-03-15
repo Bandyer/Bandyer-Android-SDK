@@ -95,6 +95,7 @@ public class LoginActivity extends CollapsingToolbarActivity implements SearchVi
                 userAlias = userItem.userAlias;
                 if (!LoginManager.isUserLogged(LoginActivity.this))
                     LoginManager.login(LoginActivity.this, userAlias);
+                hideKeyboard(true);
                 MainActivity.show(LoginActivity.this);
                 finish();
                 return false;

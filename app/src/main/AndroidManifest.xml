@@ -76,7 +76,7 @@
             android:name=".notification.HuaweiNotificationService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT"/>
             </intent-filter>
         </service> <!-- Pushy Notification Receiver -->
         <receiver

@@ -37,21 +37,21 @@ def firebaseMessagingLibVersion = '23.0.7'
 def firebaseMessagingIidLibVersion = '21.1.0'
 def crashlyticsLibVersion = "18.2.12"
 def work_version = '2.7.1'
-def bandyerLibVersion = "3.3.0"
-def bandyerExtensionUsbCamera = "11.0.2"
+def bandyerLibVersion = "3.4.0"
+def bandyerExtensionUsbCamera = "12.0.3"
 def pushy_version = '1.0.90'
-def huawei_push_version = '6.5.0.300'
+def huawei_push_version = '6.9.0.300'
 def androidX = '1.1.0'
 def desugaring_version = "1.1.5"
 
 android {
-    compileSdkVersion sdkVersion
-    buildToolsVersion buildToolsVersion
+    compileSdkVersion releaseAppSdkVersion
+    buildToolsVersion releaseAppBuildToolsVersion
 
     defaultConfig {
         applicationId "com.bandyer.demo_android_sdk"
         minSdkVersion 21
-        targetSdkVersion sdkVersion
+        targetSdkVersion releaseAppSdkVersion
         versionCode VERSION_CODE.toInteger()
         versionName bandyerLibVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -157,7 +157,7 @@ dependencies {
     implementation "com.huawei.hms:push:$huawei_push_version"
 
     /** Utilities **/
-    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation 'androidx.biometric:biometric:1.2.0-alpha05'
     implementation project(":app-utilities")
     implementation project(":app-configuration")
     implementation project(":app-design")

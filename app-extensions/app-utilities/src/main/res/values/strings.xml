@@ -20,4 +20,9 @@
     <string name="dialog_error_title" translatable="false">Error</string>
     <string name="cancel_action" translatable="false">Cancel</string>
 
+    <string name="notifications_enabled" translatable="false">Notification enabled!</string>
+    <string name="notification_permission" translatable="false">Notification Permission</string>
+    <string name="notification_permission_message" translatable="false">Notification permission is required, please allow notification permissions.</string>
+    <string name="notification_permission_app_settings" translatable="false">Notification permission is required, please allow notification permissions from app settings.</string>
+
 </resources>

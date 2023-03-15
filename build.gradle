@@ -8,10 +8,10 @@ apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
 
-    ext.sdkVersion = 31
-    ext.buildToolsVersion = "31.0.0"
-    ext.stethoVersion = "1.5.0"
-    ext.kotlin_version = '1.5.32'
+    ext.releaseAppSdkVersion = 33
+    ext.releaseAppBuildToolsVersion = "33.0.0"
+
+    ext.kotlin_version = '1.6.21'
 
     ext.keyStoreAlias = { buildType -> return " " }
     ext.keyStorePassword = { buildType -> return " " }

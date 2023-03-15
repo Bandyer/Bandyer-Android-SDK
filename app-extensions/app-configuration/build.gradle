@@ -37,12 +37,12 @@ def lifecycleVersion = '2.2.0'
 def kotlin_version = '1.6.10'
 
 android {
-    compileSdkVersion sdkVersion
-    buildToolsVersion buildToolsVersion
+    compileSdkVersion releaseAppSdkVersion
+    buildToolsVersion releaseAppBuildToolsVersion
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion sdkVersion
+        targetSdkVersion releaseAppSdkVersion
         versionCode 1
         versionName "1.0"
 

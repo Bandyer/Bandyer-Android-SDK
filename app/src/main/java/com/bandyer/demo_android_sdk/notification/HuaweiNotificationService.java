@@ -5,21 +5,15 @@
 
 package com.bandyer.demo_android_sdk.notification;
 
+import static com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker.isMissingCallMessage;
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-
-import com.kaleyra.app_utilities.notification.FirebaseCompat;
-import com.kaleyra.app_utilities.notification.HuaweiCompat;
-import com.kaleyra.app_utilities.storage.LoginManager;
 import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.RemoteMessage;
-
-
-import static com.bandyer.demo_android_sdk.notification.MissedNotificationPayloadWorker.isMissingCallMessage;
+import com.kaleyra.app_utilities.notification.HuaweiCompat;
 
 
 public class HuaweiNotificationService extends HmsMessageService {

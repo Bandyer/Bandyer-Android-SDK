@@ -24,9 +24,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kaleyra.app_utilities.R
 import com.kaleyra.app_utilities.utils.DPadNavigationHelper
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * BaseActivity used to set ButterKnife( library which avoids android-java boilerplate)
@@ -42,10 +42,10 @@ abstract class BaseActivity : AppCompatActivity() {
         if (dialog != null) dialog!!.dismiss()
         if (isFinishing) return
         dialog = MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.dialog_error_title)
-                .setMessage(text)
-                .setPositiveButton(R.string.button_ok, clickListener)
-                .create()
+            .setTitle(R.string.dialog_error_title)
+            .setMessage(text)
+            .setPositiveButton(R.string.button_ok, clickListener)
+            .create()
         dialog!!.show()
     }
 
@@ -56,11 +56,11 @@ abstract class BaseActivity : AppCompatActivity() {
         if (dialog != null) dialog!!.dismiss()
         if (isFinishing) return
         dialog = MaterialAlertDialogBuilder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setNegativeButton(R.string.cancel_action) { dialogInterface: DialogInterface, _: Int -> dialogInterface.dismiss() }
-                .setPositiveButton(R.string.button_ok, onConfirm)
-                .create()
+            .setTitle(title)
+            .setMessage(message)
+            .setNegativeButton(R.string.cancel_action) { dialogInterface: DialogInterface, _: Int -> dialogInterface.dismiss() }
+            .setPositiveButton(R.string.button_ok, onConfirm)
+            .create()
         dialog!!.show()
     }
 

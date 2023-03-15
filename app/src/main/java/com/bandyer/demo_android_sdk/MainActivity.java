@@ -68,6 +68,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.kaleyra.app_configuration.activities.BaseConfigurationActivity;
 import com.kaleyra.app_configuration.activities.ConfigurationActivity;
 import com.kaleyra.app_utilities.notification.NotificationProxy;
+import com.kaleyra.app_utilities.notification.NotificationUtilsKt;
 import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager;
 import com.kaleyra.app_utilities.storage.LoginManager;
 import com.kaleyra.collaboration_suite_phone_ui.recording.KaleyraRecordingSnackbar;
@@ -253,6 +254,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         super.onCreate(savedInstanceState);
 
         configuration = ConfigurationPrefsManager.INSTANCE.getConfiguration(this);
+
+        NotificationUtilsKt.requestPushNotificationPermissionApi33(this);
 
         if (!LoginManager.isUserLogged(this)) return;
         // If FCM is not being used as the default notification service.

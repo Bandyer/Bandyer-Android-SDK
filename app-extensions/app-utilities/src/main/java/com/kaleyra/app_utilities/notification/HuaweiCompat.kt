@@ -17,13 +17,15 @@
 package com.kaleyra.app_utilities.notification
 
 import android.content.Context
+import com.huawei.hms.aaid.HmsInstanceId
+import com.huawei.hms.api.Api.ApiOptions.NoOptions
+import com.huawei.hms.api.ConnectionResult
+import com.huawei.hms.api.HuaweiApiAvailability
+import com.huawei.hms.common.HuaweiApi
+import com.huawei.hms.push.HmsMessaging
 import com.kaleyra.app_configuration.model.PushProvider
 import com.kaleyra.app_utilities.MultiDexApplication.Companion.restApi
 import com.kaleyra.app_utilities.storage.ConfigurationPrefsManager
-import com.huawei.hms.aaid.HmsInstanceId
-import com.huawei.hms.api.ConnectionResult
-import com.huawei.hms.api.HuaweiApiAvailability
-import com.huawei.hms.push.HmsMessaging
 
 object HuaweiCompat {
 
@@ -53,14 +55,16 @@ object HuaweiCompat {
 
     private fun getInstance(context: Context) = kotlin.runCatching {
         val configuration = ConfigurationPrefsManager.getConfiguration(context)
+
         HmsInstanceId.getInstance(context.applicationContext).apply {
-            c::class.java.getDeclaredField("mAppID").apply {
-                isAccessible = true
-                set(c, configuration.hmsAppId)
-            }
+            val huaweiApiField = this.javaClass.getDeclaredField("c").apply { isAccessible = true }
+            val huaweiApi = huaweiApiField.get(this) as HuaweiApi<NoOptions>
+            val huaweiAppIDField1 = huaweiApi.javaClass.getDeclaredField("e").apply { isAccessible = true }
+            val huaweiAppIDField2 = huaweiApi.javaClass.getDeclaredField("f").apply { isAccessible = true }
+            huaweiAppIDField1.set(huaweiApi, configuration.hmsAppId)
+            huaweiAppIDField2.set(huaweiApi, configuration.hmsAppId)
         }
     }.getOrNull()
-
 
     fun isHmsAvailable(context: Context?): Boolean {
         var isAvailable = false
