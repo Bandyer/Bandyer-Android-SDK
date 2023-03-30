@@ -37,8 +37,9 @@ def firebaseMessagingLibVersion = '23.0.7'
 def firebaseMessagingIidLibVersion = '21.1.0'
 def crashlyticsLibVersion = "18.2.12"
 def work_version = '2.7.1'
-def bandyerLibVersion = "3.4.1"
-def bandyerExtensionUsbCamera = "12.0.3"
+def bandyerLibVersion = "3.5.0"
+def bandyerExtensionUsbCamera = "12.1.0"
+def bandyerExtensionVirtualBackground = "12.1.0"
 def pushy_version = '1.0.90'
 def huawei_push_version = '6.9.0.300'
 def androidX = '1.1.0'
@@ -167,6 +168,9 @@ dependencies {
 
     // define this dependency only if you desire to handle usb camera input in a video call
     implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"
+
+    // define this dependency only if you desire to handle virtual backgrounds in a video call
+    implementation "com.bandyer:extension_virtual_background:$bandyerExtensionVirtualBackground"
 }
 
 play {
