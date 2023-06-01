@@ -78,8 +78,9 @@ public class MissedNotificationPayloadWorker extends Worker {
             JSONArray calledUsers = callData.getJSONArray("called_users");
             boolean isValidNotification = false;
             for (int i = 0; i < calledUsers.length(); i++) {
-                if (calledUsers.getJSONObject(i).getString("user_id").equals(loggedUser)) {
-                    isValidNotification = true;
+                JSONObject calledUser = calledUsers.getJSONObject(i);
+                if (calledUser.getString("user_id").equals(loggedUser)) {
+                    isValidNotification = calledUser.getString("status").equals("not_answered");
                     break;
                 }
             }
