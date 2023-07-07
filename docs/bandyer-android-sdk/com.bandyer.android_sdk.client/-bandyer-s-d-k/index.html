@@ -1,423 +1,415 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>BandyerSDK</title>
-<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
-  <body>
-    <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>bandyer-android-sdk</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.client/BandyerSDK///PointingToDeclaration//-799625728">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.client</a>/<a href="index.html">BandyerSDK</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
-          <div class="cover ">
-            <h1 class="cover"><span>Bandyer</span><wbr></wbr><span>S</span><wbr></wbr><span>D</span><wbr></wbr><span>K</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">BandyerSDK</a> : <span data-unresolved-link="com.bandyer.android_sdk.client/BandyerSDKInstance///PointingToDeclaration/">BandyerSDKInstance</span>, <span data-unresolved-link="com.bandyer.android_sdk.exceptions/PotentialFailingComponent///PointingToDeclaration/">PotentialFailingComponent</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">It's the main item required to connect to the Bandyer platform.</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
-            <div class="tabs-section-body">
-              <h2 class="">Types</h2>
-              <div class="table" data-togglable="Types"><a data-name="-726402028%2FClasslikes%2F-799625728" anchor-label="Companion" id="-726402028%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-companion/index.html">Companion</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-726402028%2FClasslikes%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">object <a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.client/BandyerSDK///PointingToDeclaration//-799625728">
+  <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a><span class="delimiter">/</span><a href="../index.html">com.bandyer.android_sdk.client</a><span class="delimiter">/</span><a href="index.html">BandyerSDK</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Bandyer</span><wbr></wbr><span><span>SDK</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">BandyerSDK</a> : <span data-unresolved-link="com.bandyer.android_sdk.client/BandyerSDKInstance///PointingToDeclaration/">BandyerSDKInstance</span>, <span data-unresolved-link="com.bandyer.android_sdk.exceptions/PotentialFailingComponent///PointingToDeclaration/">PotentialFailingComponent</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">It's the main item required to connect to the Bandyer platform.</p></div></div>
   </div>
-<a data-name="-726402028%2FClasslikes%2F-799625728" anchor-label="Companion" id="-726402028%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-726402028%2FClasslikes%2F-799625728" anchor-label="Companion" id="-726402028%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>BandyerSDKClient Singleton definition</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-1777064533%2FFunctions%2F-799625728" anchor-label="addModuleObserver" id="-1777064533%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="add-module-observer.html">addModuleObserver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1777064533%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="add-module-observer.html">addModuleObserver</a>(bandyerModuleObserver: <a href="../../com.bandyer.android_sdk.module/-bandyer-module-observer/index.html">BandyerModuleObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1777064533%2FFunctions%2F-799625728" anchor-label="addModuleObserver" id="-1777064533%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-1777064533%2FFunctions%2F-799625728" anchor-label="addModuleObserver" id="-1777064533%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Add module observer to listen for modules changes.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-814952637%2FFunctions%2F-799625728" anchor-label="clearUserCache" id="-814952637%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="clear-user-cache.html">clearUserCache</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814952637%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="clear-user-cache.html">clearUserCache</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-814952637%2FFunctions%2F-799625728" anchor-label="clearUserCache" id="-814952637%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-814952637%2FFunctions%2F-799625728" anchor-label="clearUserCache" id="-814952637%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Call this method to clear all the cached data.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="675791%2FFunctions%2F-799625728" anchor-label="configure" id="675791%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="configure.html">configure</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="675791%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="configure.html">configure</a>(bandyerSDKConfiguration: <a href="../-bandyer-s-d-k-configuration/index.html">BandyerSDKConfiguration</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="675791%2FFunctions%2F-799625728" anchor-label="configure" id="675791%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="675791%2FFunctions%2F-799625728" anchor-label="configure" id="675791%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Configure BandyerSDK.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="192640753%2FFunctions%2F-799625728" anchor-label="connect" id="192640753%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#853188813%2FFunctions%2F-799625728">connect</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="192640753%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open fun <a href="index.html#853188813%2FFunctions%2F-799625728">connect</a>(session: <a href="../-session/index.html">Session</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="853188813%2FFunctions%2F-799625728" anchor-label="connect" id="853188813%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="853188813%2FFunctions%2F-799625728" anchor-label="connect" id="853188813%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Initialize BandyerSDK.</div></div>
-<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="connect.html">connect</a>(session: <a href="../-session/index.html">Session</a>, onConnectionErrorListener: <a href="../-on-connection-error-listener/index.html">OnConnectionErrorListener</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="703862960%2FFunctions%2F-799625728" anchor-label="connect" id="703862960%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="703862960%2FFunctions%2F-799625728" anchor-label="connect" id="703862960%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Initialize BandyerSDK.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="976389425%2FFunctions%2F-799625728" anchor-label="disconnect" id="976389425%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="disconnect.html">disconnect</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="976389425%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="disconnect.html">disconnect</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1399672209%2FFunctions%2F-799625728" anchor-label="disconnect" id="1399672209%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1399672209%2FFunctions%2F-799625728" anchor-label="disconnect" id="1399672209%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Disconnects BandyerSDK session.</div></div>
-<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="disconnect.html">disconnect</a>(clearUserCache: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-657087722%2FFunctions%2F-799625728" anchor-label="disconnect" id="-657087722%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-657087722%2FFunctions%2F-799625728" anchor-label="disconnect" id="-657087722%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Disconnects BandyerSDK session.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2053615426%2FFunctions%2F-799625728" anchor-label="getFailureRecoveryStrategy" id="-2053615426%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-failure-recovery-strategy.html">getFailureRecoveryStrategy</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2053615426%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-failure-recovery-strategy.html">getFailureRecoveryStrategy</a>(throwable: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a>): <span data-unresolved-link="com.bandyer.android_sdk.exceptions/FailureRecoverStrategy///PointingToDeclaration/">FailureRecoverStrategy</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1205294186%2FFunctions%2F-799625728" anchor-label="handleNotification" id="1205294186%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="handle-notification.html">handleNotification</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1205294186%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="handle-notification.html">handleNotification</a>(payload: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1205294186%2FFunctions%2F-799625728" anchor-label="handleNotification" id="1205294186%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1205294186%2FFunctions%2F-799625728" anchor-label="handleNotification" id="1205294186%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Handle notification payload.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1443170473%2FFunctions%2F-799625728" anchor-label="hasFailedWithThrowable" id="-1443170473%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="has-failed-with-throwable.html">hasFailedWithThrowable</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443170473%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="has-failed-with-throwable.html">hasFailedWithThrowable</a>(throwable: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a>): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1443170473%2FFunctions%2F-799625728" anchor-label="hasFailedWithThrowable" id="-1443170473%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-1443170473%2FFunctions%2F-799625728" anchor-label="hasFailedWithThrowable" id="-1443170473%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Check if the throwable belongs to the component.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="162199655%2FFunctions%2F-799625728" anchor-label="onPreRecovery" id="162199655%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="on-pre-recovery.html">onPreRecovery</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="162199655%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="on-pre-recovery.html">onPreRecovery</a>(recoverStrategy: <span data-unresolved-link="com.bandyer.android_sdk.exceptions/FailureRecoverStrategy///PointingToDeclaration/">FailureRecoverStrategy</span>, throwable: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="162199655%2FFunctions%2F-799625728" anchor-label="onPreRecovery" id="162199655%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="162199655%2FFunctions%2F-799625728" anchor-label="onPreRecovery" id="162199655%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Perform needed operation after an exception has been produced from the component.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1014706120%2FFunctions%2F-799625728" anchor-label="removeModuleObserver" id="1014706120%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="remove-module-observer.html">removeModuleObserver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1014706120%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="remove-module-observer.html">removeModuleObserver</a>(bandyerModuleObserver: <a href="../../com.bandyer.android_sdk.module/-bandyer-module-observer/index.html">BandyerModuleObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1014706120%2FFunctions%2F-799625728" anchor-label="removeModuleObserver" id="1014706120%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1014706120%2FFunctions%2F-799625728" anchor-label="removeModuleObserver" id="1014706120%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Remove module observer from BandyerSDKClient.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-474342220%2FFunctions%2F-799625728" anchor-label="removeObservers" id="-474342220%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="remove-observers.html">removeObservers</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-474342220%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="remove-observers.html">removeObservers</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-474342220%2FFunctions%2F-799625728" anchor-label="removeObservers" id="-474342220%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-474342220%2FFunctions%2F-799625728" anchor-label="removeObservers" id="-474342220%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Remove all previously added observers</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1568300126%2FFunctions%2F-799625728" anchor-label="reset" id="1568300126%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="reset.html">reset</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1568300126%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="reset.html">reset</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1568300126%2FFunctions%2F-799625728" anchor-label="reset" id="1568300126%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1568300126%2FFunctions%2F-799625728" anchor-label="reset" id="1568300126%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Dispose BandyerSDK configuration.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-959773826%2FFunctions%2F-799625728" anchor-label="setUserDetailsFormatter" id="-959773826%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-user-details-formatter.html">setUserDetailsFormatter</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-959773826%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="set-user-details-formatter.html">setUserDetailsFormatter</a>(userDetailsFormatter: <a href="../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">UserDetailsFormatter</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-959773826%2FFunctions%2F-799625728" anchor-label="setUserDetailsFormatter" id="-959773826%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-959773826%2FFunctions%2F-799625728" anchor-label="setUserDetailsFormatter" id="-959773826%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Sets the user details formatter that will be used to format users details provided from UserDetailsProvider</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1887356238%2FFunctions%2F-799625728" anchor-label="setUserDetailsProvider" id="-1887356238%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-user-details-provider.html">setUserDetailsProvider</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1887356238%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="set-user-details-provider.html">setUserDetailsProvider</a>(userDetailsProvider: <a href="../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">UserDetailsProvider</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1887356238%2FFunctions%2F-799625728" anchor-label="setUserDetailsProvider" id="-1887356238%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-1887356238%2FFunctions%2F-799625728" anchor-label="setUserDetailsProvider" id="-1887356238%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Sets the user details provider that will be used to fetch users representation from your integration</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1572636244%2FFunctions%2F-799625728" anchor-label="startListening" id="1572636244%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="start-listening.html">startListening</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1572636244%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="start-listening.html">startListening</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="1572636244%2FFunctions%2F-799625728" anchor-label="startListening" id="1572636244%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1572636244%2FFunctions%2F-799625728" anchor-label="startListening" id="1572636244%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Starts listening for events such as incoming calls and incoming chat messages.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="233438740%2FFunctions%2F-799625728" anchor-label="stopListening" id="233438740%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="stop-listening.html">stopListening</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="233438740%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="stop-listening.html">stopListening</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="233438740%2FFunctions%2F-799625728" anchor-label="stopListening" id="233438740%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="233438740%2FFunctions%2F-799625728" anchor-label="stopListening" id="233438740%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Stops listening for events such as incoming calls and incoming chat messages.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="call-module.html">callModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-298591357%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override var <a href="call-module.html">callModule</a>: <a href="../../com.bandyer.android_sdk.call/-call-module/index.html">CallModule</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Returns call module if it has been initialized.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="chat-module.html">chatModule</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1934566217%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override var <a href="chat-module.html">chatModule</a>: <a href="../../com.bandyer.android_sdk.chat/-chat-module/index.html">ChatModule</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Returns chat module if it has been initialized.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="modules.html">modules</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1647755994%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override val <a href="modules.html">modules</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a>&lt;<a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html">BandyerModule</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Returns all the initialized modules.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="session.html">session</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="382345463%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override var <a href="session.html">session</a>: <a href="../-session/index.html">Session</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Current Session</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="user-details-formatter.html">userDetailsFormatter</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="282954618%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override val <a href="user-details-formatter.html">userDetailsFormatter</a>: <a href="../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">UserDetailsFormatter</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>UserDetailsFormatter used to format the user details provided by the <code>userDetailsProvider</code>.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="user-details-provider.html">userDetailsProvider</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-145573691%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">open override val <a href="user-details-provider.html">userDetailsProvider</a>: <a href="../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">UserDetailsProvider</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>UserDetailsProvider used to fetch users representation from your integration.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="-726402028%2FClasslikes%2F-799625728" anchor-label="Companion" id="-726402028%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-726402028%2FClasslikes%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">BandyerSDKClient Singleton definition</p></div></div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-1777064533%2FFunctions%2F-799625728" anchor-label="addModuleObserver" id="-1777064533%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="add-module-observer.html"><span>add</span><wbr></wbr><span>Module</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1777064533%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-module-observer.html"><span class="token function">addModuleObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandyerModuleObserver<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.module/-bandyer-module-observer/index.html">BandyerModuleObserver</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add module observer to listen for modules changes.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-814952637%2FFunctions%2F-799625728" anchor-label="clearUserCache" id="-814952637%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="clear-user-cache.html"><span>clear</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814952637%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="clear-user-cache.html"><span class="token function">clearUserCache</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Call this method to clear all the cached data. The BandyerSDK will be disposed as well.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="675791%2FFunctions%2F-799625728" anchor-label="configure" id="675791%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="configure.html"><span><span>configure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="675791%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="configure.html"><span class="token function">configure</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandyerSDKConfiguration<span class="token operator">: </span><a href="../-bandyer-s-d-k-configuration/index.html">BandyerSDKConfiguration</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Configure BandyerSDK. This is the first api that should be called before connecting the BandyerSDK.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="192640753%2FFunctions%2F-799625728" anchor-label="connect" id="192640753%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="index.html#853188813%2FFunctions%2F-799625728"><span><span>connect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="192640753%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html#853188813%2FFunctions%2F-799625728"><span class="token function">connect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../-session/index.html">Session</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="connect.html"><span class="token function">connect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../-session/index.html">Session</a><span class="token punctuation">, </span></span><span class="parameter ">onConnectionErrorListener<span class="token operator">: </span><a href="../-on-connection-error-listener/index.html">OnConnectionErrorListener</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Initialize BandyerSDK.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="976389425%2FFunctions%2F-799625728" anchor-label="disconnect" id="976389425%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="disconnect.html"><span><span>disconnect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="976389425%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="disconnect.html"><span class="token function">disconnect</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="disconnect.html"><span class="token function">disconnect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clearUserCache<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Disconnects BandyerSDK session. All modules will be destroyed as well as the user identification. The current configuration is kept so a new call to the connect(session) can be performed.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2053615426%2FFunctions%2F-799625728" anchor-label="getFailureRecoveryStrategy" id="-2053615426%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="get-failure-recovery-strategy.html"><span>get</span><wbr></wbr><span>Failure</span><wbr></wbr><span>Recovery</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2053615426%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-failure-recovery-strategy.html"><span class="token function">getFailureRecoveryStrategy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">throwable<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.bandyer.android_sdk.exceptions/FailureRecoverStrategy///PointingToDeclaration/">FailureRecoverStrategy</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1205294186%2FFunctions%2F-799625728" anchor-label="handleNotification" id="1205294186%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="handle-notification.html"><span>handle</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1205294186%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="handle-notification.html"><span class="token function">handleNotification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">payload<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Handle notification payload. Be aware to call BandyerSDK.connect(session) before.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1443170473%2FFunctions%2F-799625728" anchor-label="hasFailedWithThrowable" id="-1443170473%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="has-failed-with-throwable.html"><span>has</span><wbr></wbr><span>Failed</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Throwable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443170473%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="has-failed-with-throwable.html"><span class="token function">hasFailedWithThrowable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">throwable<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Check if the throwable belongs to the component.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="162199655%2FFunctions%2F-799625728" anchor-label="onPreRecovery" id="162199655%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="on-pre-recovery.html"><span>on</span><wbr></wbr><span>Pre</span><wbr></wbr><span><span>Recovery</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="162199655%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="on-pre-recovery.html"><span class="token function">onPreRecovery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">recoverStrategy<span class="token operator">: </span><span data-unresolved-link="com.bandyer.android_sdk.exceptions/FailureRecoverStrategy///PointingToDeclaration/">FailureRecoverStrategy</span><span class="token punctuation">, </span></span><span class="parameter ">throwable<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Perform needed operation after an exception has been produced from the component.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1014706120%2FFunctions%2F-799625728" anchor-label="removeModuleObserver" id="1014706120%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="remove-module-observer.html"><span>remove</span><wbr></wbr><span>Module</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1014706120%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove-module-observer.html"><span class="token function">removeModuleObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandyerModuleObserver<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.module/-bandyer-module-observer/index.html">BandyerModuleObserver</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Remove module observer from BandyerSDKClient.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-474342220%2FFunctions%2F-799625728" anchor-label="removeObservers" id="-474342220%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="remove-observers.html"><span>remove</span><wbr></wbr><span><span>Observers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-474342220%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove-observers.html"><span class="token function">removeObservers</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Remove all previously added observers</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1568300126%2FFunctions%2F-799625728" anchor-label="reset" id="1568300126%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="reset.html"><span><span>reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1568300126%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Dispose BandyerSDK configuration. The BandyerSDKC will be disposed as well.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-959773826%2FFunctions%2F-799625728" anchor-label="setUserDetailsFormatter" id="-959773826%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="set-user-details-formatter.html"><span>set</span><wbr></wbr><span>User</span><wbr></wbr><span>Details</span><wbr></wbr><span><span>Formatter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-959773826%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-user-details-formatter.html"><span class="token function">setUserDetailsFormatter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">userDetailsFormatter<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">UserDetailsFormatter</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Sets the user details formatter that will be used to format users details provided from UserDetailsProvider</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1887356238%2FFunctions%2F-799625728" anchor-label="setUserDetailsProvider" id="-1887356238%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="set-user-details-provider.html"><span>set</span><wbr></wbr><span>User</span><wbr></wbr><span>Details</span><wbr></wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1887356238%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-user-details-provider.html"><span class="token function">setUserDetailsProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">userDetailsProvider<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">UserDetailsProvider</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Sets the user details provider that will be used to fetch users representation from your integration</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1572636244%2FFunctions%2F-799625728" anchor-label="startListening" id="1572636244%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="start-listening.html"><span>start</span><wbr></wbr><span><span>Listening</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1572636244%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="start-listening.html"><span class="token function">startListening</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Starts listening for events such as incoming calls and incoming chat messages.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="233438740%2FFunctions%2F-799625728" anchor-label="stopListening" id="233438740%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="stop-listening.html"><span>stop</span><wbr></wbr><span><span>Listening</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="233438740%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="stop-listening.html"><span class="token function">stopListening</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Stops listening for events such as incoming calls and incoming chat messages.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="call-module.html">callModule</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-298591357%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="call-module.html">callModule</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.call/-call-module/index.html">CallModule</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-298591357%2FProperties%2F-799625728" anchor-label="callModule" id="-298591357%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Returns call module if it has been initialized.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="chat-module.html">chatModule</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1934566217%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="chat-module.html">chatModule</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.chat/-chat-module/index.html">ChatModule</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1934566217%2FProperties%2F-799625728" anchor-label="chatModule" id="1934566217%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Returns chat module if it has been initialized.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="modules.html">modules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1647755994%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="modules.html">modules</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.bandyer.android_sdk.module/-bandyer-module/index.html">BandyerModule</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1647755994%2FProperties%2F-799625728" anchor-label="modules" id="-1647755994%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Returns all the initialized modules.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="session.html">session</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="382345463%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="session.html">session</a><span class="token operator">: </span><a href="../-session/index.html">Session</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="382345463%2FProperties%2F-799625728" anchor-label="session" id="382345463%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Current Session</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="user-details-formatter.html">userDetailsFormatter</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="282954618%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="user-details-formatter.html">userDetailsFormatter</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details-formatter/index.html">UserDetailsFormatter</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="282954618%2FProperties%2F-799625728" anchor-label="userDetailsFormatter" id="282954618%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">UserDetailsFormatter used to format the user details provided by the <code class="lang-kotlin">userDetailsProvider</code>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="user-details-provider.html">userDetailsProvider</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-145573691%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="user-details-provider.html">userDetailsProvider</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.utils.provider/-user-details-provider/index.html">UserDetailsProvider</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-145573691%2FProperties%2F-799625728" anchor-label="userDetailsProvider" id="-145573691%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">UserDetailsProvider used to fetch users representation from your integration.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-

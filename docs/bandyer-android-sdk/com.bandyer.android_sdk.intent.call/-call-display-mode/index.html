@@ -1,107 +1,143 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>CallDisplayMode</title>
-<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
-  <body>
-    <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>bandyer-android-sdk</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.intent.call/CallDisplayMode///PointingToDeclaration//-799625728">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.intent.call</a>/<a href="index.html">CallDisplayMode</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
-          <div class="cover ">
-            <h1 class="cover"><span>Call</span><wbr></wbr><span>Display</span><wbr></wbr><span>Mode</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">enum <a href="index.html">CallDisplayMode</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="index.html">CallDisplayMode</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Represent the call UI display mode</p><h4 class="">Since</h4><p class="paragraph">v1.4.10</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Entries">Entries</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
-            <div class="tabs-section-body">
-              <h2 class="tabbedcontent">Entries</h2>
-              <div class="table" data-togglable="Entries"><a data-name="2019785487%2FClasslikes%2F-799625728" anchor-label="BACKGROUND" id="2019785487%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-b-a-c-k-g-r-o-u-n-d/index.html">BACKGROUND</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2019785487%2FClasslikes%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-b-a-c-k-g-r-o-u-n-d/index.html">BACKGROUND</a>()</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">The call UI is not visible to the user.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-419604156%2FClasslikes%2F-799625728" anchor-label="FOREGROUND_PICTURE_IN_PICTURE" id="-419604156%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-f-o-r-e-g-r-o-u-n-d_-p-i-c-t-u-r-e_-i-n_-p-i-c-t-u-r-e/index.html">FOREGROUND_PICTURE_IN_PICTURE</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-419604156%2FClasslikes%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-f-o-r-e-g-r-o-u-n-d_-p-i-c-t-u-r-e_-i-n_-p-i-c-t-u-r-e/index.html">FOREGROUND_PICTURE_IN_PICTURE</a>()</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">If the device has picture in picture feature the call UI is floating on the screen's device.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1710901094%2FClasslikes%2F-799625728" anchor-label="FOREGROUND" id="-1710901094%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-f-o-r-e-g-r-o-u-n-d/index.html">FOREGROUND</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1710901094%2FClasslikes%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-f-o-r-e-g-r-o-u-n-d/index.html">FOREGROUND</a>()</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">The call UI fits completely the available window.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="746796669%2FProperties%2F-799625728" anchor-label="name" id="746796669%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#746796669%2FProperties%2F-799625728">name</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="746796669%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="746796669%2FProperties%2F-799625728" anchor-label="name" id="746796669%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">val <a href="index.html#746796669%2FProperties%2F-799625728">name</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-636697695%2FProperties%2F-799625728" anchor-label="ordinal" id="-636697695%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-636697695%2FProperties%2F-799625728">ordinal</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-636697695%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-636697695%2FProperties%2F-799625728" anchor-label="ordinal" id="-636697695%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">val <a href="index.html#-636697695%2FProperties%2F-799625728">ordinal</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.intent.call/CallDisplayMode///PointingToDeclaration//-799625728">
+  <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a><span class="delimiter">/</span><a href="../index.html">com.bandyer.android_sdk.intent.call</a><span class="delimiter">/</span><a href="index.html">CallDisplayMode</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Call</span><wbr></wbr><span>Display</span><wbr></wbr><span><span>Mode</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">CallDisplayMode</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">CallDisplayMode</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Represent the call UI display mode</p><h4 class="">Since</h4><p class="paragraph">v1.4.10</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Entries">Entries</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Entries</h2>
+      <div class="table" data-togglable="Entries"><a data-name="-776118922%2FClasslikes%2F-799625728" anchor-label="BACKGROUND" id="-776118922%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-b-a-c-k-g-r-o-u-n-d/index.html">BACKGROUND</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-776118922%2FClasslikes%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-b-a-c-k-g-r-o-u-n-d/index.html">BACKGROUND</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">The call UI is not visible to the user.</p></div></div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+<a data-name="637785185%2FClasslikes%2F-799625728" anchor-label="FOREGROUND_PICTURE_IN_PICTURE" id="637785185%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-o-r-e-g-r-o-u-n-d_-p-i-c-t-u-r-e_-i-n_-p-i-c-t-u-r-e/index.html">FOREGROUND_PICTURE_IN_PICTURE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="637785185%2FClasslikes%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-f-o-r-e-g-r-o-u-n-d_-p-i-c-t-u-r-e_-i-n_-p-i-c-t-u-r-e/index.html">FOREGROUND_PICTURE_IN_PICTURE</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">If the device has picture in picture feature the call UI is floating on the screen's device.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1221385525%2FClasslikes%2F-799625728" anchor-label="FOREGROUND" id="-1221385525%2FClasslikes%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-o-r-e-g-r-o-u-n-d/index.html">FOREGROUND</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1221385525%2FClasslikes%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-f-o-r-e-g-r-o-u-n-d/index.html">FOREGROUND</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">The call UI fits completely the available window.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-372974862%2FProperties%2F-799625728" anchor-label="name" id="-372974862%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-type/-u-p-l-o-a-d-i-n-g_-f-i-l-e/index.html#-372974862%2FProperties%2F-799625728">name</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372974862%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-372974862%2FProperties%2F-799625728" anchor-label="name" id="-372974862%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-type/-u-p-l-o-a-d-i-n-g_-f-i-l-e/index.html#-372974862%2FProperties%2F-799625728">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-739389684%2FProperties%2F-799625728" anchor-label="ordinal" id="-739389684%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-type/-u-p-l-o-a-d-i-n-g_-f-i-l-e/index.html#-739389684%2FProperties%2F-799625728">ordinal</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739389684%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-739389684%2FProperties%2F-799625728" anchor-label="ordinal" id="-739389684%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.bandyer.android_sdk.whiteboard.notification/-whiteboard-notification-type/-u-p-l-o-a-d-i-n-g_-f-i-l-e/index.html#-739389684%2FProperties%2F-799625728">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-

@@ -1,101 +1,113 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Builder</title>
-<link href="../../../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script><script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../../styles/style.css" rel="Stylesheet"><link href="../../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../../scripts/main.js" async="async"></script>  </head>
-  <body>
-    <div id="container">
-      <div id="leftColumn"><a href="../../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../../index.html">
+                    <span>bandyer-android-sdk</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.client/BandyerSDKToolsConfiguration.Builder///PointingToDeclaration//-799625728">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../../index.html">bandyer-android-sdk</a>/<a href="../../index.html">com.bandyer.android_sdk.client</a>/<a href="../index.html">BandyerSDKToolsConfiguration</a>/<a href="index.html">Builder</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
-          <div class="cover ">
-            <h1 class="cover"><span>Builder</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">BandyerSDKToolConfiguration builder</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
-            <div class="tabs-section-body">
-              <h2 class="tabbedcontent">Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="-1303174678%2FConstructors%2F-799625728" anchor-label="Builder" id="-1303174678%2FConstructors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex"><a href="-builder.html">Builder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1303174678%2FConstructors%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="-builder.html">Builder</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-385044843%2FFunctions%2F-799625728" anchor-label="withCall" id="-385044843%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-call.html">withCall</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-385044843%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-call.html">withCall</a>(builder: <a href="../../-configurable-call-builder/index.html">ConfigurableCallBuilder</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.client/BandyerSDKToolsConfiguration.Builder///PointingToDeclaration//-799625728">
+  <div class="breadcrumbs"><a href="../../../../index.html">bandyer-android-sdk</a><span class="delimiter">/</span><a href="../../index.html">com.bandyer.android_sdk.client</a><span class="delimiter">/</span><a href="../index.html">BandyerSDKToolsConfiguration</a><span class="delimiter">/</span><a href="index.html">Builder</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Builder</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">BandyerSDKToolConfiguration builder</p></div></div>
   </div>
-<a data-name="1360593570%2FFunctions%2F-799625728" anchor-label="withCall" id="1360593570%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="1360593570%2FFunctions%2F-799625728" anchor-label="withCall" id="1360593570%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Add call configuration provider</div><div class="block"><h4 class="block">Since Kotlin</h4><div class="block">999.9</div></div></div>
-<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-call.html">withCall</a>(lambda: <a href="../../../com.bandyer.android_sdk.intent.call/-configurable-call/index.html">ConfigurableCall</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="439846635%2FFunctions%2F-799625728" anchor-label="withCall" id="439846635%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="439846635%2FFunctions%2F-799625728" anchor-label="withCall" id="439846635%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Add call configuration provider</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-771407784%2FFunctions%2F-799625728" anchor-label="withChat" id="-771407784%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-chat.html">withChat</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-771407784%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-chat.html">withChat</a>(builder: <a href="../../-configurable-chat-builder/index.html">ConfigurableChatBuilder</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="544280034%2FFunctions%2F-799625728" anchor-label="withChat" id="544280034%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="544280034%2FFunctions%2F-799625728" anchor-label="withChat" id="544280034%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Enables chat module and add chat configuration provider</div><div class="block"><h4 class="block">Since Kotlin</h4><div class="block">999.9</div></div></div>
-<div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">fun <a href="with-chat.html">withChat</a>(lambda: <a href="../../../com.bandyer.android_sdk.chat.model/-configurable-chat/index.html">ConfigurableChat</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-104220158%2FFunctions%2F-799625728" anchor-label="withChat" id="-104220158%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-104220158%2FFunctions%2F-799625728" anchor-label="withChat" id="-104220158%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Enables chat module and add chat configuration provider</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="-1303174678%2FConstructors%2F-799625728" anchor-label="Builder" id="-1303174678%2FConstructors%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-builder.html"><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1303174678%2FConstructors%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-builder.html"><span class="token function">Builder</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-385044843%2FFunctions%2F-799625728" anchor-label="withCall" id="-385044843%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="with-call.html"><span>with</span><wbr></wbr><span><span>Call</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-385044843%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="with-call.html"><span class="token function">withCall</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">builder<span class="token operator">: </span><a href="../../-configurable-call-builder/index.html">ConfigurableCallBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BandyerSDKToolsConfiguration.Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add call configuration provider</p></div><div class="inline-comment"><b>Since Kotlin </b>999.9</div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="with-call.html"><span class="token function">withCall</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lambda<span class="token operator">: </span><span class="token keyword"></span><a href="../../../com.bandyer.android_sdk.intent.call/-configurable-call/index.html">ConfigurableCall</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BandyerSDKToolsConfiguration.Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add call configuration provider</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-771407784%2FFunctions%2F-799625728" anchor-label="withChat" id="-771407784%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="with-chat.html"><span>with</span><wbr></wbr><span><span>Chat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-771407784%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="with-chat.html"><span class="token function">withChat</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">builder<span class="token operator">: </span><a href="../../-configurable-chat-builder/index.html">ConfigurableChatBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BandyerSDKToolsConfiguration.Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Enables chat module and add chat configuration provider</p></div><div class="inline-comment"><b>Since Kotlin </b>999.9</div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="with-chat.html"><span class="token function">withChat</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lambda<span class="token operator">: </span><span class="token keyword"></span><a href="../../../com.bandyer.android_sdk.chat.model/-configurable-chat/index.html">ConfigurableChat</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BandyerSDKToolsConfiguration.Builder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Enables chat module and add chat configuration provider</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-

@@ -1,149 +1,173 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>IncomingCall</title>
-<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
-  <body>
-    <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>bandyer-android-sdk</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.intent.call/IncomingCall///PointingToDeclaration//-799625728">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a>/<a href="../index.html">com.bandyer.android_sdk.intent.call</a>/<a href="index.html">IncomingCall</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
-          <div class="cover ">
-            <h1 class="cover"><span>Incoming</span><wbr></wbr><span>Call</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">interface <a href="index.html">IncomingCall</a> : <a href="../-call/index.html">Call</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">IncomingCall received</p><h4 class="">Author</h4><p class="paragraph">kristiyan</p><h4 class="">Since</h4><p class="paragraph">v1.1.0</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
-            <div class="tabs-section-body">
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-1831853174%2FFunctions%2F-799625728" anchor-label="addCallRecordingObserver" id="-1831853174%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../-call/add-call-recording-observer.html">addCallRecordingObserver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1831853174%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../-call/add-call-recording-observer.html">addCallRecordingObserver</a>(callRecordingObserver: <a href="../../com.bandyer.android_sdk.call/-call-recording-observer/index.html">CallRecordingObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="bandyer-android-sdk::com.bandyer.android_sdk.intent.call/IncomingCall///PointingToDeclaration//-799625728">
+  <div class="breadcrumbs"><a href="../../../index.html">bandyer-android-sdk</a><span class="delimiter">/</span><a href="../index.html">com.bandyer.android_sdk.intent.call</a><span class="delimiter">/</span><a href="index.html">IncomingCall</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Incoming</span><wbr></wbr><span><span>Call</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">IncomingCall</a> : <a href="../-call/index.html">Call</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">IncomingCall received</p><h4 class="">Author</h4><p class="paragraph">kristiyan</p><h4 class="">Since</h4><p class="paragraph">v1.1.0</p></div></div>
   </div>
-<a data-name="-1831853174%2FFunctions%2F-799625728" anchor-label="addCallRecordingObserver" id="-1831853174%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-1831853174%2FFunctions%2F-799625728" anchor-label="addCallRecordingObserver" id="-1831853174%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Add an observer to the call recording status.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-811210078%2FFunctions%2F-799625728" anchor-label="asNotification" id="-811210078%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="as-notification.html">asNotification</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811210078%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="as-notification.html">asNotification</a>(): <a href="index.html">IncomingCall</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-811210078%2FFunctions%2F-799625728" anchor-label="asNotification" id="-811210078%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="-811210078%2FFunctions%2F-799625728" anchor-label="asNotification" id="-811210078%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Set the incoming call to be displayed as notification</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="987765109%2FFunctions%2F-799625728" anchor-label="removeCallRecordingObserver" id="987765109%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="../-call/remove-call-recording-observer.html">removeCallRecordingObserver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="987765109%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="../-call/remove-call-recording-observer.html">removeCallRecordingObserver</a>(callRecordingObserver: <a href="../../com.bandyer.android_sdk.call/-call-recording-observer/index.html">CallRecordingObserver</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="987765109%2FFunctions%2F-799625728" anchor-label="removeCallRecordingObserver" id="987765109%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="987765109%2FFunctions%2F-799625728" anchor-label="removeCallRecordingObserver" id="987765109%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Remove an observer to the call recording status.</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="347207333%2FFunctions%2F-799625728" anchor-label="show" id="347207333%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="show.html">show</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347207333%2FFunctions%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="show.html">show</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="347207333%2FFunctions%2F-799625728" anchor-label="show" id="347207333%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="brief "><a data-name="347207333%2FFunctions%2F-799625728" anchor-label="show" id="347207333%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Display the incoming call</div></div>
-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="-503893565%2FProperties%2F-799625728" anchor-label="callConfiguration" id="-503893565%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-503893565%2FProperties%2F-799625728">callConfiguration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-503893565%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-503893565%2FProperties%2F-799625728" anchor-label="callConfiguration" id="-503893565%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="index.html#-503893565%2FProperties%2F-799625728">callConfiguration</a>: <a href="../../com.bandyer.android_sdk.tool_configuration.call/-call-configuration/index.html">CallConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-503893565%2FProperties%2F-799625728" anchor-label="callConfiguration" id="-503893565%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Call configuration</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2115770093%2FProperties%2F-799625728" anchor-label="callInfo" id="-2115770093%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-2115770093%2FProperties%2F-799625728">callInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2115770093%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-2115770093%2FProperties%2F-799625728" anchor-label="callInfo" id="-2115770093%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="index.html#-2115770093%2FProperties%2F-799625728">callInfo</a>: <a href="../../com.bandyer.android_sdk.call.model/-call-info/index.html">CallInfo</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2115770093%2FProperties%2F-799625728" anchor-label="callInfo" id="-2115770093%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Call info</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="297396193%2FProperties%2F-799625728" anchor-label="callRecordingState" id="297396193%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#297396193%2FProperties%2F-799625728">callRecordingState</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="297396193%2FProperties%2F-799625728"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="297396193%2FProperties%2F-799625728" anchor-label="callRecordingState" id="297396193%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace">abstract val <a href="index.html#297396193%2FProperties%2F-799625728">callRecordingState</a>: <a href="../-call-recording-state/index.html">CallRecordingState</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="297396193%2FProperties%2F-799625728" anchor-label="callRecordingState" id="297396193%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>Call recording status</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-1831853174%2FFunctions%2F-799625728" anchor-label="addCallRecordingObserver" id="-1831853174%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-call/add-call-recording-observer.html"><span>add</span><wbr></wbr><span>Call</span><wbr></wbr><span>Recording</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1831853174%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-call/add-call-recording-observer.html"><span class="token function">addCallRecordingObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callRecordingObserver<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.call/-call-recording-observer/index.html">CallRecordingObserver</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Add an observer to the call recording status.</p></div></div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+<a data-name="-811210078%2FFunctions%2F-799625728" anchor-label="asNotification" id="-811210078%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="as-notification.html"><span>as</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811210078%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="as-notification.html"><span class="token function">asNotification</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IncomingCall</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Set the incoming call to be displayed as notification</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="987765109%2FFunctions%2F-799625728" anchor-label="removeCallRecordingObserver" id="987765109%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-call/remove-call-recording-observer.html"><span>remove</span><wbr></wbr><span>Call</span><wbr></wbr><span>Recording</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="987765109%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-call/remove-call-recording-observer.html"><span class="token function">removeCallRecordingObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">callRecordingObserver<span class="token operator">: </span><a href="../../com.bandyer.android_sdk.call/-call-recording-observer/index.html">CallRecordingObserver</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Remove an observer to the call recording status.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="347207333%2FFunctions%2F-799625728" anchor-label="show" id="347207333%2FFunctions%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="show.html"><span><span>show</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347207333%2FFunctions%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="show.html"><span class="token function">show</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Display the incoming call</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="1876594121%2FProperties%2F-799625728" anchor-label="callConfiguration" id="1876594121%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-call/call-configuration.html">callConfiguration</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1876594121%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="1876594121%2FProperties%2F-799625728" anchor-label="callConfiguration" id="1876594121%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-call/call-configuration.html">callConfiguration</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.tool_configuration.call/-call-configuration/index.html">CallConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1876594121%2FProperties%2F-799625728" anchor-label="callConfiguration" id="1876594121%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Call configuration</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2114597299%2FProperties%2F-799625728" anchor-label="callInfo" id="-2114597299%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-call/call-info.html">callInfo</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2114597299%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="-2114597299%2FProperties%2F-799625728" anchor-label="callInfo" id="-2114597299%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-call/call-info.html">callInfo</a><span class="token operator">: </span><a href="../../com.bandyer.android_sdk.call.model/-call-info/index.html">CallInfo</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2114597299%2FProperties%2F-799625728" anchor-label="callInfo" id="-2114597299%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Call info</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1078070427%2FProperties%2F-799625728" anchor-label="callRecordingState" id="1078070427%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":bandyer-android-sdk:dokkaHtml/release" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-call/call-recording-state.html">callRecordingState</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1078070427%2FProperties%2F-799625728"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":bandyer-android-sdk:dokkaHtml/release"><a data-name="1078070427%2FProperties%2F-799625728" anchor-label="callRecordingState" id="1078070427%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-call/call-recording-state.html">callRecordingState</a><span class="token operator">: </span><a href="../-call-recording-state/index.html">CallRecordingState</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1078070427%2FProperties%2F-799625728" anchor-label="callRecordingState" id="1078070427%2FProperties%2F-799625728" data-filterable-set=":bandyer-android-sdk:dokkaHtml/release"></a><p class="paragraph">Call recording status</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-
