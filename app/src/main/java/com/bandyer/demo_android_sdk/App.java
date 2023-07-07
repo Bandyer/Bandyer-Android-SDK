@@ -19,8 +19,11 @@ import com.bandyer.android_sdk.chat.notification.ChatNotificationListener;
 import com.bandyer.android_sdk.chat.notification.ChatNotificationStyle;
 import com.bandyer.android_sdk.client.BandyerSDK;
 import com.bandyer.android_sdk.client.BandyerSDKConfiguration;
-import com.bandyer.android_sdk.client.Completion;
 import com.bandyer.android_sdk.intent.call.IncomingCall;
+import com.bandyer.android_sdk.intent.screenshare.ScreenShare;
+import com.bandyer.android_sdk.screen_sharing.model.ScreenShareInfo;
+import com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationListener;
+import com.bandyer.android_sdk.screen_sharing.notification.ScreenSharingNotificationStyle;
 import com.bandyer.android_sdk.utils.BandyerSDKLoggerKt;
 import com.bandyer.android_sdk.utils.provider.UserDetails;
 import com.bandyer.android_sdk.utils.provider.UserDetailsProvider;
@@ -37,8 +40,6 @@ import com.kaleyra.collaboration_suite_utils.logging.BaseLogger;
 import com.kaleyra.collaboration_suite_utils.logging.PriorityLogger;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * This custom implementation of Application class is needed to initialize Bandyer SDK module.

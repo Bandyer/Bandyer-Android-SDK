@@ -1,17 +1,9 @@
 /*
- * Copyright (C) 2020 Bandyer S.r.l. All Rights Reserved.
+ * Copyright (C) 2023 Kaleyra S.p.A. All Rights Reserved.
  * See LICENSE.txt for licensing information
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply plugin: 'com.github.ben-manes.versions'
-
 buildscript {
-
-    ext.releaseAppSdkVersion = 33
-    ext.releaseAppBuildToolsVersion = "33.0.0"
-
-    ext.kotlin_version = '1.6.21'
 
     ext.keyStoreAlias = { buildType -> return " " }
     ext.keyStorePassword = { buildType -> return " " }
@@ -41,14 +33,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.3'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
-        classpath 'com.google.gms:google-services:4.3.3'// Google Services plugin
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
+        classpath "com.android.tools.build:gradle:${sampleAppCatalog.versions.gradleVersion.get()}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${sampleAppCatalog.versions.jetbrainsKotlinVersion.get()}"
+        classpath "com.google.gms:google-services:${sampleAppCatalog.plugins.gmsGoogleServices.get().version}"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:${sampleAppCatalog.plugins.firebaseCrashlytics.get().version}"
+        classpath "com.google.firebase:firebase-appdistribution-gradle:${sampleAppCatalog.plugins.firebaseAppDistribution.get().version}"
+        classpath "ru.cian:huawei-publish-gradle-plugin:${sampleAppCatalog.plugins.huaweiPublish.get().version}"
+        classpath "com.github.triplet.gradle:play-publisher:${sampleAppCatalog.plugins.tripletPlay.get().version}"
     }
 }
 

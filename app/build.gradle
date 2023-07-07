@@ -3,56 +3,30 @@
  * See LICENSE.txt for licensing information
  */
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url 'https://plugins.gradle.org/m2/' }
-        maven { url 'https://maven.fabric.io/public' }
-        maven { url 'https://developer.huawei.com/repo/' }
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    }
-    dependencies {
-        classpath 'com.github.triplet.play:com.github.triplet.play.gradle.plugin:3.7.0'
-        classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.3'
-        classpath 'com.huawei.agconnect:agcp:1.6.5.300'
-        classpath "ru.cian:huawei-publish-gradle-plugin:1.3.3"
-    }
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+    id "com.github.triplet.play"
+    id "com.google.firebase.appdistribution"
+    id "ru.cian.huawei-publish"
+    id "com.google.firebase.crashlytics"
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply from: 'versions.gradle'
-apply plugin: "com.github.triplet.play"
-apply plugin: 'com.google.firebase.appdistribution'
-apply plugin: 'ru.cian.huawei-publish'
-apply plugin: 'com.google.firebase.crashlytics'
+apply from: '../scripts/apply_dependencies.gradle'
 
-def leakCanaryVersion = '2.7'
-def jUnitLibVersion = '4.13.2'
-def multiDexLibVersion = "2.0.1"
-def firebaseMessagingLibVersion = '23.0.7'
-def firebaseMessagingIidLibVersion = '21.1.0'
-def crashlyticsLibVersion = "18.2.12"
-def work_version = '2.7.1'
-def bandyerLibVersion = "3.6.2"
-def bandyerExtensionUsbCamera = "12.2.0"
-def bandyerExtensionVirtualBackground = "12.2.0"
-def pushy_version = '1.0.90'
-def huawei_push_version = '6.9.0.300'
-def androidX = '1.1.0'
-def desugaring_version = "1.1.5"
+def bandyerLibVersion = "3.6.3"
 
 android {
-    compileSdkVersion releaseAppSdkVersion
-    buildToolsVersion releaseAppBuildToolsVersion
+
+    compileSdkVersion sampleAppCatalog.versions.sampleAppSdkVersion.get().toInteger()
+    buildToolsVersion sampleAppCatalog.versions.sampleAppToolsVersion.get()
 
     defaultConfig {
         applicationId "com.bandyer.demo_android_sdk"
-        minSdkVersion 21
-        targetSdkVersion releaseAppSdkVersion
+        minSdkVersion sampleAppCatalog.versions.sampleAppMinSdkVersion.get().toInteger()
+        targetSdkVersion sampleAppCatalog.versions.sampleAppSdkVersion.get().toInteger()
         versionCode VERSION_CODE.toInteger()
         versionName bandyerLibVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -123,6 +97,14 @@ android {
     ndkVersion "23.1.7779620"
 }
 
+play {
+    def canPublish = !playStoreCredentialsFilePath()?.trim().allWhitespace
+    if (canPublish) serviceAccountCredentials = file(playStoreCredentialsFilePath())
+    track.set("beta")
+    enabled.set(canPublish)
+    defaultToAppBundles.set(true)
+}
+
 huaweiPublish {
     instances {
         release {
@@ -133,50 +115,14 @@ huaweiPublish {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugaring_version"
-    /*** Platform ***/
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.multidex:multidex:$multiDexLibVersion"
-    implementation "androidx.appcompat:appcompat:$androidX"
-
-    /*** Testing ***/
-    testImplementation "junit:junit:$jUnitLibVersion"
-
-    /*** Utilities & Debug Tools ***/
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
-
-    /*** Notification ***/
-    implementation "com.google.firebase:firebase-messaging:$firebaseMessagingLibVersion"
-    implementation("com.google.firebase:firebase-iid:$firebaseMessagingIidLibVersion")
-    implementation "com.google.firebase:firebase-crashlytics-ndk:$crashlyticsLibVersion"
-    implementation "androidx.work:work-runtime:$work_version"
-
-    /*** Notification alternative ***/
-    implementation "me.pushy:sdk:$pushy_version"
-    implementation "com.huawei.hms:push:$huawei_push_version"
-
-    /** Utilities **/
-    implementation 'androidx.biometric:biometric:1.2.0-alpha05'
-    implementation project(":app-utilities")
-    implementation project(":app-configuration")
-    implementation project(":app-design")
-
     /*** Bandyer Android SDK ***/
+    implementation(platform("com.bandyer:bandyer-android-sdk-bom:$bandyerLibVersion"))
+
     implementation "com.bandyer:bandyer-android-sdk:$bandyerLibVersion"
 
     // define this dependency only if you desire to handle usb camera input in a video call
-    implementation "com.bandyer:extension_usb_camera:$bandyerExtensionUsbCamera"
+    implementation "com.bandyer:extension_usb_camera"
 
     // define this dependency only if you desire to handle virtual backgrounds in a video call
-    implementation "com.bandyer:extension_virtual_background:$bandyerExtensionVirtualBackground"
-}
-
-play {
-    def canPublish = !playStoreCredentialsFilePath()?.trim().allWhitespace
-    if (canPublish) serviceAccountCredentials = file(playStoreCredentialsFilePath())
-    track.set("beta")
-    enabled.set(canPublish)
-    defaultToAppBundles.set(true)
+    implementation "com.bandyer:extension_virtual_background"
 }

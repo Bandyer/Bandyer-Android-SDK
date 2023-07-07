@@ -11,3 +11,20 @@ project(':app').projectDir = file('app')
 project(':app-utilities').projectDir = file('app-extensions/app-utilities')
 project(':app-configuration').projectDir = file('app-extensions/app-configuration')
 project(':app-design').projectDir = file('app-extensions/app-design')
+
+dependencyResolutionManagement {
+    repositories {
+        mavenLocal()
+        google()
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.bandyer.com/releases' }
+    }
+
+    versionCatalogs {
+        create("sampleAppCatalog") {
+            from("com.kaleyra:video-app-version-catalog:2023.07.01")
+        }
+    }
+}

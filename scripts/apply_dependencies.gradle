@@ -1,0 +1,30 @@
+dependencies {
+    /*** Platform ***/
+    coreLibraryDesugaring sampleAppCatalog.desugar
+    implementation sampleAppCatalog.kotlinStdLib
+    implementation sampleAppCatalog.androidxMultidex
+    implementation sampleAppCatalog.appcompat
+
+    /*** Testing ***/
+    testImplementation sampleAppCatalog.junit
+
+    /*** Utilities & Debug Tools ***/
+    debugImplementation sampleAppCatalog.squareupLeakCanary
+
+    /*** Notification ***/
+    implementation sampleAppCatalog.firebaseMessaging
+    implementation sampleAppCatalog.firebaseIid
+    implementation sampleAppCatalog.firebaseCrashlyticsNdk
+    implementation sampleAppCatalog.androidxWorkRuntime
+
+    /*** Notification alternative ***/
+    implementation sampleAppCatalog.pushy
+    implementation sampleAppCatalog.huaweiHmsPush
+
+    /** Utilities **/
+    implementation sampleAppCatalog.androidxBiometric
+    implementation project(":app-utilities")
+    implementation project(":app-configuration")
+    implementation project(":app-design")
+
+}
