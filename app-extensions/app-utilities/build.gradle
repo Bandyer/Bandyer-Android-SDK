@@ -89,9 +89,9 @@ dependencies {
     implementation sampleAppCatalog.processPhoenix
     debugImplementation sampleAppCatalog.facebookFlipper
     debugImplementation sampleAppCatalog.facebookSoloader
-    debugImplementation sampleAppCatalog.facebookFlipperLeakCanaryPlugin
-    debugImplementation sampleAppCatalog.kaleyraFlipperSocketIoPlugin
-    debugImplementation sampleAppCatalog.facebookFlipperNetworkPlugin
+    debugImplementation sampleAppCatalog.facebookFlipperLeakCanary
+    debugImplementation sampleAppCatalog.kaleyraFlipperSocketIo
+    debugImplementation sampleAppCatalog.facebookFlipperNetwork
     releaseImplementation sampleAppCatalog.facebookFlipperNoop
 
     /*** Debug leaks ***/
