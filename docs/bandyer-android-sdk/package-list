@@ -130,6 +130,7 @@ $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/chatModule/#/PointingT
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/clearUserCache/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/clear-user-cache.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/configure/#com.bandyer.android_sdk.client.BandyerSDKConfiguration/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/configure.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/connect/#com.bandyer.android_sdk.client.Session#com.bandyer.android_sdk.client.OnConnectionErrorListener?/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/connect.html
+$dokka.location:com.bandyer.android_sdk.client/BandyerSDK/connectWithAccessLink/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/connect-with-access-link.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/disconnect/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/disconnect.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/disconnect/#kotlin.Boolean/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/disconnect.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/getFailureRecoveryStrategy/#kotlin.Throwable/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/get-failure-recovery-strategy.html
@@ -145,10 +146,11 @@ $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/setUserDetailsFormatte
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/setUserDetailsProvider/#com.bandyer.android_sdk.utils.provider.UserDetailsProvider?/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/set-user-details-provider.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/startListening/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/start-listening.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/stopListening/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/stop-listening.html
+$dokka.location:com.bandyer.android_sdk.client/BandyerSDK/updateSession/#com.bandyer.android_sdk.client.Session?/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/update-session.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/userDetailsFormatter/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/user-details-formatter.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDK/userDetailsProvider/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k/user-details-provider.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/index.html
-$dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder/Builder/#kotlin.String#com.kaleyra.collaboration_suite_networking.Environment#com.kaleyra.collaboration_suite_networking.Region/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/-builder.html
+$dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder/Builder/#kotlin.String#com.kaleyra.video_networking.configuration.Environment#com.kaleyra.video_networking.configuration.Region/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/-builder.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder/appId/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/app-id.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder/build/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/build.html
 $dokka.location:com.bandyer.android_sdk.client/BandyerSDKConfiguration.Builder/environment/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.client/-bandyer-s-d-k-configuration/-builder/environment.html
@@ -567,6 +569,23 @@ $dokka.location:com.bandyer.android_sdk.whiteboard////PointingToDeclaration/ban
 $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardInfo///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.whiteboard/-whiteboard-info/index.html
 $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardModule///PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.whiteboard/-whiteboard-module/index.html
 $dokka.location:com.bandyer.android_sdk.whiteboard/WhiteboardModule/getName/#/PointingToDeclaration/bandyer-android-sdk/com.bandyer.android_sdk.whiteboard/-whiteboard-module/get-name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking////PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Companion///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-companion/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Companion/create/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-companion/create.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Production///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-production/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Production/name/#/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-production/name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Sandbox///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-sandbox/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment.Sandbox/name/#/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/-sandbox/name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Environment///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-environment/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Companion///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-companion/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Companion/create/#kotlin.String/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-companion/create.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Eu///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-eu/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Eu/name/#/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-eu/name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.In///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-in/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.In/name/#/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-in/name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Us///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-us/index.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region.Us/name/#/PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/-us/name.html
+$dokka.location:com.kaleyra.collaboration_suite_networking/Region///PointingToDeclaration/bandyer-android-sdk/com.kaleyra.collaboration_suite_networking/-region/index.html
 com.bandyer.android_sdk.call
 com.bandyer.android_sdk.call.model
 com.bandyer.android_sdk.call.notification
@@ -598,4 +617,5 @@ com.bandyer.android_sdk.utils
 com.bandyer.android_sdk.utils.provider
 com.bandyer.android_sdk.whiteboard
 com.bandyer.android_sdk.whiteboard.notification
+com.kaleyra.collaboration_suite_networking
 
