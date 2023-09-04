@@ -401,6 +401,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
         // set an observer for the call to show ongoing call label
         CallModule callModule = BandyerSDK.getInstance().getCallModule();
+        if (callModule == null) return;
         callModule.addCallObserver(this, callObserver);
         callModule.addCallUIObserver(this, callObserver);
         if (callModule.isInCall()) showOngoingCallLabel();

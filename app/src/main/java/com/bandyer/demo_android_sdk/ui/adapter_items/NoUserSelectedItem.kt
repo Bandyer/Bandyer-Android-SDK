@@ -16,34 +16,27 @@
 
 package com.bandyer.demo_android_sdk.ui.adapter_items
 
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.bandyer.demo_android_sdk.R
-import com.mikepenz.fastadapter.items.AbstractItem
-import kotlinx.android.synthetic.main.no_users_selected_item_layout.view.*
+import com.bandyer.demo_android_sdk.databinding.NoUsersSelectedItemLayoutBinding
+import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 /**
  * A simple RecyclerView item used to display no selections on users' list.
  */
-class NoUserSelectedItem : AbstractItem<NoUserSelectedItem.ViewHolder>() {
+class NoUserSelectedItem : AbstractBindingItem<NoUsersSelectedItemLayoutBinding>() {
 
-    override var identifier: Long =  NO_USER_SELECTED_ITEM_IDENTIFIER
+    override var identifier: Long = NO_USER_SELECTED_ITEM_IDENTIFIER
     override val type: Int = R.id.no_user_selecte_item
-    override val layoutRes: Int = R.layout.no_users_selected_item_layout
-    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
-    override fun bindView(holder: ViewHolder, payloads: List<Any>) {
-        super.bindView(holder, payloads)
-        holder.containerView.no_user_selecte_itemView.text = holder.containerView.context.getString(R.string.no_users_selected)
+    override fun bindView(binding: NoUsersSelectedItemLayoutBinding, payloads: List<Any>) {
+        super.bindView(binding, payloads)
+        binding.noUserSelecteItemView.text = binding.noUserSelecteItemView.context.getString(R.string.no_users_selected)
     }
 
-    class ViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-
-        init {
-            containerView.isFocusable = false
-            containerView.isFocusableInTouchMode = false
-            containerView.isClickable = false
-        }
+    override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): NoUsersSelectedItemLayoutBinding {
+        return NoUsersSelectedItemLayoutBinding.inflate(inflater, parent, false)
     }
 
     companion object {

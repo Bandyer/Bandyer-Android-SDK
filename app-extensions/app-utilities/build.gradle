@@ -17,7 +17,6 @@
 plugins {
     id "com.android.library"
     id "kotlin-android"
-    id "kotlin-android-extensions"
     id "kotlin-kapt"
     alias(sampleAppCatalog.plugins.kotlinxSerialization)
 }
@@ -67,6 +66,7 @@ dependencies {
     /*** UI ***/
     api sampleAppCatalog.androidxRecyclerview
     api sampleAppCatalog.fastadapter
+    api "com.mikepenz:fastadapter-extensions-binding:${sampleAppCatalog.versions.fastadapterVersion.get()}"
     api (sampleAppCatalog.materialExpansionPanel) {
         exclude module: 'constraintlayout'
     }

@@ -15,34 +15,33 @@
  */
 package com.bandyer.demo_android_sdk.ui.adapter_items
 
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.bandyer.demo_android_sdk.R
-import com.mikepenz.fastadapter.items.AbstractItem
-import kotlinx.android.synthetic.main.user_selection_item_layout.view.*
+import com.bandyer.demo_android_sdk.databinding.UserSelectionItemLayoutBinding
+import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 /**
  * A simple RecyclerView item used to display the user name with a checkbox as a cell in the list.
  */
-class UserSelectionItem(@JvmField val name: String) : AbstractItem<UserSelectionItem.ViewHolder>() {
+class UserSelectionItem(@JvmField val name: String) : AbstractBindingItem<UserSelectionItemLayoutBinding>() {
 
     override var identifier: Long = name.hashCode().toLong()
     override val type: Int = R.id.user_selection_item_id
-    override val layoutRes: Int= R.layout.user_selection_item_layout
-    override fun getViewHolder(v: View): ViewHolder = ViewHolder(v)
 
-    override fun bindView(holder: ViewHolder, payloads: List<Any>) {
-        super.bindView(holder, payloads)
-        holder.containerView.checkbox!!.isChecked = isSelected
-        holder.containerView.checkbox!!.text = name
+    override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): UserSelectionItemLayoutBinding {
+        return UserSelectionItemLayoutBinding.inflate(inflater, parent, false)
     }
 
-    override fun unbindView(holder: ViewHolder) {
-        super.unbindView(holder)
-        holder.containerView.checkbox!!.isChecked = false
-        holder.containerView.checkbox.text = null
+    override fun bindView(binding: UserSelectionItemLayoutBinding, payloads: List<Any>) {
+        super.bindView(binding, payloads)
+        binding.checkbox.isChecked = isSelected
+        binding.checkbox.text = name
     }
 
-    class ViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView)
-
+    override fun unbindView(binding: UserSelectionItemLayoutBinding) {
+        super.unbindView(binding)
+        binding.checkbox.isChecked = false
+        binding.checkbox.text = null
+    }
 }
