@@ -243,6 +243,9 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
     private boolean areObserversAdded = false;
 
+    private boolean wasAlreadyInCall = false;
+    private boolean isHandlingAccessLink = false;
+
     public static void show(Activity context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
@@ -257,11 +260,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
         NotificationUtilsKt.requestPushNotificationPermissionApi33(this);
 
-        if (!LoginManager.isUserLogged(this)) return;
-        // If FCM is not being used as the default notification service.
-        // We need to launch the other notification services in the main launcher activity.
-        NotificationProxy.listen(this);
-
         // inflate main layout and keep a reference to it in case of use with dpad navigation
         setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.bind(getWindow().getDecorView());
@@ -275,8 +273,18 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         // get the user that is currently logged in the sample app
         String userAlias = LoginManager.getLoggedUser(this);
 
+        if (BandyerSDK.getInstance().getCallModule() != null && BandyerSDK.getInstance().getCallModule().isInCall()) {
+            wasAlreadyInCall = true;
+            finish();
+            return;
+        }
+
         // customize toolbar
         setCollapsingToolbarTitle(String.format(getResources().getString(R.string.pick_users), userAlias), userAlias);
+
+        // If FCM is not being used as the default notification service.
+        // We need to launch the other notification services in the main launcher activity.
+        NotificationProxy.listen(this);
 
         // in case the MainActivity has been shown by opening an external link, handle it
         handleExternalUrl(getIntent());
@@ -330,12 +338,17 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     protected void onResume() {
         super.onResume();
 
+        if (isHandlingAccessLink) {
+            finish();
+            return;
+        }
+
         if (configuration.isMockConfiguration()) {
             ConfigurationActivity.Companion.showNew(this, configuration, true);
             return;
         }
 
-        if (!LoginManager.isUserLogged(this)) {
+        if (!LoginManager.isUserLogged(this) && !isHandlingExternalUrl(getIntent())) {
             LoginActivity.show(this);
             finish();
             return;
@@ -347,9 +360,13 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         for (BandyerModule module : BandyerSDK.getInstance().getModules()) {
             setModuleButtonsColors(module, module.getStatus());
         }
+
+        if (isHandlingExternalUrl(getIntent())) getIntent().setData(null);
     }
 
     private void startBandyerSDK() {
+        if (!LoginManager.isUserLogged(this)) return;
+
         String userId = LoginManager.getLoggedUser(getApplicationContext());
 
         AccessTokenProvider accessTokenProvider = (userId1, completion) -> getRestApi().getAccessToken(userId, accessToken -> {
@@ -391,6 +408,7 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
         // set an observer for the ongoing chat
         ChatModule chatModule = BandyerSDK.getInstance().getChatModule();
+        if (chatModule == null) return;
         chatModule.addChatObserver(this, chatObserver);
         chatModule.addChatUIObserver(this, chatObserver);
     }
@@ -424,19 +442,23 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     @SuppressLint("NewApi")
     private void handleExternalUrl(Intent intent) {
         if (!Intent.ACTION_VIEW.equals(intent.getAction())) return;
+        if (!isHandlingExternalUrl(intent)) return;
+
         Uri uri = intent.getData();
-        if (uri == null) return;
 
-        // do not handle the url if we do not have a valid user
-        if (!LoginManager.isUserLogged(this)) return;
-
-        startBandyerSDK();
+        if (LoginManager.isUserLogged(this)) {
+            startBandyerSDK();
+        } else isHandlingAccessLink = true;
 
         BandyerIntent bandyerIntent = new BandyerIntent.Builder()
                 .startFromJoinCallUrl(this, uri.toString())
                 .build();
 
         startActivity(bandyerIntent);
+    }
+
+    private Boolean isHandlingExternalUrl(Intent intent) {
+        return intent.getData() != null;
     }
 
     private void handleMissedCall(Intent intent) {
@@ -466,6 +488,11 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     public void onDestroy() {
         super.onDestroy();
         removeObservers();
+        if (wasAlreadyInCall) {
+            LoginManager.logout(MainActivity.this);
+            return;
+        }
+        if (isHandlingAccessLink || !LoginManager.isUserLogged(this)) return;
         BandyerSDK.getInstance().disconnect();
     }
 
@@ -602,6 +629,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
 
     @Override
     public void onRefresh() {
+        if (itemAdapter == null) return;
+
         usersList.clear();
         itemAdapter.clear();
         binding.contactsList.invalidateItemDecorations();
