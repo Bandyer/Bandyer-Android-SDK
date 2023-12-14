@@ -25,16 +25,15 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ConfigurationEdittextBinding
 import com.kaleyra.app_configuration.model.ConfigurationFieldChangeListener
 import com.kaleyra.app_configuration.model.EditableConfigurationPreference
 import com.kaleyra.app_configuration.utils.dp2px
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_subtitle
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_summary
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_summary_card_view
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_title
 
 class ConfigurationEditTextPreference @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr), EditableConfigurationPreference<String> {
+
+    private lateinit var binding: ConfigurationEdittextBinding
 
     override var titleTextView: TextView? = null
     override var subtitleTextView: TextView? = null
@@ -45,12 +44,14 @@ class ConfigurationEditTextPreference @JvmOverloads constructor(context: Context
 
     init {
         orientation = VERTICAL
-        LayoutInflater.from(context).inflate(R.layout.configuration_edittext, this)
 
-        titleTextView = configuration_edittext_title
-        subtitleTextView = configuration_edittext_subtitle
-        summaryTextView = configuration_edittext_summary
-        summaryTextViewHolder = configuration_edittext_summary_card_view
+        LayoutInflater.from(context).inflate(R.layout.configuration_edittext, this)
+        binding = ConfigurationEdittextBinding.bind(this)
+
+        titleTextView = binding.configurationEdittextTitle
+        subtitleTextView = binding.configurationEdittextSubtitle
+        summaryTextView = binding.configurationEdittextSummary
+        summaryTextViewHolder = binding.configurationEdittextSummaryCardView
 
         context.theme.obtainStyledAttributes(
                 attrs,
@@ -66,7 +67,7 @@ class ConfigurationEditTextPreference @JvmOverloads constructor(context: Context
                         ?: hintText)
                 setSummary(getString(R.styleable.ConfigurationEditTextStyleable_summary))
 
-                val subtitleView = configuration_edittext_subtitle
+                val subtitleView = binding.configurationEdittextSubtitle
 
                 setOnClickListener {
                     val editText = EditText(context).apply {

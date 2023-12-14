@@ -17,12 +17,12 @@
 plugins {
     id "com.android.library"
     id "kotlin-android"
-    id "kotlin-kapt"
     alias(sampleAppCatalog.plugins.kotlinxSerialization)
 }
 
 android {
 
+    namespace "com.kaleyra.app_utilities"
     compileSdkVersion sampleAppCatalog.versions.sampleAppSdkVersion.get().toInteger()
     buildToolsVersion sampleAppCatalog.versions.sampleAppToolsVersion.get()
 
@@ -47,6 +47,20 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    publishing {
+        singleVariant('release') {
+            withJavadocJar()
+        }
     }
 }
 

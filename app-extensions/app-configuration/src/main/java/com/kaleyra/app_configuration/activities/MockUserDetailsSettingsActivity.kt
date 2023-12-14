@@ -95,6 +95,7 @@ class MockUserDetailsSettingsActivity : ScrollAwareToolbarActivity() {
         when (currentMockUserDetailsModeMode) {
             UserDetailsProviderMode.REMOTE -> remote!!.isChecked = true
             UserDetailsProviderMode.CUSTOM -> custom.isChecked = true
+            else -> Unit
         }
         displayName = intent.getStringExtra(ImageTextEditActivity.PRESET_TEXT_PARAM) ?: ""
         imageUrl = intent.getStringExtra(ImageTextEditActivity.PRESET_URI_PARAM)

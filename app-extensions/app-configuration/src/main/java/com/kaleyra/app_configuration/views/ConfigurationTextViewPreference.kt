@@ -22,11 +22,8 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ConfigurationEdittextBinding
 import com.kaleyra.app_configuration.model.ConfigurationPreference
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_subtitle
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_summary
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_summary_card_view
-import kotlinx.android.synthetic.main.configuration_edittext.view.configuration_edittext_title
 
 class ConfigurationTextViewPreference @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr), ConfigurationPreference {
@@ -36,14 +33,17 @@ class ConfigurationTextViewPreference @JvmOverloads constructor(context: Context
     override var summaryTextView: TextView? = null
     override var summaryTextViewHolder: View? = null
 
+    private lateinit var binding: ConfigurationEdittextBinding
+
     init {
         orientation = VERTICAL
         LayoutInflater.from(context).inflate(R.layout.configuration_edittext, this)
+        binding = ConfigurationEdittextBinding.bind(this)
 
-        titleTextView = configuration_edittext_title
-        subtitleTextView = configuration_edittext_subtitle
-        summaryTextView = configuration_edittext_summary
-        summaryTextViewHolder = configuration_edittext_summary_card_view
+        titleTextView = binding.configurationEdittextTitle
+        subtitleTextView = binding.configurationEdittextSubtitle
+        summaryTextView = binding.configurationEdittextSummary
+        summaryTextViewHolder = binding.configurationEdittextSummaryCardView
 
         context.theme.obtainStyledAttributes(
                 attrs,

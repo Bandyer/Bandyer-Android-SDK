@@ -23,12 +23,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ConfigurationListBinding
 import com.kaleyra.app_configuration.model.ConfigurationFieldChangeListener
 import com.kaleyra.app_configuration.model.EditableConfigurationPreference
-import kotlinx.android.synthetic.main.configuration_list.view.configuration_list_summary
-import kotlinx.android.synthetic.main.configuration_list.view.configuration_list_summary_card_view
-import kotlinx.android.synthetic.main.configuration_list.view.configuration_list_title
-import kotlinx.android.synthetic.main.configuration_list.view.configuration_list_value
 
 class ConfigurationListPreference @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr), EditableConfigurationPreference<String> {
@@ -43,14 +40,16 @@ class ConfigurationListPreference @JvmOverloads constructor(context: Context, at
 
     override var configurationFieldChangeListener: ConfigurationFieldChangeListener<String>? = null
 
+    private lateinit var binding: ConfigurationListBinding
+
     init {
         orientation = VERTICAL
         LayoutInflater.from(context).inflate(R.layout.configuration_list, this)
-
-        titleTextView = configuration_list_title
-        subtitleTextView = configuration_list_value
-        summaryTextView = configuration_list_summary
-        summaryTextViewHolder = configuration_list_summary_card_view
+        binding = ConfigurationListBinding.bind(this)
+        titleTextView = binding.configurationListTitle
+        subtitleTextView = binding.configurationListValue
+        summaryTextView = binding.configurationListSummary
+        summaryTextViewHolder = binding.configurationListSummaryCardView
 
         context.theme.obtainStyledAttributes(
                 attrs,
@@ -70,8 +69,8 @@ class ConfigurationListPreference @JvmOverloads constructor(context: Context, at
         }
 
         setOnClickListener {
-            AlertDialog.Builder(context).setTitle(configuration_list_title.text)
-                    .setSingleChoiceItems(entries.toTypedArray(), entryValues.indexOf(configuration_list_value.text
+            AlertDialog.Builder(context).setTitle(binding.configurationListTitle.text)
+                    .setSingleChoiceItems(entries.toTypedArray(), entryValues.indexOf(binding.configurationListValue.text
                             ?: 0)) { dialogInterface, value ->
                         val newValue = entryValues[value]
                         setValue(newValue)

@@ -21,6 +21,7 @@ plugins {
 
 android {
 
+    namespace "com.kaleyra.app_design"
     compileSdkVersion sampleAppCatalog.versions.sampleAppSdkVersion.get().toInteger()
     buildToolsVersion sampleAppCatalog.versions.sampleAppToolsVersion.get()
 
@@ -39,6 +40,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    publishing {
+        singleVariant('release') {
+            withJavadocJar()
         }
     }
 }

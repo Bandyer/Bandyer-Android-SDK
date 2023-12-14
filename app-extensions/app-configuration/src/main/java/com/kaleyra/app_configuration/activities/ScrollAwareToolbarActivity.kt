@@ -19,9 +19,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.kaleyra.app_configuration.R
-import kotlinx.android.synthetic.main.actionbar_layout.scroll
-import kotlinx.android.synthetic.main.actionbar_layout.toolbar
+import com.kaleyra.app_configuration.databinding.ActionbarLayoutBinding
 
 /**
  *
@@ -29,17 +27,21 @@ import kotlinx.android.synthetic.main.actionbar_layout.toolbar
  */
 abstract class ScrollAwareToolbarActivity(open var withToolbar: Boolean = true) : AppCompatActivity() {
 
+    private lateinit var binding: ActionbarLayoutBinding
+
     override fun setContentView(layoutResID: Int) = setContentView(LayoutInflater.from(this).inflate(layoutResID, null), null)
+
     override fun setContentView(view: View?) = setContentView(view, null)
     override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
         if (!withToolbar) {
             params?.let { super.setContentView(view, it) } ?: super.setContentView(view)
             return
         }
-        super.setContentView(R.layout.actionbar_layout)
-        params?.let { scroll.addView(view, it) } ?: scroll.addView(view)
-        scroll!!.isNestedScrollingEnabled = true
-        setSupportActionBar(toolbar)
+        binding = ActionbarLayoutBinding.inflate(layoutInflater)
+        super.setContentView(binding.root)
+        params?.let {binding.scroll.addView(view, it) } ?: binding.scroll.addView(view!!)
+        binding.scroll.isNestedScrollingEnabled = true
+        setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
     }

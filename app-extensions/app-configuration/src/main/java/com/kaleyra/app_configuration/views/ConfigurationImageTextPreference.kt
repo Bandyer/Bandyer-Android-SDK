@@ -23,13 +23,9 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ConfigurationImageTextBinding
 import com.kaleyra.app_configuration.model.ConfigurationPreference
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.configuration_image_text.view.configuration_image
-import kotlinx.android.synthetic.main.configuration_image_text.view.configuration_image_name
-import kotlinx.android.synthetic.main.configuration_image_text.view.configuration_image_text_summary
-import kotlinx.android.synthetic.main.configuration_image_text.view.configuration_image_text_summary_card_view
-import kotlinx.android.synthetic.main.configuration_image_text.view.configuration_image_text_title
 
 class ConfigurationImageTextPreference @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attrs, defStyleAttr), ConfigurationPreference {
@@ -39,13 +35,16 @@ class ConfigurationImageTextPreference @JvmOverloads constructor(context: Contex
     override var summaryTextView: TextView? = null
     override var summaryTextViewHolder: View? = null
 
+    private lateinit var binding: ConfigurationImageTextBinding
+
     init {
         orientation = VERTICAL
         LayoutInflater.from(context).inflate(R.layout.configuration_image_text, this)
+        binding = ConfigurationImageTextBinding.bind(this)
 
-        titleTextView = configuration_image_text_title
-        summaryTextView = configuration_image_text_summary
-        summaryTextViewHolder = configuration_image_text_summary_card_view
+        titleTextView = binding.configurationImageTextTitle
+        summaryTextView = binding.configurationImageTextSummary
+        summaryTextViewHolder = binding.configurationImageTextSummaryCardView
 
         context.theme.obtainStyledAttributes(
                 attrs,
@@ -66,10 +65,10 @@ class ConfigurationImageTextPreference @JvmOverloads constructor(context: Contex
         }
     }
 
-    fun setImageUri(imageUri: Uri?) = Picasso.get().load(imageUri).into(configuration_image)
+    fun setImageUri(imageUri: Uri?) = Picasso.get().load(imageUri).into(binding.configurationImage)
 
     fun setImageName(imageName: String?) {
-        configuration_image_name.text = imageName
+        binding.configurationImageName.text = imageName
     }
 }
 

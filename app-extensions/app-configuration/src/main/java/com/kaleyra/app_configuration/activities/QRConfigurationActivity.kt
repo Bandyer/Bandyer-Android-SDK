@@ -21,10 +21,10 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Toast
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ActivityQrconfigurationBinding
 import com.kaleyra.app_configuration.ui.ViewFinderView
 import com.kaleyra.app_configuration.utils.QrCodeAnalyzer
 import com.kaleyra.app_configuration.utils.WifiConnector
-import kotlinx.android.synthetic.main.activity_qrconfiguration.*
 import java.util.concurrent.Executors
 
 /**
@@ -33,6 +33,7 @@ import java.util.concurrent.Executors
  */
 open class QRConfigurationActivity : BaseConfigurationActivity(false) {
 
+    private lateinit var binding: ActivityQrconfigurationBinding
 
     companion object {
         const val WIFI_CONFIGURATION_RESULT = "WIFI_CONFIGURATION_RESULT"
@@ -68,19 +69,21 @@ open class QRConfigurationActivity : BaseConfigurationActivity(false) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_qrconfiguration)
-        insert_manually_button.setOnClickListener {
+        binding = ActivityQrconfigurationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.insertManuallyButton.setOnClickListener {
             stopScanQR()
         }
 
-        qrView.setLifecycleOwner(this)
-        qrView.addFrameProcessor(QrCodeAnalyzer {
+        binding.qrView.setLifecycleOwner(this)
+        binding.qrView.addFrameProcessor(QrCodeAnalyzer {
             val uri = if (it.text != null) Uri.parse(it.text) else Uri.EMPTY
             if (configuredNetworks.contains(uri.toString())) return@QrCodeAnalyzer
             if (uri.scheme == "WIFI") configureWifi(uri)
             else configureFromUri(uri)
         })
-        (qrView.parent as ViewGroup).addView(ViewFinderView(this), 1)
+        (binding.qrView.parent as ViewGroup).addView(ViewFinderView(this), 1)
     }
 
     override fun onDestroy() {

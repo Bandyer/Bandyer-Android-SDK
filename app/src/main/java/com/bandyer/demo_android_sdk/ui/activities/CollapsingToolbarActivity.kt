@@ -98,7 +98,7 @@ abstract class CollapsingToolbarActivity : BaseActivity(), OnRefreshListener {
         val environment = ConfigurationPrefsManager.getConfiguration(this).environment
         val region = ConfigurationPrefsManager.getConfiguration(this).region
         appTitle = String.format(resources.getString(R.string.app_name_with_version), "v$version")
-        val envTextView = SpannableString("\n@${environment}-${region}\n")
+        val envTextView = SpannableString("\nBuilt with API ${application.applicationInfo.targetSdkVersion}\n@${environment}-${region}\n")
         envTextView.setSpan(AbsoluteSizeSpan(textSizeH4), 0, envTextView.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
         val infoSpan = SpannableString("\n$portraitTitle")
         infoSpan.setSpan(AbsoluteSizeSpan(textSizeH3), 0, infoSpan.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)

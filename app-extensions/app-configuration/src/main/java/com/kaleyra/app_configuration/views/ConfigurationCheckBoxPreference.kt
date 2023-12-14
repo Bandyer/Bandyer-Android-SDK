@@ -22,17 +22,14 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.kaleyra.app_configuration.R
+import com.kaleyra.app_configuration.databinding.ConfigurationCheckboxBinding
 import com.kaleyra.app_configuration.model.ConfigurationFieldChangeListener
 import com.kaleyra.app_configuration.model.EditableConfigurationPreference
-import kotlinx.android.synthetic.main.configuration_checkbox.view.configuration_checkbox
-import kotlinx.android.synthetic.main.configuration_checkbox.view.configuration_checkbox_summary
-import kotlinx.android.synthetic.main.configuration_checkbox.view.configuration_checkbox_summary_card_view
-import kotlinx.android.synthetic.main.configuration_checkbox.view.configuration_checkbox_title
 
 class ConfigurationCheckBoxPreference @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), EditableConfigurationPreference<Boolean> {
 
     override var titleTextView: TextView? = null
@@ -40,28 +37,32 @@ class ConfigurationCheckBoxPreference @JvmOverloads constructor(
     override var summaryTextView: TextView? = null
     override var summaryTextViewHolder: View? = null
 
+    private lateinit var binding: ConfigurationCheckboxBinding
+
     var isChecked = false
         set(value) {
             field = value
             setValue(value)
         }
-        get() = configuration_checkbox.isChecked
+        get() = binding.configurationCheckbox.isChecked
 
     override var configurationFieldChangeListener: ConfigurationFieldChangeListener<Boolean>? = null
 
     init {
         orientation = VERTICAL
-        LayoutInflater.from(context).inflate(R.layout.configuration_checkbox, this)
 
-        titleTextView = configuration_checkbox_title
-        summaryTextView = configuration_checkbox_summary
-        summaryTextViewHolder = configuration_checkbox_summary_card_view
+        LayoutInflater.from(context).inflate(R.layout.configuration_checkbox, this)
+        binding = ConfigurationCheckboxBinding.bind(this)
+
+        titleTextView = binding.configurationCheckboxTitle
+        summaryTextView = binding.configurationCheckboxSummary
+        summaryTextViewHolder = binding.configurationCheckboxSummaryCardView
 
         context.theme.obtainStyledAttributes(
-                attrs,
-                R.styleable.ConfigurationCheckboxStyleable,
-                defStyleAttr,
-                0
+            attrs,
+            R.styleable.ConfigurationCheckboxStyleable,
+            defStyleAttr,
+            0
         ).apply {
 
             try {
@@ -72,8 +73,8 @@ class ConfigurationCheckBoxPreference @JvmOverloads constructor(
                 recycle()
             }
 
-            configuration_checkbox_title.setOnClickListener { if (configuration_checkbox.isEnabled) configuration_checkbox.performClick() }
-            configuration_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            binding.configurationCheckboxTitle.setOnClickListener { if (binding.configurationCheckbox.isEnabled) binding.configurationCheckbox.performClick() }
+            binding.configurationCheckbox.setOnCheckedChangeListener { _, isChecked ->
                 configurationFieldChangeListener?.onConfigurationFieldChanged(isChecked)
             }
         }
@@ -81,10 +82,10 @@ class ConfigurationCheckBoxPreference @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        configuration_checkbox.isEnabled = enabled
+        binding.configurationCheckbox.isEnabled = enabled
     }
 
     override fun setValue(value: Boolean?) {
-        configuration_checkbox.isChecked = value ?: false
+        binding.configurationCheckbox.isChecked = value ?: false
     }
 }
