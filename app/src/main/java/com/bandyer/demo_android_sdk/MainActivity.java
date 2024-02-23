@@ -339,7 +339,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         super.onResume();
 
         if (isHandlingAccessLink) {
-            finish();
+            getIntent().setData(null);
+            finishAndRemoveTask();
             return;
         }
 
