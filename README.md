@@ -145,7 +145,7 @@ android {
 [Upgrade to v1.5.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
 
 ### Code documentation
-[Kotlin](https://docs.bandyer.com/Bandyer-Android-SDK/)
+[Kotlin](https://bandyer.github.io/Bandyer-Android-SDK/)
 
 ### Other
 [Pricing](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Pricing)
