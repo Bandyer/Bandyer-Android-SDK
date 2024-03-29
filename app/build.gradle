@@ -15,7 +15,7 @@ plugins {
 apply from: 'versions.gradle'
 apply from: '../scripts/apply_dependencies.gradle'
 
-def bandyerLibVersion = "3.8.4"
+def bandyerLibVersion = "3.9.0"
 
 android {
 
