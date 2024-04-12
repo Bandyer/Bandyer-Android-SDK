@@ -273,12 +273,6 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         // get the user that is currently logged in the sample app
         String userAlias = LoginManager.getLoggedUser(this);
 
-        if (BandyerSDK.getInstance().getCallModule() != null && BandyerSDK.getInstance().getCallModule().isInCall()) {
-            wasAlreadyInCall = true;
-            finish();
-            return;
-        }
-
         // customize toolbar
         setCollapsingToolbarTitle(String.format(getResources().getString(R.string.pick_users), userAlias), userAlias);
 
@@ -320,6 +314,12 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
         addObservers();
 
         startBandyerSDK();
+    }
+
+    private Boolean checkIsInCall() {
+        wasAlreadyInCall = BandyerSDK.getInstance().getCallModule() != null
+                && BandyerSDK.getInstance().getCallModule().isInCall();
+        return wasAlreadyInCall;
     }
 
     @Override
@@ -425,7 +425,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
             callModule.removeCallObserver(callObserver);
             callModule.removeCallUIObserver(callObserver);
             Call ongoingCall = callModule.getOngoingCall();
-            if (ongoingCall != null) callModule.getOngoingCall().removeCallRecordingObserver(callObserver);
+            if (ongoingCall != null)
+                callModule.getOngoingCall().removeCallRecordingObserver(callObserver);
         }
 
         ChatModule chatModule = BandyerSDK.getInstance().getChatModule();
@@ -490,11 +491,8 @@ public class MainActivity extends CollapsingToolbarActivity implements BandyerMo
     public void onDestroy() {
         super.onDestroy();
         removeObservers();
-        if (wasAlreadyInCall) {
-            LoginManager.logout(MainActivity.this);
-            return;
-        }
-        if (isHandlingAccessLink || !LoginManager.isUserLogged(this)) return;
+        boolean isInCall = checkIsInCall();
+        if (isInCall || isHandlingAccessLink || !LoginManager.isUserLogged(this)) return;
         BandyerSDK.getInstance().disconnect();
     }
 

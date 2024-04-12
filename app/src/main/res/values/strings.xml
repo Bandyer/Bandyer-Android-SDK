@@ -80,5 +80,6 @@
     <string name="missed_call" translatable="false">Missed call</string>
     <string name="callback" translatable="false">Call back</string>
     <string name="chatback" translatable="false">Chat</string>
+    <string name="you_cannot_login_while_already_in_call" translatable="false">You cannot login while already in call.</string>
 
 </resources>

@@ -12,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bandyer.android_sdk.client.BandyerSDK;
 import com.bandyer.demo_android_sdk.databinding.ActivityLoginBinding;
 import com.bandyer.demo_android_sdk.ui.activities.CollapsingToolbarActivity;
 import com.bandyer.demo_android_sdk.ui.adapter_items.UserItem;
@@ -92,6 +94,11 @@ public class LoginActivity extends CollapsingToolbarActivity implements SearchVi
         fastAdapter.setOnPreClickListener(new Function4<View, IAdapter<UserItem>, UserItem, Integer, Boolean>() {
             @Override
             public Boolean invoke(View view, IAdapter<UserItem> userItemIAdapter, UserItem userItem, Integer integer) {
+                if (BandyerSDK.getInstance().getCallModule() != null && BandyerSDK.getInstance().getCallModule().isInCall()) {
+                    Toast.makeText(LoginActivity.this, R.string.you_cannot_login_while_already_in_call, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
                 userAlias = userItem.userAlias;
                 if (!LoginManager.isUserLogged(LoginActivity.this))
                     LoginManager.login(LoginActivity.this, userAlias);
