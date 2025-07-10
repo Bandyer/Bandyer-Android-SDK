@@ -144,6 +144,8 @@ android {
 
 [Upgrade to v1.5.+](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/Upgrade-to-Bandyer-SDK-v1.5.x)
 
+[Api 35 compatibility](https://github.com/Bandyer/Bandyer-Android-SDK/wiki/API-35-Compatibility)
+
 ### Code documentation
 [Kotlin](https://bandyer.github.io/Bandyer-Android-SDK/)
 
