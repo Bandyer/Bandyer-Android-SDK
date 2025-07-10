@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     enableFeaturePreview("VERSION_CATALOGS")
     versionCatalogs {
         create("sampleAppCatalog") {
-            from("com.kaleyra:video-app-version-catalog:2023.09.03.11")
+            from("com.kaleyra:video-app-version-catalog:2023.09.03.14")
         }
     }
 }
